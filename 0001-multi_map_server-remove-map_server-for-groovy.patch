@@ -1,4 +1,4 @@
-From 7b7b48218dfc7459b86d3aa9b2988ac3311a22d8 Mon Sep 17 00:00:00 2001
+From 22db24807094c1ca48d7b571d6f8246cd204d5dc Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 28 Mar 2014 13:59:58 +0900
 Subject: [PATCH] multi_map_server: remove map_server for groovy
