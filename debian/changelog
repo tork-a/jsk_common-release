@@ -1,0 +1,36 @@
+ros-groovy-downward (1.0.4-3quantal) quantal; urgency=high
+
+  * Added missing build_depends on rospack, roslib and mk
+  * Contributors: Scott K Logan
+  * downward: catkinize
+  * Contributors: Kei Okada
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Wed, 26 Mar 2014 15:00:00 -0000
+
+ros-groovy-downward (1.0.3-3quantal) quantal; urgency=high
+
+  * update revision number to 1.0.3
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Tue, 18 Mar 2014 15:00:00 -0000
+
+ros-groovy-downward (1.0.2-3quantal) quantal; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Tue, 11 Mar 2014 15:00:00 -0000
+
+ros-groovy-downward (1.0.1-3quantal) quantal; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Thu, 06 Mar 2014 15:00:00 -0000
+
+ros-groovy-downward (1.0.0-3quantal) quantal; urgency=high
+
+  * added dependency
+  * added downward
+  * Contributors: mikita
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Tue, 04 Mar 2014 15:00:00 -0000
+
+
