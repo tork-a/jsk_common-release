@@ -1,0 +1,30 @@
+From 91bf4b7055c1940534639c455ffdc7621ec15e47 Mon Sep 17 00:00:00 2001
+From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Date: Sun, 30 Mar 2014 11:15:49 +0900
+Subject: [PATCH 2/2] jsk-groovy-navigation -> ros-groovy-navigation
+
+---
+ debian/control.em |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/debian/control.em b/debian/control.em
+index 68ed8a5..3de8409 100644
+--- a/debian/control.em
++++ b/debian/control.em
+@@ -2,11 +2,11 @@ Source: @(Package)
+ Section: misc
+ Priority: extra
+ Maintainer: @(Maintainer)
+-Build-Depends: debhelper (>= 7.0.50~), @(', '.join(BuildDepends)), jsk-groovy-navigation
++Build-Depends: debhelper (>= 7.0.50~), @(', '.join(BuildDepends)), ros-groovy-navigation
+ Homepage: @(Homepage)
+ Standards-Version: 3.9.2
+ 
+ Package: @(Package)
+ Architecture: any
+-Depends: ${shlibs:Depends}, ${misc:Depends}, @(', '.join(Depends)), jsk-groovy-navigation
++Depends: ${shlibs:Depends}, ${misc:Depends}, @(', '.join(Depends)), ros-groovy-navigation
+ Description: @(Description)
+-- 
+1.7.9.5
+

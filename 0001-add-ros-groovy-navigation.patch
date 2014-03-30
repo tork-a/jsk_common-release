@@ -1,7 +1,7 @@
-From 884f89fa8f4571550f74e9cffdd7b52a1304b1c0 Mon Sep 17 00:00:00 2001
+From 4aed1c61f7bf1746ac6ba77c62df6952940e21b6 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sun, 30 Mar 2014 03:38:27 +0900
-Subject: [PATCH] add ros-groovy-navigation
+Subject: [PATCH 1/2] add ros-groovy-navigation
 
 ---
  debian/control.em |    4 ++--
