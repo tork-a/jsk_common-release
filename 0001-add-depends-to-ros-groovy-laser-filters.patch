@@ -1,0 +1,30 @@
+From 3540060221abc274664783419620ff803f5fb95e Mon Sep 17 00:00:00 2001
+From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Date: Thu, 3 Apr 2014 09:24:47 +0900
+Subject: [PATCH] add depends to ros-groovy-laser-filters
+
+---
+ debian/control.em |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/debian/control.em b/debian/control.em
+index 35e0893..0615622 100644
+--- a/debian/control.em
++++ b/debian/control.em
+@@ -2,11 +2,11 @@ Source: @(Package)
+ Section: misc
+ Priority: extra
+ Maintainer: @(Maintainer)
+-Build-Depends: debhelper (>= 7.0.50~), @(', '.join(BuildDepends))
++Build-Depends: debhelper (>= 7.0.50~), @(', '.join(BuildDepends)), ros-groovy-laser-filters
+ Homepage: @(Homepage)
+ Standards-Version: 3.9.2
+ 
+ Package: @(Package)
+ Architecture: any
+-Depends: ${shlibs:Depends}, ${misc:Depends}, @(', '.join(Depends))
++Depends: ${shlibs:Depends}, ${misc:Depends}, @(', '.join(Depends)), ros-groovy-laser-filters
+ Description: @(Description)
+-- 
+1.7.9.5
+
