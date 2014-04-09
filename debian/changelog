@@ -1,0 +1,25 @@
+ros-groovy-libsiftfast (1.0.7-0quantal) quantal; urgency=high
+
+  * Added missing build_depend on rospack and roslib
+  * Handle case where ROS_DISTRO is not set
+  * Contributors: Scott K Logan
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 09 Apr 2014 15:00:00 -0000
+
+ros-groovy-libsiftfast (1.0.6-0quantal) quantal; urgency=high
+
+  * catkinize libsiftfast, add fake add_library, set_target_properties for catkin, groovy does not suport EXPORTED_TARGETS
+  * Contributors: Kei Okada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 06 Apr 2014 15:00:00 -0000
+
+ros-groovy-libsiftfast (1.0.0-0quantal) quantal; urgency=high
+
+  * add clean patched
+  * change SVN repository to new sourceforge server. Fixed https://code.google.com/p/rtm-ros-robotics/issues/detail?id=84
+  * moved posedetection_msgs, sift processing, and other packages to jsk_common and jsk_perception
+  * Contributors: furuta, k-okada, rosen
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 04 Mar 2014 15:00:00 -0000
+
+
