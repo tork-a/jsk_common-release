@@ -1,3 +1,44 @@
+## jsk_common (groovy) - 1.0.7-0
+
+User `k-okada@kokada-t430s` released the packages in the `jsk_common` repository into the `groovy` distro by running `/usr/bin/bloom-release --rosdistro groovy --track groovy jsk_common` on `Wed, 09 Apr 2014 17:47:16 -0000`
+
+These packages were released:
+- `collada_urdf_jsk_patch`
+- `depth_image_proc_jsk_patch`
+- `downward`
+- `dynamic_tf_publisher`
+- `image_view2`
+- `image_view_jsk_patch`
+- `jsk_common`
+- `jsk_footstep_msgs`
+- `jsk_gui_msgs`
+- `jsk_hark_msgs`
+- `jsk_tools`
+- `jsk_topic_tools`
+- `laser_filters_jsk_patch`
+- `libsiftfast`
+- `multi_map_server`
+- `openni_tracker_jsk_patch`
+- `opt_camera`
+- `posedetection_msgs`
+- `pr2_groovy_patches`
+- `rospatlite`
+- `rosping`
+- `stereo_synchronizer`
+
+Version of package(s) in repository `jsk_common`:
+- rosdistro version: `1.0.6-0`
+- old version: `1.0.6-0`
+- new version: `1.0.7-0`
+
+Versions of tools used:
+- bloom version: `0.5.2`
+- catkin_pkg version: `0.1.25`
+- rosdep version: `0.10.25`
+- rosdistro version: `0.3.4`
+- vcstools version: `0.1.33`
+
+
 ## jsk_common (hydro) - 1.0.7-0
 
 User `k-okada@kokada-t430s` released the packages in the `jsk_common` repository into the `hydro` distro by running `/usr/bin/bloom-release --rosdistro hydro --track hydro jsk_common` on `Wed, 09 Apr 2014 17:39:18 -0000`
