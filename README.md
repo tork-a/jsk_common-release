@@ -1,54 +1,36 @@
-jsk_common [![Build Status](https://travis-ci.org/jsk-ros-pkg/jsk_common.png?branch=master)](https://travis-ci.org/jsk-ros-pkg/jsk_common)
-===
+rospatlite
+==========
 
-Install
----
-```sh
-wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild hydro
-```
+This is a ROS driver for patlite.
 
+Setup
+----
+1. connect the patlite with your computer directly
+2. set IP address of your computer to 192.168.10.x (patlite has 192.168.10.1)
+3. open http://192.168.10.1/index.htm with your web broswser and setup network stuff.
+Please see [the manual](http://www.patlite.jp/product/nh-spl.html) for details.
+4. `roslaunch rospatlite patlite.launch IP:=IP_ADDRES`
+5. enjoy patlite
 
-Deb Build Status
------------------
+Usage
+-----
 
-hydro
+Run patlite_node.py with following ros params.
 
-- sourcedeb [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_sourcedeb)](http://jenkins.ros.org/job/ros-hydro-jsk-common_sourcedeb/)
-- binarydeb precise amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_amd64)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_amd64/)
-- binarydeb precise i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_i386)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_i386/)
-- binarydeb quantal amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_amd64)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_amd64/)
-- binarydeb quantal i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_i386)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_i386/)
-- binarydeb raring amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_amd64)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_amd64/)
-- binarydeb raring i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_i386)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_i386/)
+- host : a hostname or ip address of your patlite
+- port : a port for TCP connection of your patlite
+- timeout : timeout of socket
 
-groovy
+Then you can see some topics under the private namespace.
 
-- sourcedeb [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_sourcedeb)](http://jenkins.ros.org/job/ros-groovy-jsk-common_sourcedeb/)
-- binarydeb oneiric amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_amd64)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_amd64/)
-- binarydeb oneiric i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_i386)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_i386/)
-- binarydeb precise amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_amd64)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_amd64/)
-- binarydeb precise i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_i386)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_i386/)
-- binarydeb quantal amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_amd64)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_amd64/)
-- binarydeb quantal i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_i386)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_i386/)
-
-Devel Test Status
------------------
-[Hydro](http://jenkins.ros.org/job/devel-hydro-jsk_common/) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=devel-hydro-jsk_common)](http://jenkins.ros.org/job/devel-hydro-jsk_common/)
-
-[![Hydro Test Satus](http://jenkins.ros.org/job/devel-hydro-jsk_common/test/trend?job)](http://jenkins.ros.org/job/devel-hydro-jsk_common/)
-
-[Groovy](http://jenkins.ros.org/job/devel-groovy-jsk_common) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=devel-groovy-jsk_common)](http://jenkins.ros.org/job/devel-groovy-jsk_common/)
-
-[![Groovy Test Satus](http://jenkins.ros.org/job/devel-groovy-jsk_common/test/trend?job)](http://jenkins.ros.org/job/devel-groovy-jsk_common/)
-
-Prerelease Test Status
-----------------------
-
-[Hydro](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=prerelease-hydro-jsk_common)](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/) [Start Testing](http://prerelease.ros.org/create_job/hydro)
-
-[![Hydro Test Satus](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/test/trend?job)](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/)
-
-[Groovy](http://jenkins.ros.org/job/prerelease-groovy-jsk_common) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=prerelease-groovy-jsk_common)](http://jenkins.ros.org/job/prerelease-groovy-jsk_common/)  [Start Testing](http://prerelease.ros.org/create_job/groovy)
-
-[![Groovy Test Satus](http://jenkins.ros.org/job/prerelease-groovy-jsk_common/test/trend?job)](http://jenkins.ros.org/job/prerelease-groovy-jsk_common/)
+    $ rostopic list
+    /patlite/set/blue
+    /patlite/set/buzzer
+    /patlite/set/green
+    /patlite/set/red
+    /patlite/set/white
+    /patlite/set/yellow
+    $ rostopic pub /patlite/set/buzzer std_msgs/Int8 1 # <- buzzer ON
+    $ rostopic pub /patlite/set/buzzer std_msgs/Int8 0 # <- buzzer OFF
+    $ rostopic pub /patlite/set/red std_msgs/Int8 1 # <- red light ON
+    $ rostopic pub /patlite/set/yellow std_msgs/Int8 2 # <- yellow light blink
