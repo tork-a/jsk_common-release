@@ -2,6 +2,12 @@
 Changelog for package libsiftfast
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.11 (2014-04-18)
+-------------------
+
+1.0.10 (2014-04-17)
+-------------------
+
 1.0.9 (2014-04-12)
 ------------------
 * change libsiftfast to non-catkin package by add SKIP_CMAKE_CONFIG_GENERATION
