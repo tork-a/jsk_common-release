@@ -1,3 +1,45 @@
+## jsk_common (groovy) - 1.0.11-0
+
+The packages in the `jsk_common` repository were released into the `groovy` distro by running `/usr/bin/bloom-release jsk_common --track groovy --rosdistro groovy` on `Thu, 17 Apr 2014 23:27:07 -0000`
+
+These packages were released:
+- `assimp_devel`
+- `collada_urdf_jsk_patch`
+- `depth_image_proc_jsk_patch`
+- `downward`
+- `dynamic_tf_publisher`
+- `image_view2`
+- `image_view_jsk_patch`
+- `jsk_common`
+- `jsk_footstep_msgs`
+- `jsk_gui_msgs`
+- `jsk_hark_msgs`
+- `jsk_tools`
+- `jsk_topic_tools`
+- `laser_filters_jsk_patch`
+- `libsiftfast`
+- `multi_map_server`
+- `openni_tracker_jsk_patch`
+- `opt_camera`
+- `posedetection_msgs`
+- `pr2_groovy_patches`
+- `rospatlite`
+- `rosping`
+- `stereo_synchronizer`
+
+Version of package(s) in repository `jsk_common`:
+- rosdistro version: `1.0.9-0`
+- old version: `1.0.9-0`
+- new version: `1.0.11-0`
+
+Versions of tools used:
+- bloom version: `0.5.4`
+- catkin_pkg version: `0.2.0`
+- rosdep version: `0.10.27`
+- rosdistro version: `0.3.4`
+- vcstools version: `0.1.33`
+
+
 ## jsk_common (groovy) - 1.0.9-0
 
 User `k-okada@kokada-t430s` released the packages in the `jsk_common` repository into the `groovy` distro by running `/usr/bin/bloom-release jsk_common --track groovy --rosdistro groovy` on `Sat, 12 Apr 2014 12:25:21 -0000`
