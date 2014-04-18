@@ -1,4 +1,4 @@
-From 0c8f68cefd7390d6e354f1457ed23518fa0a35cc Mon Sep 17 00:00:00 2001
+From 41ee91acdc5197aa9d415cc083e1f61e225b7343 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sun, 30 Mar 2014 03:38:27 +0900
 Subject: [PATCH 1/2] add ros-groovy-navigation
