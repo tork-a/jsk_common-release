@@ -1,0 +1,12 @@
+Source: ros-hydro-collada-urdf-jsk-patch
+Section: misc
+Priority: extra
+Maintainer: Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 7.0.50~), collada-dom-dev, ros-hydro-angles, ros-hydro-assimp-devel, ros-hydro-catkin, ros-hydro-cmake-modules, ros-hydro-collada-parser, ros-hydro-collada-urdf, ros-hydro-geometric-shapes, ros-hydro-resource-retriever, ros-hydro-roscpp, ros-hydro-tf, ros-hydro-urdf, ros-hydro-urdfdom, ros-hydro-urdfdom-headers
+Homepage: http://ros.org/wiki/collada_urdf_jsk_patch
+Standards-Version: 3.9.2
+
+Package: ros-hydro-collada-urdf-jsk-patch
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-collada-urdf
+Description: unaccepted patch for collada_urdf
