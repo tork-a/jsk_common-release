@@ -1,6 +1,6 @@
 <package>
   <name>collada_urdf_jsk_patch</name>
-  <version>1.0.13</version>
+  <version>1.0.14</version>
   <description>unaccepted patch for collada_urdf</description>
 
   <maintainer email="youhei@jsk.t.u-tokyo.ac.jp">Yohei Kakiuchi</maintainer>
@@ -30,7 +30,11 @@
   <build_depend>geometric_shapes</build_depend>
   <build_depend>tf</build_depend>
   <build_depend>cmake_modules</build_depend>
+  <build_depend>mk</build_depend>
+  <build_depend>libgts</build_depend>
+  <build_depend>git</build_depend>
 
+  <run_depend>libgts</run_depend>
   <run_depend>collada_urdf</run_depend>
   <!-- <test_depend>collada_urdf</test_depend> -->
 
