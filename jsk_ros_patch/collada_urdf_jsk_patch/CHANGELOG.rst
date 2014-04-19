@@ -2,6 +2,11 @@
 Changelog for package collada_urdf_jsk_patch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.14 (2014-04-19)
+-------------------
+* add missing deps(mk,git,..) to collada_urdf_jsk_patch
+* Contributors: Kei Okada
+
 1.0.13 (2014-04-19)
 -------------------
 
