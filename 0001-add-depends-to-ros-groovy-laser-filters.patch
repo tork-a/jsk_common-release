@@ -1,4 +1,4 @@
-From 726feaf5ad08c2cf86a15b86e03d16197bf734a2 Mon Sep 17 00:00:00 2001
+From 165dc099b17c410bfce478fbf1e7d9eb136e7293 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Thu, 3 Apr 2014 09:24:47 +0900
 Subject: [PATCH] add depends to ros-groovy-laser-filters
