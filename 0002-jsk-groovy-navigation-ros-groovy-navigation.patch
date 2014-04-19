@@ -1,4 +1,4 @@
-From 275ef793a799fcbcd4d8afde37d06eba42c0cad8 Mon Sep 17 00:00:00 2001
+From ad721d5f99850dada5ec9cdee425f4cff35944f4 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sun, 30 Mar 2014 11:15:49 +0900
 Subject: [PATCH 2/2] jsk-groovy-navigation -> ros-groovy-navigation
