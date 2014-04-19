@@ -1,4 +1,4 @@
-From 46d4ed4b0be510f2305aa197c83eecd85c09e307 Mon Sep 17 00:00:00 2001
+From ffa91e85ffb60c8c70221aff890de0d939b45055 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sun, 30 Mar 2014 02:49:43 +0900
 Subject: [PATCH] enable depend to map_server for hydro
@@ -8,7 +8,7 @@ Subject: [PATCH] enable depend to map_server for hydro
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 726325f..03df4c0 100644
+index c2377a8..1672721 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -13,7 +13,7 @@
