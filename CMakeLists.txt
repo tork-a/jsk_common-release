@@ -1,17 +1,15 @@
-cmake_minimum_required(VERSION 2.4.6)
+if(NOT USE_ROSBUILD)
+  include(catkin.cmake)
+  return()
+endif()
+cmake_minimum_required(VERSION 2.4.6 FATAL_ERROR)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+rosbuild_init()
 
-# Append to CPACK_SOURCE_IGNORE_FILES a semicolon-separated list of
-# directories (or patterns, but directories should suffice) that should
-# be excluded from the distro.  This is not the place to put things that
-# should be ignored everywhere, like "build" directories; that happens in
-# rosbuild/rosbuild.cmake.  Here should be listed packages that aren't
-# ready for inclusion in a distro.
-#
-# This list is combined with the list in rosbuild/rosbuild.cmake.  Note
-# that CMake 2.6 may be required to ensure that the two lists are combined
-# properly.  CMake 2.4 seems to have unpredictable scoping rules for such
-# variables.
-#list(APPEND CPACK_SOURCE_IGNORE_FILES /core/experimental)
+# if not found map_server
+rosbuild_find_ros_package(jsk_tools)
+include(${jsk_tools_PACKAGE_PATH}/cmake/download_package.cmake)
+download_package_for_groovy(map_server http://github.com/ros-planning/navigation groovy)
 
-rosbuild_make_distribution(0.1.0)
+rosbuild_add_executable(bin/map_server src/main.cpp)
+target_link_libraries(bin/map_server image_loader SDL SDL_image yaml-cpp)
