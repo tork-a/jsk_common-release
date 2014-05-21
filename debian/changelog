@@ -1,0 +1,16 @@
+ros-groovy-sklearn (1.0.21-2oneiric) oneiric; urgency=high
+
+  * launch prefix
+  * remove unneeded files
+  * modify bags and add sample
+  * add sklearn
+  * Contributors: Kei Okada, Yuto Inagaki
+  * launch prefix
+  * remove unneeded files
+  * modify bags and add sample
+  * add sklearn
+  * Contributors: Kei Okada, aginika
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 19 May 2014 15:00:00 -0000
+
+
