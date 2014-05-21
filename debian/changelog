@@ -1,0 +1,100 @@
+ros-groovy-jsk-common (1.0.21-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 19 May 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.20-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 08 May 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.19-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 05 May 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.18-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 03 May 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.17-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.16-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.15-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.14-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.13-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.12-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 17 Apr 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.11-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 17 Apr 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.10-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 16 Apr 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.9-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 11 Apr 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.8-2oneiric) oneiric; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 10 Apr 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.1-2oneiric) oneiric; urgency=high
+
+  * add rospatlite
+  * add meta package
+  * Contributors: Kei Okada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 06 Mar 2014 15:00:00 -0000
+
+ros-groovy-jsk-common (1.0.0-2oneiric) oneiric; urgency=high
+
+  * add meta package
+  * Contributors: Kei Okada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 04 Mar 2014 15:00:00 -0000
+
+
