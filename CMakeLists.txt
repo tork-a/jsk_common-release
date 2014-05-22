@@ -1,17 +1,53 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+cmake_minimum_required(VERSION 2.8.3)
+project(libsiftfast)
 
-# Append to CPACK_SOURCE_IGNORE_FILES a semicolon-separated list of
-# directories (or patterns, but directories should suffice) that should
-# be excluded from the distro.  This is not the place to put things that
-# should be ignored everywhere, like "build" directories; that happens in
-# rosbuild/rosbuild.cmake.  Here should be listed packages that aren't
-# ready for inclusion in a distro.
-#
-# This list is combined with the list in rosbuild/rosbuild.cmake.  Note
-# that CMake 2.6 may be required to ensure that the two lists are combined
-# properly.  CMake 2.4 seems to have unpredictable scoping rules for such
-# variables.
-#list(APPEND CPACK_SOURCE_IGNORE_FILES /core/experimental)
+find_package(catkin)
 
-rosbuild_make_distribution(0.1.0)
+add_custom_target(libsiftfast ALL
+  DEPENDS ${CATKIN_DEVEL_PREFIX}/lib/libsiftfast.so)
+add_custom_command(OUTPUT ${CATKIN_DEVEL_PREFIX}/lib/libsiftfast.so
+  DEPENDS Makefile
+  COMMAND  make -f ${PROJECT_SOURCE_DIR}/Makefile INSTALL_DIR=${CATKIN_DEVEL_PREFIX})
+
+# force install directory for catkin_package
+file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
+if("$ENV{ROS_DISTRO}" STREQUAL "groovy")
+  catkin_package(
+    INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include
+    LIBRARIES    siftfast
+    SKIP_CMAKE_CONFIG_GENERATION
+    )
+  set(${PROJECT_NAME}_EXPORTED_TARGETS libsiftfast)
+else()
+  catkin_package(
+    INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include
+    LIBRARIES    siftfast
+    EXPORTED_TARGETS libsiftfast
+    SKIP_CMAKE_CONFIG_GENERATION
+    )
+endif()
+
+install(PROGRAMS ${CATKIN_DEVEL_PREFIX}/bin/siftfast
+        DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
+
+install(CODE "
+  file(GLOB _libs ${CATKIN_DEVEL_PREFIX}/lib/libsiftfast.*)
+  foreach(_lib \${_libs})
+    FILE(INSTALL DESTINATION \"\${CMAKE_INSTALL_PREFIX}/lib\" TYPE PROGRAM FILES \"\${_lib}\" )
+  endforeach()
+")
+
+install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/siftfast
+        DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION})
+
+install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/share/siftfast/
+        DESTINATION ${CATKIN_GLOBAL_SHARE_DESTINATION}/libsiftfast
+        USE_SOURCE_PERMISSIONS)
+
+# only for deb packaging...
+if ($ENV{DH_OPTIONS}) # deb package need to remove generated files
+  install(CODE "execute_process(COMMAND cmake -E remove_directory ${CATKIN_DEVEL_PREFIX}")
+endif()
+
+
+
