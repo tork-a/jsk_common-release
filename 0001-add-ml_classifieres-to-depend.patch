@@ -1,4 +1,4 @@
-From 8c4d1979082c601232b6eeda6290e52c96a0e515 Mon Sep 17 00:00:00 2001
+From 2df14386914e75b1af90410a92717fe24d5acfcc Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Tue, 20 May 2014 16:54:25 +0900
 Subject: [PATCH] add ml_classifieres to depend
