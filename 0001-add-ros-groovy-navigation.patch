@@ -1,4 +1,4 @@
-From b8f1104c60177ecebeec4c3a4d8cc047e047dc6b Mon Sep 17 00:00:00 2001
+From 4bb26e74f4f468b23a963671c793ae01ed7799cb Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sun, 30 Mar 2014 03:38:27 +0900
 Subject: [PATCH 1/2] add ros-groovy-navigation
@@ -8,15 +8,15 @@ Subject: [PATCH 1/2] add ros-groovy-navigation
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/debian/control.em b/debian/control.em
-index 35e0893..68ed8a5 100644
+index 55a8dc9..feada88 100644
 --- a/debian/control.em
 +++ b/debian/control.em
 @@ -2,11 +2,11 @@ Source: @(Package)
  Section: misc
  Priority: extra
  Maintainer: @(Maintainer)
--Build-Depends: debhelper (>= 7.0.50~), @(', '.join(BuildDepends))
-+Build-Depends: debhelper (>= 7.0.50~), @(', '.join(BuildDepends)), jsk-groovy-navigation
+-Build-Depends: debhelper (>= 9.0.0), @(', '.join(BuildDepends))
++Build-Depends: debhelper (>= 9.0.0), @(', '.join(BuildDepends)), jsk-groovy-navigation
  Homepage: @(Homepage)
  Standards-Version: 3.9.2
  
