@@ -1,0 +1,18 @@
+ros-groovy-sklearn (1.0.22-0quantal) quantal; urgency=high
+
+  * remove duplicated change log
+  * Contributors: Kei Okada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 21 May 2014 15:00:00 -0000
+
+ros-groovy-sklearn (1.0.21-0quantal) quantal; urgency=high
+
+  * launch prefix
+  * remove unneeded files
+  * modify bags and add sample
+  * add sklearn
+  * Contributors: Kei Okada, Yuto Inagaki
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 19 May 2014 15:00:00 -0000
+
+
