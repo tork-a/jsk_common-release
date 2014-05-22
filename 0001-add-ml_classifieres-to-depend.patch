@@ -1,4 +1,4 @@
-From 2df14386914e75b1af90410a92717fe24d5acfcc Mon Sep 17 00:00:00 2001
+From 4539bb5786a8d5df805cdf871c494077e285d546 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Tue, 20 May 2014 16:54:25 +0900
 Subject: [PATCH] add ml_classifieres to depend
@@ -8,15 +8,15 @@ Subject: [PATCH] add ml_classifieres to depend
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/debian/control.em b/debian/control.em
-index 35e0893..8ce6ebb 100644
+index 55a8dc9..a931859 100644
 --- a/debian/control.em
 +++ b/debian/control.em
 @@ -2,11 +2,11 @@ Source: @(Package)
  Section: misc
  Priority: extra
  Maintainer: @(Maintainer)
--Build-Depends: debhelper (>= 7.0.50~), @(', '.join(BuildDepends))
-+Build-Depends: debhelper (>= 7.0.50~), @(', '.join(BuildDepends)), ros-groovy-ml-classifiers
+-Build-Depends: debhelper (>= 9.0.0), @(', '.join(BuildDepends))
++Build-Depends: debhelper (>= 9.0.0), @(', '.join(BuildDepends)), ros-groovy-ml-classifiers
  Homepage: @(Homepage)
  Standards-Version: 3.9.2
  
