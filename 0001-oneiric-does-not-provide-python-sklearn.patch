@@ -1,4 +1,4 @@
-From cbef5babad0b392e6b2eb65177c56510d1ab9866 Mon Sep 17 00:00:00 2001
+From 0f3d8d33059998f92726306fc69fba7f4140981b Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Wed, 21 May 2014 14:19:50 +0900
 Subject: [PATCH] oneiric does not provide python-sklearn
