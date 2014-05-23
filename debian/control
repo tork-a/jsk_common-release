@@ -1,0 +1,12 @@
+Source: ros-groovy-ffha
+Section: misc
+Priority: extra
+Maintainer: Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 7.0.0), bison, flex, gawk, ros-groovy-catkin, ros-groovy-mk, ros-groovy-rosbuild, ros-groovy-roslib, ros-groovy-rospack
+Homepage: http://ros.org/wiki/downward
+Standards-Version: 3.9.2
+
+Package: ros-groovy-ffha
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+Description: ffha: PDDL Planner (http://ipc.informatik.uni-freiburg.de)
