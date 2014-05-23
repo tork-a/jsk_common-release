@@ -1,0 +1,12 @@
+Source: ros-groovy-jsk-gui-msgs
+Section: misc
+Priority: extra
+Maintainer: KazutoMurase <murase@jsk.imi.i.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 7.0.0), ros-groovy-catkin, ros-groovy-geometry-msgs, ros-groovy-message-generation, ros-groovy-sensor-msgs, ros-groovy-std-msgs
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-groovy-jsk-gui-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-groovy-geometry-msgs, ros-groovy-message-runtime, ros-groovy-sensor-msgs, ros-groovy-std-msgs
+Description: jsk_gui_msgs
