@@ -1,4 +1,4 @@
-From 2d6dc3e843f1a5f12f2fbc3701fb8959373cc0fb Mon Sep 17 00:00:00 2001
+From 1dd55d5f13428a8d350985f9ff9b1be70cd8cdb4 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Tue, 20 May 2014 16:53:47 +0900
 Subject: [PATCH] remove ml_classifieres from depend
@@ -8,7 +8,7 @@ Subject: [PATCH] remove ml_classifieres from depend
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index deef5fb..b7ec2a7 100644
+index 556a125..c543af5 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -13,11 +13,11 @@
