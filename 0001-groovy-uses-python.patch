@@ -1,0 +1,26 @@
+From b363451bea3957912615eda7e16e52db6f291989 Mon Sep 17 00:00:00 2001
+From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Date: Mon, 26 May 2014 21:08:33 +0900
+Subject: [PATCH] groovy uses python
+
+---
+ Makefile.twitter |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/Makefile.twitter b/Makefile.twitter
+index 21e40a0..162855c 100644
+--- a/Makefile.twitter
++++ b/Makefile.twitter
+@@ -5,8 +5,7 @@ GIT_DIR = build/python-twitter
+ GIT_URL = https://github.com/bear/python-twitter
+ GIT_REVISION = 61bca7f6764ed5090aebf8043993c30186152697
+ 
+-PYTHONBIN   = python2
+-PYTHONDIR   = $(shell $(PYTHONBIN) -c 'import sys; print "python%s"%sys.version[:3]')
++PYTHONBIN   = python
+ SETUPTOOLS_ARG_EXTRA = "--install-layout=deb"
+ DIST_DIR    = $(INSTALL_DIR)/lib/$(PYTHONDIR)/dist-packages
+ 
+-- 
+1.7.9.5
+
