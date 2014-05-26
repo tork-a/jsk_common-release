@@ -1,0 +1,12 @@
+Source: ros-hydro-image-view-jsk-patch
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-hydro-image-view, ros-hydro-std-srvs
+Homepage: http://ros.org/wiki/image_view_jsk_patch
+Standards-Version: 3.9.2
+
+Package: ros-hydro-image-view-jsk-patch
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-image-view, ros-hydro-std-srvs
+Description: image_view_jsk_patch
