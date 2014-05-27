@@ -1,7 +1,7 @@
-From b363451bea3957912615eda7e16e52db6f291989 Mon Sep 17 00:00:00 2001
+From c32bbe75e4334cb335089a99f07b9b8cd0319da1 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Mon, 26 May 2014 21:08:33 +0900
-Subject: [PATCH] groovy uses python
+Subject: [PATCH 1/2] groovy uses python
 
 ---
  Makefile.twitter |    3 +--
