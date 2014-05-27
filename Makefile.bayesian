@@ -5,7 +5,7 @@ GIT_DIR = build/bayesian-belief-networks
 GIT_URL = https://github.com/eBay/bayesian-belief-networks.git
 GIT_REVISION = 6dd976443610732a5a8ddf08af5fdffbe34dfaec
 
-PYTHONBIN   = python2
+PYTHONBIN   = python
 PYTHONDIR   = $(shell $(PYTHONBIN) -c 'import sys; print "python%s"%sys.version[:3]')
 SETUPTOOLS_ARG_EXTRA = "--install-layout=deb"
 DIST_DIR    = $(INSTALL_DIR)/lib/$(PYTHONDIR)/dist-packages
