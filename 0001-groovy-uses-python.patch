@@ -1,0 +1,25 @@
+From 04b9c2721cdc9c799b3d02a4c5849f02f948648e Mon Sep 17 00:00:00 2001
+From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Date: Tue, 27 May 2014 11:29:37 +0900
+Subject: [PATCH] groovy uses python
+
+---
+ Makefile.bayesian |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.bayesian b/Makefile.bayesian
+index 3ce57a6..856c08f 100644
+--- a/Makefile.bayesian
++++ b/Makefile.bayesian
+@@ -5,7 +5,7 @@ GIT_DIR = build/bayesian-belief-networks
+ GIT_URL = https://github.com/eBay/bayesian-belief-networks.git
+ GIT_REVISION = 6dd976443610732a5a8ddf08af5fdffbe34dfaec
+ 
+-PYTHONBIN   = python2
++PYTHONBIN   = python
+ PYTHONDIR   = $(shell $(PYTHONBIN) -c 'import sys; print "python%s"%sys.version[:3]')
+ SETUPTOOLS_ARG_EXTRA = "--install-layout=deb"
+ DIST_DIR    = $(INSTALL_DIR)/lib/$(PYTHONDIR)/dist-packages
+-- 
+1.7.9.5
+
