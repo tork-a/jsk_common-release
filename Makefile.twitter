@@ -6,6 +6,7 @@ GIT_URL = https://github.com/bear/python-twitter
 GIT_REVISION = 61bca7f6764ed5090aebf8043993c30186152697
 
 PYTHONBIN   = python
+PYTHONDIR   = $(shell $(PYTHONBIN) -c 'import sys; print "python%s"%sys.version[:3]')
 SETUPTOOLS_ARG_EXTRA = "--install-layout=deb"
 DIST_DIR    = $(INSTALL_DIR)/lib/$(PYTHONDIR)/dist-packages
 
