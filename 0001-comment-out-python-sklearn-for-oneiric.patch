@@ -1,4 +1,4 @@
-From bb7ce4d6807b7028e03debc7b8e4d458a51320cb Mon Sep 17 00:00:00 2001
+From cea669420a0ccd20e3e092b0e2bf61c9cfe2688d Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 23 May 2014 09:04:05 +0900
 Subject: [PATCH 1/2] comment out python-sklearn for oneiric
