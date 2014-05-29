@@ -1,4 +1,4 @@
-From d76a22c631850c8679ac30a185f022cb79684d98 Mon Sep 17 00:00:00 2001
+From 0849c1c8f7ec17c7edebfb8d7d05d26ac052d398 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sat, 24 May 2014 15:10:11 +0900
 Subject: [PATCH 2/2] disable previous patchon python-sklearn
