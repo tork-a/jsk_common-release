@@ -1,0 +1,30 @@
+From 2e68d6fdf5a7a1b02a9de20d3115ceefdd1c5193 Mon Sep 17 00:00:00 2001
+From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Date: Fri, 30 May 2014 10:15:33 +0900
+Subject: [PATCH] add depend to ros-groovy-navigation
+
+---
+ debian/control.em |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/debian/control.em b/debian/control.em
+index 8b9cd67..6849c7e 100644
+--- a/debian/control.em
++++ b/debian/control.em
+@@ -2,11 +2,11 @@ Source: @(Package)
+ Section: misc
+ Priority: extra
+ Maintainer: @(Maintainer)
+-Build-Depends: debhelper (>= @(debhelper_version).0.0), @(', '.join(BuildDepends))
++Build-Depends: debhelper (>= @(debhelper_version).0.0), @(', '.join(BuildDepends)), ros-groovy-navigation
+ Homepage: @(Homepage)
+ Standards-Version: 3.9.2
+ 
+ Package: @(Package)
+ Architecture: any
+-Depends: ${shlibs:Depends}, ${misc:Depends}, @(', '.join(Depends))
++Depends: ${shlibs:Depends}, ${misc:Depends}, @(', '.join(Depends)), ros-groovy-navigation
+ Description: @(Description)
+-- 
+1.7.9.5
+
