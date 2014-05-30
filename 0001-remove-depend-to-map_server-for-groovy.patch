@@ -1,0 +1,34 @@
+From 42e3511ddf4ed4f2956252e47a15f3184b39dc68 Mon Sep 17 00:00:00 2001
+From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Date: Fri, 30 May 2014 10:17:30 +0900
+Subject: [PATCH] remove depend to map_server for groovy
+
+---
+ package.xml |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/package.xml b/package.xml
+index e132577..1776862 100644
+--- a/package.xml
++++ b/package.xml
+@@ -13,7 +13,7 @@
+ 
+   <buildtool_depend>catkin</buildtool_depend>
+ 
+-  <build_depend>map_server</build_depend>
++  <!-- <build_depend>map_server</build_depend> -->
+   <build_depend>nav_msgs</build_depend>
+ 
+ 
+@@ -30,7 +30,7 @@
+   <build_depend>jsk_tools</build_depend>
+   <build_depend>rosmake</build_depend>
+ 
+-  <run_depend>map_server</run_depend>
++  <!-- <run_depend>map_server</run_depend> -->
+   <run_depend>nav_msgs</run_depend>
+ 
+   <run_depend>rosconsole</run_depend>
+-- 
+1.7.9.5
+
