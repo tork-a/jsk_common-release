@@ -1,4 +1,4 @@
-From 0d52e6c9cea99649b23efa266f57271f1d8f4377 Mon Sep 17 00:00:00 2001
+From e3bc8808ab1dcd7fe14f249e83ab78c69bc4fa6a Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Tue, 20 May 2014 16:53:47 +0900
 Subject: [PATCH] remove ml_classifieres from depend
