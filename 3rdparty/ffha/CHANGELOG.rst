@@ -2,6 +2,11 @@
 Changelog for package ffha
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.28 (2014-06-24)
+-------------------
+* (ffha) use -n (--forward) to ignore patches that seem to be already applied
+* Contributors: Kei Okada
+
 1.0.27 (2014-06-10)
 -------------------
 
