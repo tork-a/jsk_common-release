@@ -2,6 +2,11 @@
 Changelog for package opt_camera
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.28 (2014-06-24)
+-------------------
+* (CMakeLists.txt, opt_camera/catkin.cmake): find find_package(OpenCV) to compile
+* Contributors: Kei Okada
+
 1.0.27 (2014-06-10)
 -------------------
 
