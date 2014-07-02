@@ -1,4 +1,4 @@
-From 539586f335d2bc27dbbce4e153ee1216dafa1607 Mon Sep 17 00:00:00 2001
+From c46e5dfff63f6e201e12f7b5e5b93c5a74c187cb Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 30 May 2014 10:15:33 +0900
 Subject: [PATCH] add depend to ros-groovy-navigation
