@@ -2,6 +2,9 @@
 Changelog for package jsk_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.29 (2014-07-02)
+-------------------
+
 1.0.28 (2014-06-24)
 -------------------
 * add script to doctor workspace
