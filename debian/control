@@ -1,0 +1,12 @@
+Source: ros-groovy-jsk-hark-msgs
+Section: misc
+Priority: extra
+Maintainer: Shohei Fujii <s-fujii@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-groovy-catkin, ros-groovy-message-generation, ros-groovy-std-msgs
+Homepage: http://ros.org/wiki/jsk_hark_msgs
+Standards-Version: 3.9.2
+
+Package: ros-groovy-jsk-hark-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-groovy-message-runtime, ros-groovy-std-msgs
+Description: jsk_hark_msgs
