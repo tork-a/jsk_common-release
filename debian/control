@@ -1,0 +1,12 @@
+Source: ros-groovy-laser-filters-jsk-patch
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 7.0.0), git-core, ros-groovy-cmake-modules, ros-groovy-laser-geometry, ros-groovy-mk
+Homepage: http://ros.org/wiki/laser_filters_jsk_patch
+Standards-Version: 3.9.2
+
+Package: ros-groovy-laser-filters-jsk-patch
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+Description: laser_filters_jsk_patch
