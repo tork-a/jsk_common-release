@@ -1,4 +1,4 @@
-From eff0fe1b8af4ab5bc181d10440e870b19060cc35 Mon Sep 17 00:00:00 2001
+From 00d3965f8524cebd26fa8f8053477e3a19ee3695 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 23 May 2014 09:04:05 +0900
 Subject: [PATCH 1/2] comment out python-sklearn for oneiric
@@ -8,7 +8,7 @@ Subject: [PATCH 1/2] comment out python-sklearn for oneiric
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 2660d94..2fb0a92 100644
+index 69222e4..fe8c484 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -12,11 +12,11 @@
