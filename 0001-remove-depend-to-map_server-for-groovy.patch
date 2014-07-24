@@ -1,4 +1,4 @@
-From 99ce7c661927e76342df53c8e16ef2c47589fc74 Mon Sep 17 00:00:00 2001
+From 41530d6bd6d4c0ec87f9d664af529f701f60ba7c Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 30 May 2014 10:17:30 +0900
 Subject: [PATCH] remove depend to map_server for groovy
@@ -8,7 +8,7 @@ Subject: [PATCH] remove depend to map_server for groovy
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 667fa7d..02353df 100644
+index b0b6530..7481e77 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -13,7 +13,7 @@
