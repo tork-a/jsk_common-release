@@ -1,0 +1,12 @@
+Source: ros-hydro-stereo-synchronizer
+Section: misc
+Priority: extra
+Maintainer: Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-hydro-catkin, ros-hydro-image-transport, ros-hydro-sensor-msgs
+Homepage: http://ros.org/wiki/stereo_synchronizer
+Standards-Version: 3.9.2
+
+Package: ros-hydro-stereo-synchronizer
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-image-transport, ros-hydro-sensor-msgs
+Description: stereo_synchronizer
