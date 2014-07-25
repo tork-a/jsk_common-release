@@ -1,0 +1,12 @@
+Source: ros-groovy-sklearn
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 7.0.0), ros-groovy-catkin, ros-groovy-rospy
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-groovy-sklearn
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-groovy-rospy
+Description: ROS wrapper for the sklearn library
