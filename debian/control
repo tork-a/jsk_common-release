@@ -1,0 +1,12 @@
+Source: ros-hydro-jsk-topic-tools
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-hydro-catkin, ros-hydro-diagnostic-msgs, ros-hydro-diagnostic-updater, ros-hydro-dynamic-tf-publisher, ros-hydro-message-generation, ros-hydro-nodelet, ros-hydro-roscpp-tutorials, ros-hydro-roslaunch, ros-hydro-rosnode, ros-hydro-rostest, ros-hydro-rostopic, ros-hydro-std-msgs, ros-hydro-topic-tools
+Homepage: http://ros.org/wiki/jsk_topic_tools
+Standards-Version: 3.9.2
+
+Package: ros-hydro-jsk-topic-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-diagnostic-msgs, ros-hydro-diagnostic-updater, ros-hydro-dynamic-tf-publisher, ros-hydro-message-runtime, ros-hydro-nodelet, ros-hydro-roslaunch, ros-hydro-rosnode, ros-hydro-rostopic, ros-hydro-std-msgs, ros-hydro-topic-tools
+Description: jsk_topic_tools
