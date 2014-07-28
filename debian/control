@@ -1,0 +1,12 @@
+Source: ros-groovy-ff
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 7.0.0), bison, flex, ros-groovy-catkin, ros-groovy-mk, ros-groovy-rosbash, ros-groovy-rosbuild, ros-groovy-roslib, ros-groovy-rospack, unzip
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-groovy-ff
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+Description: ff: pddl planner. see http://www.loria.fr/~hoffmanj/ff.html
