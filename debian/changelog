@@ -1,0 +1,220 @@
+ros-hydro-ffha (1.0.34-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Wed, 13 Aug 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.33-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Sun, 27 Jul 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.32-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Fri, 25 Jul 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.31-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Tue, 22 Jul 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.30-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Mon, 14 Jul 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.29-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Tue, 01 Jul 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.28-0raring) raring; urgency=high
+
+  * (ffha) use -n (--forward) to ignore patches that seem to be already applied
+  * Contributors: Kei Okada
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Mon, 23 Jun 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.27-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Mon, 09 Jun 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.26-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Thu, 29 May 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.25-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Sun, 25 May 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.24-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Fri, 23 May 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.23-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Thu, 22 May 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.22-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Wed, 21 May 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.21-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Mon, 19 May 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.20-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Thu, 08 May 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.19-0raring) raring; urgency=high
+
+  * add find_package(catkin)
+  * Add several missing build deps
+  * ff, ffha: add CHANGELOG.rst
+  * Contributors: Kei Okada, Scott K Logan
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Mon, 05 May 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.18-0raring) raring; urgency=high
+
+  * catkinize ffha
+  * Contributors: Kei Okada
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Sat, 03 May 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.17-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.16-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 14:29:00 -0000
+
+ros-hydro-ffha (1.0.15-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 11:19:00 -0000
+
+ros-hydro-ffha (1.0.14-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 03:52:00 -0000
+
+ros-hydro-ffha (1.0.13-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 02:06:00 -0000
+
+ros-hydro-ffha (1.0.12-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 07:58:00 -0000
+
+ros-hydro-ffha (1.0.11-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Thu, 17 Apr 2014 23:18:00 -0000
+
+ros-hydro-ffha (1.0.10-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Wed, 16 Apr 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.9-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Fri, 11 Apr 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.8-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Thu, 10 Apr 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.7-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Wed, 09 Apr 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.6-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Sun, 06 Apr 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.5-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Sun, 30 Mar 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.4-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Fri, 28 Mar 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.3-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Tue, 18 Mar 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.2-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Tue, 11 Mar 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.1-0raring) raring; urgency=high
+
+
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Thu, 06 Mar 2014 15:00:00 -0000
+
+ros-hydro-ffha (1.0.0-0raring) raring; urgency=high
+
+  * add dependencies of ffha
+  * add patch for parse.c, segv if last condition of inititial state is 'not-condition' in problem
+  * remove strange exit(-1) for use non DNF preconditions
+  * put jsk tools in jsk_common stack
+  * Contributors: furushchev, manabu, rosen
+
+ -- Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>  Tue, 04 Mar 2014 15:00:00 -0000
+
+
