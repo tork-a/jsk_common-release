@@ -1,0 +1,305 @@
+ros-hydro-jsk-topic-tools (1.0.34-0quantal) quantal; urgency=high
+
+  * add new class: VitalChecker from jsk_pcl_ros
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 13 Aug 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.33-0quantal) quantal; urgency=high
+
+  * compile time_acucmulator.cpp on rosbuild environment
+  * add depend to dynamic_tf_reconfigure
+  * Contributors: Ryohei Ueda, Yuto Inagaki
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 27 Jul 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.32-0quantal) quantal; urgency=high
+
+  * fix compilation for jsk_topic_tools::TimeAccumulator
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 25 Jul 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.31-0quantal) quantal; urgency=high
+
+  * add class TimeAccumulator to measure and accumurate time to jsk_topic_tools
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 22 Jul 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.30-0quantal) quantal; urgency=high
+
+  * add tool to check the existence of ros nodes and publish them to diagnostics
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 14 Jul 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.29-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 01 Jul 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.28-0quantal) quantal; urgency=high
+
+  * initialize variable in relay_nodelet
+  * shutdown subscriber if no need to publish message in relay nodelet
+  * Merge pull request #466 from garaemon/add-single-executable-for-nodelet
+    Add single executables for nodelets of jsk_topic_tools
+  * add single executable files for each nodelet in jsk_topic_tools
+  * add test code for block nodelet
+  * add nodelet to BLOCK topic pipeline according to the number of the subscribers
+  * add nodelet to relay topic
+  * Contributors: Ryohei Ueda, Yusuke Furuta
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 23 Jun 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.27-0quantal) quantal; urgency=high
+
+  * add nodelet to relay topic
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 09 Jun 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.26-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 29 May 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.25-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 25 May 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.24-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 23 May 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.23-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 22 May 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.22-0quantal) quantal; urgency=high
+
+  * add new nodelet: HzMeasure to measure message rate
+  * display info in debug mode
+  * print ignoring tf
+  * Merge remote-tracking branch 'tarukosu/ignore-specific-transform' into ignore-specific-transform
+  * add output='screen'
+  * use joint_states_pruned_buffered instead of _update
+  * remap /joint_states to /joint_states_pruned_update
+  * add ignoreing tf config
+  * add launch file for send joint state and other tf
+  * prune velocity and effort in joint state
+  * ignoring tf designated in yaml
+  * Contributors: Ryohei Ueda, Yusuke Furuta
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 21 May 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.21-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 19 May 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.20-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 08 May 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.19-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 05 May 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.18-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 03 May 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.17-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.16-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.15-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.14-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.13-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.12-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 17 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.11-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 17 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.10-0quantal) quantal; urgency=high
+
+  * change the length of the name field according to the topic now the script subscribes
+  * print topic name rather than topic index and prettier format
+  * add test launch file for topic_compare and run it on catkin and rosbuild
+  * add test script and do not run load_manifest, it's not required
+  * add topic_compare.py
+  * Contributors: Ryohei Ueda, Yuki Furuta
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 16 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.9-0quantal) quantal; urgency=high
+
+  * use ShapeShifter rather than ShapeShifterEvent
+  * fix for goovy SEGV
+    * use ros::Subscriber's pointer
+    * use topic_tools::ShapeShiter rather than ShapeShifterEvent
+    * not call getPrivateNodeHandle so many times
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 11 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.8-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 10 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.7-0quantal) quantal; urgency=high
+
+  * add documentation on nodelet xml
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 09 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.6-0quantal) quantal; urgency=high
+
+  * add a sample for mux nodelet and does not use mux nodehandle.
+    not using mux NodeHandle is different from original mux in topic_tools.
+    now private nodehandle, which is the name of nodelet instance,
+    behaves as 'mux' name of mux/topic_tools.
+    If you want to use mux_** tools, you just specify nodelet name as mux name.
+  * implement nodelet version of mux with the same api to topic_tools and no need to specify the
+    message type as well as topic_tools/mux
+  * add rostopic dependency to run test for LightweightThrottle
+  * update documentation of nodelet xml
+  * add test code for LightwehgitThrottle
+  * add a sample launch file for LightwehgitThrottle
+  * publish data only if any subscriber is
+  * compile nodelet on rosbuild too
+  * fixing dependency for nodelet usage
+    depends to nodelet on manifest.xml, package.xml and catkin.cmake
+  * add xml declaration for nodlet plugin
+  * read update_rate from the parameter ~update_rate
+  * implement lightweight nodelet throttle
+  * add lightweight nodelet throttle skelton cpp/header file
+  * change arg name and node name
+  * Contributors: Ryohei Ueda, Yusuke Furuta
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 06 Apr 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.4-0quantal) quantal; urgency=high
+
+  * move the location of generate_messages and catkin_package to avoid emtpy
+    catkin variables problem caused by roseus. it's a hack.
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 26 Mar 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.3-0quantal) quantal; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 18 Mar 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.2-0quantal) quantal; urgency=high
+
+  * #299 <https://github.com/jsk-ros-pkg/jsk_common/issues/299>: fix typo: dependp -> depend
+  * #299 <https://github.com/jsk-ros-pkg/jsk_common/issues/299>: add depend tag to jsk_topic_tools/manifest.xml because of previous breaking change of manifest.xml
+  * #299 <https://github.com/jsk-ros-pkg/jsk_common/issues/299>: replace .test suffix with .launch in jsk_topic_tools' rosbuild cmake
+  * #299 <https://github.com/jsk-ros-pkg/jsk_common/issues/299>: add full path to rostest of ros_topic_tools
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 11 Mar 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.1-0quantal) quantal; urgency=high
+
+  * set all package to 1.0.0
+  * Contributors: Kei Okada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 06 Mar 2014 15:00:00 -0000
+
+ros-hydro-jsk-topic-tools (1.0.0-0quantal) quantal; urgency=high
+
+  * set all package to 1.0.0
+  * fix typo CATKIN-DEPEND -> CATKIN_DEPEND
+  * add install to catkin.cmake
+  * (kill_server_and_check_close_wait.py) num=1 is ok for test_close_wait_check?
+  * add rostest and roscpp_tutorials
+  * use rosdep instead of depend
+  * add rostest
+  * add description in topic buffer sample program
+  * add buffer client and server for tf
+  * merge transform message to publish at low rate
+  * add sample launch files for specific transform
+  * do not initialize pub_update in use_service mode and restart serviceClient if sc_update.call failed, fixed Issue #266 <https://github.com/jsk-ros-pkg/jsk_common/issues/266>
+  * rename to test_topic_buffer_close_wait.launch and add kill_server_and_check_close_wait.py
+  * add test launch for CLOSE_WAIT problem
+  * fixing output of ROS_INFO
+  * supporting topicized /update and parameterized /list
+  * fix test code chatter_update only publish every 10 min
+  * update topic_buffer_server/cliet, client automatically calls /update service to get latest information on server side ,see Issue #260 <https://github.com/jsk-ros-pkg/jsk_common/issues/260>
+  * support update_rate param to configure how often client calls /update, see issue #260 <https://github.com/jsk-ros-pkg/jsk_common/issues/260>
+  * client to call update to get current information on publish rate
+  * add rosbuild_add_rostest
+  * fix output message
+  * fix problem reported on #260 <https://github.com/jsk-ros-pkg/jsk_common/issues/260>, add test code
+  * add more verbose message
+  * add sample launch file using topic_buffer
+  * update for treating multiple tf
+  * wait until service is available
+  * add specific transform publisher and subscriber
+  * add fixed_rate and latched parameter
+  * make catkin to work jsk_topic_tools
+  * add update service in topic_buffer_server
+  * fix xml: catkinize jsk_topic_tools
+  * fix broken xml: catkinize jsk_topic_tools
+  * fix broken xml: catkinize jsk_topic_tools
+  * catkinize jsk_topic_tools
+  * add jsk_topic_tools
+  * Contributors: Kei Okada, furuta, k-okada, ueda, youhei
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 04 Mar 2014 15:00:00 -0000
+
+
