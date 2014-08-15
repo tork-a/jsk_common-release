@@ -1,0 +1,12 @@
+Source: ros-groovy-pr2-groovy-patches
+Section: misc
+Priority: extra
+Maintainer: Hiroyuki Mikita <mikita@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-groovy-catkin
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-groovy-pr2-groovy-patches
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+Description: The pr2_groovy_patches package
