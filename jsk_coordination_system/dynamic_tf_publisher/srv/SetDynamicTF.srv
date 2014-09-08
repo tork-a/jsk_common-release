@@ -1,3 +1,0 @@
-float32 freq
-geometry_msgs/TransformStamped cur_tf
----
