@@ -1,0 +1,32 @@
+From a0c669e6e8f6b00cf4e91fc90383ef9476cd8ebf Mon Sep 17 00:00:00 2001
+From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Date: Mon, 8 Sep 2014 22:48:27 +0900
+Subject: [PATCH] disable laser_assemble and dynamixel_controllers for groovy
+
+---
+ package.xml |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/package.xml b/package.xml
+index a4e954e..4f665a4 100644
+--- a/package.xml
++++ b/package.xml
+@@ -13,12 +13,12 @@
+ 
+   <buildtool_depend>catkin</buildtool_depend>
+ 
+-  <build_depend>laser_assembler</build_depend>
++  <!-- <build_depend>laser_assembler</build_depend> -->
+ 
+   <run_depend>urg_node</run_depend>
+-  <run_depend>dynamixel_controllers</run_depend>
++  <!-- <run_depend>dynamixel_controllers</run_depend> -->
+   <run_depend>robot_state_publisher</run_depend>
+-  <run_depend>laser_assembler</run_depend>
++  <!-- <run_depend>laser_assembler</run_depend> -->
+ 
+   <!-- The export tag contains other, unspecified, tags -->
+   <export>
+-- 
+1.7.9.5
+
