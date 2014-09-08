@@ -1,17 +1,27 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+# http://ros.org/doc/groovy/api/catkin/html/user_guide/supposed.html
+cmake_minimum_required(VERSION 2.8.3)
+project(collada_urdf_jsk_patch)
 
-# Append to CPACK_SOURCE_IGNORE_FILES a semicolon-separated list of
-# directories (or patterns, but directories should suffice) that should
-# be excluded from the distro.  This is not the place to put things that
-# should be ignored everywhere, like "build" directories; that happens in
-# rosbuild/rosbuild.cmake.  Here should be listed packages that aren't
-# ready for inclusion in a distro.
-#
-# This list is combined with the list in rosbuild/rosbuild.cmake.  Note
-# that CMake 2.6 may be required to ensure that the two lists are combined
-# properly.  CMake 2.4 seems to have unpredictable scoping rules for such
-# variables.
-#list(APPEND CPACK_SOURCE_IGNORE_FILES /core/experimental)
+find_package(catkin REQUIRED COMPONENTS collada_urdf)
 
-rosbuild_make_distribution(0.1.0)
+catkin_package(CATKIN_DEPENDS collada_urdf)
+
+
+set(ENV{PKG_CONFIG_PATH} ${CATKIN_DEVEL_PREFIX}/lib/pkgconfig:$ENV{PKG_CONFIG_PATH})
+add_custom_target(urdf_to_collada ALL DEPENDS ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/urdf_to_collada)
+add_custom_command(OUTPUT ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/urdf_to_collada
+  DEPENDS Makefile
+  COMMAND cmake -E chdir ${CMAKE_CURRENT_BINARY_DIR} make -f ${PROJECT_SOURCE_DIR}/Makefile PKG_CONFIG_PATH=${CATKIN_DEVEL_PREFIX}/lib/pkgconfig:$ENV{PKG_CONFIG_PATH} PATCH_DIR=${PROJECT_SOURCE_DIR}
+  COMMAND cmake -E make_directory ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}
+  COMMAND cmake -E copy ${CMAKE_CURRENT_BINARY_DIR}/urdf_to_collada ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}
+  COMMAND cmake -E copy ${CMAKE_CURRENT_BINARY_DIR}/collada_to_urdf ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION})
+
+add_dependencies(urdf_to_collada libassimp_devel)
+
+install(PROGRAMS ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/urdf_to_collada ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/collada_to_urdf
+        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+
+
+
+
