@@ -1,4 +1,4 @@
-From a0c669e6e8f6b00cf4e91fc90383ef9476cd8ebf Mon Sep 17 00:00:00 2001
+From 1c9b7482a497210cd4d4cdf1f0a6145d0da219df Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Mon, 8 Sep 2014 22:48:27 +0900
 Subject: [PATCH] disable laser_assemble and dynamixel_controllers for groovy
