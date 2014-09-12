@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 import rospy
-from laser_assembler.srv import *
+try:
+    from laser_assembler.srv import *
+except:
+    import roslib; roslib.load_manifest("laser_assembler");
+    from laser_assembler.srv import *
 
 class AssembleCaller:
     cloud_pub = None
@@ -16,6 +20,7 @@ class AssembleCaller:
 
     def init(self):
         rospy.init_node('tilt_laser_assembler')
+        self.joint_name = rospy.get_param("~tilt_joint_name", "tilt_joint")
         self.cloud_pub = rospy.Publisher('assemble_cloud', sensor_msgs.msg.PointCloud2)
         self.command_pub = rospy.Publisher('/tilt_controller/command', std_msgs.msg.Float64)
         self.joint_sub = rospy.Subscriber('joint_states', sensor_msgs.msg.JointState, self.joint_callback)
@@ -39,7 +44,7 @@ class AssembleCaller:
     def joint_callback(self, msg):
         pos = None
         try:
-            pos = msg.position[msg.name.index('tilt_joint')] ### 
+            pos = msg.position[msg.name.index(self.joint_name)] ### 
             rospy.logdebug('pos = %f'%pos)
         except:
             # do nothing
@@ -49,30 +54,31 @@ class AssembleCaller:
             if not self.prev_angle:
                 self.prev_angle = pos
                 if pos - self.min_angle > self.max_angle - pos:
+                    self.prev_time = msg.header.stamp
                     self.move_to_angle(self.max_angle + 0.01)
                 else:
+                    self.prev_time = msg.header.stamp
                     self.move_to_angle(self.min_angle - 0.01)
                 return
             if pos > self.max_angle:
                 self.move_to_angle(self.min_angle - 0.01)
-
             if self.prev_angle < self.upper_threshold and pos > self.upper_threshold:
-                self.scan_and_publish(self.scan_time)
+                self.scan_and_publish(self.prev_time, msg.header.stamp)
 
             if self.prev_angle > self.lower_threshold and pos < self.lower_threshold:
-                self.scan_and_publish(self.scan_time)
+                self.scan_and_publish(self.prev_time, msg.header.stamp)
 
             if pos < self.min_angle:
                 self.move_to_angle(self.max_angle + 0.01)
-
+            # update timestamp
+            if pos < self.min_angle or pos > self.max_angle:
+                self.prev_time = msg.header.stamp
             self.prev_angle = pos
 
-    def scan_and_publish(self, sec):
-        tm = rospy.get_rostime()
-        rospy.logdebug('scan rostime : %d %d'%(tm.secs, tm.nsecs))
+    def scan_and_publish(self, begin, end):
         req = AssembleScans2Request()
-        req.begin = rospy.Time.from_sec(tm.to_sec() - sec)
-        req.end = tm
+        req.begin = begin
+        req.end = end
         try:
             ret = self.assemble_srv(req.begin, req.end)
             if ret:
