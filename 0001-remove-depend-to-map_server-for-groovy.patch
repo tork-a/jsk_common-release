@@ -1,4 +1,4 @@
-From 3e5232394cbc1cbab6ff3795e6be690ed8bf3420 Mon Sep 17 00:00:00 2001
+From ff442606e9ac86845717eeb3849c3c15521d106c Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 30 May 2014 10:17:30 +0900
 Subject: [PATCH] remove depend to map_server for groovy
