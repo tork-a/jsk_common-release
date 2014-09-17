@@ -1,4 +1,4 @@
-From 50b4ab2c08261349916a09a5b020fd75933a8af8 Mon Sep 17 00:00:00 2001
+From d0ea5afd98ae099c84502f5fb3773715aeaab553 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sat, 24 May 2014 15:10:11 +0900
 Subject: [PATCH 2/2] disable previous patchon python-sklearn
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] disable previous patchon python-sklearn
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index f69a738..f9db4c3 100644
+index 057f96e..87ced57 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -12,11 +12,11 @@
