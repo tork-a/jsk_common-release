@@ -1,0 +1,12 @@
+Source: ros-groovy-stereo-synchronizer
+Section: misc
+Priority: extra
+Maintainer: Yohei Kakiuchi <youhei@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-groovy-catkin, ros-groovy-image-transport, ros-groovy-sensor-msgs
+Homepage: http://ros.org/wiki/stereo_synchronizer
+Standards-Version: 3.9.2
+
+Package: ros-groovy-stereo-synchronizer
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-groovy-image-transport, ros-groovy-sensor-msgs
+Description: stereo_synchronizer
