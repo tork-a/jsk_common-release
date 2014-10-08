@@ -1,17 +1,44 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+if(NOT USE_ROSBUILD)
+  cmake_minimum_required(VERSION 2.8.3)
+  project(bayesian_belief_networks)
 
-# Append to CPACK_SOURCE_IGNORE_FILES a semicolon-separated list of
-# directories (or patterns, but directories should suffice) that should
-# be excluded from the distro.  This is not the place to put things that
-# should be ignored everywhere, like "build" directories; that happens in
-# rosbuild/rosbuild.cmake.  Here should be listed packages that aren't
-# ready for inclusion in a distro.
-#
-# This list is combined with the list in rosbuild/rosbuild.cmake.  Note
-# that CMake 2.6 may be required to ensure that the two lists are combined
-# properly.  CMake 2.4 seems to have unpredictable scoping rules for such
-# variables.
-#list(APPEND CPACK_SOURCE_IGNORE_FILES /core/experimental)
+  find_package(catkin REQUIRED COMPONENTS rospy std_msgs mk message_generation)
 
-rosbuild_make_distribution(0.1.0)
+  catkin_python_setup()
+
+  add_message_files(DIRECTORY msg FILES Result.msg Observation.msg)
+  add_service_files(DIRECTORY srv FILES Query.srv)
+  generate_messages(DEPENDENCIES std_msgs)
+
+  catkin_package(CATKIN_DEPENDS std_msgs message_runtime)
+
+  add_custom_target(python_baysian_belief_networks_download ALL
+    DEPENDS ${PROJECT_SOURCE_DIR}/${CATKIN_GLOBAL_PYTHON_DESTINATION}/bayesian)
+  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/${CATKIN_GLOBAL_PYTHON_DESTINATION}/bayesian
+    DEPENDS Makefile.bayesian
+    COMMAND cmake -E chdir ${CMAKE_CURRENT_BINARY_DIR} make -f ${PROJECT_SOURCE_DIR}/Makefile.bayesian MK_DIR=${mk_PREFIX}/share/mk INSTALL_DIR=${PROJECT_SOURCE_DIR})
+
+  install(DIRECTORY samples # examples
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+    USE_SOURCE_PERMISSIONS)
+
+  install(DIRECTORY ${CATKIN_GLOBAL_PYTHON_DESTINATION}/bayesian/test ${CATKIN_GLOBAL_PYTHON_DESTINATION}/bayesian/examples
+    DESTINATION ${CATKIN_GLOBAL_PYTHON_DESTINATION}/bayesian
+    USE_SOURCE_PERMISSIONS)
+
+else() ## rosbuild
+
+  cmake_minimum_required(VERSION 2.4.6)
+  include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+  rosbuild_init()
+
+  add_custom_target(python_baysian_belief_networks_download ALL
+    DEPENDS ${PROJECT_SOURCE_DIR}/lib/python2.7/dist-packages/bayesian)
+  add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/lib/python2.7/dist-packages/bayesian
+    DEPENDS Makefile
+    COMMAND make -f ${PROJECT_SOURCE_DIR}/Makefile.bayesian INSTALL_DIR=${PROJECT_SOURCE_DIR})
+
+  rosbuild_genmsg()
+  rosbuild_gensrv()
+
+endif()
