@@ -1,0 +1,12 @@
+Source: ros-indigo-jsk-tilt-laser
+Section: misc
+Priority: extra
+Maintainer: YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin, ros-indigo-cmake-modules, ros-indigo-dynamic-reconfigure, ros-indigo-laser-assembler, ros-indigo-sensor-msgs, ros-indigo-tf, ros-indigo-tf-conversions
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-indigo-jsk-tilt-laser
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-dynamic-reconfigure, ros-indigo-dynamixel-controllers, ros-indigo-laser-assembler, ros-indigo-robot-state-publisher, ros-indigo-sensor-msgs, ros-indigo-tf, ros-indigo-tf-conversions, ros-indigo-urg-node
+Description: The jsk_tilt_laser package
