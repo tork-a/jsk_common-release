@@ -14,6 +14,16 @@ add_service_files(
   FILES List.srv Update.srv
 )
 
+generate_messages()
+catkin_package(
+    DEPENDS
+    CATKIN_DEPENDS topic_tools message_runtime nodelet std_msgs
+    INCLUDE_DIRS include
+    LIBRARIES jsk_topic_tools
+    CFG_EXTRAS nodelet.cmake
+)
+
+include_directories(include ${catkin_INCLUDE_DIRS})
 #include_directories(${Boost_INCLUDE_DIRS})
 add_executable(topic_buffer_server src/topic_buffer_server.cpp)
 add_executable(topic_buffer_client src/topic_buffer_client.cpp)
@@ -24,6 +34,7 @@ add_dependencies(topic_buffer_client ${PROJECT_NAME}_gencpp)
 target_link_libraries(topic_buffer_server ${catkin_LIBRARIES})
 target_link_libraries(topic_buffer_client ${catkin_LIBRARIES})
 
+
 include(${PROJECT_SOURCE_DIR}/cmake/nodelet.cmake)
 
 macro(jsk_topic_tools_nodelet _nodelet_cpp _nodelet_class _single_nodelet_exec_name)
@@ -32,8 +43,6 @@ macro(jsk_topic_tools_nodelet _nodelet_cpp _nodelet_class _single_nodelet_exec_n
 endmacro(jsk_topic_tools_nodelet _nodelet_cpp _nodelet_class _single_nodelet_exec_name)
 
 # nodelet shared object
-include_directories(${catkin_INCLUDE_DIRS} include)
-
 jsk_topic_tools_nodelet(src/lightweight_throttle_nodelet.cpp
   "jsk_topic_tools/LightweightThrottle" "lightweight_throttle")
 jsk_topic_tools_nodelet(src/mux_nodelet.cpp
@@ -44,6 +53,8 @@ jsk_topic_tools_nodelet(src/block_nodelet.cpp
   "jsk_topic_tools/Block" "block")
 jsk_topic_tools_nodelet(src/hz_measure_nodelet.cpp
   "jsk_topic_tools/HzMeasure" "hz_measure")
+jsk_topic_tools_nodelet(src/vital_checker_nodelet.cpp
+  "jsk_topic_tools/VitalCheckerNodelet" "vital_checker")
 
 add_library(jsk_topic_tools SHARED
   ${jsk_topic_tools_nodelet_sources}
@@ -52,20 +63,13 @@ add_library(jsk_topic_tools SHARED
   src/rosparam_utils.cpp
   src/time_accumulator.cpp
   src/vital_checker.cpp
-  src/color_utils.cpp)
+  src/color_utils.cpp
+  src/connection_based_nodelet.cpp
+  src/diagnostic_nodelet.cpp
+  src/series_boolean.cpp
+  src/counter.cpp)
   
 target_link_libraries(jsk_topic_tools ${catkin_LIBRARIES})
-
-generate_messages()
-
-catkin_package(
-    DEPENDS
-    CATKIN_DEPENDS topic_tools message_runtime nodelet std_msgs
-    INCLUDE_DIRS include
-    LIBRARIES jsk_topic_tools
-    CFG_EXTRAS nodelet.cmake
-)
-
 add_rostest(test/test_topic_buffer.test)
 add_rostest(test/test_topic_buffer_close_wait.test)
 add_rostest(test/test_topic_buffer_fixed_rate.test)
