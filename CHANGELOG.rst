@@ -2,6 +2,28 @@
 Changelog for package jsk_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.53 (2014-11-01)
+-------------------
+
+1.0.52 (2014-10-23)
+-------------------
+* Ignore exception during kill child process of the process
+  launched by roscore_regardless.py
+* Contributors: Ryohei Ueda
+
+1.0.51 (2014-10-20)
+-------------------
+
+1.0.50 (2014-10-20)
+-------------------
+* add path for android in bashrc.ros
+* Contributors: Masaki Murooka
+
+1.0.49 (2014-10-13)
+-------------------
+* Add script to kill/respawn automatically according to roscore status
+* Contributors: Ryohei Ueda
+
 1.0.48 (2014-10-12)
 -------------------
 
