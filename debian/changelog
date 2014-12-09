@@ -1,0 +1,58 @@
+ros-indigo-jsk-network-tools (1.0.55-1trusty) trusty; urgency=high
+
+  * fix msg error in heartbeat
+  * add description
+  * add parameter to set hz
+  * Contributors: Yusuke Furuta
+
+ -- Yusuke Furuta <furuta@jsk.imi.i.u-tokyo.ac.jp>  Mon, 08 Dec 2014 15:00:00 -0000
+
+ros-indigo-jsk-network-tools (1.0.54-1trusty) trusty; urgency=high
+
+
+
+ -- Yusuke Furuta <furuta@jsk.imi.i.u-tokyo.ac.jp>  Fri, 14 Nov 2014 15:00:00 -0000
+
+ros-indigo-jsk-network-tools (1.0.53-1trusty) trusty; urgency=high
+
+
+
+ -- Yusuke Furuta <furuta@jsk.imi.i.u-tokyo.ac.jp>  Fri, 31 Oct 2014 15:00:00 -0000
+
+ros-indigo-jsk-network-tools (1.0.52-1trusty) trusty; urgency=high
+
+
+
+ -- Yusuke Furuta <furuta@jsk.imi.i.u-tokyo.ac.jp>  Wed, 22 Oct 2014 15:00:00 -0000
+
+ros-indigo-jsk-network-tools (1.0.51-1trusty) trusty; urgency=high
+
+
+
+ -- Yusuke Furuta <furuta@jsk.imi.i.u-tokyo.ac.jp>  Sun, 19 Oct 2014 15:00:00 -0000
+
+ros-indigo-jsk-network-tools (1.0.50-1trusty) trusty; urgency=high
+
+
+
+ -- Yusuke Furuta <furuta@jsk.imi.i.u-tokyo.ac.jp>  Sun, 19 Oct 2014 15:00:00 -0000
+
+ros-indigo-jsk-network-tools (1.0.49-1trusty) trusty; urgency=high
+
+
+
+ -- Yusuke Furuta <furuta@jsk.imi.i.u-tokyo.ac.jp>  Sun, 12 Oct 2014 15:00:00 -0000
+
+ros-indigo-jsk-network-tools (1.0.48-1trusty) trusty; urgency=high
+
+
+
+ -- Yusuke Furuta <furuta@jsk.imi.i.u-tokyo.ac.jp>  Sat, 11 Oct 2014 15:00:00 -0000
+
+ros-indigo-jsk-network-tools (1.0.47-1trusty) trusty; urgency=high
+
+  * Contributors: Yusuke Furuta
+
+ -- Yusuke Furuta <furuta@jsk.imi.i.u-tokyo.ac.jp>  Tue, 07 Oct 2014 15:00:00 -0000
+
+
