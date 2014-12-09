@@ -1,3 +1,60 @@
+## jsk_common (indigo) - 1.0.55-1
+
+The packages in the `jsk_common` repository were released into the `indigo` distro by running `/usr/bin/bloom-release jsk_common --ros-distro indigo --track indigo` on `Tue, 09 Dec 2014 18:30:43 -0000`
+
+These packages were released:
+- `assimp_devel`
+- `bayesian_belief_networks`
+- `downward`
+- `dynamic_tf_publisher`
+- `ff`
+- `ffha`
+- `image_view2`
+- `jsk_common`
+- `jsk_footstep_msgs`
+- `jsk_gui_msgs`
+- `jsk_hark_msgs`
+- `jsk_network_tools`
+- `jsk_tilt_laser`
+- `jsk_tools`
+- `jsk_topic_tools`
+- `libsiftfast`
+- `mini_maxwell`
+- `multi_map_server`
+- `nlopt`
+- `opt_camera`
+- `posedetection_msgs`
+- `rospatlite`
+- `rosping`
+- `rostwitter`
+- `sklearn`
+- `speech_recognition_msgs`
+- `virtual_force_publisher`
+- `voice_text`
+
+These packages were explicitly ignored:
+- `pr2_groovy_patches`
+- `image_view_jsk_patch`
+- `laser_filters_jsk_patch`
+- `depth_image_proc_jsk_patch`
+- `openni_tracker_jsk_patch`
+- `collada_urdf_jsk_patch`
+
+Version of package(s) in repository `jsk_common`:
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common
+- release repository: https://github.com/tork-a/jsk_common-release.git
+- rosdistro version: `1.0.54-0`
+- old version: `1.0.55-0`
+- new version: `1.0.55-1`
+
+Versions of tools used:
+- bloom version: `0.5.13`
+- catkin_pkg version: `0.2.6`
+- rosdep version: `0.10.33`
+- rosdistro version: `0.3.6`
+- vcstools version: `0.1.35`
+
+
 ## jsk_common (hydro) - 1.0.55-0
 
 The packages in the `jsk_common` repository were released into the `hydro` distro by running `/var/lib/jenkins/send_to_bloom.py jsk-ros-pkg jsk_common` on `Tue, 09 Dec 2014 07:54:27 -0000`
