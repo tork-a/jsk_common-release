@@ -2,6 +2,12 @@
 Changelog for package jsk_network_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.56 (2014-12-17)
+-------------------
+* plot multiple lines
+* add network plot
+* Contributors: tarukosu
+
 1.0.55 (2014-12-09)
 -------------------
 * fix msg error in heartbeat
