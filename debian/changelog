@@ -1,0 +1,14 @@
+ros-hydro-julius (1.0.57-0precise) precise; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 22 Dec 2014 15:00:00 -0000
+
+ros-hydro-julius (1.0.56-0precise) precise; urgency=high
+
+  * catkinize julius
+  * Contributors: Yuki Furuta
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 16 Dec 2014 15:00:00 -0000
+
+
