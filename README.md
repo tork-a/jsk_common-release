@@ -1,3 +1,59 @@
+## jsk_common (hydro) - 1.0.57-0
+
+The packages in the `jsk_common` repository were released into the `hydro` distro by running `/var/lib/jenkins/send_to_bloom.py jsk-ros-pkg jsk_common` on `Tue, 23 Dec 2014 07:34:12 -0000`
+
+These packages were released:
+- `assimp_devel`
+- `bayesian_belief_networks`
+- `collada_urdf_jsk_patch`
+- `depth_image_proc_jsk_patch`
+- `downward`
+- `dynamic_tf_publisher`
+- `ff`
+- `ffha`
+- `image_view2`
+- `image_view_jsk_patch`
+- `jsk_common`
+- `jsk_footstep_msgs`
+- `jsk_gui_msgs`
+- `jsk_hark_msgs`
+- `jsk_network_tools`
+- `jsk_tilt_laser`
+- `jsk_tools`
+- `jsk_topic_tools`
+- `julius`
+- `laser_filters_jsk_patch`
+- `libsiftfast`
+- `mini_maxwell`
+- `multi_map_server`
+- `nlopt`
+- `openni_tracker_jsk_patch`
+- `opt_camera`
+- `posedetection_msgs`
+- `pr2_groovy_patches`
+- `rospatlite`
+- `rosping`
+- `rostwitter`
+- `sklearn`
+- `speech_recognition_msgs`
+- `virtual_force_publisher`
+- `voice_text`
+
+Version of package(s) in repository `jsk_common`:
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common
+- release repository: https://github.com/tork-a/jsk_common-release.git
+- rosdistro version: `1.0.56-0`
+- old version: `1.0.56-0`
+- new version: `1.0.57-0`
+
+Versions of tools used:
+- bloom version: `0.5.12`
+- catkin_pkg version: `0.2.2`
+- rosdep version: `0.10.33`
+- rosdistro version: `0.3.5`
+- vcstools version: `0.1.33`
+
+
 ## jsk_common (hydro) - 1.0.56-0
 
 The packages in the `jsk_common` repository were released into the `hydro` distro by running `/var/lib/jenkins/send_to_bloom.py jsk-ros-pkg jsk_common` on `Sun, 21 Dec 2014 12:33:32 -0000`
