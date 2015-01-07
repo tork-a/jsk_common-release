@@ -115,6 +115,11 @@
    uri: https://github.com/RethinkRobotics/baxter_examples.git
    local-name: RethinkRobotics/baxter_examples
 
+# moveit
+- git:
+    uri: https://github.com/ros-planning/moveit_robots.git
+    local-name: ros-planning/moveit_robots
+
 # rviz stuff
 - git:
     local-name: view_controller_msgs
@@ -135,8 +140,7 @@
     version: hydro-devel
 - git:
     local-name: multimaster_experimental
-    uri: 'https://github.com/garaemon/multimaster_experimental.git'
-    version: catkinize
+    uri: 'https://github.com/willowgarage/multimaster_experimental.git'
 - git:
     local-name: pr2_navigation_apps
     uri: 'https://github.com/PR2/pr2_navigation_apps.git'
@@ -181,3 +185,6 @@
     local-name: mongodb_store
     uri: 'https://github.com/strands-project/mongodb_store.git'
     version: hydro-devel
+- hg:
+    local-name: multisense
+    uri: 'https://garaemon@bitbucket.org/crl/multisense_ros'
