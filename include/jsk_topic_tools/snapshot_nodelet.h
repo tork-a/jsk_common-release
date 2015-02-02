@@ -2,7 +2,7 @@
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
- *  Copyright (c) 2014, JSK Lab
+ *  Copyright (c) 2015, JSK Lab
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -33,31 +33,41 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-#include "jsk_topic_tools/connection_based_nodelet.h"
+
+#ifndef JSK_TOPIC_TOOLS_SNAPSHOT_NODELET_H_
+#define JSK_TOPIC_TOOLS_SNAPSHOT_NODELET_H_
+
+#include <nodelet/nodelet.h>
+#include <topic_tools/shape_shifter.h>
+#include <boost/thread.hpp>
+#include <boost/thread/mutex.hpp>
+#include <std_srvs/Empty.h>
 
 namespace jsk_topic_tools
 {
-  void ConnectionBasedNodelet::onInit()
+  class Snapshot: public nodelet::Nodelet
   {
-    pnh_.reset (new ros::NodeHandle (getMTPrivateNodeHandle ()));
-  }
-  
-  void ConnectionBasedNodelet::connectionCallback(const ros::SingleSubscriberPublisher& pub)
-  {
-    boost::mutex::scoped_lock lock(connection_mutex_);
-    for (size_t i = 0; i < publishers_.size(); i++) {
-      ros::Publisher pub = publishers_[i];
-      if (pub.getNumSubscribers() > 0) {
-        if (!subscribed_) {
-          subscribe();
-          subscribed_ = true;
-        }
-        return;
-      }
-    }
-    if (subscribed_) {
-      unsubscribe();
-      subscribed_ = false;
-    }
-  }
+  public:
+    typedef ros::MessageEvent<topic_tools::ShapeShifter> ShapeShifterEvent;
+    typedef boost::shared_ptr<Snapshot> Ptr;
+  protected:
+    virtual void onInit();
+    virtual void inputCallback(const boost::shared_ptr<topic_tools::ShapeShifter const>& msg);
+    virtual bool requestCallback(
+      std_srvs::Empty::Request& req,
+      std_srvs::Empty::Response& res);
+    
+    ros::ServiceServer request_service_;
+    boost::mutex mutex_;
+    ros::Publisher pub_;
+    ros::Subscriber sub_;
+    ros::NodeHandle pnh_;
+    bool subscribing_;
+    bool advertised_;
+    bool requested_;
+  private:
+    
+  };
 }
+
+#endif
