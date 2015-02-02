@@ -2,7 +2,7 @@
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
- *  Copyright (c) 2014, JSK Lab
+ *  Copyright (c) 2015, JSK Lab
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -33,31 +33,60 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-#include "jsk_topic_tools/connection_based_nodelet.h"
+#include "jsk_topic_tools/snapshot_nodelet.h"
 
 namespace jsk_topic_tools
 {
-  void ConnectionBasedNodelet::onInit()
+  void Snapshot::onInit()
   {
-    pnh_.reset (new ros::NodeHandle (getMTPrivateNodeHandle ()));
+    advertised_ = false;
+    subscribing_ = false;
+    pnh_ = getPrivateNodeHandle();
+    sub_ = pnh_.subscribe<topic_tools::ShapeShifter>(
+      "input", 1,
+      &Snapshot::inputCallback, this);
+    request_service_ = pnh_.advertiseService(
+      "request",
+      &Snapshot::requestCallback, this);
   }
-  
-  void ConnectionBasedNodelet::connectionCallback(const ros::SingleSubscriberPublisher& pub)
+
+  void Snapshot::inputCallback(
+    const boost::shared_ptr<topic_tools::ShapeShifter const>& msg)
   {
-    boost::mutex::scoped_lock lock(connection_mutex_);
-    for (size_t i = 0; i < publishers_.size(); i++) {
-      ros::Publisher pub = publishers_[i];
-      if (pub.getNumSubscribers() > 0) {
-        if (!subscribed_) {
-          subscribe();
-          subscribed_ = true;
-        }
-        return;
+    boost::mutex::scoped_lock lock(mutex_);
+    if (!advertised_) {         // initialization
+      ros::AdvertiseOptions opts("output", 1,
+                                 msg->getMD5Sum(),
+                                 msg->getDataType(),
+                                 msg->getMessageDefinition());
+      opts.latch = false;
+      pub_ = pnh_.advertise(opts);
+      advertised_ = true;
+      sub_.shutdown();
+    }
+    else {
+      if (requested_) {
+        pub_.publish(msg);
+        requested_ = false;
+        sub_.shutdown();
       }
     }
-    if (subscribed_) {
-      unsubscribe();
-      subscribed_ = false;
-    }
   }
+
+
+  bool Snapshot::requestCallback(
+      std_srvs::Empty::Request& req,
+      std_srvs::Empty::Response& res)
+  {
+    boost::mutex::scoped_lock lock(mutex_);
+    requested_ = true;
+    sub_ = pnh_.subscribe<topic_tools::ShapeShifter>(
+      "input", 1,
+      &Snapshot::inputCallback, this);
+    return true;
+  }
+  
 }
+
+#include <pluginlib/class_list_macros.h>
+PLUGINLIB_EXPORT_CLASS (jsk_topic_tools::Snapshot, nodelet::Nodelet);
