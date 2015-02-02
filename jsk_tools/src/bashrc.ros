@@ -10,10 +10,13 @@ function rossetmaster() { # 自分のよく使うロボットのhostnameを入�
     export PS1="\[\033[00;31m\][$ROS_MASTER_URI][$ROS_IP]\[\033[00m\] ${PS1}"
     echo -e "\e[1;31mset ROS_MASTER_URI to $ROS_MASTER_URI\e[m"
 }
-alias rossetrobot=rossetmaster
+function rossetrobot() {
+    echo -e "\e[1;31m *** rossetrobot is obsoleted, use rossetmaster ***\e[m"
+    rossetmaster $@
+}
 
 function rossetlocal() {
-    rossetrobot localhost
+    rossetmaster localhost
     if [[ "${PS1}" =~ \[http://.*:.*\]\ (.*)$ ]] ; then
         export PS1="${BASH_REMATCH[1]}"
     fi
@@ -57,9 +60,35 @@ function rossetip() {
   fi
   # update PS1
   if [[ "${ROS_MASTER_URI}" =~ ^http://(.*):(.*)$ ]] ; then
-      rossetrobot ${BASH_REMATCH[1]} ${BASH_REMATCH[2]}
+      rossetmaster ${BASH_REMATCH[1]} ${BASH_REMATCH[2]}
   fi
 }
+
+function rosn() {
+    which percol || echo -e "\e[1;31mNeed to install percol, \`sudo pip install python-percol\` or \`rosdep install jsk_tools\` \e[m";
+    which percol || return 1
+    if [ "$1" = "" ]; then
+        topic=$(rosnode list | percol | xargs -n 1 rosnode info | percol | sed -e 's%.* \* \(/[/a-zA-Z0-9_]*\) .*%\1%')
+    else
+        topic=$(rosnode info $1 | percol | sed -e 's%.* \* \(/[/a-zA-Z0-9_]*\) .*%\1%')
+    fi
+    if [ "$topic" != "" ] ; then
+        rost $topic
+    fi
+}
+function rost() {
+    which percol || echo -e "\e[1;31mNeed to install percol, \`sudo pip install python-percol\` or \`rosdep install jsk_tools\` \e[m";
+    which percol || return 1
+    if [ "$1" = "" ]; then
+        node=$(rostopic list | percol | xargs -n 1 rostopic info | percol | sed -e 's%.* \* \(/[/a-zA-Z0-9_]*\) .*%\1%')
+    else
+        node=$(rostopic info $1 | percol | sed -e 's%.* \* \(/[/a-zA-Z0-9_]*\) .*%\1%')
+    fi
+    if [ "$node" != "" ] ; then
+        rosn $node
+    fi
+}
+
 
 export ANDROID_HOME=$HOME/android-sdk-linux
 export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
