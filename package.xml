@@ -17,8 +17,22 @@
 
   <build_depend>git</build_depend>
   <build_depend>rosgraph_msgs</build_depend>
-  <run_depend>python-percol</run_depend>
-  <run_depend>python-colorama</run_depend>
+  <!--
+This release uses a dependency on python-percol in the package
+https://github.com/jsk-ros-pkg/jsk_common/blob/02b0fd487b1fa5cef967a2a875acf8564004bea2/jsk_tools/package.xml
+
+As @wjwwood pointed out when you added the rosdep key (#6993
+(comment)) you can not depend on packages which are not available from
+Debian packages in your releases packages:
+http://jenkins.ros.org/view/IbinT64/job/ros-indigo-multi-map-server_binarydeb_trusty_amd64/15/console
+      <run_depend>python-percol</run_depend>
+  -->
+  <!--
+  python-colorama is only avilable after trusty 
+http://packages.ubuntu.com/search?searchon=names&keywords=python-colorama
+https://github.com/ros/rosdistro/pull/7273
+      <run_depend>python-colorama</run_depend>
+  -->
   <run_depend>rosgraph_msgs</run_depend>
   <run_depend>rospy</run_depend>
   <run_depend>rqt_reconfigure</run_depend>
