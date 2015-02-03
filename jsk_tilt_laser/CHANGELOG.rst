@@ -2,6 +2,9 @@
 Changelog for package jsk_tilt_laser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.60 (2015-02-03)
+-------------------
+
 1.0.59 (2015-02-03)
 -------------------
 * [jsk_tilt_laser] Update multisense.launch according to the latest update
