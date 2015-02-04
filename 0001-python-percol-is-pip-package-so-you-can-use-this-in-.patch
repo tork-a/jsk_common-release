@@ -1,0 +1,35 @@
+From e1d172a3067caabddfa5262725bcb229de97729b Mon Sep 17 00:00:00 2001
+From: Kei Okada <kei.okada@gmail.com>
+Date: Wed, 4 Feb 2015 08:53:28 +0900
+Subject: [PATCH] python-percol is pip package so you can use this in deb
+ package
+
+---
+ package.xml | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/package.xml b/package.xml
+index 4fda062..206b507 100644
+--- a/package.xml
++++ b/package.xml
+@@ -16,7 +16,16 @@
+   <buildtool_depend>catkin</buildtool_depend>
+ 
+   <build_depend>git</build_depend>
+-  <run_depend>python-percol</run_depend>
++  <!--
++This release uses a dependency on python-percol in the package
++https://github.com/jsk-ros-pkg/jsk_common/blob/02b0fd487b1fa5cef967a2a875acf8564004bea2/jsk_tools/package.xml
++
++As @wjwwood pointed out when you added the rosdep key (#6993
++(comment)) you can not depend on packages which are not available from
++Debian packages in your releases packages:
++http://jenkins.ros.org/view/IbinT64/job/ros-indigo-multi-map-server_binarydeb_trusty_amd64/15/console
++      <run_depend>python-percol</run_depend>
++  -->
+   <!-- <build_depend>mjpeg_server</build_depend> -->
+   <!-- <run_depend>mjpeg_server</run_depend> -->
+   <!-- <test_depend>mjpeg_server</test_depend> -->
+-- 
+1.9.1
+
