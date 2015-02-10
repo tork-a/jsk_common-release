@@ -51,6 +51,7 @@
 #include <geometry_msgs/PointStamped.h>
 #include <geometry_msgs/PolygonStamped.h>
 #include <std_msgs/Empty.h>
+#include <std_srvs/Empty.h>
 #include <image_view2/ChangeMode.h>
 #include <boost/thread.hpp>
 #include <boost/format.hpp>
@@ -59,6 +60,8 @@
 #include <boost/lambda/lambda.hpp>
 #include <pcl/point_types.h>
 #include <pcl_ros/publisher.h>
+
+#include <image_view2/MouseEvent.h>
 
 #define DEFAULT_COLOR  CV_RGB(255,0,0)
 #define USER_ROI_COLOR CV_RGB(255,0,0)
@@ -112,6 +115,8 @@ namespace image_view2
     bool use_window;
   protected:
   private:
+    void eventCb(
+      const image_view2::MouseEvent::ConstPtr& event_msg);
     void pointArrayToMask(std::vector<cv::Point2d>& points,
                           cv::Mat& mask);
     void publishMonoImage(ros::Publisher& pub,
@@ -173,6 +178,7 @@ namespace image_view2
     void checkMousePos(int& x, int& y);
     V_ImageMarkerMessage local_queue_;
     image_transport::Subscriber image_sub_;
+    ros::Subscriber event_sub_;
     ros::Subscriber info_sub_;
     ros::Subscriber marker_sub_;
     std::string marker_topic_;
@@ -241,10 +247,30 @@ namespace image_view2
     void updateLinePoint(cv::Point p);
     bool isSelectingLineStartPoint();
     void resetInteraction();
+    ros::ServiceServer rectangle_mode_srv_;
+    ros::ServiceServer series_mode_srv_;
+    ros::ServiceServer grabcut_mode_srv_;
+    ros::ServiceServer grabcut_rect_mode_srv_;
+    ros::ServiceServer line_mode_srv_;
     ros::ServiceServer change_mode_srv_;
     bool changeModeServiceCallback(
       image_view2::ChangeModeRequest& req,
       image_view2::ChangeModeResponse& res);
+    bool rectangleModeServiceCallback(
+      std_srvs::EmptyRequest& req,
+      std_srvs::EmptyResponse& res);
+    bool seriesModeServiceCallback(
+      std_srvs::EmptyRequest& req,
+      std_srvs::EmptyResponse& res);
+    bool grabcutModeServiceCallback(
+      std_srvs::EmptyRequest& req,
+      std_srvs::EmptyResponse& res);
+    bool grabcutRectModeServiceCallback(
+      std_srvs::EmptyRequest& req,
+      std_srvs::EmptyResponse& res);
+    bool lineModeServiceCallback(
+      std_srvs::EmptyRequest& req,
+      std_srvs::EmptyResponse& res);
     KEY_MODE stringToMode(const std::string& str);
   };
 }
