@@ -1,0 +1,270 @@
+#!/usr/bin/env bash
+
+function usage {
+    echo >&2 "usage: $0"
+    echo >&2 "          [-h|--help] print this message"
+    echo >&2 "          [-i|--show-install] show how to install "
+    echo >&2 "          [-p|--show-package] display packages to install"
+    echo >&2 "          [-e|--environment] display environment variables"
+    echo >&2 "          [-d|--use-deb] use debian package if they are already released"
+    echo >&2 "          [--rtm|--start-jsk|--rtm-ros-robotics] merge .rosinstall for rtm-ros stuff"
+    echo >&2 "          [--from-source] install whole ros system using source code"
+    exit 0
+}
+
+function error {
+    echo "export ROS_HOME=$ROS_HOME"
+    echo "source $ROS_INSTALLDIR/devel/setup.bash"
+    (cd $ROS_INSTALLDIR; catkin_test_results --all; echo "done")
+    exit 1
+}
+trap error ERR
+
+# command line parse
+OPT=`getopt -o hiped -l help,show-install,show-package,show-environment,use-deb,rtm,start-jsk,rtm-ros-robotics,from-source -- $*`
+if [ $? != 0 ]; then
+    usage
+fi
+
+eval set -- $OPT
+while [ -n "$1" ] ; do
+    case $1 in
+	-h|--help) usage ;;
+	-i|--show-install) SHOW="install"; shift;;
+	-p|--show-package) SHOW="package"; shift;;
+	-e|--show-environment) SHOW="environment"; shift;;
+	-d|--use-deb) USE_DEB=true; shift;;
+  --rtm|--start-jsk|--rtm-ros-robotics) RTM_ROS_ROBOTICS=true; shift;;
+  --from-source) USE_SOURCE=true; shift;;
+	--) shift; break;;
+	*) echo "Unknown option($1)"; usage;;
+    esac
+done
+
+# set environment variables
+# set distribution
+case $1 in
+    cturtle|diamondback|electric|fuerte|groovy|hydro|indigo) export DISTRIBUTION=$1; shift;;
+    *)      export DISTRIBUTION=groovy;;
+esac
+
+# check ros distribution and ubuntu distribution
+# http://ros.org/reps/rep-0003.html
+export LSB_RELEASE=`lsb_release -cs`
+if ( [ "$DISTRIBUTION" == "cturtle" ] && \
+    [[ $LSB_RELEASE =~ (lucid|maverick) ]] ) || \
+   ( [ "$DISTRIBUTION" == "diamondback" ] && \
+    [[ $LSB_RELEASE =~ (lucid|maverick|natty) ]] ) || \
+   ( [ "$DISTRIBUTION" == "diamondback" ] && \
+    [[ $LSB_RELEASE =~ (lucid|maverick|natty) ]] ) || \
+   ( [ "$DISTRIBUTION" == "electric" ] && \
+    [[ $LSB_RELEASE =~ (lucid|maverick|natty|oneiric) ]] ) || \
+   ( [ "$DISTRIBUTION" == "fuerte" ] && \
+    [[ $LSB_RELEASE =~ (lucid|oneiric|precise) ]] ) || \
+   ( [ "$DISTRIBUTION" == "groovy" ] && \
+    [[ $LSB_RELEASE =~ (oneiric|precise|quantal) ]] ) || \
+   ( [ "$DISTRIBUTION" == "hydro" ] && \
+    [[ $LSB_RELEASE =~ (precise|quantal|raring) ]] ) || \
+   ( [ "$DISTRIBUTION" == "indigo" ] && \
+    [[ $LSB_RELEASE =~ (saucy|trusty) ]] ) then
+    echo "Install $DISTRIBUTION to $LSB_RELEASE"
+else
+    echo "target distribution($DISTRIBUTION) does not support $LSB_RELEASE platform, exit install program"
+    exit -1
+fi
+
+
+
+# setup workspaceand buildspace
+if [ "$WORKSPACE" == "" ]; then # if not jenkins
+    export WORKSPACE=$HOME
+fi
+export ROS_INSTALLDIR=$WORKSPACE/ros/$DISTRIBUTION
+export PATH=$PATH:/usr/sbin:/usr/bin:/sbin:/bin
+
+# set environment variables
+if [ -f /proc/xen -o "`grep -c 'QEMU Virtual CPU' /proc/cpuinfo`" != "0" ]; then
+    export ROS_PARALLEL_JOBS=-j1
+else
+    export ROS_PARALLEL_JOBS=-j4
+fi
+export ROS_HOME=$WORKSPACE/.ros
+export PATH=$PATH:/usr/local/bin ## for ros tools
+export LC_ALL=en_US.UTF-8
+unset SVN_REVISION ## this jenkins environment valiables conflicts with mk/svn_checkout.mk
+
+# define functions
+# http://www.ros.org/wiki/electric/Installation/Ubuntu
+function setup-ros {
+    sudo dpkg --configure -a
+    sudo apt-get -y --force-yes install build-essential python-yaml cmake subversion wget python-setuptools git-core mercurial aptitude oracle-java7
+    sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros-latest.list'
+    wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+    sudo apt-get update
+    sudo apt-get upgrade -y --force-yes
+    sudo apt-get -qq -y install ros-${DISTRIBUTION}-rosbash python-rosdep python-wstool python-catkin-tools
+    if [ "$USE_SOURCE" == "true" ]; then
+        sudo apt-get -qq -y install python-rosinstall-generator
+        sudo apt-get -qq -y install libftdi-dev libgstreamer0.10-dev libgst-dev libgstreamer-plugins-base0.10-dev
+    fi
+    if [ -e /etc/ros/rosdep/sources.list.d/20-default.list ] ; then
+        sudo rm -f /etc/ros/rosdep/sources.list.d/20-default.list;  # rosdep init fails when arleady initialized
+    fi
+    while [ ! -e /etc/ros/rosdep/sources.list.d/20-default.list ]; do
+        sudo rosdep init
+    done
+    (rosdep update; true)
+}
+
+# jsk ros install (copy from http://code.google.com/p/rtm-ros-robotics/wiki/ROS_English)
+function install-pkg {
+
+    (rosdep update; true)
+    ## hydro and up, use catkin
+    ROS_INSTALLDIR_SRC=$ROS_INSTALLDIR/src;
+    (mkdir -p $ROS_INSTALLDIR_SRC && cd $ROS_INSTALLDIR_SRC && ( [ -f .rosinstall ] || ( wstool init ) ) && for ROSINSTALL in $@; do ROS_WORKSPACE="" wstool merge $ROSINSTALL -r -y ; done  )
+
+    # for use deb package mode
+    if [ "$USE_DEB" == true ]; then
+        for pkg in `find $ROS_INSTALLDIR/jsk-ros-pkg/ -maxdepth 2 -name .rosinstall -exec dirname {} \; | xargs -n 1 -i basename {} `; do
+            ROS_DISTRO=hydro
+            pkg2=$(echo $pkg | sed s@_@-@g)
+            aptitude show ros-$ROS_DISTRO-$pkg2
+            if [ $? == 0 ]; then
+                echo "install ros-$ROS_DISTRO-$pkg2 and rmeove $pkg from .rosinstall"
+                apt-get -y install ros-$ROS_DISTRO-$pkg2
+                (cd $ROS_INSTALLDIR_SRC; wstool rm jsk-ros-pkg/$pkg)
+            fi
+        done
+    fi
+    #
+    if [ "$USE_SOURCE" == "true" ]; then
+        rosinstall_generator --from-path $ROS_INSTALLDIR_SRC --deps --deps-only --flat --exclude rosjava_bootstrap rosjava_build_tools rosjava_messages rwt_speech_recognition --wet-only --tar > /tmp/parent.rosinstall.$$
+        rosinstall_generator openni_launch openni2_launch rospack --deps --flat --wet-only --tar > /tmp/parent_direct.rosinstall.$$
+        (cd $ROS_INSTALLDIR_SRC && ( [ -f .rosinstall ] || ( wstool init ) ) \
+            && wstool merge /tmp/parent.rosinstall.$$ \
+            && wstool merge /tmp/parent_direct.rosinstall.$$)
+    fi
+    # wstool update
+    success=0
+    retry=0
+    while [ $success == 0 -a $retry -lt 10 ]; do
+        (cd $ROS_INSTALLDIR_SRC && ROS_WORKSPACE="" wstool update -j10 --delete-changed-uris) && success=1 || sleep 120
+        retry=`expr $retry + 1`
+    done
+
+    echo "hddtemp hddtemp/daemon boolean false" | sudo debconf-set-selections
+
+    # rosdep install
+    (cd $ROS_INSTALLDIR_SRC &&
+        wget https://raw.github.com/jsk-ros-pkg/jsk_travis/master/rosdep-install.sh -O - | ROS_DISTRO=$DISTRIBUTION bash)
+    return 0
+}
+
+function setup-android {
+    wget http://dl.google.com/android/android-sdk_r21.0.1-linux.tgz -O /tmp/android-sdk_r21.0.1-linux.tgz
+    tar xzf /tmp/android-sdk_r21.0.1-linux.tgz
+    if [ ! -e $HOME/android-sdk-linux ]; then
+        mv android-sdk-linux $HOME/android-sdk-linux
+    fi
+    export ANDROID_HOME=$HOME/android-sdk-linux
+    export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+    echo y | android update sdk --no-ui --force
+    echo y | android update sdk --all --filter android-10 --no-ui --force
+    echo y | android update sdk --all --filter android-13 --no-ui --force
+    echo y | android update sdk --all --filter build-tools-19.1.0 --no-ui --force
+}
+
+function compile-pkg {
+    trap error ERR
+    local PACKAGES=$@
+
+    ## do compile
+    . /opt/ros/$DISTRIBUTION/setup.sh
+    (cd $ROS_INSTALLDIR && LC_ALL=C catkin build --no-status $PACKAGES)
+    ## load setup.sh
+    . ${ROS_INSTALLDIR}/devel/setup.sh
+    rospack profile
+}
+
+function test-pkg {
+    trap error ERR
+    local PACKAGES=$@
+    . $ROS_INSTALLDIR/devel/setup.sh
+    # test
+    export DISPLAY=
+    (cd $ROS_INSTALLDIR && LC_ALL=C catkin test --no-status $PACKAGES)
+    (cd $ROS_INSTALLDIR && LC_ALL=C catkin_test_results --all)
+}
+
+function install-jsk-ros-pkg {
+    wget  'https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosinstall' -O /tmp/jsk.rosinstall.$$
+    if [ "$RTM_ROS_ROBOTICS" = "true" ]; then
+        cat <<EOF > /tmp/rtm-ros-robotics.rosinstall.$$
+- git:
+    uri: https://github.com/start-jsk/openrtm_aist_core.git
+    local-name: rtm-ros-robotics/openrtm_common/openrtm_aist_core
+- git:
+    uri: https://github.com/start-jsk/openhrp3.git
+    local-name: rtm-ros-robotics/openrtm_common/openhrp3
+- git:
+    uri: https://github.com/start-jsk/hrpsys.git
+    local-name: rtm-ros-robotics/openrtm_common/hrpsys
+- git:
+    uri: https://github.com/start-jsk/rtshell_core.git
+    local-name: rtm-ros-robotics/openrtm_common/rtshell_core
+- git:
+    uri: https://github.com/start-jsk/rtmros_common.git
+    local-name: rtm-ros-robotics/rtmros_common
+- git:
+    uri: https://github.com/start-jsk/rtmros_tutorials.git
+    local-name: rtm-ros-robotics/rtmros_tutorials
+- git:
+    uri: https://github.com/start-jsk/rtmros_hironx.git
+    local-name: rtm-ros-robotics/rtmros_hironx
+- git:
+    uri: https://github.com/tork-a/rtmros_nextage.git
+    local-name: rtm-ros-robotics/rtmros_nextage
+- git:
+    uri: https://github.com/start-jsk/rtmros_gazebo.git
+    local-name: rtm-ros-robotics/rtmros_gazebo
+EOF
+        install-pkg /tmp/jsk.rosinstall.$$ /tmp/rtm-ros-robotics.rosinstall.$$
+    else
+        install-pkg /tmp/jsk.rosinstall.$$
+    fi
+    # install euslisp
+    $ROS_INSTALLDIR_SRC/src/jsk-ros-pkg/jsk_roseus/setup.sh
+    if [ "$DISPLAY" != "" ] && [ "`xset -q fp | grep /usr/share/fonts/X11/100dpi`" == "" ]; then
+        xset +fp /usr/share/fonts/X11/100dpi,/usr/share/fonts/X11/75dpi || return 0
+    fi
+}
+function compile-jsk-ros-pkg {
+    compile-pkg elevator_move_base_pr2 detect_cans_in_fridge_201202 jsk_2013_04_pr2_610
+}
+function test-jsk-ros-pkg {
+    test-pkg euslisp roseus pr2eus euscollada jsk_pcl_ros kinect_near_mode_calibration elevator_move_base_pr2 detect_cans_in_fridge_201202 jsk_2013_04_pr2_610
+}
+
+# show-* option
+case "$SHOW" in
+    install) declare -f setup-ros | awk '/^\ /{print $0}' | sed -e 's/^[ ]*//'; exit 0;;
+    package) echo "sudo apt-get -y --force-yes install $INSTALL_ROS_PACKAGE" ; exit 0;;
+    environment) env; return 0;;
+esac
+
+# main program
+set -x
+
+if [ $# -gt 0 ]; then ## if we have arguments, check functions
+    $@
+else
+    setup-ros
+    install-jsk-ros-pkg
+    # setup-android
+    compile-jsk-ros-pkg
+    test-jsk-ros-pkg
+fi
+
+#
+
