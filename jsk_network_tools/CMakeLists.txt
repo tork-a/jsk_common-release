@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(jsk_network_tools)
 
-find_package(catkin REQUIRED COMPONENTS message_generation std_msgs sensor_msgs)
+find_package(catkin REQUIRED COMPONENTS message_generation std_msgs sensor_msgs rostest)
 catkin_python_setup()
 add_message_files(
   DIRECTORY msg
@@ -13,6 +13,7 @@ add_message_files(
   OCS2FC.msg
   FC2OCSLargeData.msg
   OpenNISample.msg
+  AllTypeTest.msg
 )
 
 ## Generate added messages and services with any dependencies listed here
@@ -28,6 +29,8 @@ catkin_package(
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
+
+add_rostest(test/test_all_type_low_speed.test)
 
 install(DIRECTORY scripts
   DESTINATION
