@@ -56,11 +56,11 @@ def msgToStructFormat(msg):
     return fmt_stream.getvalue()
 
 def packableValue(value, value_type):
-    if value_type == "bool":
-        return value
-    else:
+    if value_type == "uint8":
         return ord(value)
-    
+    else:
+        return value
+
 def packMessage(msg, fmt):
     data = []
     for slot, slot_type in zip(msg.__slots__, msg._slot_types):
@@ -71,19 +71,20 @@ def packMessage(msg, fmt):
             for i in range(len(slot_value)):
                 data.append(packableValue(slot_value[i], field_type))
         else:
-            data.append(packableValue(slot_value, field_type))
+            #data.append(packableValue(slot_value, field_type))
+            data.append(slot_value)
     packed = pack(fmt, *data)
     return packed
 
 def unpackArrayValue(array, field_type):
     if field_type == "bool":
-        return [ord(v) for v in value]
+        return [v == 1 for v in array]
     else:
         return array
 
 def unpackValue(val, field_type):
     if field_type == "bool":
-        return ord(val) == 1
+        return val == 1
     else:
         return val
     
@@ -96,7 +97,7 @@ def unpackMessage(data, fmt, message_class):
         parsed_type = parseMessageType(slot_type)
         field_type = parsed_type[0]
         field_length = parsed_type[1]
-        target_data = data[counter:counter + field_length]
+        target_data = unpacked_data[counter:counter + field_length]
         if hasattr(slot_value, "__len__"):   #array
             setattr(msg, slot, unpackArrayValue(target_data, field_type))
         else:
@@ -119,7 +120,6 @@ def decomposeLargeMessage(msg, prefix=""):
     ret = dict()
     for slot, slot_type in zip(msg.__slots__, msg._slot_types):
         topic_name = prefix + "/" + slot.replace("__", "/")
-        print topic_name
         ret[topic_name] = getattr(msg, slot)
     return ret
         
