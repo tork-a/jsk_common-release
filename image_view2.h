@@ -86,7 +86,8 @@ namespace image_view2
       MODE_SERIES,
       MODE_SELECT_FORE_AND_BACK,
       MODE_SELECT_FORE_AND_BACK_RECT,
-      MODE_LINE
+      MODE_LINE,
+      MODE_NONE
     };
       
     ImageView2();
@@ -122,6 +123,9 @@ namespace image_view2
     void publishMonoImage(ros::Publisher& pub,
                           cv::Mat& image,
                           const std_msgs::Header& header);
+    void publishRectFromMaskImage(ros::Publisher& pub,
+                                  cv::Mat& image,
+                                  const std_msgs::Header& header);
     ////////////////////////////////////////////////////////
     // drawing helper methods
     ////////////////////////////////////////////////////////
@@ -227,6 +231,8 @@ namespace image_view2
     ros::Publisher move_point_pub_;
     ros::Publisher foreground_mask_pub_;
     ros::Publisher background_mask_pub_;
+    ros::Publisher foreground_rect_pub_;
+    ros::Publisher background_rect_pub_;
     ros::Publisher line_pub_;
     KEY_MODE mode_;
     bool autosize_;
@@ -252,6 +258,7 @@ namespace image_view2
     ros::ServiceServer grabcut_mode_srv_;
     ros::ServiceServer grabcut_rect_mode_srv_;
     ros::ServiceServer line_mode_srv_;
+    ros::ServiceServer none_mode_srv_;
     ros::ServiceServer change_mode_srv_;
     bool changeModeServiceCallback(
       image_view2::ChangeModeRequest& req,
@@ -271,6 +278,10 @@ namespace image_view2
     bool lineModeServiceCallback(
       std_srvs::EmptyRequest& req,
       std_srvs::EmptyResponse& res);
+    bool noneModeServiceCallback(
+      std_srvs::EmptyRequest& req,
+      std_srvs::EmptyResponse& res);
+    cv::Point ratioPoint(double x, double y);
     KEY_MODE stringToMode(const std::string& str);
   };
 }
