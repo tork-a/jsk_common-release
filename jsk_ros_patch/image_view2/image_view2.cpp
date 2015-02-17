@@ -58,6 +58,8 @@ namespace image_view2{
     move_point_pub_ = nh.advertise<geometry_msgs::PointStamped>(camera + "/movepoint", 100);
     foreground_mask_pub_ = nh.advertise<sensor_msgs::Image>(camera + "/foreground", 100);
     background_mask_pub_ = nh.advertise<sensor_msgs::Image>(camera + "/background", 100);
+    foreground_rect_pub_ = nh.advertise<geometry_msgs::PolygonStamped>(camera + "/foreground_rect", 100);
+    background_rect_pub_ = nh.advertise<geometry_msgs::PolygonStamped>(camera + "/background_rect", 100);
     line_pub_ = nh.advertise<geometry_msgs::PolygonStamped>(camera + "/line", 100);
     local_nh.param("window_name", window_name_, std::string("image_view2 [")+camera+std::string("]"));
     local_nh.param("skip_draw_rate", skip_draw_rate_, 0);
@@ -81,11 +83,9 @@ namespace image_view2{
     resize_y_ = 1.0/yy;
     filename_format_.parse(format_string);
 
-    if ( use_window ) {
-      font_ = cv::FONT_HERSHEY_DUPLEX;
-      window_selection_.x = window_selection_.y =
-        window_selection_.height = window_selection_.width = 0;
-    }
+    font_ = cv::FONT_HERSHEY_DUPLEX;
+    window_selection_.x = window_selection_.y =
+      window_selection_.height = window_selection_.width = 0;
 
     image_pub_ = it.advertise("image_marked", 1);
     
@@ -104,6 +104,8 @@ namespace image_view2{
       "grabcut_rect_mode", &ImageView2::grabcutRectModeServiceCallback, this);
     line_mode_srv_ = local_nh.advertiseService(
       "line_mode", &ImageView2::lineModeServiceCallback, this);
+    none_mode_srv_ = local_nh.advertiseService(
+      "none_mode", &ImageView2::noneModeServiceCallback, this);
   }
 
   ImageView2::~ImageView2()
@@ -400,6 +402,17 @@ namespace image_view2{
       cv::putText(draw_, frame_id.c_str(), origin, font_, 1.0, DEFAULT_COLOR, 1.5);
     }
   }
+
+  cv::Point ImageView2::ratioPoint(double x, double y)
+  {
+    if (last_msg_) {
+      return cv::Point(last_msg_->width * x,
+                       last_msg_->height * y);
+    }
+    else {
+      return cv::Point(0, 0);
+    }
+  }
   
   void ImageView2::drawText(const image_view2::ImageMarker2::ConstPtr& marker,
                             std::vector<CvScalar>& colors,
@@ -411,9 +424,45 @@ namespace image_view2{
     if ( scale == 0 ) scale = 1.0;
     text_size = cv::getTextSize(marker->text.c_str(), font_,
                                 scale, scale, &baseline);
-    cv::Point origin = cv::Point(marker->position.x - text_size.width/2,
-                                 marker->position.y - baseline-3);
-    cv::putText(draw_, marker->text.c_str(), origin, font_, scale, DEFAULT_COLOR);
+    // fix scale
+    if (marker->ratio_scale) {
+      cv::Size a_size = cv::getTextSize("A", font_, 1.0, 1.0, &baseline);
+      int height_size = a_size.height;
+      double desired_size = last_msg_->height * scale;
+      scale = desired_size / height_size;
+      ROS_DEBUG("text scale: %f", scale);
+    }
+      
+    cv::Point origin;
+    if (marker->left_up_origin) {
+      if (marker->ratio_scale) {
+        origin = ratioPoint(marker->position.x,
+                            marker->position.y);
+      }
+      else {
+        origin = cv::Point(marker->position.x,
+                           marker->position.y);
+      }
+    }
+    else {
+      if (marker->ratio_scale) {
+        cv::Point p = ratioPoint(marker->position.x, marker->position.y);
+        origin = cv::Point(p.x - text_size.width/2,
+                           p.y + baseline+3);
+      }
+      else {
+        origin = cv::Point(marker->position.x - text_size.width/2,
+                           marker->position.y + baseline+3);
+      }
+    }
+    
+    if (marker->filled) {
+      cv::putText(draw_, marker->text.c_str(), origin, font_, scale, DEFAULT_COLOR, marker->filled);
+      
+    }
+    else {
+      cv::putText(draw_, marker->text.c_str(), origin, font_, scale, DEFAULT_COLOR);
+    }
   }
 
   void ImageView2::drawLineStrip3D(const image_view2::ImageMarker2::ConstPtr& marker,
@@ -1145,8 +1194,41 @@ namespace image_view2{
     }
     publishMonoImage(foreground_mask_pub_, foreground_mask, last_msg_->header);
     publishMonoImage(background_mask_pub_, background_mask, last_msg_->header);
+    publishRectFromMaskImage(foreground_rect_pub_, foreground_mask, last_msg_->header);
+    publishRectFromMaskImage(background_rect_pub_, background_mask, last_msg_->header);
   }
   
+  void ImageView2::publishRectFromMaskImage(
+    ros::Publisher& pub,
+    cv::Mat& image,
+    const std_msgs::Header& header)
+  {
+    int min_x = image.cols;
+    int min_y = image.rows;
+    int max_x = 0;
+    int max_y = 0;
+    for (int j = 0; j < image.rows; j++) {
+      for (int i = 0; i < image.cols; i++) {
+        if (image.at<uchar>(j, i) != 0) {
+          min_x = std::min(min_x, i);
+          min_y = std::min(min_y, j);
+          max_x = std::max(max_x, i);
+          max_y = std::max(max_y, j);
+        }
+      }
+    }
+    geometry_msgs::PolygonStamped poly;
+    poly.header = header;
+    geometry_msgs::Point32 min_pt, max_pt;
+    min_pt.x = min_x; 
+    min_pt.y = min_y;
+    max_pt.x = max_x; 
+    max_pt.y = max_y;
+    poly.polygon.points.push_back(min_pt);
+    poly.polygon.points.push_back(max_pt);
+    pub.publish(poly);
+  }
+
   void ImageView2::publishLinePoints()
   {
     boost::mutex::scoped_lock lock(line_point_mutex_);
@@ -1442,6 +1524,11 @@ namespace image_view2{
       line_selected_ = false;
       continuous_ready_ = false;
     }
+    else if (getMode() == MODE_RECTANGLE) {
+      button_up_pos_ = cv::Point2f(0, 0);
+      window_selection_.width = 0;
+      window_selection_.height = 0;
+    }
   }
 
   bool ImageView2::rectangleModeServiceCallback(
@@ -1493,6 +1580,16 @@ namespace image_view2{
     resetInteraction();
     return true;
   }
+
+  bool ImageView2::noneModeServiceCallback(
+    std_srvs::EmptyRequest& req,
+    std_srvs::EmptyResponse& res)
+  {
+    resetInteraction();
+    setMode(MODE_NONE);
+    resetInteraction();
+    return true;
+  }
   
   bool ImageView2::changeModeServiceCallback(
     image_view2::ChangeModeRequest& req,
@@ -1522,6 +1619,9 @@ namespace image_view2{
           }
     else if (interaction_mode == "line") {
       return MODE_LINE;
+    }
+    else if (interaction_mode == "none") {
+      return MODE_NONE;
     }
     else {
       throw std::string("Unknown mode");
