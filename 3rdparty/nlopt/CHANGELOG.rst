@@ -2,6 +2,13 @@
 Changelog for package nlopt
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.62 (2015-02-17)
+-------------------
+* corrected install locations
+* flipped lib and include on install directive
+* include files weren't properly included and the pattern matching for nlopt libraries needed to be fixed
+* Contributors: C. Barrett Ames
+
 1.0.61 (2015-02-11)
 -------------------
 * install devel files into catkin package destination
