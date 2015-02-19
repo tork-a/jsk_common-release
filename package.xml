@@ -26,12 +26,7 @@ Debian packages in your releases packages:
 http://jenkins.ros.org/view/IbinT64/job/ros-indigo-multi-map-server_binarydeb_trusty_amd64/15/console
       <run_depend>python-percol</run_depend>
   -->
-  <!--
-  python-colorama is only avilable after trusty 
-http://packages.ubuntu.com/search?searchon=names&keywords=python-colorama
-https://github.com/ros/rosdistro/pull/7273
-      <run_depend>python-colorama</run_depend>
-  -->
+  <run_depend>python-colorama</run_depend>
   <!-- <build_depend>mjpeg_server</build_depend> -->
   <!-- <run_depend>mjpeg_server</run_depend> -->
   <!-- <test_depend>mjpeg_server</test_depend> -->
