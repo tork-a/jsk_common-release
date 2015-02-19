@@ -1,6 +1,6 @@
-From 157e2e55bde8c2ce30afa85abd5dd24551309199 Mon Sep 17 00:00:00 2001
+From 415cd1eaef1f92bc4aff10c66eca1e95621e8d6e Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
-Date: Thu, 19 Feb 2015 11:29:30 +0900
+Date: Thu, 19 Feb 2015 11:37:14 +0900
 Subject: [PATCH 2/2] python colorma is only avilabe after trusty
 
 ---
