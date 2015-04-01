@@ -1,0 +1,12 @@
+Source: ros-indigo-jsk-common
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin
+Homepage: http://ros.org/wiki/jsk_common
+Standards-Version: 3.9.2
+
+Package: ros-indigo-jsk-common
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-assimp-devel, ros-indigo-bayesian-belief-networks, ros-indigo-downward, ros-indigo-dynamic-tf-publisher, ros-indigo-ff, ros-indigo-ffha, ros-indigo-image-view2, ros-indigo-jsk-footstep-msgs, ros-indigo-jsk-gui-msgs, ros-indigo-jsk-hark-msgs, ros-indigo-jsk-network-tools, ros-indigo-jsk-tilt-laser, ros-indigo-jsk-tools, ros-indigo-jsk-topic-tools, ros-indigo-libsiftfast, ros-indigo-mini-maxwell, ros-indigo-multi-map-server, ros-indigo-nlopt, ros-indigo-opt-camera, ros-indigo-posedetection-msgs, ros-indigo-rospatlite, ros-indigo-rosping, ros-indigo-rostwitter, ros-indigo-sklearn, ros-indigo-speech-recognition-msgs, ros-indigo-virtual-force-publisher, ros-indigo-voice-text
+Description: Metapackage that contains commonly used toolset for jsk-ros-pkg
