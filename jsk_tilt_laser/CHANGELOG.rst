@@ -2,6 +2,11 @@
 Changelog for package jsk_tilt_laser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.64 (2015-03-29)
+-------------------
+* [jsk_tilt_laser] Support multisense sensors without 'multisense/' prefix
+* Contributors: Ryohei Ueda
+
 1.0.63 (2015-02-19)
 -------------------
 * [jsk_tilt_laser, jsk_data] Add multisense_play.launch to play multisene bag file
