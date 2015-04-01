@@ -1,4 +1,4 @@
-From 157e2e55bde8c2ce30afa85abd5dd24551309199 Mon Sep 17 00:00:00 2001
+From ddfbb116c9edd874bdd4b8aead8de87c741a40c8 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 19 Feb 2015 11:29:30 +0900
 Subject: [PATCH 2/2] python colorma is only avilabe after trusty
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] python colorma is only avilabe after trusty
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/package.xml b/package.xml
-index bc5fe5d..19a71a4 100644
+index c8d174c..ef3f087 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -26,7 +26,12 @@ Debian packages in your releases packages:
