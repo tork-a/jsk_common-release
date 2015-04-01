@@ -1,6 +1,6 @@
 <package>
   <name>jsk_tools</name>
-  <version>1.0.63</version>
+  <version>1.0.64</version>
   <description>Includes emacs scripts, ros tool alias generator, and launch doc generator.</description>
 
   <maintainer email="ueda@jsk.t.u-tokyo.ac.jp">Ryohei Ueda</maintainer>
@@ -16,6 +16,7 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>git</build_depend>
+  <build_depend>rosgraph_msgs</build_depend>
   <!--
 This release uses a dependency on python-percol in the package
 https://github.com/jsk-ros-pkg/jsk_common/blob/02b0fd487b1fa5cef967a2a875acf8564004bea2/jsk_tools/package.xml
@@ -32,6 +33,9 @@ http://packages.ubuntu.com/search?searchon=names&keywords=python-colorama
 https://github.com/ros/rosdistro/pull/7273
       <run_depend>python-colorama</run_depend>
   -->
+  <run_depend>rosgraph_msgs</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>rqt_reconfigure</run_depend>
   <!-- <build_depend>mjpeg_server</build_depend> -->
   <!-- <run_depend>mjpeg_server</run_depend> -->
   <!-- <test_depend>mjpeg_server</test_depend> -->
