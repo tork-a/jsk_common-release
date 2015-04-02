@@ -1,22 +1,23 @@
-From c607b22ad2b311b3992f0ff5f1bb25f120701678 Mon Sep 17 00:00:00 2001
+From 781657946a371026c6cd65d3af211fd6a476b8fb Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 4 Feb 2015 08:52:12 +0900
-Subject: [PATCH 1/2] python-percol is pip package so you can use this in deb
+Subject: [PATCH] python-percol is pip package so you can use this in deb
  package
 
 ---
- package.xml |   11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+ package.xml |   18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index a72ee3a..c8d174c 100644
+index 69b3027..81adb33 100644
 --- a/package.xml
 +++ b/package.xml
-@@ -16,7 +16,16 @@
-   <buildtool_depend>catkin</buildtool_depend>
+@@ -17,8 +17,22 @@
  
    <build_depend>git</build_depend>
+   <build_depend>rosgraph_msgs</build_depend>
 -  <run_depend>python-percol</run_depend>
+-  <run_depend>python-colorama</run_depend>
 +  <!--
 +This release uses a dependency on python-percol in the package
 +https://github.com/jsk-ros-pkg/jsk_common/blob/02b0fd487b1fa5cef967a2a875acf8564004bea2/jsk_tools/package.xml
@@ -27,9 +28,15 @@ index a72ee3a..c8d174c 100644
 +http://jenkins.ros.org/view/IbinT64/job/ros-indigo-multi-map-server_binarydeb_trusty_amd64/15/console
 +      <run_depend>python-percol</run_depend>
 +  -->
-   <run_depend>python-colorama</run_depend>
-   <!-- <build_depend>mjpeg_server</build_depend> -->
-   <!-- <run_depend>mjpeg_server</run_depend> -->
++  <!--
++  python-colorama is only avilable after trusty 
++http://packages.ubuntu.com/search?searchon=names&keywords=python-colorama
++https://github.com/ros/rosdistro/pull/7273
++      <run_depend>python-colorama</run_depend>
++  -->
+   <run_depend>rosgraph_msgs</run_depend>
+   <run_depend>rospy</run_depend>
+   <run_depend>rqt_reconfigure</run_depend>
 -- 
 1.7.9.5
 
