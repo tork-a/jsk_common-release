@@ -2,6 +2,9 @@
 Changelog for package jsk_data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.65 (2015-04-02)
+-------------------
+
 1.0.64 (2015-03-29)
 -------------------
 * [jsk_data] Utility script to save/load robot_description
