@@ -2,6 +2,9 @@
 Changelog for package ffha
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.65 (2015-04-02)
+-------------------
+
 1.0.64 (2015-03-29)
 -------------------
 * use jsk-ros-pkg/archives for downloading ffha source
