@@ -2,6 +2,9 @@
 Changelog for package posedetection_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.65 (2015-04-02)
+-------------------
+
 1.0.64 (2015-03-29)
 -------------------
 * [posedetection_msgs] Generate binary in lib directory as other catkin
