@@ -2,6 +2,9 @@
 Changelog for package mini_maxwell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.66 (2015-04-03)
+-------------------
+
 1.0.65 (2015-04-02)
 -------------------
 * [drc_network] launch maxwell pro without gui
