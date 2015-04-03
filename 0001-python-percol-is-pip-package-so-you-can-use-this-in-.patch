@@ -1,4 +1,4 @@
-From 781657946a371026c6cd65d3af211fd6a476b8fb Mon Sep 17 00:00:00 2001
+From 9a59f4ee69d04f580cd8d2d234044aa6dac28158 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 4 Feb 2015 08:52:12 +0900
 Subject: [PATCH] python-percol is pip package so you can use this in deb
@@ -9,7 +9,7 @@ Subject: [PATCH] python-percol is pip package so you can use this in deb
  1 file changed, 16 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 69b3027..81adb33 100644
+index df3da31..9d85f70 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -17,8 +17,22 @@
