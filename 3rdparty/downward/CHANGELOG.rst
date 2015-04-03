@@ -2,6 +2,9 @@
 Changelog for package downward
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.66 (2015-04-03)
+-------------------
+
 1.0.65 (2015-04-02)
 -------------------
 * Correct recursive call to make in downward
