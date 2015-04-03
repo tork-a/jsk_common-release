@@ -2,6 +2,9 @@
 Changelog for package jsk_network_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.66 (2015-04-03)
+-------------------
+
 1.0.65 (2015-04-02)
 -------------------
 * [jsk_network_tools] Support effort in joint state compressor/decompressor
