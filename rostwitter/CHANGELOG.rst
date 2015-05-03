@@ -2,6 +2,11 @@
 Changelog for package rostwitter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.67 (2015-05-03)
+-------------------
+* [scripts/tweet.py] fix for error handling
+* Contributors: Kanae Kochigami
+
 1.0.66 (2015-04-03)
 -------------------
 
