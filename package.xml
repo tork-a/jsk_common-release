@@ -17,9 +17,11 @@
 
   <build_depend>git</build_depend>
   <build_depend>rosgraph_msgs</build_depend>
+<!-- pip install need to be removed for rosdeb release
   <run_depend>python-percol</run_depend>
   <run_depend>python-colorama</run_depend>
   <run_depend>python-pygithub3</run_depend>
+-->
   <run_depend>rosgraph_msgs</run_depend>
   <run_depend>rospy</run_depend>
   <run_depend>rqt_reconfigure</run_depend>
