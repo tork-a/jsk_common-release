@@ -46,6 +46,7 @@
 #include <image_transport/image_transport.h>
 #include <image_geometry/pinhole_camera_model.h>
 #include <tf/transform_listener.h>
+#include <dynamic_reconfigure/server.h>
 
 #include <image_view2/ImageMarker2.h>
 #include <geometry_msgs/PointStamped.h>
@@ -60,6 +61,7 @@
 #include <boost/lambda/lambda.hpp>
 #include <pcl/point_types.h>
 #include <pcl_ros/publisher.h>
+#include <image_view2/ImageView2Config.h>
 
 #include <image_view2/MouseEvent.h>
 
@@ -81,6 +83,7 @@ namespace image_view2
   class ImageView2
   {
   public:
+    typedef ImageView2Config Config;
     enum KEY_MODE {
       MODE_RECTANGLE,
       MODE_SERIES,
@@ -117,6 +120,7 @@ namespace image_view2
     bool use_window;
   protected:
   private:
+    void config_callback(Config &config, uint32_t level);
     void eventCb(
       const image_view2::MouseEvent::ConstPtr& event_msg);
     void pointArrayToMask(std::vector<cv::Point2d>& points,
@@ -169,6 +173,7 @@ namespace image_view2
     void drawCircle(const image_view2::ImageMarker2::ConstPtr& marker);
     void drawMarkers();
     void drawInteraction();
+    void drawGrid();
     void drawInfo(ros::Time& before_rendering);
     void resolveLocalMarkerQueue();
     bool lookupTransformation(
@@ -181,6 +186,7 @@ namespace image_view2
     void processLeftButtonUp(int x, int y);
     void publishMouseInteractionResult();
     void checkMousePos(int& x, int& y);
+    void createDistortGridImage();
     V_ImageMarkerMessage local_queue_;
     image_transport::Subscriber image_sub_;
     ros::Subscriber event_sub_;
@@ -190,6 +196,7 @@ namespace image_view2
     boost::circular_buffer<double> times_;
     image_transport::Publisher image_pub_;
     image_transport::Publisher local_image_pub_;
+    boost::shared_ptr <dynamic_reconfigure::Server<Config> > srv_;
 
     V_ImageMarkerMessage marker_queue_;
     boost::mutex queue_mutex_;
@@ -200,6 +207,12 @@ namespace image_view2
     boost::mutex image_mutex_;
     int skip_draw_rate_;
     cv::Mat original_image_, image_, draw_;
+    cv::Mat distort_grid_mask_;
+    int div_u_, div_v_;
+    int space_,prev_space_;
+    int grid_red_, grid_green_, grid_blue_, prev_red_, prev_green_, prev_blue_;
+    int grid_thickness_, prev_thickness_;
+    bool fisheye_mode_;
 
     tf::TransformListener tf_listener_;
     image_geometry::PinholeCameraModel cam_model_;
@@ -224,6 +237,7 @@ namespace image_view2
     CvRect window_selection_;
     cv::Point2f button_up_pos_;
     int count_;
+    bool draw_grid_;
     bool blurry_mode_;
     bool show_info_;
     double tf_timeout_;
