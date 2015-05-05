@@ -2,6 +2,9 @@
 Changelog for package rostwitter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.68 (2015-05-05)
+-------------------
+
 1.0.67 (2015-05-03)
 -------------------
 * [scripts/tweet.py] fix for error handling
