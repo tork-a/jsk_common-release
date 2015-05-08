@@ -2,6 +2,11 @@
 Changelog for package jsk_footstep_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.70 (2015-05-08)
+-------------------
+* [jsk_footstep_msgs] Add swing_height field to Footstep.msg
+* Contributors: Ryohei Ueda
+
 1.0.69 (2015-05-05)
 -------------------
 
