@@ -2,6 +2,11 @@
 Changelog for package jsk_network_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.70 (2015-05-08)
+-------------------
+* [jsk_network_tools] Fix bytes/bits conversions
+* Contributors: Ryohei Ueda
+
 1.0.69 (2015-05-05)
 -------------------
 
