@@ -2,6 +2,15 @@
 Changelog for package virtual_force_publisher
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.0 (2015-06-19)
+------------------
+* pseudo jacobian has different for m>n and n<m
+* format jacobian/effort/force output
+* Contributors: Kei Okada
+
+1.0.72 (2015-06-07)
+-------------------
+
 1.0.71 (2015-05-17)
 -------------------
 
