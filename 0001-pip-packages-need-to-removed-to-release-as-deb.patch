@@ -1,14 +1,14 @@
-From 3041682392d6891cbacbf9141f5a53559e23dffd Mon Sep 17 00:00:00 2001
+From b3eb7a690385a019fd1033e24fcc66466879fc8d Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Mon, 4 May 2015 08:24:09 +0900
 Subject: [PATCH] pip packages need to removed to release as deb
 
 ---
- package.xml |    2 ++
+ package.xml | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/package.xml b/package.xml
-index f58a994..d0101bf 100644
+index 37ce2a8..a992c4c 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -17,9 +17,11 @@
@@ -24,5 +24,5 @@ index f58a994..d0101bf 100644
    <run_depend>rospy</run_depend>
    <run_depend>rqt_reconfigure</run_depend>
 -- 
-1.7.9.5
+1.9.1
 
