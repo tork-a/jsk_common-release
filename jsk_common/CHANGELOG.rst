@@ -2,6 +2,14 @@
 Changelog for package jsk_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.0 (2015-06-19)
+------------------
+* split jsk_common into jsk_common_msgs and jsk_3rdparty https://github.com/jsk-ros-pkg/jsk_common/issues/919
+* Contributors: Kei Okada
+
+1.0.72 (2015-06-07)
+-------------------
+
 1.0.71 (2015-05-17)
 -------------------
 
