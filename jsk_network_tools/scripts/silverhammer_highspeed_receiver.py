@@ -29,8 +29,22 @@ def receive_process_func(packets_queue, receive_ip, receive_port, packet_size, m
     rospy.loginfo("kernel receive socket buffer: %d" % recv_buffer_size)
     if recv_buffer_size < 1564475392:
         rospy.logwarn("kernel receive socket buffer must be at least 1564475392 bytes.")
-        rospy.logwarn("to change this value, execute:")
-        rospy.logwarn("sudo sysctl -w net.core.rmem_max=4259840")
+        import os, rospkg
+        pkg_path = rospkg.RosPack().get_path('jsk_network_tools')
+        cmd_path = os.path.join(pkg_path, 'scripts', 'expand_udp_receive_buffer.sh')
+        rospy.loginfo('changing kernel parameter...')
+        try:
+            res = os.system('sudo ' + cmd_path)
+            if res == 0:
+                rospy.loginfo('successfly changed kernel parameter')
+            else:
+                raise Exception('return code is non zero')
+        except Exception as e:
+            rospy.logerr('failed to change expand kernel udp receive buffer size.')
+            rospy.logwarn('maybe you don\'t yet add NOPASSWD attribute to sudo user group?')
+            rospy.logwarn('try to change from "%sudo ALL=(ALL) ALL" to "%sudo ALL=(ALL) NOPASSWD:ALL"')
+        rospy.loginfo('continuing without existing buffer size.')
+
     rospy.logwarn("try to bind %s:%d" % (receive_ip, receive_port))
     socket_server.bind((receive_ip, receive_port))
 
@@ -77,6 +91,9 @@ class SilverHammerReceiver:
         self.latch = rospy.get_param("~latch", True)
         self.pesimistic = rospy.get_param("~pesimistic", False)
         self.fragment_packets_torelance = rospy.get_param("~fragment_packets_torelance", 20)
+        self.timestamp_overwrite_topics = rospy.get_param("~timestamp_overwrite_topics", [])
+        self.publish_only_if_updated_topics = rospy.get_param("~publish_only_if_updated_topics", [])
+        self.prev_seq_ids = {}
         self.receive_port = rospy.get_param("~receive_port", 16484)
         self.receive_ip = rospy.get_param("~receive_ip", "localhost")
         self.topic_prefix = rospy.get_param("~topic_prefix", "/from_fc")
@@ -107,6 +124,26 @@ class SilverHammerReceiver:
                                                                           self.topic_prefix,
                                                                           self.pesimistic,
                                                                           self.fragment_packets_torelance))
+    def on_shutdown(self):
+        if self.receive_process.is_alive():
+            try:
+                self.receive_process.terminate()
+                self.receive_process.join(timeout=3)
+                if self.receive_process.is_alive():
+                    raise
+            except Exception as e:
+                if "no attribute 'terminate'" in e.message:
+                    return
+                pid = self.receive_process.pid
+                rospy.logerr("failed to terminate process %d: %s" % (pid, e))
+                try:
+                    rospy.loginfo("trying to kill process %d" % pid)
+                    import os, signal
+                    os.kill(pid, signal.SIGKILL)
+                except Exception as ex:
+                    rospy.logfatal("failed to kill process %d: %s." % (pid, ex))
+                    rospy.logfatal("It will be zombie process" % pid)
+
     def diagnosticCallback(self, stat):
         # always OK
         stat.summary(DiagnosticStatus.OK, "OK")
@@ -160,12 +197,46 @@ class SilverHammerReceiver:
             # publish data
             msg = deserialized_data[0]
             messages = decomposeLargeMessage(msg, self.topic_prefix)
+            now = rospy.Time.now()
             for pub in self.publishers:
                 if pub.name in messages:
-                    rospy.loginfo("publishing %s" % pub.name)
-                    pub.publish(messages[pub.name])
+                    if not pub.name in self.publish_only_if_updated_topics:
+                        rospy.loginfo("publishing %s" % pub.name)
+                        if pub.name in self.timestamp_overwrite_topics:
+                            if (hasattr(messages[pub.name], "header") and
+                                hasattr(messages[pub.name].header, "stamp")):
+                                messages[pub.name].header.stamp = now
+                        pub.publish(messages[pub.name])
+                    #pub.publish(messages[pub.name])
                 else:
                     rospy.logwarn("""cannot find '%s' in deserialized messages %s""" % (pub.name, messages.keys()))
+            synchronized_publishers = []
+            at_lest_one_topic = False
+            # Check if there is any topic to update
+            for pub in self.publishers:
+                if pub.name in messages:
+                    if pub.name in self.publish_only_if_updated_topics:
+                        synchronized_publishers.append(pub)
+                        if (hasattr(messages[pub.name], "header") and
+                            hasattr(messages[pub.name].header, "stamp")):
+                            messages[pub.name].header.stamp = now # Overwrite with the same timestamp
+                        if (hasattr(messages[pub.name], "header") and
+                            hasattr(messages[pub.name].header, "seq")):
+                            # Skip rule
+                            if (pub.name in self.prev_seq_ids.keys() and 
+                                messages[pub.name].header.seq == self.prev_seq_ids[pub.name]):
+                                rospy.loginfo("skip publishing %s " % (pub.name))
+                                pass
+                            else:
+                                rospy.loginfo("messages[%s].header.seq: %d"% (pub.name,
+                                                                              messages[pub.name].header.seq))
+                                rospy.loginfo("self.prev_seq_ids[%s]: %d"  % (pub.name,
+                                                                              messages[pub.name].header.seq))
+                                self.prev_seq_ids[pub.name] = messages[pub.name].header.seq
+                                at_lest_one_topic = True
+            if at_lest_one_topic:
+                for pub in synchronized_publishers:
+                    pub.publish(messages[pub.name])
         else:
             rospy.logerr("missed some packets")
 
@@ -173,5 +244,5 @@ class SilverHammerReceiver:
 if __name__ == "__main__":
     rospy.init_node("silverhammer_highspeed_receiver")
     receiver = SilverHammerReceiver()
+    rospy.on_shutdown(receiver.on_shutdown)
     receiver.run()
-    

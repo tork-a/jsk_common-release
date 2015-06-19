@@ -2,6 +2,14 @@
 Changelog for package jsk_tilt_laser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.0 (2015-06-19)
+------------------
+* [jsk_tilt_laser] Do not use laser_assembler in order to reduce CPU load
+* Contributors: Ryohei Ueda
+
+1.0.72 (2015-06-07)
+-------------------
+
 1.0.71 (2015-05-17)
 -------------------
 * [jsk_tilt_laser] Update threshold to remove laser noise of multisense
