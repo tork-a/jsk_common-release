@@ -2,6 +2,16 @@
 Changelog for package jsk_data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.0 (2015-06-19)
+------------------
+* Fix default ROBOT name
+* Contributors: Kohei Kimura
+
+1.0.72 (2015-06-07)
+-------------------
+* add  recording magnetometer
+* Contributors: Ryo Terasawa
+
 1.0.71 (2015-05-17)
 -------------------
 * [jsk_data] common_record.launch: Mkdir for saving rosbag file
