@@ -2,6 +2,14 @@
 Changelog for package jsk_topic_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.0 (2015-06-19)
+------------------
+
+1.0.72 (2015-06-07)
+-------------------
+* [jsk_topic_tools] Add global nodehandle
+* Contributors: Kentaro Wada
+
 1.0.71 (2015-05-17)
 -------------------
 * [jsk_topic_tools] Add ~always_subscribe parameter to ConnectionBasedNodelet
