@@ -1,0 +1,29 @@
+From 8f0d1d250689496489b63622615549f878e987ed Mon Sep 17 00:00:00 2001
+From: Kei Okada <kei.okada@gmail.com>
+Date: Mon, 22 Jun 2015 16:18:25 +0900
+Subject: [PATCH 1/2] remove pip rosdep for release
+
+---
+ package.xml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/package.xml b/package.xml
+index 8f3cfb6..2c271f6 100644
+--- a/package.xml
++++ b/package.xml
+@@ -17,9 +17,9 @@
+ 
+   <build_depend>git</build_depend>
+   <build_depend>rosgraph_msgs</build_depend>
+-  <run_depend>python-percol</run_depend>
+-  <run_depend>python-colorama</run_depend>
+-  <run_depend>python-pygithub3</run_depend>
++  <!-- <run_depend>python-percol</run_depend> -->
++  <!-- <run_depend>python-colorama</run_depend> -->
++  <!-- <run_depend>python-pygithub3</run_depend> -->
+   <run_depend>rosgraph_msgs</run_depend>
+   <run_depend>rospy</run_depend>
+   <run_depend>rqt_reconfigure</run_depend>
+-- 
+1.9.1
+
