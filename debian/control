@@ -1,0 +1,12 @@
+Source: ros-jade-dynamic-tf-publisher
+Section: misc
+Priority: extra
+Maintainer: Ryohei Ueda <garaemon@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-catkin, ros-jade-dynamic-reconfigure, ros-jade-geometry-msgs, ros-jade-message-generation, ros-jade-rospy, ros-jade-tf
+Homepage: http://ros.org/wiki/dynamic_tf_publisher
+Standards-Version: 3.9.2
+
+Package: ros-jade-dynamic-tf-publisher
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-geometry-msgs, ros-jade-message-runtime, ros-jade-rospy, ros-jade-tf
+Description: dynamically set the tf trensformation
