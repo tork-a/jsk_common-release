@@ -1,10 +1,10 @@
-From 8f0d1d250689496489b63622615549f878e987ed Mon Sep 17 00:00:00 2001
+From b4cd0c3b0405c70753b7b614d3ccccd5cf610e7e Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Mon, 22 Jun 2015 16:18:25 +0900
 Subject: [PATCH 1/2] remove pip rosdep for release
 
 ---
- package.xml | 6 +++---
+ package.xml |    6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package.xml b/package.xml
@@ -25,5 +25,5 @@ index 8f3cfb6..2c271f6 100644
    <run_depend>rospy</run_depend>
    <run_depend>rqt_reconfigure</run_depend>
 -- 
-1.9.1
+1.7.9.5
 
