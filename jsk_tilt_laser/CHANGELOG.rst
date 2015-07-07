@@ -2,6 +2,9 @@
 Changelog for package jsk_tilt_laser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.2 (2015-07-07)
+------------------
+
 2.0.1 (2015-06-28)
 ------------------
 * [jsk_tilt_laser] Add multisense_killer to kill multisense streaming if
