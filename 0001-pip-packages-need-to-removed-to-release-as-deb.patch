@@ -1,4 +1,4 @@
-From 549add846807ddd154965d1c5384f8e13f49a2cf Mon Sep 17 00:00:00 2001
+From 948100fcd672136839c09c4db52621366836705d Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Mon, 4 May 2015 08:24:09 +0900
 Subject: [PATCH] pip packages need to removed to release as deb
@@ -8,7 +8,7 @@ Subject: [PATCH] pip packages need to removed to release as deb
  1 file changed, 2 insertions(+)
 
 diff --git a/package.xml b/package.xml
-index 8f3cfb6..f49e2f8 100644
+index a588235..1ef2988 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -17,9 +17,11 @@
