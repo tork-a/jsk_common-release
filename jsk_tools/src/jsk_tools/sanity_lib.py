@@ -49,7 +49,7 @@ def colored(string, color):
 class TopicPublishedChecker():
     is_topic_published = False
     is_topic_published_lock = Lock()
-    def __init__(self, topic_name,  timeout = 5, echo = False):
+    def __init__(self, topic_name, timeout=5, echo=False, data_class=None):
         self.topic_name = topic_name
         self.timeout = timeout
         self.launched_time = rospy.Time.now()
@@ -57,6 +57,8 @@ class TopicPublishedChecker():
         self.echo = echo
         print " Checking %s" % (topic_name)
         msg_class, _, _ = rostopic.get_topic_class(topic_name, blocking=True)
+        if (data_class is not None) and (msg_class is not data_class):
+            raise rospy.ROSException('Topic msg type is different.')
         self.sub = rospy.Subscriber(topic_name, msg_class, self.callback)
     def callback(self, msg):
         with self.is_topic_published_lock:
@@ -85,17 +87,25 @@ class TopicPublishedChecker():
         finally:
             self.sub.unregister()
 
-def checkTopicIsPublished(topic_name, class_name,
+def checkTopicIsPublished(topic_name, class_name = None,
                           ok_message = "",
                           error_message = "",
                           timeout = 1,
                           other_topics = [],
                           echo = False):
+    """
+    @type class_name: type
+    @property class_name:
+        ROS message data class.
+        if not None, it checks if msg type is same as published one.
+    """
     checkers = []
-    checkers.append(TopicPublishedChecker(topic_name, timeout, echo))
+    checkers.append(TopicPublishedChecker(topic_name, timeout, echo,
+                                          data_class=class_name))
     if other_topics:
         for (tpc_name, cls) in other_topics:
-            checkers.append(TopicPublishedChecker(tpc_name, timeout, echo))
+            checkers.append(TopicPublishedChecker(tpc_name, timeout, echo,
+                                                  data_class=class_name))
     all_success = True
     for checker in checkers:
         if not checker.check():
@@ -232,12 +242,16 @@ def checkUSBExist(vendor_id, product_id, expect_usb_nums = 1, host="", success_m
     else:
         errorMessage(vendor_product + " ("+str(usb_counter)+"/"+str(expect_usb_nums)+") " + error_msg if error_msg else vendor_product + " DOESN'T MATCH !! ( "+str(usb_counter)+"/"+str(expect_usb_nums)+" ) Detected")
         return False
-            
+
+
+def getROSMasterCLOSE_WAIT(host, username=""):
+    if username != "":
+        host = username + "@" + host
+    return int(subprocess.check_output(["ssh", host, "sudo", "bash", "-c", '"ps aux | grep rosmaster | grep CLOSE_WAIT | wc -l"']).split("\n")[0])
+
 def checkROSMasterCLOSE_WAIT(host, username=""):
     try:
-        if username != "":
-            host = username + "@" + host
-        close_wait_num = int(subprocess.check_output(["ssh", host, "sudo", "bash", "-c", '"ps aux | grep rosmaster | grep CLOSE_WAIT | wc -l"']).split("\n")[0])
+        close_wait_num = getROSMasterCLOSE_WAIT(host, username)
         if close_wait_num < 150:
             okMessage("roscore looks find (%d CLOSE_WAIT)" % close_wait_num)
             return True
