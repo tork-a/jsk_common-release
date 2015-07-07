@@ -1,78 +1,107 @@
-jsk_common [![Build Status](https://travis-ci.org/jsk-ros-pkg/jsk_common.png?branch=master)](https://travis-ci.org/jsk-ros-pkg/jsk_common)
-===
+jsk_tools
+=========
 
-Install
----
-```sh
-wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild hydro
-```
+You can use commands below after `source /opt/ros/$DISTRO/setup.bash`.
 
-For hacker
+rossetip
+--------
+Setup your `ROS_IP` and `ROS_HOSTNAME`.
 
 ```sh
-wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild --from-source hydro
+$ rossetip
+set ROS_IP and ROS_HOSTNAME to 192.168.11.1
+$ echo $ROS_IP, $ROS_HOSTNAME
+192.168.11.1, 192.168.11.1
 ```
 
-For hrpsys user
+
+rossetlocal
+-----------
+Setup your `ROS_MASTER_URI` to localhost.
 
 ```sh
-wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild --rtm hydro
+$ rossetlocal
+set ROS_MASTER_URI to http://localhost:11311
+$ echo $ROS_MASTER_URI
+http://localhost:11311
 ```
 
-For hrpsys hacker
+
+rossetmaster
+------------
+Setup your `ROS_MASTER_URI` to robot's hostname.
 
 ```sh
-wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild --from-source --rtm hydro
+# rossetmaster ${hostname} ${ros_port}
+# default: hostname=pr1040, ros_port=11311
+user@host $ rossetmaster
+set ROS_MASTER_URI to http://pr1040:11311
+[http://pr1040:11311] user@host $ echo $ROS_MASTER_URI
+http://pr1040:11311
 ```
 
-Watch all the jsk github repositories.
-===
-Please use [this](http://jsk-github-watcher.herokuapp.com/)
 
-Deb Build Status
------------------
+rosdefault
+----------
+Setup `ROS_MASTER_URI` with default hostname written in `~/.rosdefault`.  
 
-hydro
+```sh
+$ cat ~/.rosdefault
+pr1040
+$ rosdefault
+set ROS_MASTER_URI to http://pr1040:11311
+```
 
-- sourcedeb [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_sourcedeb)](http://jenkins.ros.org/job/ros-hydro-jsk-common_sourcedeb/)
-- binarydeb precise amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_amd64)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_amd64/)
-- binarydeb precise i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_i386)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_i386/)
-- binarydeb quantal amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_amd64)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_amd64/)
-- binarydeb quantal i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_i386)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_i386/)
-- binarydeb raring amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_amd64)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_amd64/)
-- binarydeb raring i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_i386)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_i386/)
+It is recommended to run `rosdefault` in your .bashrc or .zshrc.
 
-groovy
 
-- sourcedeb [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_sourcedeb)](http://jenkins.ros.org/job/ros-groovy-jsk-common_sourcedeb/)
-- binarydeb oneiric amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_amd64)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_amd64/)
-- binarydeb oneiric i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_i386)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_i386/)
-- binarydeb precise amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_amd64)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_amd64/)
-- binarydeb precise i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_i386)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_i386/)
-- binarydeb quantal amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_amd64)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_amd64/)
-- binarydeb quantal i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_i386)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_i386/)
+rossetdefault
+-------------
+Setup your default hostname.  
+After running this command, you can setup `ROS_MASTER_URI` with default hostname by `rosdefault`.  
+(default hostname will be stored at `~/.rosdefault`)
 
-Devel Test Status
------------------
-[Hydro](http://jenkins.ros.org/job/devel-hydro-jsk_common/) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=devel-hydro-jsk_common)](http://jenkins.ros.org/job/devel-hydro-jsk_common/)
+```sh
+# rossetdefault ${hostname}
+# default: hostname=local
+$ rossetdefault baxter
+set ROS_MASTER_URI to http://baxter:11311
+$ bash
+$ rosdefault
+set ROS_MASTER_URI to http://baxter:11311
+```
 
-[![Hydro Test Satus](http://jenkins.ros.org/job/devel-hydro-jsk_common/test/trend?job)](http://jenkins.ros.org/job/devel-hydro-jsk_common/)
 
-[Groovy](http://jenkins.ros.org/job/devel-groovy-jsk_common) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=devel-groovy-jsk_common)](http://jenkins.ros.org/job/devel-groovy-jsk_common/)
+# sanity_lib.py
+## check Topic is published
 
-[![Groovy Test Satus](http://jenkins.ros.org/job/devel-groovy-jsk_common/test/trend?job)](http://jenkins.ros.org/job/devel-groovy-jsk_common/)
+- If you set `echo` param as True, the topic message will be shown in terminal
 
-Prerelease Test Status
-----------------------
+### Example
+```
+from jsk_tools.sanity_lib import *
+from std_msgs.msg import String
+rospy.init_node("check_sanity", anonymous = True)
+checkTopicIsPublished("/chatter", String)
+```
+## check Node State
+There is 4 cases
+- Node exists, and you want to exist.
+- Node exists, and you don't want to exist
+- Node doesn't exist and you want to exist
+- Node doesn't exist and you don't want to exist
 
-[Hydro](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=prerelease-hydro-jsk_common)](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/) [Start Testing](http://prerelease.ros.org/create_job/hydro)
-
-[![Hydro Test Satus](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/test/trend?job)](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/)
-
-[Groovy](http://jenkins.ros.org/job/prerelease-groovy-jsk_common) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=prerelease-groovy-jsk_common)](http://jenkins.ros.org/job/prerelease-groovy-jsk_common/)  [Start Testing](http://prerelease.ros.org/create_job/groovy)
-
-[![Groovy Test Satus](http://jenkins.ros.org/job/prerelease-groovy-jsk_common/test/trend?job)](http://jenkins.ros.org/job/prerelease-groovy-jsk_common/)
+The second parameter is Needed Parameter.
+### Example
+```
+from jsk_tools.sanity_lib import *
+rospy.init_node("check_sanity", anonymous = True)
+checkNodeState("/listener", True)
+```
+## check Params
+### Example
+```
+from jsk_tools.sanity_lib import *
+rospy.init_node("check_sanity", anonymous = True)
+checkROSParam("/param_test", 5)
+```
