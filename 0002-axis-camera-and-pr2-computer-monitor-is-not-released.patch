@@ -1,22 +1,25 @@
-From 5f38712279a9c63b5255fd64b8b9b4b4cae70a53 Mon Sep 17 00:00:00 2001
+From c515da17dece912465ef46758b461bba8e6a09c1 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
-Date: Mon, 22 Jun 2015 16:20:44 +0900
-Subject: [PATCH 2/2] axis-camera is not released on jade yet
+Date: Sun, 28 Jun 2015 21:36:38 +0900
+Subject: [PATCH 2/2] axis-camera and pr2-computer-monitor is not released on
+ jade yet
 
 ---
- package.xml |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ package.xml |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 2c271f6..6aa3ca2 100644
+index b6edf21..db49651 100644
 --- a/package.xml
 +++ b/package.xml
-@@ -23,7 +23,7 @@
+@@ -23,8 +23,8 @@
    <run_depend>rosgraph_msgs</run_depend>
    <run_depend>rospy</run_depend>
    <run_depend>rqt_reconfigure</run_depend>
 -  <run_depend>axis_camera</run_depend>
+-  <run_depend>pr2_computer_monitor</run_depend>
 +  <!-- <run_depend>axis_camera</run_depend> -->
++  <!-- <run_depend>pr2_computer_monitor</run_depend> -->
    <!-- <build_depend>mjpeg_server</build_depend> -->
    <!-- <run_depend>mjpeg_server</run_depend> -->
    <!-- <test_depend>mjpeg_server</test_depend> -->
