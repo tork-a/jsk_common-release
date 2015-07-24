@@ -8,6 +8,7 @@
   <arg name="not_use_sensor_tf_prefix" default="false" />
   <arg name="run_driver" default="true" />
   <arg name="fixed_frame_id" default="head_root" />
+  <arg name="assemble_cloud" default="/multisense/lidar_scan_filtered"/>
   <arg name="run_laser_pipeline" default="true" />
   <!-- if 'use_resize' is true, run nodelets to publish resized stereo pointcloud-->
   <arg name="use_resize" default="true" />
@@ -27,7 +28,7 @@
       <arg name="ip_address" value="$(arg ip_address)" />
       <arg name="namespace" value="$(arg namespace)" />
       <arg name="mtu" value="$(arg mtu)" />
-      <arg name="launch_robot_state_publisher" value="$(arg use_robot_description)" />    
+      <arg name="launch_robot_state_publisher" value="$(arg use_robot_description)" />
     </include>
   </group>
   <!--
@@ -60,6 +61,7 @@
      <arg name="not_use_sensor_tf_prefix" value="$(arg not_use_sensor_tf_prefix)" />
      <arg name="namespace"  value="$(arg namespace)" />
      <arg name="fixed_frame_id" value="$(arg fixed_frame_id)" />
+     <arg name="assemble_cloud" value="$(arg assemble_cloud)"/>
    </include>
    <!-- modify multisense parameters -->
    <node pkg="dynamic_reconfigure" type="dynparam" args="set /multisense motor_speed 1.0" name="set_multisense_spindle_speed" />
@@ -70,7 +72,8 @@
      <include file="$(find jsk_pcl_ros)/launch/multi_resolution_organized_pointcloud.launch" if="$(arg use_resize)">
        <arg name="NAMESPACE" value="multisense_local" if="$(arg local)"/>
        <arg name="NAMESPACE" value="multisense" unless="$(arg local)"/>
-       <arg name="INPUT" value="/multisense/organized_image_points2_color" />
+       <arg name="INPUT" value="/multisense/organized_image_points2_color" unless="$(arg local)"/>
+       <arg name="INPUT" value="/multisense_local/organized_image_points2_color" if="$(arg local)"/>
        <arg name="INPUT_LEFT_IMAGE" value="/multisense_local/left/image_rect_color" />
        <arg name="INPUT_LEFT_CAMERA_INFO" value="/multisense_local/left/camera_info" />
        <arg name="INPUT_DEPTH" value="/multisense/depth" />
