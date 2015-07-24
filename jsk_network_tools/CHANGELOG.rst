@@ -2,6 +2,9 @@
 Changelog for package jsk_network_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.3 (2015-07-24)
+------------------
+
 2.0.2 (2015-07-07)
 ------------------
 * [jsk_topic_tools] Check ROS original message size in silverhammer_lowspeed_check_size
