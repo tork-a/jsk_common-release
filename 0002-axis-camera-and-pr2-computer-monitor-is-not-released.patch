@@ -1,4 +1,4 @@
-From c515da17dece912465ef46758b461bba8e6a09c1 Mon Sep 17 00:00:00 2001
+From 39f32339453da1580709899791e87eaab421e8a1 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Sun, 28 Jun 2015 21:36:38 +0900
 Subject: [PATCH 2/2] axis-camera and pr2-computer-monitor is not released on
@@ -9,7 +9,7 @@ Subject: [PATCH 2/2] axis-camera and pr2-computer-monitor is not released on
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index b6edf21..db49651 100644
+index 8555df1..c89da26 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -23,8 +23,8 @@
@@ -20,9 +20,9 @@ index b6edf21..db49651 100644
 -  <run_depend>pr2_computer_monitor</run_depend>
 +  <!-- <run_depend>axis_camera</run_depend> -->
 +  <!-- <run_depend>pr2_computer_monitor</run_depend> -->
+   <run_depend>jsk_network_tools</run_depend>
    <!-- <build_depend>mjpeg_server</build_depend> -->
    <!-- <run_depend>mjpeg_server</run_depend> -->
-   <!-- <test_depend>mjpeg_server</test_depend> -->
 -- 
 1.7.9.5
 
