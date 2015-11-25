@@ -3,7 +3,7 @@ project(jsk_network_tools)
 
 find_package(catkin REQUIRED COMPONENTS
   message_generation std_msgs sensor_msgs rostest
-  dynamic_reconfigure roscpp)
+  dynamic_reconfigure)
 catkin_python_setup()
 add_message_files(
   DIRECTORY msg
@@ -16,7 +16,6 @@ add_message_files(
   FC2OCSLargeData.msg
   OpenNISample.msg
   AllTypeTest.msg
-  SilverhammerInternalBuffer.msg
 )
 add_service_files(
   FILES
@@ -38,26 +37,11 @@ catkin_package(
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
-add_definitions("-O2")
-include_directories(include ${catkin_INCLUDE_DIRS})
-link_libraries(${catkin_LIBRARIES})
-add_executable(silverhammer_highspeed_internal_receiver
-  src/silverhammer_highspeed_internal_receiver.cpp)
-add_dependencies(silverhammer_highspeed_internal_receiver
-  ${PROJECT_NAME}_gencpp ${PROJECT_NAME}_gencfg)
 
-# Sometimes rostest fails to detect jsk_network_tools package on jenkins.
-# So we remove this test.
-# if(CATKIN_ENABLE_TESTING)
-#   add_rostest(test/test_all_type_low_speed.test)
-# endif(CATKIN_ENABLE_TESTING)
+add_rostest(test/test_all_type_low_speed.test)
 
 install(DIRECTORY scripts
   DESTINATION
   ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS
   )
-install(TARGETS silverhammer_highspeed_internal_receiver
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})

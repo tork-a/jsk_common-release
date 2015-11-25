@@ -30,11 +30,7 @@ REPLACE_RULES={
     "au@leus": "Chi Wun Au",
     "hrp2": "JSK Lab Member",
     "h-kamada": "Hitoshi Kamada",
-    "s-noda": "Shintaro Noda",
-    "iori": "Iori Kumagai",
-    "wesleypchan": "Wesley Chan",
-    "mmurooka": "Masaki Murooka",
-    "iory": "Iori Yanokura"}
+    "s-noda": "Shintaro Noda"}
 
 def remove_duplicates(values):
     output = []
