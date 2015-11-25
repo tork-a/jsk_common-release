@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(jsk_topic_tools)
 
 find_package(catkin REQUIRED COMPONENTS topic_tools message_generation roscpp rostest std_msgs std_srvs
+  rostime
   nodelet tf
   geometry_msgs
   eigen_conversions
@@ -19,13 +20,14 @@ add_service_files(
 generate_messages()
 catkin_package(
     DEPENDS
-    CATKIN_DEPENDS topic_tools message_runtime nodelet std_msgs std_srvs
+    CATKIN_DEPENDS topic_tools message_runtime nodelet std_msgs std_srvs roscpp rostime
     INCLUDE_DIRS include
     LIBRARIES jsk_topic_tools
     CFG_EXTRAS nodelet.cmake
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS})
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -z defs")
 #include_directories(${Boost_INCLUDE_DIRS})
 add_executable(standalone_complexed_nodelet src/standalone_complexed_nodelet.cpp)
 add_executable(topic_buffer_server src/topic_buffer_server.cpp)
@@ -79,6 +81,7 @@ add_library(jsk_topic_tools SHARED
   src/time_accumulator.cpp
   src/vital_checker.cpp
   src/color_utils.cpp
+  src/log_utils.cpp
   src/connection_based_nodelet.cpp
   src/diagnostic_nodelet.cpp
   src/series_boolean.cpp
@@ -86,7 +89,7 @@ add_library(jsk_topic_tools SHARED
 add_dependencies(jsk_topic_tools ${PROJECT_NAME}_gencpp)
 target_link_libraries(jsk_topic_tools ${catkin_LIBRARIES})
 
-if (NOT $ENV{ROS_DISTRO} STREQUAL "indigo")
+if (CATKIN_ENABLE_TESTING)
   add_rostest(test/test_topic_buffer.test)
   add_rostest(test/test_topic_buffer_close_wait.test)
   add_rostest(test/test_topic_buffer_fixed_rate.test)
@@ -96,7 +99,14 @@ if (NOT $ENV{ROS_DISTRO} STREQUAL "indigo")
   add_rostest(test/test_topic_compare.test)
   add_rostest(test/test_hz_measure.test)
   add_rostest(test/test_block.test)
-endif(NOT $ENV{ROS_DISTRO} STREQUAL "indigo")
+  add_rostest(test/test_connection_based_nodelet.test)
+  add_rostest(test/test_connection_based_transport.test)
+  catkin_add_nosetests(src/jsk_topic_tools/tests)
+  catkin_add_gtest(test_rosparam_utils src/tests/test_rosparam_utils.cpp)
+  target_link_libraries(test_rosparam_utils ${PROJECT_NAME})
+  add_rostest_gtest(test_log_utils test/test_log_utils.launch src/tests/test_log_utils.cpp)
+  target_link_libraries(test_log_utils ${PROJECT_NAME})
+endif()
 
 install(TARGETS topic_buffer_server topic_buffer_client jsk_topic_tools
   ${jsk_topic_tools_nodelet_executable_names}
@@ -117,7 +127,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 #   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 #   )
 
-install(DIRECTORY scripts launch test cmake config
+install(DIRECTORY scripts launch test cmake config sample
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS
   )
