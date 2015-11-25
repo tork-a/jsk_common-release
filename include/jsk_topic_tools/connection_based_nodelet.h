@@ -91,6 +91,12 @@ namespace jsk_topic_tools
     virtual void connectionCallback(const ros::SingleSubscriberPublisher& pub);
 
     /** @brief
+     * callback function which is called when walltimer
+     * duration run out.
+     */
+    virtual void warnNeverSubscribedCallback(const ros::WallTimerEvent& event);
+
+    /** @brief
      * This method is called when publisher is subscribed by other
      * nodes. 
      * Set up subscribers in this method.
@@ -107,10 +113,13 @@ namespace jsk_topic_tools
     /** @brief
      * Advertise a topic and watch the publisher. Publishers which are
      * created by this method.
+     * It automatically reads latch boolean parameter from nh and 
+     * publish topic with appropriate latch parameter.
      *
      * @param nh NodeHandle.
      * @param topic topic name to advertise.
      * @param queue_size queue size for publisher.
+     * @param latch set true if latch topic publication.
      * @return Publisher for the advertised topic.
      */
     template<class T> ros::Publisher
@@ -122,9 +131,13 @@ namespace jsk_topic_tools
         = boost::bind( &ConnectionBasedNodelet::connectionCallback, this, _1);
       ros::SubscriberStatusCallback disconnect_cb
         = boost::bind( &ConnectionBasedNodelet::connectionCallback, this, _1);
+      bool latch;
+      nh.param("latch", latch, false);
       ros::Publisher ret = nh.advertise<T>(topic, queue_size,
                                            connect_cb,
-                                           disconnect_cb);
+                                           disconnect_cb,
+                                           ros::VoidConstPtr(),
+                                           latch);
       publishers_.push_back(ret);
       
       return ret;
@@ -152,10 +165,21 @@ namespace jsk_topic_tools
     boost::shared_ptr<ros::NodeHandle> pnh_;
 
     /** @brief
+     * WallTimer instance for warning about no connection.
+     */
+    ros::WallTimer timer_;
+
+    /** @brief
      * A flag to check if any publisher is already subscribed
      * or not.
      */
     bool subscribed_;
+
+    /** @brief
+     * A flag to check if the node has been ever subscribed
+     * or not.
+     */
+    bool ever_subscribed_;
 
     /** @brief
      * A flag to disable watching mechanism and always subscribe input 
@@ -167,6 +191,11 @@ namespace jsk_topic_tools
      * Status of connection
      */
     ConnectionStatus connection_status_;
+
+    /** @brief
+     * true if `~verbose_connection` or `verbose_connection` parameter is true.
+     */
+    bool verbose_connection_;
   private:
     
   };
