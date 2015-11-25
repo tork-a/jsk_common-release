@@ -1,3 +1,42 @@
+## jsk_common (indigo) - 2.0.4-1
+
+The packages in the `jsk_common` repository were released into the `indigo` distro by running `./send_to_bloom.py jsk-ros-pkg jsk_common` on `Wed, 25 Nov 2015 14:49:08 -0000`
+
+These packages were released:
+- `dynamic_tf_publisher`
+- `image_view2`
+- `jsk_common`
+- `jsk_data`
+- `jsk_network_tools`
+- `jsk_tilt_laser`
+- `jsk_tools`
+- `jsk_topic_tools`
+- `multi_map_server`
+- `virtual_force_publisher`
+
+These packages were explicitly ignored:
+- `pr2_groovy_patches`
+- `image_view_jsk_patch`
+- `laser_filters_jsk_patch`
+- `depth_image_proc_jsk_patch`
+- `openni_tracker_jsk_patch`
+- `collada_urdf_jsk_patch`
+
+Version of package(s) in repository `jsk_common`:
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common
+- release repository: https://github.com/tork-a/jsk_common-release.git
+- rosdistro version: `2.0.3-0`
+- old version: `2.0.4-0`
+- new version: `2.0.4-1`
+
+Versions of tools used:
+- bloom version: `0.5.20`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.4`
+- rosdistro version: `0.4.2`
+- vcstools version: `0.1.38`
+
+
 ## jsk_common (indigo) - 2.0.4-0
 
 The packages in the `jsk_common` repository were released into the `indigo` distro by running `/usr/bin/bloom-release jsk_common --track indigo -r indigo` on `Wed, 25 Nov 2015 14:26:17 -0000`
