@@ -44,9 +44,6 @@ namespace jsk_topic_tools
     advertised_ = false;
     subscribing_ = false;
     pnh_.param("update_rate", update_rate_, 1.0); // default 1.0
-    // Subscribe input topic at first in order to decide
-    // message type of publisher.
-    // nodelet will unsubscribe input topic after it receives the first topic.
     sub_.reset(new ros::Subscriber(
                  pnh_.subscribe<topic_tools::ShapeShifter>("input", 1,
                                                            &LightweightThrottle::inCallback,
@@ -65,13 +62,13 @@ namespace jsk_topic_tools
                        &LightweightThrottle::inCallback,
                        this,
                        th_)));
-        subscribing_ = true;
+        subscribing_ = false;
       }
     }
-    else {      // No subscribers, nodelet can unsubscribe input topic
+    else {
       if (subscribing_) {
         sub_->shutdown();
-        subscribing_ = false;
+        subscribing_ = true;
       }
     }
   }
@@ -81,8 +78,6 @@ namespace jsk_topic_tools
   {
     // advertise if not
     if (!advertised_) {
-      // This section should be called once
-      sub_->shutdown();         // Shutdown before advertising topic
       ros::SubscriberStatusCallback connect_cb
         = boost::bind(&LightweightThrottle::connectionCallback, this, _1);
       ros::AdvertiseOptions opts("output", 1,
@@ -91,12 +86,17 @@ namespace jsk_topic_tools
                                  msg->getMessageDefinition(),
                                  connect_cb,
                                  connect_cb);
-      advertised_ = true;
       pub_ = pnh_.advertise(opts);
+      advertised_ = true;
+      sub_->shutdown();
     }
     ros::Time now = ros::Time::now();
     if ((now - latest_stamp_).toSec() > 1 / update_rate_) {
-      pub_.publish(msg);
+      // publish the message to output topic only if any
+      // subscriber is
+      if (pub_.getNumSubscribers()) {
+        pub_.publish(msg);
+      }
       latest_stamp_ = now;
     }
   }
