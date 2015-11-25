@@ -1,4 +1,4 @@
-From 53394f48b7943cf48324eb4658c88590a903034c Mon Sep 17 00:00:00 2001
+From 2bf1ac6d2e96e1c04a64710774dab0662f5d9eca Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Mon, 22 Jun 2015 16:19:39 +0900
 Subject: [PATCH] dynamixel controller is not released on jade yet
