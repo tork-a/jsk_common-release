@@ -34,6 +34,7 @@
  *********************************************************************/
 
 #include "jsk_topic_tools/connection_based_nodelet.h"
+#include "jsk_topic_tools/log_utils.h"
 
 namespace jsk_topic_tools
 {
@@ -43,6 +44,17 @@ namespace jsk_topic_tools
     nh_.reset (new ros::NodeHandle (getMTNodeHandle ()));
     pnh_.reset (new ros::NodeHandle (getMTPrivateNodeHandle ()));
     pnh_->param("always_subscribe", always_subscribe_, false);
+    pnh_->param("verbose_connection", verbose_connection_, false);
+    if (!verbose_connection_) {
+      nh_->param("verbose_connection", verbose_connection_, false);
+    }
+    // timer to warn when no connection in a few seconds
+    ever_subscribed_ = false;
+    timer_ = nh_->createWallTimer(
+      ros::WallDuration(5),
+      &ConnectionBasedNodelet::warnNeverSubscribedCallback,
+      this,
+      /*oneshot=*/true);
   }
 
   void ConnectionBasedNodelet::onInitPostProcess()
@@ -52,14 +64,30 @@ namespace jsk_topic_tools
     }
   }
 
+  void ConnectionBasedNodelet::warnNeverSubscribedCallback(const ros::WallTimerEvent& event)
+  {
+    if (!ever_subscribed_) {
+      NODELET_WARN("'%s' subscribes topics only with child subscribers.", nodelet::Nodelet::getName().c_str());
+    }
+  }
+
   void ConnectionBasedNodelet::connectionCallback(const ros::SingleSubscriberPublisher& pub)
   {
+    if (verbose_connection_) {
+      JSK_NODELET_INFO("New connection or disconnection is detected");
+    }
     if (!always_subscribe_) {
       boost::mutex::scoped_lock lock(connection_mutex_);
       for (size_t i = 0; i < publishers_.size(); i++) {
         ros::Publisher pub = publishers_[i];
         if (pub.getNumSubscribers() > 0) {
+          if (!ever_subscribed_) {
+            ever_subscribed_ = true;
+          }
           if (connection_status_ != SUBSCRIBED) {
+            if (verbose_connection_) {
+              JSK_NODELET_INFO("Subscribe input topics");
+            }
             subscribe();
             connection_status_ = SUBSCRIBED;
           }
@@ -67,6 +95,9 @@ namespace jsk_topic_tools
         }
       }
       if (connection_status_ == SUBSCRIBED) {
+        if (verbose_connection_) {
+          JSK_NODELET_INFO("Unsubscribe input topics");
+        }
         unsubscribe();
         connection_status_ = NOT_SUBSCRIBED;
       }
