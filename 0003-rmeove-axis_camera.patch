@@ -1,4 +1,4 @@
-From 8040985fc855568ac88033d21b549adfce1f6acc Mon Sep 17 00:00:00 2001
+From 20a629e0f73fe2ddb64b6d96e71cce4d95af94d8 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 26 Nov 2015 01:02:55 +0900
 Subject: [PATCH 3/3] rmeove axis_camera
