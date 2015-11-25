@@ -10,9 +10,9 @@
   <run_depend>depth_image_proc</run_depend>
   <run_depend>image_transport</run_depend>
   <run_depend>jsk_topic_tools</run_depend>
-  <run_depend>paramiko</run_depend>
-  <run_depend>python-click</run_depend>
-  <test_depend>python-freezegun-pip</test_depend>
+  <!-- <run_depend>paramiko</run_depend> -->
+  <!-- <run_depend>python-click</run_depend> -->
+  <!-- <test_depend>python-freezegun-pip</test_depend> -->
   <test_depend>python-nose</test_depend>
   <test_depend>roslint</test_depend>
   <export>
