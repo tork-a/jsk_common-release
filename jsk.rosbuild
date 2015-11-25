@@ -11,6 +11,11 @@ function usage {
     echo >&2 "          [--no-sudo] do not run with sudo"
     echo >&2 "          [-s|--shadow-fixed] use ros-shodow-fixed repository"
     echo >&2 "          [--rtm|--start-jsk|--rtm-ros-robotics] merge .rosinstall for rtm-ros stuff"
+    echo >&2 "          [--rbrapp] merge .rosinstall for rbrapp user"
+    echo >&2 "          [--euslib] merge .rosinstall for euslib user"
+    echo >&2 "          [--h8|--h8-tools] merge .rosinstall for h8_tools user"
+    echo >&2 "          [--tendon|--tendon-robot] merge .rosinstall for tendon robot user"
+    echo >&2 "          [--unreleased] merge .rosinstall for jsk-ros-pkg-unreleased user"
     echo >&2 "          [--from-source] install jsk and related packages from source code"
     echo >&2 "          [--from-full-source] install whole ros system using source code"
     echo >&2 "          [-r|--repositories] comma separated list of repositories to install"
@@ -26,7 +31,7 @@ function error {
 trap error ERR
 
 # command line parse
-OPT=`getopt -o hipeynsr: -l help,show-install,show-package,show-environment,yes,rtm,start-jsk,from-source,from-full-source,use-shadow-fixed,no-sudo,repositories -- $*`
+OPT=`getopt -o hipeynsr: -l help,show-install,show-package,show-environment,yes,rtm,start-jsk,rtm-ros-robotics,rbrapp,h8,h8-tools,euslib,tendon,tendon-robot,unreleased,from-source,from-full-source,use-shadow-fixed,no-sudo,repositories -- $*`
 if [ $? != 0 ]; then
     usage
 fi
@@ -45,6 +50,11 @@ while [ -n "$1" ] ; do
 	-n|--dry-run) DRY=true; shift;;
 	-s|--use-shadow) DEBIAN_REPOSITORY='http://packages.ros.org/ros-shadow-fixed/ubuntu'; shift;;
 	--rtm|--start-jsk|--rtm-ros-robotics) RTM_ROS_ROBOTICS=true; shift;;
+	--rbrapp) RBRAPP=true; shift;;
+	--euslib) EUSLIB=true; shift;;
+	--h8|--h8-tools) H8_TOOLS=true; shift;;
+	--tendon|--tendon-robot) TENDON=true; shift;;
+	--unreleased) UNRELEASED=true; shift;;
 	--from-source) USE_SOURCE=true; shift;;
 	--from-full-source) USE_SOURCE=full; shift;;
 	--no-sudo) SUDO='echo "[NO_SUDO] skipping"'; shift;;
@@ -113,9 +123,24 @@ export PATH=$PATH:/usr/local/bin ## for ros tools
 export LC_ALL=en_US.UTF-8
 unset SVN_REVISION ## this jenkins environment valiables conflicts with mk/svn_checkout.mk
 
+function _version_ge {
+  local ver1 ver2 ret
+  ver1=$1
+  ver2=$2
+  python -c "\
+import sys
+from distutils.version import StrictVersion
+if StrictVersion('$ver1') >= StrictVersion('$ver2'):
+  sys.exit(0)
+sys.exit(1)"
+}
+
 # define functions
 # http://www.ros.org/wiki/electric/Installation/Ubuntu
 function setup-ros {
+    # setup pip and setuptools
+    $COMMAND $SUDO easy_install pip
+    $COMMAND $SUDO pip install --upgrade pip setuptools
     if [ "$YES" == "-y" ] ;then
         REPLY="Y"
         APT_GET_YES="-y -qq -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confnew"
@@ -150,7 +175,11 @@ function setup-ros {
         $COMMAND $SUDO apt-get update
     fi
     $COMMAND $SUDO apt-get upgrade $YES
-    $COMMAND $SUDO apt-get $APT_GET_YES install ros-${DISTRIBUTION}-rosbash python-rosdep python-wstool python-catkin-tools python-pip
+    $COMMAND $SUDO apt-get $APT_GET_YES install ros-${DISTRIBUTION}-rosbash python-rosdep python-wstool python-catkin-tools
+    _version_ge $(rosdep --version) "0.11.2" || {
+      echo "rosdep is too old (should be greater than 0.11.2)! version: $(rosdep --version). upgrading..." >&2
+      $COMMAND $SUDO apt-get install --only-upgrade python-rosdep  # python-rosdep>=0.11.2
+    }
     if [ "$USE_SOURCE" == "full" ]; then
         $COMMAND $SUDO apt-get $APT_GET_YES install python-rosinstall-generator
         $COMMAND $SUDO apt-get $APT_GET_YES install libftdi-dev libgstreamer0.10-dev libgst-dev libgstreamer-plugins-base0.10-dev
@@ -255,7 +284,7 @@ function compile-pkg {
     if [ -e ${ROS_INSTALLDIR}_parent/src ]; then
         $COMMAND source /opt/ros/$DISTRIBUTION/setup.sh
         #
-        (cd ${ROS_INSTALLDIR}_parent && LC_ALL=C $COMMAND catkin build --no-status)
+        (cd ${ROS_INSTALLDIR}_parent && LC_ALL=C $COMMAND catkin init -w . && LC_ALL=C $COMMAND catkin build --no-status)
         if [ "`grep -c ${ROS_INSTALLDIR}_parent/devel/share ${ROS_INSTALLDIR}_parent/devel/.catkin`" == 0 ] ; then
             echo -n ";${ROS_INSTALLDIR}_parent/devel/share" >> ${ROS_INSTALLDIR}_parent/devel/.catkin
             echo "** force add ${ROS_INSTALLDIR}_parent/devel/share to ROS_PACKAGE_PATH"
@@ -271,7 +300,7 @@ function compile-pkg {
 
     env | grep ROS
     # do compile
-    (cd $ROS_INSTALLDIR && LC_ALL=C $COMMAND catkin build --no-status $PACKAGES)
+    (cd $ROS_INSTALLDIR && LC_ALL=C $COMMAND catkin init -w . && LC_ALL=C $COMMAND catkin build --no-status $PACKAGES)
     ## load setup.sh
     $COMMAND source ${ROS_INSTALLDIR}/devel/setup.sh
     $COMMAND rospack profile
@@ -307,6 +336,42 @@ EOF
     local-name: rtm-ros-robotics/rtmros_gazebo
 EOF
     fi
+    if [ "$RBRAPP" = "true" ]; then
+        cat <<EOF >> /tmp/rosinstall.$$
+- git:
+    uri: https://github.com/jsk-ros-pkg/rbrapp.git
+    local-name: jsk-ros-pkg/rbrapp
+EOF
+    fi
+    if [ "$H8_TOOLS" = "true" ]; then
+        cat <<EOF >> /tmp/rosinstall.$$
+- git:
+    uri: https://github.com/jsk-ros-pkg/h8_tools.git
+    local-name: jsk-ros-pkg/h8_tools
+EOF
+    fi
+    if [ "$EUSLIB" = "true" ]; then
+        cat <<EOF >> /tmp/rosinstall.$$
+- git:
+    uri: https://github.com/jsk-ros-pkg/euslib.git
+    local-name: jsk-ros-pkg/euslib
+EOF
+    fi
+    if [ "$TENDON" = "true" ]; then
+        cat <<EOF >> /tmp/rosinstall.$$
+- git:
+    uri: https://github.com/jsk-ros-pkg/jsk_tendon_robot.git
+    local-name: jsk-ros-pkg/jsk_tendon_robot
+EOF
+    fi
+    if [ "$UNRELEASED" = "true" ]; then
+        cat <<EOF >> /tmp/rosinstall.$$
+- git:
+    uri: https://github.com/jsk-ros-pkg/jsk-ros-pkg-unreleased.git
+    local-name: jsk-ros-pkg-unreleased
+EOF
+    fi
+
     if [ "$USE_SOURCE" != "" ]; then
         wget  'https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosinstall' -O /tmp/jsk.rosinstall.$$
         cat /tmp/jsk.rosinstall.$$ >> /tmp/rosinstall.$$
@@ -386,6 +451,12 @@ else
     # setup-android
     compile-jsk-ros-pkg
     # test-jsk-ros-pkg
+    echo
+    echo
+    echo "==============================================="
+    echo "Done jsk.rosbuild"
+    echo "source $ROS_INSTALLDIR/devel/setup.bash"
+    echo "==============================================="
 fi
 
 #
