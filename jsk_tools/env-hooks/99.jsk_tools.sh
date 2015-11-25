@@ -90,10 +90,17 @@ rossetip_addr() {
     if [ "$(echo $target_host | sed -e 's/[0-9\.]//g')" != "" ]; then
         target_hostip=$(timeout 0.001 getent hosts ${target_host} | cut -f 1 -d ' ')
     fi
-    if [ "$target_hostip" = "" ]; then target_hostip=$target_host; fi
     local mask_target_ip=$(echo ${target_hostip} | cut -d. -f1-3)
-    export ROS_IP=$(PATH=$PATH:/sbin LANGUAGE=en LANG=C ifconfig | grep inet\ | sed 's/.*inet addr:\([0-9\.]*\).*/\1/' | tr ' ' '\n' | grep $mask_target_ip | head -1)
-    export ROS_HOSTNAME=$ROS_IP
+    for ip in $(hostname -I); do
+        if echo $ip | egrep "^172.17.42.|^127.0." >/dev/null; then
+            # skip docker/local host
+            continue
+        elif echo $ip | grep "$mask_target_ip" >/dev/null; then
+            export ROS_IP=$ip
+            break
+        fi
+    done
+   export ROS_HOSTNAME=$ROS_IP
 }
 
 rossetip() {
@@ -111,7 +118,7 @@ rossetip() {
     then
         unset ROS_IP
         unset ROS_HOSTNAME
-        echo -e "\e[1;31munable to set ROS_IP and ROS_HOSTNAME\e[m"
+        echo -e "\e[1;31munable to set ROS_IP and ROS_HOSTNAME\e[m" >&2
         return 1
     else
         echo -e "\e[1;31mset ROS_IP and ROS_HOSTNAME to $ROS_IP\e[m"
@@ -155,4 +162,47 @@ rost() {
             rost
         fi
     fi
+}
+
+restart_travis() {
+  # Restart travis from command line
+  if [ $# -lt 2 ]; then
+    echo "usage: restart_travis <repo_slug> <job_id>"
+    echo "example:"
+    echo "  restart_travis jsk-ros-pkg/jsk_common 1258.2"
+    return 1
+  fi
+  if [ -z $SLACK_TOKEN ]; then
+    echo "Please set SLACK_TOKEN (see: https://api.slack.com/web)"
+    return 1
+  fi
+  local slug job_id msg
+  slug=$1
+  job_id=$2
+  msg="restart travis $slug $job_id"
+  echo "sending... '$msg' -> #travis"
+  echo $msg | slacker --channel travis --as-user
+  if [ $? -eq 2 ]; then
+    echo "Please upgrade slacker-cli" >&2
+    return 1
+  fi
+}
+
+rosbag_record_interactive() {
+    rosbag record $(zenity --list --column topics $(rostopic list) --multiple --separator=' ')
+}
+
+rosrecord () {
+  if rostopic list &>/dev/null; then
+    local topics timestamp
+    timestamp=$(date +%Y-%m-%d-%H-%M-%S)
+    echo "Recording to $timestamp"
+    mkdir -p $timestamp
+    cd $timestamp
+    rosparam dump "${timestamp}_rosparam.yaml"
+    rosbag record $(rostopic list | percol | xargs) --output-name=$timestamp --size=2000 --split --buffsize=0
+    cd ..
+  else
+    return 1
+  fi
 }
