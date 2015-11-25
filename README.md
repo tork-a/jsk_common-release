@@ -1,5 +1,19 @@
-jsk_common [![Build Status](https://travis-ci.org/jsk-ros-pkg/jsk_common.png?branch=master)](https://travis-ci.org/jsk-ros-pkg/jsk_common)
+jsk_common
 ===
+
+[![Build Status](https://travis-ci.org/jsk-ros-pkg/jsk_common.svg?branch=master)](https://travis-ci.org/jsk-ros-pkg/jsk_common)
+[![Read the Docs](https://readthedocs.org/projects/pip/badge/?version=latest)](https://jsk-common.readthedocs.org)
+[![Slack](https://img.shields.io/badge/slack-jsk--robotics-e100e1.svg)](http://jsk-robotics.slack.com)
+[![Join the chat at https://gitter.im/jsk-ros-pkg/jsk_common](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsk-ros-pkg/jsk_common?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+Deb Build Status
+------------
+
+Package | Indigo (Saucy) | Indigo (Trusty) | Jade (Trusty) | Jade (Utopic) | Jade (Vivid)
+------- | -------------- | --------------- | ------------- | ------------- | ------------
+jsk_common (32-bit) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-jsk-common_binarydeb_saucy_i386)](http://jenkins.ros.org/job/ros-indigo-jsk-common_binarydeb_saucy_i386/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-jsk-common_binarydeb_trusty_i386)](http://jenkins.ros.org/job/ros-indigo-jsk-common_binarydeb_trusty_i386/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_trusty_i386)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_trusty_i386/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_utopic_i386)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_utopic_i386/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_vivid_i386)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_vivid_i386/) |
+jsk_common (64-bit) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-jsk-common_binarydeb_saucy_amd64)](http://jenkins.ros.org/job/ros-indigo-jsk-common_binarydeb_saucy_amd64/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-jsk-common_binarydeb_trusty_amd64)](http://jenkins.ros.org/job/ros-indigo-jsk-common_binarydeb_trusty_amd64/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_trusty_amd64)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_trusty_amd64/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_utopic_amd64)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_utopic_amd64/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_vivid_amd64)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_vivid_amd64/) |
+
 
 Install
 ---
@@ -50,46 +64,31 @@ Watch all the jsk github repositories.
 ===
 Please use [this](http://jsk-github-watcher.herokuapp.com/)
 
-Deb Build Status
------------------
+Slack for JSK Lab members <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Slack_Icon.png" height="40px" />
+=========================
+You can login to [slack](https://slack.com/) from [here](https://jsk-robotics.slack.com).
+You can create account using imi address.
 
-hydro
+[scudcloud](https://github.com/raelgc/scudcloud) is a desktop client for slack and you can install it
+by following [instruction](https://github.com/raelgc/scudcloud#ubuntukubuntu-mint-and-debian).
 
-- sourcedeb [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_sourcedeb)](http://jenkins.ros.org/job/ros-hydro-jsk-common_sourcedeb/)
-- binarydeb precise amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_amd64)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_amd64/)
-- binarydeb precise i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_i386)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_i386/)
-- binarydeb quantal amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_amd64)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_amd64/)
-- binarydeb quantal i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_i386)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_i386/)
-- binarydeb raring amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_amd64)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_amd64/)
-- binarydeb raring i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_i386)](http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_i386/)
+You can restart travis and jenkins from slack's `#travis` channel.
 
-groovy
+Restart travis from slack
+-------------------------
+![](images/restart_travis.png)
 
-- sourcedeb [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_sourcedeb)](http://jenkins.ros.org/job/ros-groovy-jsk-common_sourcedeb/)
-- binarydeb oneiric amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_amd64)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_amd64/)
-- binarydeb oneiric i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_i386)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_i386/)
-- binarydeb precise amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_amd64)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_amd64/)
-- binarydeb precise i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_i386)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_i386/)
-- binarydeb quantal amd64 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_amd64)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_amd64/)
-- binarydeb quantal i386 [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_i386)](http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_i386/)
+Type `restart travis <job-id>` from slack#travis channel.
 
-Devel Test Status
------------------
-[Hydro](http://jenkins.ros.org/job/devel-hydro-jsk_common/) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=devel-hydro-jsk_common)](http://jenkins.ros.org/job/devel-hydro-jsk_common/)
+**N.B.: `<job-id>` is not the number of Pull-request.**
 
-[![Hydro Test Satus](http://jenkins.ros.org/job/devel-hydro-jsk_common/test/trend?job)](http://jenkins.ros.org/job/devel-hydro-jsk_common/)
+you can get `<job-id>` from Travis page.
 
-[Groovy](http://jenkins.ros.org/job/devel-groovy-jsk_common) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=devel-groovy-jsk_common)](http://jenkins.ros.org/job/devel-groovy-jsk_common/)
+- ![](images/PR_page.png)
+- <img src="images/Travis_page.png" width="70%" />
 
-[![Groovy Test Satus](http://jenkins.ros.org/job/devel-groovy-jsk_common/test/trend?job)](http://jenkins.ros.org/job/devel-groovy-jsk_common/)
+Restart docker from slack
+-------------------------
+![](images/restart_docker.png)
 
-Prerelease Test Status
-----------------------
-
-[Hydro](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=prerelease-hydro-jsk_common)](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/) [Start Testing](http://prerelease.ros.org/create_job/hydro)
-
-[![Hydro Test Satus](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/test/trend?job)](http://jenkins.ros.org/job/prerelease-hydro-jsk_common/)
-
-[Groovy](http://jenkins.ros.org/job/prerelease-groovy-jsk_common) [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=prerelease-groovy-jsk_common)](http://jenkins.ros.org/job/prerelease-groovy-jsk_common/)  [Start Testing](http://prerelease.ros.org/create_job/groovy)
-
-[![Groovy Test Satus](http://jenkins.ros.org/job/prerelease-groovy-jsk_common/test/trend?job)](http://jenkins.ros.org/job/prerelease-groovy-jsk_common/)
+Type `restart docker` from slack#travis channel.
