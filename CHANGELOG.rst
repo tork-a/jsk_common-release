@@ -2,6 +2,9 @@
 Changelog for package dynamic_tf_publisher
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.5 (2015-11-30)
+------------------
+
 2.0.4 (2015-11-25)
 ------------------
 * [dynamic_tf_publisher] Moreh helpful debug message and fix several typos
