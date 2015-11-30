@@ -1,4 +1,4 @@
-From a005fbb6375240481d66115de738287b65417b61 Mon Sep 17 00:00:00 2001
+From c82b4f191d6fa4b8a83db899296f14f9e11ec8d4 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 23:28:48 +0900
 Subject: [PATCH] comment out pip package
