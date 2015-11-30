@@ -2,6 +2,9 @@
 Changelog for package image_view2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.5 (2015-11-30)
+------------------
+
 2.0.4 (2015-11-25)
 ------------------
 * [image_view2] Visualize depth image
