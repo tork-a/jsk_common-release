@@ -1,4 +1,4 @@
-From 8c59dbf3e0a877fb2687028842e0a29dee318b74 Mon Sep 17 00:00:00 2001
+From c7782e58cd7f77784c68df0667e441af3f10b50e Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Mon, 4 May 2015 08:24:09 +0900
 Subject: [PATCH] pip packages need to removed to release as deb
