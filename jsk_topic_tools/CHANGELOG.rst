@@ -2,6 +2,9 @@
 Changelog for package jsk_topic_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.6 (2015-12-02)
+------------------
+
 2.0.5 (2015-11-30)
 ------------------
 * [jsk_topic_tools] Rename _util.py -> _utils.py
