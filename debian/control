@@ -1,0 +1,12 @@
+Source: ros-jade-virtual-force-publisher
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-catkin, ros-jade-geometry-msgs, ros-jade-kdl-parser, ros-jade-sensor-msgs, ros-jade-tf-conversions, ros-jade-urdf
+Homepage: http://ros.org/wiki/virtual_force_publisher
+Standards-Version: 3.9.2
+
+Package: ros-jade-virtual-force-publisher
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-geometry-msgs, ros-jade-kdl-parser, ros-jade-sensor-msgs, ros-jade-tf-conversions, ros-jade-urdf
+Description: publish end effector's force, which is estmated from joint torque value
