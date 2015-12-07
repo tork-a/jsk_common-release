@@ -1,4 +1,4 @@
-From 346d56abf0e4d52413c3b5fedb0226b449616b4e Mon Sep 17 00:00:00 2001
+From 2eb08a6b54b0b47c8016088efd8be96483adf750 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Mon, 22 Jun 2015 16:19:39 +0900
 Subject: [PATCH] dynamixel controller is not released on jade yet
@@ -8,7 +8,7 @@ Subject: [PATCH] dynamixel controller is not released on jade yet
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/package.xml b/package.xml
-index 4ee319b..059655d 100644
+index 9639dad..6491efd 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -17,7 +17,7 @@
