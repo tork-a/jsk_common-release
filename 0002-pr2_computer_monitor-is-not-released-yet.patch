@@ -1,4 +1,4 @@
-From 4955d95293f817f331c7ee2c46a02ccc631b4c34 Mon Sep 17 00:00:00 2001
+From 2a6eea6b13e8613758950b3d29fc78d19521deb8 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 26 Nov 2015 00:56:17 +0900
 Subject: [PATCH 2/3] pr2_computer_monitor is not released yet
@@ -8,7 +8,7 @@ Subject: [PATCH 2/3] pr2_computer_monitor is not released yet
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/package.xml b/package.xml
-index 9056110..3ea9e5a 100644
+index 4ef952d..ed61e41 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -25,7 +25,7 @@

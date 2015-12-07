@@ -1,4 +1,4 @@
-From 2cdec6ef4d9adb21de46174bcf47a4ba5322e6cf Mon Sep 17 00:00:00 2001
+From 6043357eec1fdc7c81ccc549b9c67a8dd355d5a5 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 26 Nov 2015 01:02:55 +0900
 Subject: [PATCH 3/3] rmeove axis_camera
@@ -8,7 +8,7 @@ Subject: [PATCH 3/3] rmeove axis_camera
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/package.xml b/package.xml
-index 3ea9e5a..31da286 100644
+index ed61e41..5b0370c 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -24,7 +24,7 @@
