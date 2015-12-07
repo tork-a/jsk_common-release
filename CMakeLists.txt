@@ -2,6 +2,13 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(jsk_topic_tools)
 
+# Use ccache if installed to make it fast to generate object files
+find_program(CCACHE_FOUND ccache)
+if(CCACHE_FOUND)
+  set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+  set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+endif(CCACHE_FOUND)
+
 find_package(catkin REQUIRED COMPONENTS topic_tools message_generation roscpp rostest std_msgs std_srvs
   rostime
   nodelet tf
@@ -26,7 +33,7 @@ catkin_package(
     CFG_EXTRAS nodelet.cmake
 )
 
-include_directories(include ${catkin_INCLUDE_DIRS})
+include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -z defs")
 #include_directories(${Boost_INCLUDE_DIRS})
 add_executable(standalone_complexed_nodelet src/standalone_complexed_nodelet.cpp)
