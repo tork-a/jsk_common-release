@@ -1,94 +1,261 @@
-jsk_common
-===
+jsk_tools
+=========
 
-[![Build Status](https://travis-ci.org/jsk-ros-pkg/jsk_common.svg?branch=master)](https://travis-ci.org/jsk-ros-pkg/jsk_common)
-[![Read the Docs](https://readthedocs.org/projects/pip/badge/?version=latest)](https://jsk-common.readthedocs.org)
-[![Slack](https://img.shields.io/badge/slack-jsk--robotics-e100e1.svg)](http://jsk-robotics.slack.com)
-[![Join the chat at https://gitter.im/jsk-ros-pkg/jsk_common](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsk-ros-pkg/jsk_common?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+You can use commands below after `source /opt/ros/$DISTRO/setup.bash`.
 
-Deb Build Status
+rossetip
+--------
+Setup your `ROS_IP` and `ROS_HOSTNAME`.
+
+```sh
+$ rossetip
+set ROS_IP and ROS_HOSTNAME to 192.168.11.1
+$ echo $ROS_IP, $ROS_HOSTNAME
+192.168.11.1, 192.168.11.1
+```
+
+
+rossetlocal
+-----------
+Setup your `ROS_MASTER_URI` to localhost.
+
+```sh
+$ rossetlocal
+set ROS_MASTER_URI to http://localhost:11311
+$ echo $ROS_MASTER_URI
+http://localhost:11311
+```
+
+
+rossetmaster
 ------------
-
-Package | Indigo (Saucy) | Indigo (Trusty) | Jade (Trusty) | Jade (Utopic) | Jade (Vivid)
-------- | -------------- | --------------- | ------------- | ------------- | ------------
-jsk_common (32-bit) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-jsk-common_binarydeb_saucy_i386)](http://jenkins.ros.org/job/ros-indigo-jsk-common_binarydeb_saucy_i386/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-jsk-common_binarydeb_trusty_i386)](http://jenkins.ros.org/job/ros-indigo-jsk-common_binarydeb_trusty_i386/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_trusty_i386)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_trusty_i386/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_utopic_i386)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_utopic_i386/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_vivid_i386)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_vivid_i386/) |
-jsk_common (64-bit) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-jsk-common_binarydeb_saucy_amd64)](http://jenkins.ros.org/job/ros-indigo-jsk-common_binarydeb_saucy_amd64/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-jsk-common_binarydeb_trusty_amd64)](http://jenkins.ros.org/job/ros-indigo-jsk-common_binarydeb_trusty_amd64/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_trusty_amd64)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_trusty_amd64/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_utopic_amd64)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_utopic_amd64/) | [![Build Status](http://jenkins.ros.org/buildStatus/icon?job=ros-jade-jsk-common_binarydeb_vivid_amd64)](http://jenkins.ros.org/job/ros-jade-jsk-common_binarydeb_vivid_amd64/) |
-
-
-Install
----
-You can use `jsk.rosbuild` to setup your environment.
-
+Setup your `ROS_MASTER_URI` to robot's hostname.
 
 ```sh
-wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild hydro
+# rossetmaster ${hostname} ${ros_port}
+# default: hostname=pr1040, ros_port=11311
+user@host $ rossetmaster
+set ROS_MASTER_URI to http://pr1040:11311
+[http://pr1040:11311] user@host $ echo $ROS_MASTER_URI
+http://pr1040:11311
 ```
 
-For hacker
+
+rosdefault
+----------
+Setup `ROS_MASTER_URI` with default hostname written in `~/.rosdefault`.
 
 ```sh
-wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild --from-source hydro
+$ cat ~/.rosdefault
+pr1040
+$ rosdefault
+set ROS_MASTER_URI to http://pr1040:11311
 ```
 
-For hrpsys user
+It is recommended to run `rosdefault` in your .bashrc or .zshrc.
+
+
+rossetdefault
+-------------
+Setup your default hostname.
+After running this command, you can setup `ROS_MASTER_URI` with default hostname by `rosdefault`.
+(default hostname will be stored at `~/.rosdefault`)
 
 ```sh
-wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild --rtm hydro
+# rossetdefault ${hostname}
+# default: hostname=local
+$ rossetdefault baxter
+set ROS_MASTER_URI to http://baxter:11311
+$ bash
+$ rosdefault
+set ROS_MASTER_URI to http://baxter:11311
 ```
 
-For hrpsys hacker
+rosbag\_record\_interactive
+---------------------------
+You can choose topics to record in GUI and record them into a bag file
+
+restart\_travis
+---------------
+Restart a travis job for specified github repository.
+Firstly, add below in your `.bashrc`:
 
 ```sh
-wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild --from-source --rtm hydro
+# you can get SLACK_TOKEN at https://api.slack.com/web.
+export SLACK_TOKEN=xoxp-XXXXXXXX-XXXXXXXX-XXXXXXXX
 ```
 
-`jsk.rosbuild` generates filesystem as follows:
+To restart travis, need the repository slug (ex: `jsk-ros-pkg/jsk_common`) and job id (ex: `2019.6`):
 
-```
-~ --- ros
-       + --- hydro_parent: Only availabe if --from-source option is enabled
-              + --- src:   maintained by wstool
-              + --- build: generated by catkin_tools
-              + --- devel: generated by catkin_tools
-       +--- hydro
-             + --- src:    maintained by wstool
-             + --- build:  generated by catkin_tools
-             + --- devel:  generated by catkin_tools
+```sh
+$ restart_travis jsk-ros-pkg/jsk_common 2019.6  # usage: restart_travis <repo_slug> <job_id>
+sending... 'restart travis jsk-ros-pkg/jsk_common 2019.6' -> #travis
 ```
 
-Watch all the jsk github repositories.
-===
-Please use [this](http://jsk-github-watcher.herokuapp.com/)
 
-Slack for JSK Lab members <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Slack_Icon.png" height="40px" />
-=========================
-You can login to [slack](https://slack.com/) from [here](https://jsk-robotics.slack.com).
-You can create account using imi address.
+sanity\_lib.py
+-------------
 
-[scudcloud](https://github.com/raelgc/scudcloud) is a desktop client for slack and you can install it
-by following [instruction](https://github.com/raelgc/scudcloud#ubuntukubuntu-mint-and-debian).
+### check Topic is published
 
-You can restart travis and jenkins from slack's `#travis` channel.
+- If you set `echo` param as True, the topic message will be shown in terminal
 
-Restart travis from slack
--------------------------
-![](images/restart_travis.png)
+**Example**
+```
+from jsk_tools.sanity_lib import *
+from std_msgs.msg import String
+rospy.init_node("check_sanity", anonymous = True)
+checkTopicIsPublished("/chatter", String)
+```
+### check Node State
+There is 4 cases
+- Node exists, and you want to exist.
+- Node exists, and you don't want to exist
+- Node doesn't exist and you want to exist
+- Node doesn't exist and you don't want to exist
 
-Type `restart travis <job-id>` from slack#travis channel.
+The second parameter is Needed Parameter.
 
-**N.B.: `<job-id>` is not the number of Pull-request.**
+**Example**
+```
+from jsk_tools.sanity_lib import *
+rospy.init_node("check_sanity", anonymous = True)
+checkNodeState("/listener", True)
+```
 
-you can get `<job-id>` from Travis page.
+### check Params
+**Example**
+```
+from jsk_tools.sanity_lib import *
+rospy.init_node("check_sanity", anonymous = True)
+checkROSParam("/param_test", 5)
+```
 
-- ![](images/PR_page.png)
-- <img src="images/Travis_page.png" width="70%" />
+bag_plotter.py
+--------------
+bag_plotter is a script to plot from a bag file directly.
+![](images/bag_plotter.png)
 
-Restart docker from slack
--------------------------
-![](images/restart_docker.png)
+```
+usage: bag_plotter.py [-h] [--duration DURATION] [--start-time START_TIME]
+                      config bag
 
-Type `restart docker` from slack#travis channel.
+Plot from bag file
+
+positional arguments:
+  config                yaml file to configure plot
+  bag                   bag file to plot
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --duration DURATION, -d DURATION
+                        Duration to plot
+  --start-time START_TIME, -s START_TIME
+                        Start timestamp to plot
+```
+
+Format of yaml file is like:
+```yaml
+global:
+  layout: <vertical, horizontal or manual, optional and defaults to vertical>
+plots:
+  - title:  <title of plot, required>
+    topic:  <list of topics, required>
+    field:  <list of accessor to get value to plot, required>
+    layout: <2-d layout. if global/layout is manual, this field is required>
+    legend: <show legend or not, optional and defaults to true>
+```
+
+the length of topic and field should be same.
+You can use "array format" in field.
+
+* `a/b/c[0]` means the 1st element of array `a/b/c`.
+* `a/b/c[0:3]` means 1st, 2nd and 4rd elements of array `a/b/c`.
+
+Example is like:
+```yaml
+global:
+  layout: vertical
+plots:
+  - title: "rleg temp"
+    topic: [/motor_states]
+    field: ["driver_temp[0:6]"]
+  - title: "lleg temp"
+    topic: [/motor_states]
+    field: ["driver_temp[6:12]"]
+  - title: "leg force (z)"
+    topic: [/off_lfsensor, /off_rfsensor]
+    field: [wrench/force/z, wrench/force/z,]
+```
+
+When you want to use manual layout, example should be like follows:
+```
+global:
+  layout: manual
+plots:
+  - title: "rleg temp"
+    topic: [/motor_states]
+    field: ["driver_temp[0:6]"]
+    layout: [0, 0]
+  - title: "lleg temp"
+    topic: [/motor_states]
+    field: ["driver_temp[6:12]"]
+    layout: [0, 1]
+  - title: "chest temp"
+    topic: [/motor_states]
+    field: ["driver_temp[12:15]"]
+    layout: [1, 0]
+  - title: "head temp"
+    topic: [/motor_states]
+    field: ["driver_temp[15:17]"]
+    layout: [1, 1]
+```
+
+roscore_regardless.py
+---------------------
+This script always checks roscore liveness and automatically run and kill a program.
+
+```
+rosrun jsk_tools roscore_regardless.py rostopic echo /foo
+```
+
+
+topic\_hz\_monitor.py
+--------------------------
+This script is used to find bottleneck of topic nodes flow.
+You can specify one topic and use `--search-parent` option to collect topics automatically.
+(**Note** Subscribing too many topics makes it difficult to get correct result.)
+![](images/topic_hz_monitor.png)
+
+**Example**
+```sh
+rosrun jsk_tools topic_hz_monitor.py /euclidean_segmentation/output --search-parent
+rosrun jsk_tools topic_hz_monitor.py /euclidean_segmentation/output /camera/rgb/points
+```
+
+
+emacs
+-----
+We strongly recommend to use `dot.emacs` for common user.
+
+```lisp
+(load "~/ros/hydro/src/jsk-ros-pkg/jsk_common/jsk_tools/dot-files/dot.emacs")
+```
+
+
+### inferior-lisp-mode
+![](images/inferior-lisp.gif)
+
+inferior-lisp-mode is a classic lisp environment on emacs.
+You can invoke roseus by `C-c e`.
+
+When you use inferior-lisp-mode, you can immediately evaluate sexpression
+without copy-and-paste it by `C-x C-e`.
+
+tmux
+----
+Write following line in your `~/.tmux.conf`
+
+```
+source-file ~/ros/hydro/src/jsk-ros-pkg/jsk_common/jsk_tools/dot-files/tmux.conf
+```
