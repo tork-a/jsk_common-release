@@ -1,17 +1,17 @@
-From b8f2a6e3181995f09f64a09616cb80c360dfa304 Mon Sep 17 00:00:00 2001
+From 0db5a128a337155c81d3397a0f9609f3f99f495e Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Mon, 4 May 2015 08:24:09 +0900
 Subject: [PATCH] pip packages need to removed to release as deb
 
 ---
- package.xml |   10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ package.xml |   12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 69b49d1..4ef952d 100644
+index d5e6408..113c242 100644
 --- a/package.xml
 +++ b/package.xml
-@@ -17,10 +17,10 @@
+@@ -17,11 +17,11 @@
  
    <build_depend>git</build_depend>
    <build_depend>rosgraph_msgs</build_depend>
@@ -19,14 +19,16 @@ index 69b49d1..4ef952d 100644
 -  <run_depend>python-colorama</run_depend>
 -  <run_depend>python-pygithub3</run_depend>
 -  <run_depend>python-slacker-cli</run_depend>
+-  <run_depend>python-texttable</run_depend>
 +  <!-- <run_depend>python-percol</run_depend> -->
 +  <!-- <run_depend>python-colorama</run_depend> -->
 +  <!-- <run_depend>python-pygithub3</run_depend> -->
 +  <!-- <run_depend>python-slacker-cli</run_depend> -->
++  <!-- <run_depend>python-texttable</run_depend> -->
    <run_depend>rosgraph_msgs</run_depend>
    <run_depend>rospy</run_depend>
    <run_depend>rqt_reconfigure</run_depend>
-@@ -29,7 +29,7 @@
+@@ -30,7 +30,7 @@
    <run_depend>jsk_network_tools</run_depend>
    <run_depend>jsk_topic_tools</run_depend>
    <run_depend>rosbag</run_depend>
