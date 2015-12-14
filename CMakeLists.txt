@@ -23,7 +23,7 @@ install(DIRECTORY bin/
   USE_SOURCE_PERMISSIONS
   )
 
-set(BIN_EXECUTABLES ros_console.py run_tmux)
+set(BIN_EXECUTABLES git-jsk-commit ros_console.py run_tmux)
 foreach(exec ${BIN_EXECUTABLES})
   add_custom_command(OUTPUT ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_BIN_DESTINATION}/${exec}
     COMMAND cmake -E make_directory ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_BIN_DESTINATION}
@@ -34,6 +34,18 @@ foreach(exec ${BIN_EXECUTABLES})
 endforeach(exec)
 
 if (CATKIN_ENABLE_TESTING)
+  find_package(roslint REQUIRED)
+  roslint_python(src/jsk_tools/cltool.py)
+  roslint_add_test()
   find_package(rostest REQUIRED)
+  # check ros distro >= indigo
+  execute_process(
+    COMMAND python -c "import sys; sys.exit(ord('$ENV{ROS_DISTRO}'[0]) >= ord('indigo'[0]))"
+    RESULT_VARIABLE DISTRO_GE_INDIGO)
+  if(${DISTRO_GE_INDIGO})
+    # FIXME: jsk_tools/test_topic_published.py does not work on hydro travis/jenkins
+    # https://github.com/jsk-ros-pkg/jsk_common/pull/1293#issuecomment-164158260
+    add_rostest(test/test_topic_published.launch)
+  endif()
   add_rostest(test/test_stdout.test)
 endif()
