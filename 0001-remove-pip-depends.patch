@@ -1,17 +1,17 @@
-From 3f47972ed3f144d7858e8e337f7b3bcc7b3af59c Mon Sep 17 00:00:00 2001
+From 7259861f668cb852f98d432fa319e3f6050e352b Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
-Date: Mon, 22 Jun 2015 16:18:25 +0900
-Subject: [PATCH 1/3] remove pip rosdep for release
+Date: Thu, 26 Nov 2015 00:57:40 +0900
+Subject: [PATCH] remove pip depends
 
 ---
- package.xml | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ package.xml |   16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 80de7ba..c546afd 100644
+index f4af471..2d54828 100644
 --- a/package.xml
 +++ b/package.xml
-@@ -17,11 +17,11 @@
+@@ -17,20 +17,20 @@
  
    <build_depend>git</build_depend>
    <build_depend>rosgraph_msgs</build_depend>
@@ -28,7 +28,10 @@ index 80de7ba..c546afd 100644
    <run_depend>rosgraph_msgs</run_depend>
    <run_depend>rospy</run_depend>
    <run_depend>rqt_reconfigure</run_depend>
-@@ -30,7 +30,7 @@
+-  <run_depend>axis_camera</run_depend>
+-  <run_depend>pr2_computer_monitor</run_depend>
++  <!-- <run_depend>axis_camera</run_depend> -->
++  <!-- <run_depend>pr2_computer_monitor</run_depend> -->
    <run_depend>jsk_network_tools</run_depend>
    <run_depend>jsk_topic_tools</run_depend>
    <run_depend>rosbag</run_depend>
@@ -38,5 +41,5 @@ index 80de7ba..c546afd 100644
    <!-- <run_depend>mjpeg_server</run_depend> -->
    <!-- <test_depend>mjpeg_server</test_depend> -->
 -- 
-1.9.1
+1.7.9.5
 
