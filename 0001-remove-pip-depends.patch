@@ -1,29 +1,30 @@
-From 5dac060568b976ef42572d6d1a9d2a6c9b2a92fa Mon Sep 17 00:00:00 2001
+From 6e59cca9f13e561850dc07ca2dbad26a6ba137ee Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 26 Nov 2015 01:09:56 +0900
 Subject: [PATCH] remove pip depends
 
 ---
- package.xml | 6 +++---
+ package.xml |    6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 06743e7..8e5b1c8 100644
+index 1c7090a..998b9a2 100644
 --- a/package.xml
 +++ b/package.xml
-@@ -8,9 +8,9 @@
+@@ -7,10 +7,10 @@
+   <maintainer email="ueda@jsk.t.u-tokyo.ac.jp">Ryohei Ueda</maintainer>
    <license>BSD</license>
    <buildtool_depend>catkin</buildtool_depend>
-   <run_depend>paramiko</run_depend>
+-  <run_depend>paramiko</run_depend>
 -  <run_depend>python-click</run_depend>
--  <test_depend>python-freezegun-pip</test_depend>
--  <test_depend>python-nose</test_depend>
++  <!-- <run_depend>paramiko</run_depend> -->
 +  <!-- <run_depend>python-click</run_depend> -->
+   <run_depend>jsk_topic_tools</run_depend>
+-  <test_depend>python-freezegun-pip</test_depend>
 +  <!-- <test_depend>python-freezegun-pip</test_depend> -->
-+  <!-- <test_depend>python-nose</test_depend> -->
+   <test_depend>python-nose</test_depend>
    <test_depend>roslint</test_depend>
    <export>
-   </export>
 -- 
-1.9.1
+1.7.9.5
 
