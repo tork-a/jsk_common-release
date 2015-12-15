@@ -1,4 +1,4 @@
-From 0dbb0cc7e2a4b715a6ef9051db9ff526248da2df Mon Sep 17 00:00:00 2001
+From 12f4bdb831ddb97e2ba958a54035fcc0db6ec1ae Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 22:30:13 +0900
 Subject: [PATCH] Revert "Trimmed the branch to only the jsk_data sub
@@ -6,11 +6,11 @@ Subject: [PATCH] Revert "Trimmed the branch to only the jsk_data sub
 
 This reverts commit fc1a136c9beecbe204e03877afdca97ce105d812.
 ---
- package.xml | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ package.xml |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 06743e7..fea481f 100644
+index 1c7090a..998b9a2 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -7,10 +7,10 @@
@@ -19,15 +19,14 @@ index 06743e7..fea481f 100644
    <buildtool_depend>catkin</buildtool_depend>
 -  <run_depend>paramiko</run_depend>
 -  <run_depend>python-click</run_depend>
--  <test_depend>python-freezegun-pip</test_depend>
--  <test_depend>python-nose</test_depend>
 +  <!-- <run_depend>paramiko</run_depend> -->
 +  <!-- <run_depend>python-click</run_depend> -->
+   <run_depend>jsk_topic_tools</run_depend>
+-  <test_depend>python-freezegun-pip</test_depend>
 +  <!-- <test_depend>python-freezegun-pip</test_depend> -->
-+  <!-- <test_depend>python-nose</test_depend> -->
+   <test_depend>python-nose</test_depend>
    <test_depend>roslint</test_depend>
    <export>
-   </export>
 -- 
-1.9.1
+1.7.9.5
 
