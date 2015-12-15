@@ -1,0 +1,733 @@
+ros-jade-jsk-topic-tools (2.0.9-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Fix typo: test -> text in rosping_existence.py
+  * [jsk_topic_tools] Stop using enum34 and use just int
+  * [jsk_topic_tools/rosping_existence] Add ~speak_text parameter to customization
+  * [jsk_topic_tools/log_utils] Fix include guard.
+    Define warnNoRemap in include guard section.
+  * [jsk_topic_tools] Find Boost_LIBRARIES once nodelet.cmake
+  * Contributors: Kentaro Wada, Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 13 Dec 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (2.0.8-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Add roslint_cpp for src/log_utils.cpp
+  * [jsk_topic_tools] Add roslint_python
+  * [jsk_topic_tools] Refactor CMakeLists.txt by moving rostest find_package
+  * [jsk_topic_tools] Fix for pep8
+  * [jsk_topic_tools/ConnectionBasedNodelet] Support image_transport.
+    Add advertiseImage and advertiseCamera.
+    closes #1198 <https://github.com/jsk-ros-pkg/jsk_common/issues/1198>
+  * Contributors: Kentaro Wada, Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 06 Dec 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (2.0.7-1vivid) vivid; urgency=high
+
+  * Use ccache if installed to make it fast to generate obj file
+  * [jsk_topic_tools] Fix linking for boost_program_options
+  * [jsk_topic_tools] Add sample launch file for standalone_complexed_nodelet
+  * [jsk_topic_tools] Show input/output topics with --inout opt
+  * Contributors: Kentaro Wada, Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 04 Dec 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (2.0.6-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 01 Dec 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (2.0.5-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Rename _util.py -> _utils.py
+  * [jsk_topic_tools] Also fix import in test_name_util.py: name_util -> name_utils
+  * [jsk_topic_tools] Fix renamed module import in log_utils: name_util -> name_utils
+  * Contributors: Iori Kumagai, Kentaro Wada, Yuto Inagaki
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 29 Nov 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (2.0.4-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] test related things in CATKIN_ENABLE_TESTING block
+  * [jsk_topic_tools] Test warnNoRemap  Closes jsk-ros-pkg/jsk_recognition#1322 <https://github.com/jsk-ros-pkg/jsk_recognition/issues/1322>
+  * [jsk_topic_tools/rosping_existence] Speak dead nodes
+  * Use gcc -z defs to check undefined symbols in shared objects  Related to https://github.com/jsk-ros-pkg/jsk_recognition/pull/1330
+  * [jsk_topic_tools] Retry to 3 times
+  * [jsk_topic_tools] Test rosparam_utils.cpp with gtest
+  * [jsk_topic_tools] Test warn_no_remap
+  * [jsk_topic_tools] Test jsk_topic_tools.log_util
+  * [jsk_topic_tools] Test jsk_topic_tools.name_util
+  * [jsk_topic_tools] add_library src/log_utils.cpp
+  * build_depend -> test_depend roscpp_tutorials
+  * Reasonable connection num for connection_based_nodelet
+  * [jsk_topic_tools] Use retry for <test> tag
+  * Refactor test_hz_measure.py as good example
+  * Refactor test_connection.py as good example
+  * Refactor: test_block.py as good example
+  * [jsk_topic_tools] display input/output by --inout
+  * [jsk_topic_tools] Fix style (indent)
+  * [jsk_topic_tools] Follow name rule *_utils.py
+  * [jsk_topic_tools] warnNoRemap for cpp nodes
+  * Generate Documentation for jsk_topic_tools
+  * [jsk_topic_tools] Function to warn with no remappings
+  * [jsk_topic_tools] Correctly return instance
+  * [jsk_topic_tools] Retry test max to 3 times
+  * [jsk_topic_tools] add topic_statistics.py
+  * [jsk_topic_tools] Correctly unsubscribe with multiple publishers
+  * [jsk_topic_tools] ``add_rostest`` problem should be fixed in latest catkin For https://github.com/jsk-ros-pkg/jsk_common/pull/1178#issuecomment-147396447
+  * [jsk_topic_tools] Describe about ~always_subscribe in warning
+  * [jsk_topic_tools] Add ~always_subscribe param for ConnectionBasedTransport
+  * [jsk_topic_tools] Correctly set connection status
+  * [jsk_topic_tools] Add log_utils.py
+  * [jsk_topic_tools] Add python-enum34 as run_depend
+  * [jsk_topic_tools] List depends in alphabetical order
+  * [jsk_topic_tools] Test ConnectionBasedTransport
+  * [jsk_topic_tools] Test ConnectionBasedNodelet with rostest
+  * [jsk_topic_tools] Rename to test_connection_based_nodelet.test
+  * [jsk_topic_tools] Python ConnectionBasedTransport
+  * [jsk_topic_tools] Utility to publish PoseStamped with given static transformation
+  * [jsk_topic_tools/ConnectionBasedNodelet] Read verbose_connection as well as ~verbose_connection
+  * [jsk_topic_tools/ConnectionBasedNodelet] ~verbose_connection parameter to print verbose messages about connection
+  * [jsk_topic_tools] Ros error for rosparam type conversion
+  * [jsk_topic_tools] Warn when no connection in a few sec Closes #1132 <https://github.com/jsk-ros-pkg/jsk_common/issues/1132>  The warning message should be write with ROS_INFO,  for no many warning when running with roslaunch.
+  * [jsk_topic_tools] Supress output messages from testing
+  * [jsk_topic_tools] Depends on roscpp and rostime explicitly
+  * [jsk_topic_tools] Faster implementation of test_topic_compare.py by removing magic sleep
+  * [jsk_topic_tools/ConnectionBasedNodelet] Add latch option to advertise template method
+  * [jsk_topic_tools/LightweightThrottle] Clean-up codes and added some comments
+  * [jsk_topic_tools] Add readme about standalone_complexed_nodelet
+  * [jsk_topic_tools] check /run_id param to know roscore is restarted or not
+  * [jsk_topic_tools/standalone_complexed_nodelet] Fix handling of reampping name resolvance
+  * [jsk_topic_tools] Add space after [functionname]
+  * Contributors: Yuki Furuta, Kei Okada, Kentaro Wada, Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 24 Nov 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (2.0.3-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Install missing executables
+  * [jsk_topic_tools/standalone_complexed_nodelet] Support if and unless
+    fields and read parameter from ~nodelet_%lu as well as ~nodelet
+  * [jsk_topic_tools] Introduce new nodelet manager called
+    standalone_complexed_nodelet.
+    It reads nodelet clients from rosparam and launch them. It is a general
+    model for nodelet like stereo_image_proc. It does not need different
+    processes for manager/clients
+  * [jsk_topic_tools] Make advertise template method critical section in
+    order to avoid race condition between advertise and connectionCallback
+  * [jsk_topic_tools] Add StringRelay nodelet to test DiagnosticNodelet class
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 23 Jul 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (2.0.2-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] add install config directory
+  * [jsk_topic_tools] Add number of subscribers to diagnostic information
+  * [jsk_topic_tools/Relay] Add more readable diagnostic including last time it receives input topic
+  * [jsk_topic_tools/Relay] Add diagnostic information
+  * [jsk_topic_tools] Update default diagnostic message to be more useful
+  * Contributors: Yuki Furuta, Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 06 Jul 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (2.0.1-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Add DeprecatedRelay nodelet for deprecated topics
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 27 Jun 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (2.0.0-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 18 Jun 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.72-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Add global nodehandle
+  * Contributors: Kentaro Wada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 06 Jun 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.71-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Add ~always_subscribe parameter to ConnectionBasedNodelet
+    and DiagnosticNodelet to always subscribe input topics
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 16 May 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.70-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools/Passthrough] Add ~request service like Snapshot
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 07 May 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.69-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Shorter test duration for topic_buffer/hztest_chatter_update
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 04 May 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.68-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Add log_utils.h to print with __PRETY_FUNCTION__
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 04 May 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.67-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Do not subscribe input if no need in Passthrough nodelet
+  * [jsk_topic_tools] Remove non-used TransportHint from relay_nodelet
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 02 May 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.66-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 02 Apr 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.65-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 01 Apr 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.64-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Publish timestamp from snapshot as it publishes ~output
+  * [jsk_topic_tools] Add ~stop service to force to stop publishing messages
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 28 Mar 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.63-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Add Passthrough nodelet to relay topics during
+    specified duration
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 18 Feb 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.62-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Add ~latch option to snapshot nodelet
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 16 Feb 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.61-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Fix snapshot to publish first message correctly
+  * [jsk_topic_tools] Add service interface to change output topic of relay node
+  * anonymous node
+  * add flatten mode for array type message
+  * remove space after ,
+  * add argument exception handler
+  * add csv exporter for rosbag
+  * Contributors: Yuki Furuta, Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 10 Feb 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.60-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] add std_srvs
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 02 Feb 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.59-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Add document about nodelet utility classes
+  * [jsk_topic_tools] Fix license: WillowGarage -> JSK Lab
+  * [jsk_topic_tools] Add documentation about color_utils.h
+  * Remove rosbuild files
+  * [jsk_topic_tools] Return true in service callback of snapshot nodelet
+  * [jsk_topci_tools] Fix heatColor function to return std_msgs::ColorRGBA
+  * [jsk_topic_tools] Add new utility to take snapshot of topic
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 02 Feb 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.58-1vivid) vivid; urgency=high
+
+  * [jsk_topic_tools] Indigo test seems to be broken,
+    so skip testing on indigo
+  * [jsk_topic_tools] Do not implement updateDiagnostic
+    as pure virtual method
+  * Reuse isMasterAlive function across scripts which
+    want to check master state
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 06 Jan 2015 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.57-1vivid) vivid; urgency=high
+
+  * Add function to compute heat color gradient
+  * Add new script: static_transform_pose_stamped. It looks like tf's
+    satatic_transform_publisher but it re-publishes geometry_msgs/PoseStamped.
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 22 Dec 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.56-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 16 Dec 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.55-1vivid) vivid; urgency=high
+
+  * added topic_buffer_periodic_test.launch and added argument to topic_buffer_client/server_sample.launch
+  * add mutex lock in callback and thread function
+  * enable to select periodic mode from server param
+  * enable to select periodic mode from server param
+  * send request periodic publish from client when rosparam is set
+  * add update periodically function
+  * Contributors: Yuki Furuta, Masaki Murooka
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 08 Dec 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.54-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 14 Nov 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.53-1vivid) vivid; urgency=high
+
+  * add nodelet to check vital of topic
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 31 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.52-1vivid) vivid; urgency=high
+
+  * Move several utilities for roscpp from jsk_pcl_ros
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 22 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.51-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 19 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.50-1vivid) vivid; urgency=high
+
+  * use 300 for default message_num, rostopic hz uses 50000? https://github.com/ros/ros_comm/blob/indigo-devel/tools/rostopic/src/rostopic/__init__.py#L111
+  * use median instead of average
+  * Contributors: Kei Okada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 19 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.49-1vivid) vivid; urgency=high
+
+  * Fix location of catkin_package of jsk_topic_tools
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 12 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.48-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 11 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.47-1vivid) vivid; urgency=high
+
+  * Install executables build as single nodelet
+  * LightweightThrottle does not subscribe any topics if no need
+  * fix mutex lock of relay node
+  * Do not subscribe topics until mux/output is subscribed
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 07 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.46-1vivid) vivid; urgency=high
+
+  * Do not use sleep inside of lightweight_throttle
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 02 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.45-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 28 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.44-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 25 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.43-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 25 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.42-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 24 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.41-1vivid) vivid; urgency=high
+
+  * Compile transform_merger on catkin
+  * Use PLUGINLIB_EXPORT_CLASS instead of deprecated PLUGINLIB_DECLARE_CLASS
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 22 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.40-1vivid) vivid; urgency=high
+
+  * Add diagnostic utils from jsk_pcl_ros
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 18 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.39-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 16 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.38-1vivid) vivid; urgency=high
+
+  * add new utility function colorCategory20 to jsk_topic_tools
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 12 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.36-1vivid) vivid; urgency=high
+
+  * Add rosparam_utils.cpp: utility functions for ros parameters
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 31 Aug 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.35-1vivid) vivid; urgency=high
+
+  * add nodelet.cmake to export utility cmake macro to
+    compile nodelet libraries
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 15 Aug 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.34-1vivid) vivid; urgency=high
+
+  * add new class: VitalChecker from jsk_pcl_ros
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 13 Aug 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.33-1vivid) vivid; urgency=high
+
+  * compile time_acucmulator.cpp on rosbuild environment
+  * add depend to dynamic_tf_reconfigure
+  * Contributors: Ryohei Ueda, Yuto Inagaki
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 27 Jul 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.32-1vivid) vivid; urgency=high
+
+  * fix compilation for jsk_topic_tools::TimeAccumulator
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 25 Jul 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.31-1vivid) vivid; urgency=high
+
+  * add class TimeAccumulator to measure and accumurate time to jsk_topic_tools
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 22 Jul 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.30-1vivid) vivid; urgency=high
+
+  * add tool to check the existence of ros nodes and publish them to diagnostics
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 14 Jul 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.29-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 01 Jul 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.28-1vivid) vivid; urgency=high
+
+  * initialize variable in relay_nodelet
+  * shutdown subscriber if no need to publish message in relay nodelet
+  * Merge pull request #466 from garaemon/add-single-executable-for-nodelet
+    Add single executables for nodelets of jsk_topic_tools
+  * add single executable files for each nodelet in jsk_topic_tools
+  * add test code for block nodelet
+  * add nodelet to BLOCK topic pipeline according to the number of the subscribers
+  * add nodelet to relay topic
+  * Contributors: Ryohei Ueda, Yusuke Furuta
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 23 Jun 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.27-1vivid) vivid; urgency=high
+
+  * add nodelet to relay topic
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 09 Jun 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.26-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 29 May 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.25-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 25 May 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.24-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 23 May 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.23-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 22 May 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.22-1vivid) vivid; urgency=high
+
+  * add new nodelet: HzMeasure to measure message rate
+  * display info in debug mode
+  * print ignoring tf
+  * Merge remote-tracking branch 'tarukosu/ignore-specific-transform' into ignore-specific-transform
+  * add output='screen'
+  * use joint_states_pruned_buffered instead of _update
+  * remap /joint_states to /joint_states_pruned_update
+  * add ignoreing tf config
+  * add launch file for send joint state and other tf
+  * prune velocity and effort in joint state
+  * ignoring tf designated in yaml
+  * Contributors: Ryohei Ueda, Yusuke Furuta
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 21 May 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.21-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 19 May 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.20-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 08 May 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.19-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 05 May 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.18-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 03 May 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.17-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.16-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.15-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.14-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.13-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.12-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 17 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.11-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 17 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.10-1vivid) vivid; urgency=high
+
+  * change the length of the name field according to the topic now the script subscribes
+  * print topic name rather than topic index and prettier format
+  * add test launch file for topic_compare and run it on catkin and rosbuild
+  * add test script and do not run load_manifest, it's not required
+  * add topic_compare.py
+  * Contributors: Ryohei Ueda, Yuki Furuta
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 16 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.9-1vivid) vivid; urgency=high
+
+  * use ShapeShifter rather than ShapeShifterEvent
+  * fix for goovy SEGV
+    * use ros::Subscriber's pointer
+    * use topic_tools::ShapeShiter rather than ShapeShifterEvent
+    * not call getPrivateNodeHandle so many times
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 11 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.8-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 10 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.7-1vivid) vivid; urgency=high
+
+  * add documentation on nodelet xml
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 09 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.6-1vivid) vivid; urgency=high
+
+  * add a sample for mux nodelet and does not use mux nodehandle.
+    not using mux NodeHandle is different from original mux in topic_tools.
+    now private nodehandle, which is the name of nodelet instance,
+    behaves as 'mux' name of mux/topic_tools.
+    If you want to use mux_** tools, you just specify nodelet name as mux name.
+  * implement nodelet version of mux with the same api to topic_tools and no need to specify the
+    message type as well as topic_tools/mux
+  * add rostopic dependency to run test for LightweightThrottle
+  * update documentation of nodelet xml
+  * add test code for LightwehgitThrottle
+  * add a sample launch file for LightwehgitThrottle
+  * publish data only if any subscriber is
+  * compile nodelet on rosbuild too
+  * fixing dependency for nodelet usage
+    depends to nodelet on manifest.xml, package.xml and catkin.cmake
+  * add xml declaration for nodlet plugin
+  * read update_rate from the parameter ~update_rate
+  * implement lightweight nodelet throttle
+  * add lightweight nodelet throttle skelton cpp/header file
+  * change arg name and node name
+  * Contributors: Ryohei Ueda, Yusuke Furuta
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 06 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.4-1vivid) vivid; urgency=high
+
+  * move the location of generate_messages and catkin_package to avoid emtpy
+    catkin variables problem caused by roseus. it's a hack.
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 26 Mar 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.3-1vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 18 Mar 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.2-1vivid) vivid; urgency=high
+
+  * #299 <https://github.com/jsk-ros-pkg/jsk_common/issues/299>: fix typo: dependp -> depend
+  * #299 <https://github.com/jsk-ros-pkg/jsk_common/issues/299>: add depend tag to jsk_topic_tools/manifest.xml because of previous breaking change of manifest.xml
+  * #299 <https://github.com/jsk-ros-pkg/jsk_common/issues/299>: replace .test suffix with .launch in jsk_topic_tools' rosbuild cmake
+  * #299 <https://github.com/jsk-ros-pkg/jsk_common/issues/299>: add full path to rostest of ros_topic_tools
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 11 Mar 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.1-1vivid) vivid; urgency=high
+
+  * set all package to 1.0.0
+  * Contributors: Kei Okada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 06 Mar 2014 15:00:00 -0000
+
+ros-jade-jsk-topic-tools (1.0.0-1vivid) vivid; urgency=high
+
+  * set all package to 1.0.0
+  * fix typo CATKIN-DEPEND -> CATKIN_DEPEND
+  * add install to catkin.cmake
+  * (kill_server_and_check_close_wait.py) num=1 is ok for test_close_wait_check?
+  * add rostest and roscpp_tutorials
+  * use rosdep instead of depend
+  * add rostest
+  * add description in topic buffer sample program
+  * add buffer client and server for tf
+  * merge transform message to publish at low rate
+  * add sample launch files for specific transform
+  * do not initialize pub_update in use_service mode and restart serviceClient if sc_update.call failed, fixed Issue #266 <https://github.com/jsk-ros-pkg/jsk_common/issues/266>
+  * rename to test_topic_buffer_close_wait.launch and add kill_server_and_check_close_wait.py
+  * add test launch for CLOSE_WAIT problem
+  * fixing output of ROS_INFO
+  * supporting topicized /update and parameterized /list
+  * fix test code chatter_update only publish every 10 min
+  * update topic_buffer_server/cliet, client automatically calls /update service to get latest information on server side ,see Issue #260 <https://github.com/jsk-ros-pkg/jsk_common/issues/260>
+  * support update_rate param to configure how often client calls /update, see issue #260 <https://github.com/jsk-ros-pkg/jsk_common/issues/260>
+  * client to call update to get current information on publish rate
+  * add rosbuild_add_rostest
+  * fix output message
+  * fix problem reported on #260 <https://github.com/jsk-ros-pkg/jsk_common/issues/260>, add test code
+  * add more verbose message
+  * add sample launch file using topic_buffer
+  * update for treating multiple tf
+  * wait until service is available
+  * add specific transform publisher and subscriber
+  * add fixed_rate and latched parameter
+  * make catkin to work jsk_topic_tools
+  * add update service in topic_buffer_server
+  * fix xml: catkinize jsk_topic_tools
+  * fix broken xml: catkinize jsk_topic_tools
+  * fix broken xml: catkinize jsk_topic_tools
+  * catkinize jsk_topic_tools
+  * add jsk_topic_tools
+  * Contributors: Ryohei Ueda, Kei Okada, youhei, Yusuke Furuta
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 04 Mar 2014 15:00:00 -0000
+
+
