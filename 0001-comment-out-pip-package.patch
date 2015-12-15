@@ -1,14 +1,14 @@
-From 6a5e4aca3e8452f2b4a06a6b068a41abd3636635 Mon Sep 17 00:00:00 2001
+From 39bd67835a063b9bba14d979ecbba4f80b22e830 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
-Date: Mon, 4 May 2015 08:24:09 +0900
-Subject: [PATCH] pip packages need to removed to release as deb
+Date: Wed, 25 Nov 2015 23:28:48 +0900
+Subject: [PATCH] comment out pip package
 
 ---
- package.xml | 12 ++++++------
+ package.xml |   12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 80de7ba..c546afd 100644
+index f4af471..ce3b6ef 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -17,11 +17,11 @@
@@ -38,5 +38,5 @@ index 80de7ba..c546afd 100644
    <!-- <run_depend>mjpeg_server</run_depend> -->
    <!-- <test_depend>mjpeg_server</test_depend> -->
 -- 
-1.9.1
+1.7.9.5
 
