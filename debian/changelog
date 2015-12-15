@@ -1,0 +1,581 @@
+ros-jade-jsk-tilt-laser (2.0.9-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 13 Dec 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (2.0.8-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 06 Dec 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (2.0.7-1utopic) utopic; urgency=high
+
+  * jsk_tilt_laser/README.md: fix section/subsection
+  * Contributors: Kei Okada
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Fri, 04 Dec 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (2.0.6-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 01 Dec 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (2.0.5-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 29 Nov 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (2.0.4-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Remove image_rect pipeline temporary because of high load. It is needed to be tuned.
+  * [jsk_tilt_laser] Add image_rect multi_resolution pipeline
+  * [jsk_tilt_laser] Add NODELET_INDEX options to use same manager with different rosparam by nodelets_i
+  * [jsk_tilt_laser] Separate left camera stereo image pipeline
+  * [jsk_tilt_laser] Include for multi resolution image for right camera
+  * [jsk_tilt_laser] Add viewer to check multisense local topics
+  * [jsk_tilt_laser] Specify twist_frame_id of multisense laser to publish velocity
+  * [jsk_tilt_laser] Add run_distance_filters argument to disable filtering based on distance
+  * Contributors: Ryohei Ueda, hrpuser, Iori Kumagai
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 24 Nov 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (2.0.3-1utopic) utopic; urgency=high
+
+  * [jsk_topic_tools] Rewrite multisense_remote.launch with standalone_complex_nodelet
+  * [jsk_tilt_laser] Rewrite multisense_laser_pipeline.launch with standalone_complexed_nodelet
+  * [jsk_tilt_laser] Add assemble_cloud argument to customize laser pipeline
+  * [jsk_tilt_laser] Fix multisense pointcloud topic for local mode
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 23 Jul 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (2.0.2-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 06 Jul 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (2.0.1-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Add multisense_killer to kill multisense streaming if
+    host PC is down
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 27 Jun 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (2.0.0-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Do not use laser_assembler in order to reduce CPU load
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 18 Jun 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.72-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 06 Jun 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.71-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Update threshold to remove laser noise of multisense
+  * [jsk_tilt_laser] Increase minimum intensity to use on multisense
+  * [jsk_tilt_laser/multisense_laser_pipeline.launch] Add xyz filter before
+    downsample pointcloud in order to avoid overflow of indices
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 16 May 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.70-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] More detailed laser pointcloud for precise perception
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 07 May 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.69-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 04 May 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.68-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 04 May 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.67-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Use resized and compressed images to reconstruct
+    multisense pointcloud
+  * [jsk_tilt_laser] Do not use spindle_half model in order to decrease risk of
+    dropping of tilt laser scans
+  * [jsk_tilt_laser] Add arguments for resized images in multisense.launch
+  * [jsk_tilt_laser] Increase queue size of point_xyz and point_xyzrgb in multisense_remote.launch
+  * [jsk_tilt_laser] Downsample pointcloud in default
+  * [jsk_tilt_laser] Fix indent and typo
+  * [jsk_network_tools] Load laser_pipeline.launch from multisense_remote.launch
+  * [jsk_tilt_laser] Fix indent
+  * [jsk_tilt_laser] Use compressed rgb image to colorize pointcloud and
+    separate laser pipeline into multisense_laser_pipeline.launch
+  * [jsk_tilt_laser] Relay multisense_local/left/camera_info to
+    multisense/left/camera_info in remote machine
+  * Merge remote-tracking branch 'refs/remotes/origin/master' into multisense-local
+    Conflicts:
+    jsk_tilt_laser/launch/multisense.launch
+  * [jsk_tilt_laser] Add local argument to multisense.launch and add multisense_remote.launch
+    to separatly run multisense driver
+  * [jsk_tilt_laser] Add options to run multisense local mode
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 02 May 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.66-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Add fixed_frame_id argument to multisense.launch
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 02 Apr 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.65-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Wed, 01 Apr 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.64-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Support multisense sensors without 'multisense/' prefix
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 28 Mar 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.63-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser, jsk_data] Add multisense_play.launch to play multisene bag file
+  * [jsk_tilt_laser] Do not use filters in laser assmble node
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Wed, 18 Feb 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.62-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Add another argument to disable robot_state_publisher and
+    robot_description perfectly
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 16 Feb 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.61-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Add sensor_tf_prefix and not_use_sensor_tf_prefix for the
+    robots which has '/left/image_rect_color' sensor frame instead of
+    '/multisense/left/image_rect_clor'
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 10 Feb 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.60-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 02 Feb 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.59-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Update multisense.launch according to the latest update
+    1) use multisense.launch, it support launch_robot_state_publisher argument
+    2) fix name to change speed of spindle laser
+  * Remove rosbuild files
+  * [jsk_tilt_laser] Add ~overwrap_angle parameter to multisense.launch
+  * [jsk_tilt_laser] Add scan_to_cloud_chain to multisense.launch to get
+    one-scan pointcloud. We use ~high_fidelity=true in order to avoid
+    laser_geometry's bug to produce large sphere pointcloud
+  * Merge pull request #691 <https://github.com/jsk-ros-pkg/jsk_common/issues/691> from garaemon/laser-filter
+    [jsk_tilt_laser] Add laser_filters to multisense
+  * [jsk_tilt_laser] Add laser_filters to multisense
+  * update multisense launch for using with real robot
+  * Contributors: Ryohei Ueda, Yohei Kakiuchi
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 02 Feb 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.58-1utopic) utopic; urgency=high
+
+  * [jsk_tilt_laser] Use jsk_pcl_ros/TiltLaserListener rather than
+    jsk_tilt_laser's snapshotter.
+  * [jsk_tilt_laser] Add use_robot_description argument to multsense.launch and removed robot_description private param in ros_driver, which is seemed to be unused in multisense_ros/src
+  * Add document about dynamixel permission on jsk_tilt_laser
+  * add downsampled points to multisense.launch in jsk_tilt_laser
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 06 Jan 2015 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.57-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 22 Dec 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.56-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 16 Dec 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.55-1utopic) utopic; urgency=high
+
+  * Added parameter configuration for fps and spindle_speed of multisense and fixed urdf name
+  * Contributors: Ryo Terasawa
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 08 Dec 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.54-1utopic) utopic; urgency=high
+
+  * Added tilt_laser.urdf.xacro to mount on a urdf of TurtleBot.
+  * Contributors: Tanaka Yoshimaru
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Fri, 14 Nov 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.53-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Fri, 31 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.52-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Wed, 22 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.51-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 19 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.50-1utopic) utopic; urgency=high
+
+  * Add dynamic_reconfigure and sensor_msgs to jsk_tilt_laser depdendency
+  * Add missing deps to jsk_tilt_laser
+  * Contributors: Ryohei Ueda, Scott K Logan
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 19 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.49-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 12 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.48-1utopic) utopic; urgency=high
+
+  * add cmake_modules for indigo compile
+  * Contributors: Kei Okada
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 11 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.47-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 07 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.46-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 02 Oct 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.45-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 28 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.44-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 25 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.43-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 25 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.42-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Wed, 24 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.41-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 22 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.40-1utopic) utopic; urgency=high
+
+  * Add spin_laser_assmbler to build pointcloud from spining laser and add
+    launch and config files for multisense SL.
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 18 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.39-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 16 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.38-1utopic) utopic; urgency=high
+
+  * update CHANGELOG.rst
+  * Add ~tilt_joint_name parameter to tilt_laser_assembler.py to specify the joint name
+    of tilt laser
+  * Change scan time according to change of joint state
+  * Contributors: Ryohei Ueda
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Fri, 12 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.37-1utopic) utopic; urgency=high
+
+  * commonize tilt_laser_assembler
+  * added codes to controll tilt_speed with dynamixel_reconfigure
+  * Fix: rospy.debug -> rospy.logdebug
+  * add jsk_tilt_laser
+  * Contributors: Yuki Furuta, Ryohei Ueda, Yohei Kakiuchi
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 07 Sep 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.36-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 31 Aug 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.35-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Fri, 15 Aug 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.34-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Wed, 13 Aug 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.33-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 27 Jul 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.32-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Fri, 25 Jul 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.31-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 22 Jul 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.30-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 14 Jul 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.29-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 01 Jul 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.28-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 23 Jun 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.27-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 09 Jun 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.26-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 29 May 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.25-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 25 May 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.24-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Fri, 23 May 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.23-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 22 May 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.22-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Wed, 21 May 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.21-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 19 May 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.20-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 08 May 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.19-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Mon, 05 May 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.18-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 03 May 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.17-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 19 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.16-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 19 Apr 2014 14:29:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.15-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 19 Apr 2014 11:19:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.14-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 19 Apr 2014 03:52:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.13-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sat, 19 Apr 2014 02:06:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.12-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Fri, 18 Apr 2014 07:58:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.11-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 17 Apr 2014 23:18:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.10-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Wed, 16 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.9-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Fri, 11 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.8-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 10 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.7-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Wed, 09 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.6-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 06 Apr 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.5-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Sun, 30 Mar 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.4-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Fri, 28 Mar 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.3-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 18 Mar 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.2-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 11 Mar 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.1-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Thu, 06 Mar 2014 15:00:00 -0000
+
+ros-jade-jsk-tilt-laser (1.0.0-1utopic) utopic; urgency=high
+
+
+
+ -- YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>  Tue, 04 Mar 2014 15:00:00 -0000
+
+
