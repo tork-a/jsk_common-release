@@ -1,10 +1,10 @@
-From 7259861f668cb852f98d432fa319e3f6050e352b Mon Sep 17 00:00:00 2001
+From c2696c4a4a1b6b3d7b02b1ff3c7f9e938826af2f Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 26 Nov 2015 00:57:40 +0900
 Subject: [PATCH] remove pip depends
 
 ---
- package.xml |   16 ++++++++--------
+ package.xml | 16 ++++++++--------
  1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/package.xml b/package.xml
@@ -41,5 +41,5 @@ index f4af471..2d54828 100644
    <!-- <run_depend>mjpeg_server</run_depend> -->
    <!-- <test_depend>mjpeg_server</test_depend> -->
 -- 
-1.7.9.5
+1.9.1
 
