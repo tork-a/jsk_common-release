@@ -2,6 +2,14 @@
 Changelog for package multi_map_server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.11 (2016-03-20)
+-------------------
+* Add include_dirs for multi_map_server
+* Contributors: Kentaro Wada
+
+2.0.10 (2016-02-13)
+-------------------
+
 2.0.9 (2015-12-14)
 ------------------
 
