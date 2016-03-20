@@ -2,6 +2,20 @@
 Changelog for package image_view2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.11 (2016-03-20)
+-------------------
+* Fix header of screenrectangle topic to include frame_id
+  Modified:
+  - jsk_ros_patch/image_view2/image_view2.cpp
+* remove dynamic_reconfigure.parameter_generator, which only used for rosbuild
+* [image_view2] Keep publishing test data
+* Contributors: Kei Okada, Kentaro Wada, Ryohei Ueda
+
+2.0.10 (2016-02-13)
+-------------------
+* [image_view2] retry 3 to avoid 'failed to launch' error
+* Contributors: Kentaro Wada
+
 2.0.9 (2015-12-14)
 ------------------
 * [image_view2] Not test on hydro (jsk_tools/test_topic_published.py does not work on travis/jenkins)
