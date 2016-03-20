@@ -1,13 +1,19 @@
+#!/usr/bin/env python
+
 import rosbag
 import yaml
 import matplotlib
-matplotlib.use("WXAgg")
+import sys
+if "-o" in sys.argv:            # write to file mode
+    matplotlib.use("AGG")
+else:
+    matplotlib.use("WXAgg")
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from matplotlib.widgets import Button
 import time
 from progressbar import *
-import sys
+from std_msgs.msg import Header
 import argparse
 import rospy
 import re
@@ -18,6 +24,12 @@ except:
     print "Please install colorama by pip install colorama"
     sys.exit(1)
 from colorama import Fore, Style
+
+class MessageWrapper():
+    def __init__(self, obj, header):
+        self.__field__ = dict()
+        self.obj = obj
+        self.header = header
 
 class MessageFieldAccessor():
     _is_slot_array_regexp = re.compile("\[([0-9]+)\]$")
@@ -44,12 +56,19 @@ def expandArrayFields(fields, topics):
     ret_fields = []
     ret_topics = []
     for f, t in zip(fields, topics):
-        if re.search("\[([0-9]+):([0-9]+)\]", f): # [X:Y]
-            res = re.match(".*\[([0-9]+):([0-9]+)\]", f)
-            X = int(res.group(1))
-            Y = int(res.group(2))
-            for i in range(X, Y):
-                ret_fields.append(re.sub("\[[0-9+:[0-9]+\]", "[" + str(i) + "]", f))
+        search = re.search("\[.*\]" , f)
+        if search:
+            tmp=search.group().strip("[]").split(",")
+            def colon2fig(txt):
+                ret=re.match("([0-9]+):([0-9]+)",txt)
+                if ret:
+                    return range(int(ret.group(1)),int(ret.group(2)))
+                else:
+                    return [int(txt)]
+            tmp=map(colon2fig,tmp)
+            fList=reduce(lambda x,y: x+y,tmp)
+            for i in fList:
+                ret_fields.append(re.sub("\[.*\]", "[" + str(i) + "]", f))
                 ret_topics.append(t)
         else:
             ret_fields.append(f)
@@ -58,9 +77,23 @@ def expandArrayFields(fields, topics):
 
 class PlotData():
     def __init__(self, options):
+        self.legend_font_size = 8
         (self.fields_orig, self.topics) = expandArrayFields(options["field"], options["topic"])
         self.fields = [f.split("/") for f in self.fields_orig]
         self.field_accessors = [MessageFieldAccessor(f) for f in self.fields]
+        self.time_offset = options["time_offset"]
+        if "label" in options:
+            self.label = options["label"]
+        else:
+            self.label = None
+        if "xlabel" in options:
+            self.xlabel = options["xlabel"]
+        else:
+            self.xlabel = None
+        if "ylabel" in options:
+            self.ylabel = options["ylabel"]
+        else:
+            self.ylabel = None
         self.values = []
         for i in range(len(self.fields)):
             self.values.append([])
@@ -71,7 +104,7 @@ class PlotData():
         for target_topic, i in zip(self.topics, range(len(self.topics))):
             if target_topic == topic:
                 self.values[i].append((value.header.stamp,
-                                       self.field_accessors[i].parse(value)))
+                                       self.field_accessors[i].parse(value.obj)))
     def filter(self, start_time, end_time):
         for i in range(len(self.values)):
             self.values[i] = [v for v in self.values[i]
@@ -83,12 +116,19 @@ class PlotData():
         else:
             ax = fig.add_subplot(layout)
         for vs, i in zip(self.values, range(len(self.values))):
-            xs = [v[0].to_sec() - min_stamp.to_sec() for v in vs]
+            xs = [v[0].to_sec() - min_stamp.to_sec() + self.time_offset for v in vs]
             ys = [v[1] for v in vs]
-            ax.plot(xs, ys, label=self.topics[i] + "/" + self.fields_orig[i])
+            if self.label:
+                ax.plot(xs, ys, label=self.label[i])
+            else:
+                ax.plot(xs, ys, label=self.topics[i] + "/" + self.fields_orig[i])
         ax.set_title(self.options["title"])
+        if self.xlabel:
+            ax.set_xlabel(self.xlabel)
+        if self.ylabel:
+            ax.set_ylabel(self.ylabel)
         if show_legend and self.options["legend"]:
-            ax.legend(prop={'size': '8'})
+            legend = ax.legend(prop={'size': self.legend_font_size}, frameon=False)
         ax.minorticks_on()
         ax.grid(True)
         self.ax = ax
@@ -112,11 +152,15 @@ class BagPlotter():
                             help='Duration to plot')
         parser.add_argument('--start-time', '-s', type=int, default=0,
                             help='Start time to plot')
+        parser.add_argument('--no-title', action='store_true', help='Do not show title')
+        parser.add_argument('-o', help='Write to file')
         args = parser.parse_args()
+        self.output_file = args.o
         self.bag_file = args.bag
         self.conf_file = args.config
         self.duration = args.duration
         self.start_time = args.start_time
+        self.no_title = args.no_title
     def processConfFile(self):
         """
         conf file format is:
@@ -153,6 +197,7 @@ class BagPlotter():
         global_options = self.readOption(data, "global", dict())
         self.global_options = dict()
         self.global_options["layout"] = self.readOption(global_options, "layout", "vertical")
+        self.global_options["legend_font_size"] = self.readOption(global_options, "legend_font_size", 8)
     def setPlotOptions(self, data):
         plot_options = self.readOption(data, "plots", [])
         if len(plot_options) == 0:
@@ -166,6 +211,7 @@ class BagPlotter():
             opt["type"] = self.readOption(opt, "type", "line")
             opt["legend"] = self.readOption(opt, "legend", True)
             opt["layout"] = self.readOption(opt, "layout", None)
+            opt["time_offset"] = self.readOption(opt, "time_offset", 0)
             if self.global_options["layout"] == "manual" and opt["layout"] == None:
                 raise BagPlotterException("Need to specify layout field for manual layout")
             if not opt.has_key("topic"):
@@ -180,8 +226,8 @@ class BagPlotter():
                 raise BagPlotterException("lengt of topic and field should be same")
             for topic in opt["topic"]:
                 self.all_topics.add(topic)
-                
             self.topic_data.append(PlotData(opt))
+            self.topic_data[-1].legend_font_size = self.global_options["legend_font_size"]
             self.plot_options.append(opt)
     def layoutGridSize(self):
         if self.global_options["layout"] == "vertical":
@@ -214,13 +260,19 @@ class BagPlotter():
                 message_num = sum([topic["messages"] for topic in info["topics"]
                                    if topic["topic"] in self.all_topics])
                 widgets = [Fore.GREEN + "%s: " % (abag) + Fore.RESET, Percentage(), Bar()]
-                pbar = ProgressBar(maxval=message_num, widgets=widgets).start()
+                pbar = ProgressBar(maxval=max(1, message_num), widgets=widgets).start()
                 counter = 0
                 read_data = [(topic, msg, timestamp)
                              for topic, msg, timestamp
                              in bag.read_messages(topics=self.all_topics)]
                 for topic, msg, timestamp in read_data:
                     pbar.update(counter)
+                    # check topic has header field
+                    if not hasattr(msg, "header"):
+                        msg = MessageWrapper(msg, Header())
+                        msg.header.stamp = timestamp
+                    else:
+                        msg = MessageWrapper(msg, msg.header)
                     for topic_data in self.topic_data:
                         topic_data.addValue(topic, msg)
                         no_valid_data = False
@@ -239,10 +291,12 @@ class BagPlotter():
         if no_valid_data:
             print Fore.RED + "Cannot find valid data in bag files, valid topics are:\n%s" % ", ".join(self.all_topics) + Fore.RESET
             return
-        title = ("""Plot from [%s] to [%s] (%d secs)""" %
-                 (str(time.ctime(min_stamp.to_sec())),
-                str(time.ctime(max_stamp.to_sec())),
-                (max_stamp - min_stamp).to_sec()))
+        title = ("""Plot %s using %s from [%s] to [%s] (%d secs)""" %
+                 (", ".join(self.bag_file),
+                  self.conf_file,
+                  str(time.ctime(min_stamp.to_sec())),
+                  str(time.ctime(max_stamp.to_sec())),
+                  (max_stamp - min_stamp).to_sec()))
         start_time = rospy.Duration(self.start_time) + min_stamp
         if self.duration:
             end_time = start_time + rospy.Duration(self.duration)
@@ -253,16 +307,22 @@ class BagPlotter():
             
         fig = plt.figure(facecolor="1.0")
         self.fig = fig
-        fig.suptitle(title)
+        if not self.no_title:
+            fig.suptitle(title)
         self.show_legend = True
         fig.canvas.mpl_connect('key_press_event', self.keyPress)
         # Compute layout
         self.start_time = start_time
         self.plotAll(fig, start_time, self.show_legend)
-        self.printUsage()
-        self.runp = True
-        while self.runp:
-            plt.pause(1)
+        if self.output_file:
+            fig = matplotlib.pyplot.gcf()
+            fig.set_size_inches(40, 30)
+            fig.savefig(self.output_file)
+        else:
+            self.printUsage()
+            self.runp = True
+            while self.runp:
+                plt.pause(1)
     def keyPress(self, event):
         if event.key == "l" or event.key == "L":
             self.toggleLegend()
