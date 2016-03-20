@@ -1,10 +1,10 @@
-From 6e59cca9f13e561850dc07ca2dbad26a6ba137ee Mon Sep 17 00:00:00 2001
+From b9094d14e42be6d64c5060ce0015e616096bd0bf Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 26 Nov 2015 01:09:56 +0900
 Subject: [PATCH] remove pip depends
 
 ---
- package.xml |    6 +++---
+ package.xml | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package.xml b/package.xml
@@ -26,5 +26,5 @@ index 1c7090a..998b9a2 100644
    <test_depend>roslint</test_depend>
    <export>
 -- 
-1.7.9.5
+1.9.1
 
