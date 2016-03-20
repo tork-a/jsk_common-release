@@ -2,6 +2,18 @@
 Changelog for package dynamic_tf_publisher
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.11 (2016-03-20)
+-------------------
+* remove dynamic_reconfigure.parameter_generator, which only used for rosbuild
+* Contributors: Kei Okada
+
+2.0.10 (2016-02-13)
+-------------------
+* [tf_publisher.py] do not import genpy since it is not used
+* [tf_publish.py] remove backward compatibility
+* queue_size is new in hydro and necessary from indigo
+* Contributors: Eisoku Kuroiwa
+
 2.0.9 (2015-12-14)
 ------------------
 
