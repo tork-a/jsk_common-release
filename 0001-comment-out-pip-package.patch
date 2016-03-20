@@ -1,10 +1,10 @@
-From 39bd67835a063b9bba14d979ecbba4f80b22e830 Mon Sep 17 00:00:00 2001
+From 8306bdb331b234c801477801e64f23252c90b3c0 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 23:28:48 +0900
 Subject: [PATCH] comment out pip package
 
 ---
- package.xml |   12 ++++++------
+ package.xml | 12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/package.xml b/package.xml
@@ -38,5 +38,5 @@ index f4af471..ce3b6ef 100644
    <!-- <run_depend>mjpeg_server</run_depend> -->
    <!-- <test_depend>mjpeg_server</test_depend> -->
 -- 
-1.7.9.5
+1.9.1
 
