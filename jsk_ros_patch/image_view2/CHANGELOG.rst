@@ -2,6 +2,9 @@
 Changelog for package image_view2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.12 (2016-04-18)
+-------------------
+
 2.0.11 (2016-03-20)
 -------------------
 * Fix header of screenrectangle topic to include frame_id
