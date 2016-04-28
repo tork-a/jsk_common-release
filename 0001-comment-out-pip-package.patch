@@ -1,4 +1,4 @@
-From 127f018caa35559e3a127d9bcadc9f187904d308 Mon Sep 17 00:00:00 2001
+From 6b86f9b78234cd858d41448d52ebe795b8924fbe Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 23:28:48 +0900
 Subject: [PATCH] comment out pip package
@@ -8,7 +8,7 @@ Subject: [PATCH] comment out pip package
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index df31393..f0b7dbb 100644
+index 34c12ce..0270dd2 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -17,11 +17,11 @@
