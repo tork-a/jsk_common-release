@@ -1,26 +1,28 @@
-==========
-jsk_common
-==========
+===============
+jsk_topic_tools
+===============
 
-jsk_common is common stacks used in JSK lab.
-
-The code is open source, and `available on github`_.
-
-.. _available on github: http://github.com/jsk-ros-pkg/jsk_common
-
-
-Contents:
+This package includes several useful library for ROS software.
 
 .. toctree::
-  :maxdepth: 1
-
-  tips
-
-
-ROS Packages:
-
-.. toctree::
+   :glob:
    :maxdepth: 1
+   :caption: library
 
-   jsk_tools/index
-   jsk_topic_tools/index
+   ./lib/*
+
+.. toctree::
+   :glob:
+   :maxdepth: 1
+   :caption: scripts
+
+   ./scripts/*
+
+
+C++ API documentation
+---------------------
+
+Please see `rosdoc <http://docs.ros.org/indigo/api/jsk_topic_tools/html/>`__
+To generate documentation locally::
+
+    $ rosdoc_lite `rospack find jsk_topic_tools` -o doc
