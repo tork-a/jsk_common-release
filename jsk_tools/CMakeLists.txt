@@ -15,7 +15,7 @@ catkin_add_env_hooks(99.config_switch SHELLS bash zsh DIRECTORY ${CMAKE_CURRENT_
 catkin_add_env_hooks(99.jsk_tools SHELLS sh bash zsh DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
 catkin_add_env_hooks(99.jsk_tools-completion SHELLS bash zsh DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
 
-install(DIRECTORY src test bin dot-files
+install(DIRECTORY src test bin dot-files cmake
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS
   )
@@ -39,14 +39,12 @@ if (CATKIN_ENABLE_TESTING)
   roslint_python(src/jsk_tools/cltool.py)
   roslint_add_test()
   find_package(rostest REQUIRED)
-  # check ros distro >= indigo
-  execute_process(
-    COMMAND python -c "import sys; sys.exit(ord('$ENV{ROS_DISTRO}'[0]) >= ord('indigo'[0]))"
-    RESULT_VARIABLE DISTRO_GE_INDIGO)
-  if(${DISTRO_GE_INDIGO})
+  if("$ENV{ROS_DISTRO}" STRGREATER "hydro")
     # FIXME: jsk_tools/test_topic_published.py does not work on hydro travis/jenkins
     # https://github.com/jsk-ros-pkg/jsk_common/pull/1293#issuecomment-164158260
     add_rostest(test/test_topic_published.launch)
   endif()
   add_rostest(test/test_stdout.test)
+  find_package(jsk_tools REQUIRED)
+  jsk_tools_add_shell_test(COMMAND echo "testing jsk_tools_add_shell_test")
 endif()
