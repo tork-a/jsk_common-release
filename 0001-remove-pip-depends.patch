@@ -1,17 +1,17 @@
-From 0d4ac9a193c6bc9e88bc755041422fa5b17b50ab Mon Sep 17 00:00:00 2001
+From 16e11321e31a5a74900b3ca78a239c451b827a28 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 26 Nov 2015 00:57:40 +0900
 Subject: [PATCH] remove pip depends
 
 ---
- package.xml | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ package.xml | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index ef8d631..206e337 100644
+index 27ae414..2367cc2 100644
 --- a/package.xml
 +++ b/package.xml
-@@ -17,20 +17,20 @@
+@@ -17,21 +17,22 @@
  
    <build_depend>git</build_depend>
    <build_depend>rosgraph_msgs</build_depend>
@@ -19,13 +19,16 @@ index ef8d631..206e337 100644
 -  <run_depend>python-colorama</run_depend>
 -  <run_depend>python-pygithub3</run_depend>
 -  <run_depend>python-slacker-cli</run_depend>
+-  <run_depend>python-termcolor</run_depend>
 -  <run_depend>python-texttable</run_depend>
+-  <run_depend>rosgraph_msgs</run_depend>
 +  <!-- <run_depend>python-percol</run_depend> -->
 +  <!-- <run_depend>python-colorama</run_depend> -->
 +  <!-- <run_depend>python-pygithub3</run_depend> -->
 +  <!-- <run_depend>python-slacker-cli</run_depend> -->
++  <!-- <run_depend>python-termcolor</run_depend> -->
 +  <!-- <run_depend>python-texttable</run_depend> -->
-   <run_depend>rosgraph_msgs</run_depend>
++  <!-- <run_depend>rosgraph_msgs</run_depend> -->
    <run_depend>rospy</run_depend>
    <run_depend>rqt_reconfigure</run_depend>
 -  <run_depend>axis_camera</run_depend>
@@ -36,6 +39,7 @@ index ef8d631..206e337 100644
    <run_depend>jsk_topic_tools</run_depend>
    <run_depend>rosbag</run_depend>
 -  <run_depend>rosemacs-el</run_depend>
++  <!-- <run_depend>rosemacs-el</run_depend> -->
 +  <run_depend>rosemacs</run_depend>
    <!-- <build_depend>mjpeg_server</build_depend> -->
    <!-- <run_depend>mjpeg_server</run_depend> -->
