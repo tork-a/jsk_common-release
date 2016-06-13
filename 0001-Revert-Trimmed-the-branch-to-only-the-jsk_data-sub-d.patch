@@ -1,4 +1,4 @@
-From 5c84e21c403a2063d05b6f0c1d310d3c328d3e6c Mon Sep 17 00:00:00 2001
+From f535f36ed7b4cb3d9662a21ac620ba42e43e18eb Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 22:30:13 +0900
 Subject: [PATCH] Revert "Trimmed the branch to only the jsk_data sub
@@ -10,7 +10,7 @@ This reverts commit fc1a136c9beecbe204e03877afdca97ce105d812.
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 87ab28b..0491fa8 100644
+index 69745e1..ad1f4cd 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -10,9 +10,9 @@
