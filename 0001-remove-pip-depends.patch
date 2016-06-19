@@ -1,7 +1,7 @@
-From 16e11321e31a5a74900b3ca78a239c451b827a28 Mon Sep 17 00:00:00 2001
+From 74ef5137acb6a97e71bc1e6289a97017151db126 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 26 Nov 2015 00:57:40 +0900
-Subject: [PATCH] remove pip depends
+Subject: [PATCH 1/2] remove pip depends
 
 ---
  package.xml | 21 +++++++++++----------
