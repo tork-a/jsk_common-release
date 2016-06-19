@@ -1,4 +1,4 @@
-From 319d50c1d97a682f568ad85786b7fdaa4aa367aa Mon Sep 17 00:00:00 2001
+From c4e33fe331ac02acc2438b74c0e3e8d16766860a Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 26 Nov 2015 01:09:56 +0900
 Subject: [PATCH] remove pip depends
