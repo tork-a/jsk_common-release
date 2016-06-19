@@ -1,7 +1,7 @@
-From e7962201d285a8e39b7c58134beccecbe6898e32 Mon Sep 17 00:00:00 2001
+From cf74f42a486c846889d1d226452e4d4386935546 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 23:28:48 +0900
-Subject: [PATCH] comment out pip package
+Subject: [PATCH 1/2] comment out pip package
 
 ---
  package.xml | 15 ++++++++-------
