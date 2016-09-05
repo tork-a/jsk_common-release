@@ -1,4 +1,4 @@
-From c561b573776eeaf6b6ec680ae3fafeb2931543be Mon Sep 17 00:00:00 2001
+From f01bbaa8dd48dae3c4c182fd9e4f016a2a8c0f88 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 22:30:13 +0900
 Subject: [PATCH] Revert "Trimmed the branch to only the jsk_data sub
@@ -10,18 +10,19 @@ This reverts commit fc1a136c9beecbe204e03877afdca97ce105d812.
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 01055d8..df204bb 100644
+index 8e85ea4..31bcc7a 100644
 --- a/package.xml
 +++ b/package.xml
-@@ -10,9 +10,9 @@
-   <run_depend>depth_image_proc</run_depend>
+@@ -13,10 +13,10 @@
    <run_depend>image_transport</run_depend>
    <run_depend>jsk_topic_tools</run_depend>
+   <run_depend>message_runtime</run_depend>
 -  <run_depend>paramiko</run_depend>
 -  <run_depend>python-click</run_depend>
--  <test_depend>python-freezegun-pip</test_depend>
 +  <!-- <run_depend>paramiko</run_depend> -->
 +  <!-- <run_depend>python-click</run_depend> -->
+   <run_depend>python-yaml</run_depend>  <!-- apt -->
+-  <test_depend>python-freezegun-pip</test_depend>
 +  <!-- <test_depend>python-freezegun-pip</test_depend> -->
    <test_depend>python-nose</test_depend>
    <test_depend>roslint</test_depend>
