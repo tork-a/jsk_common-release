@@ -125,6 +125,14 @@ if (CATKIN_ENABLE_TESTING)
   target_link_libraries(test_rosparam_utils ${PROJECT_NAME})
   add_rostest_gtest(test_log_utils test/test_log_utils.launch src/tests/test_log_utils.cpp)
   target_link_libraries(test_log_utils ${PROJECT_NAME})
+
+  # nodelets for testing
+  add_library(jsk_topic_tools_test src/tests/test_log_utils_nodelet.cpp)
+  target_link_libraries(jsk_topic_tools_test ${PROJECT_NAME})
+  # testing with loading nodelet
+  add_rostest_gtest(test_nodelet_log_utils test/test_nodelet_log_utils.test test/test_nodelet_log_utils.cpp)
+  target_link_libraries(test_nodelet_log_utils ${PROJECT_NAME})
+  add_dependencies(test_nodelet_log_utils jsk_topic_tools_test)
   if("$ENV{ROS_DISTRO}" STRGREATER "hydro")
     # FIXME: jsk_tools/test_topic_published.py does not work on hydro travis/jenkins
     # https://github.com/jsk-ros-pkg/jsk_common/pull/1293#issuecomment-164158260
