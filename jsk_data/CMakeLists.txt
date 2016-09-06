@@ -26,4 +26,20 @@ if (CATKIN_ENABLE_TESTING)
   roslint_add_test()
 
   catkin_add_nosetests(src/jsk_data/tests)
+
+  find_package(roslaunch REQUIRED)
+  find_package(baxter_description QUIET)
+  if(baxter_description_FOUND)
+    roslaunch_add_file_check(launch/baxter_play.launch)
+    roslaunch_add_file_check(launch/baxter_record.launch)
+  endif()
+  roslaunch_add_file_check(launch/pr2_play.launch)
+  if(0)
+    # pr2_record could not run on travis
+    # 1. environment variable 'ROS_ENV_LOADER' is not set.
+    # 2. Invalid <param> tag: Cannot load command parameter [mk_save_dir]: command [mkdir -p /removable/bagfile/] returned with code [1].
+    roslaunch_add_file_check(launch/pr2_record.launch)
+  endif()
+  roslaunch_add_file_check(launch/hrp2_record.launch)
+  roslaunch_add_file_check(launch/urata_record.launch)
 endif()
