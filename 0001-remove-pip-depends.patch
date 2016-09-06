@@ -1,4 +1,4 @@
-From ce3881fc89366d45c90965f00c546f8c699b0200 Mon Sep 17 00:00:00 2001
+From 42bb2899f50f5d096c8397e06a9b16f0672fac9f Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Thu, 26 Nov 2015 01:09:56 +0900
 Subject: [PATCH] remove pip depends
@@ -8,18 +8,19 @@ Subject: [PATCH] remove pip depends
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 01055d8..df204bb 100644
+index 8e85ea4..31bcc7a 100644
 --- a/package.xml
 +++ b/package.xml
-@@ -10,9 +10,9 @@
-   <run_depend>depth_image_proc</run_depend>
+@@ -13,10 +13,10 @@
    <run_depend>image_transport</run_depend>
    <run_depend>jsk_topic_tools</run_depend>
+   <run_depend>message_runtime</run_depend>
 -  <run_depend>paramiko</run_depend>
 -  <run_depend>python-click</run_depend>
--  <test_depend>python-freezegun-pip</test_depend>
 +  <!-- <run_depend>paramiko</run_depend> -->
 +  <!-- <run_depend>python-click</run_depend> -->
+   <run_depend>python-yaml</run_depend>  <!-- apt -->
+-  <test_depend>python-freezegun-pip</test_depend>
 +  <!-- <test_depend>python-freezegun-pip</test_depend> -->
    <test_depend>python-nose</test_depend>
    <test_depend>roslint</test_depend>
