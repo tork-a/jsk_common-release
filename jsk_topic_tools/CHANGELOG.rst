@@ -2,6 +2,9 @@
 Changelog for package jsk_topic_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.1.2 (2016-09-14)
+------------------
+
 2.1.1 (2016-09-07)
 ------------------
 * Fix missing installation of jsk_topic_tools_test_nodelet.xml
