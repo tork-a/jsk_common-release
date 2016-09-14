@@ -1,4 +1,4 @@
-From 8c67ac2714ad66796e3613df393418cd0d47dfbf Mon Sep 17 00:00:00 2001
+From a0cae3be17cf07d10aa70274a5ce02b13ef1713f Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 22:30:13 +0900
 Subject: [PATCH] Revert "Trimmed the branch to only the jsk_data sub
@@ -10,7 +10,7 @@ This reverts commit fc1a136c9beecbe204e03877afdca97ce105d812.
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 540d3a3..8de746a 100644
+index 892756b..24f02dd 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -17,16 +17,16 @@
@@ -34,5 +34,5 @@ index 540d3a3..8de746a 100644
    <test_depend>roslaunch</test_depend>
    <test_depend>roslint</test_depend>
 -- 
-1.9.0
+1.9.1
 
