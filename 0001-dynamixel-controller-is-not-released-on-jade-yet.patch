@@ -1,4 +1,4 @@
-From 517aa378fb5884cffa9ca8c2277b9261219da144 Mon Sep 17 00:00:00 2001
+From 309dd2b098c766a4e9ad429310e33e159fc2ea01 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Mon, 22 Jun 2015 16:19:39 +0900
 Subject: [PATCH] dynamixel controller is not released on jade yet
@@ -8,7 +8,7 @@ Subject: [PATCH] dynamixel controller is not released on jade yet
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/package.xml b/package.xml
-index 3f30dae..b5355c6 100644
+index 5ea7ac1..9dc5149 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -17,7 +17,7 @@
@@ -21,5 +21,5 @@ index 3f30dae..b5355c6 100644
    <run_depend>laser_assembler</run_depend>
    <build_depend>tf_conversions</build_depend>
 -- 
-1.9.1
+1.9.0
 
