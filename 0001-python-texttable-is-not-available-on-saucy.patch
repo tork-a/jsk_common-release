@@ -1,0 +1,25 @@
+From c914a38a0bf7bece2b2ae07552b693089a7d6e18 Mon Sep 17 00:00:00 2001
+From: Kei Okada <kei.okada@gmail.com>
+Date: Fri, 16 Sep 2016 09:11:04 +0900
+Subject: [PATCH] python-texttable is not available on saucy
+
+---
+ package.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package.xml b/package.xml
+index a7afd3a..25e43c7 100644
+--- a/package.xml
++++ b/package.xml
+@@ -21,7 +21,7 @@
+   <run_depend>python-colorama</run_depend>
+   <!-- <run_depend>python-pygithub3</run_depend> -->
+   <!-- <run_depend>python-slacker-cli</run_depend> -->
+-  <run_depend>python-texttable</run_depend>
++  <!-- <run_depend>python-texttable</run_depend> -->
+   <run_depend>rosgraph_msgs</run_depend>
+   <run_depend>rospy</run_depend>
+   <run_depend>rqt_reconfigure</run_depend>
+-- 
+1.9.1
+
