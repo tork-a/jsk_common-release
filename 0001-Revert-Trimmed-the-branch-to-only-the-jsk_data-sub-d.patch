@@ -1,4 +1,4 @@
-From a18acbb101badcfbca65ae017b802d5e6ba224f9 Mon Sep 17 00:00:00 2001
+From 7aae5aacb00ed6e116f21991c61daf963724cde0 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 22:30:13 +0900
 Subject: [PATCH] Revert "Trimmed the branch to only the jsk_data sub
