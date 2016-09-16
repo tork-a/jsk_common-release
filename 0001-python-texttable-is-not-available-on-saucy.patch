@@ -1,4 +1,4 @@
-From c914a38a0bf7bece2b2ae07552b693089a7d6e18 Mon Sep 17 00:00:00 2001
+From 341fd6199ca3d1a091cf3e64d40169bf433454a7 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Fri, 16 Sep 2016 09:11:04 +0900
 Subject: [PATCH] python-texttable is not available on saucy
