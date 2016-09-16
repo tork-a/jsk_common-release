@@ -8,5 +8,5 @@ Standards-Version: 3.9.2
 
 Package: ros-indigo-jsk-tools
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, iproute2, python-colorama, python-texttable, ros-indigo-axis-camera, ros-indigo-jsk-network-tools, ros-indigo-jsk-topic-tools, ros-indigo-pr2-computer-monitor, ros-indigo-rosbag, ros-indigo-rosemacs, ros-indigo-rosgraph-msgs, ros-indigo-rospy, ros-indigo-rqt-reconfigure
+Depends: ${shlibs:Depends}, ${misc:Depends}, iproute2, python-colorama, ros-indigo-axis-camera, ros-indigo-jsk-network-tools, ros-indigo-jsk-topic-tools, ros-indigo-pr2-computer-monitor, ros-indigo-rosbag, ros-indigo-rosemacs, ros-indigo-rosgraph-msgs, ros-indigo-rospy, ros-indigo-rqt-reconfigure
 Description: Includes emacs scripts, ros tool alias generator, and launch doc generator.
