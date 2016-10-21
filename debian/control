@@ -1,0 +1,12 @@
+Source: ros-kinetic-dynamic-tf-publisher
+Section: misc
+Priority: extra
+Maintainer: Ryohei Ueda <garaemon@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin, ros-kinetic-dynamic-reconfigure, ros-kinetic-geometry-msgs, ros-kinetic-message-generation, ros-kinetic-rospy, ros-kinetic-tf
+Homepage: http://ros.org/wiki/dynamic_tf_publisher
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-dynamic-tf-publisher
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-geometry-msgs, ros-kinetic-message-runtime, ros-kinetic-rospy, ros-kinetic-tf
+Description: dynamically set the tf trensformation
