@@ -1,0 +1,12 @@
+Source: ros-kinetic-multi-map-server
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), libsdl-image1.2-dev, libyaml-cpp-dev, python-imaging, python-yaml, ros-kinetic-catkin, ros-kinetic-jsk-tools, ros-kinetic-map-server, ros-kinetic-nav-msgs, ros-kinetic-rosconsole, ros-kinetic-roscpp, ros-kinetic-rosmake, ros-kinetic-rospy, ros-kinetic-tf
+Homepage: http://ros.org/wiki/map_server
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-multi-map-server
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libsdl-image1.2-dev, libyaml-cpp-dev, ros-kinetic-map-server, ros-kinetic-nav-msgs, ros-kinetic-rosconsole, ros-kinetic-roscpp, ros-kinetic-rospy, ros-kinetic-tf
+Description: multi_map_server provides the
