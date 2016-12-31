@@ -2,6 +2,29 @@
 Changelog for package jsk_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.2.2 (2016-12-30)
+------------------
+* package.xml : rosemacs-el is only available until precise, from indigo, we uses rosemacs (`#1497 <https://github.com/jsk-ros-pkg/jsk_common/issues/1497>`_)
+* src/rostopic_host_sanity : Check host sanity with a script
+* Contributors: Kei Okada, Kentaro Wada
+
+2.2.1 (2016-12-13)
+------------------
+* env-hooks/99.jsk_tools.sh: Set WITHOUT_ROS_PROMPT at _update_prompt to fix `#1494 <https://github.com/jsk-ros-pkg/jsk_common/issues/1494>`_
+* src/generate_deb_status_table.py : Cope with xenial + arm for deb status table (`#1491 <https://github.com/jsk-ros-pkg/jsk_common/issues/1491>`_)
+* src/generate_deb_status_table.py : Support arm build in
+  generate_deb_status_table.py : Generate deb release table with python script (`#1490 <https://github.com/jsk-ros-pkg/jsk_common/issues/1490>`_)
+* [jsk_tools][99.jsk_tools.sh] fix: issue `#1472 <https://github.com/jsk-ros-pkg/jsk_common/issues/1472>`_
+* Contributors: Kentaro Wada, Yuki Furuta
+
+2.2.0 (2016-10-28)
+------------------
+* jsk_tools/src/post_to_slack_server: Post to slack via String message input (`#1466 <https://github.com/jsk-ros-pkg/jsk_common/issues/1466>`_)
+* jsk_tools/src/jsk_tools/migration.py: Add utility class to migrate rosmsg (`#1464 <https://github.com/jsk-ros-pkg/jsk_common/issues/1464>`_)
+* jsk_tools/src/jsk_tools/sanity_lib.py : Support echo_noarr in
+  checkTopicIsPublished (`#1459 <https://github.com/jsk-ros-pkg/jsk_common/issues/1459>`_)
+* Contributors: Kentaro Wada
+
 2.1.2 (2016-09-14)
 ------------------
 
