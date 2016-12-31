@@ -1,4 +1,4 @@
-From a873b2bd339f0ab69dd440802897036115da06ab Mon Sep 17 00:00:00 2001
+From 004b0ae5e25a4f22f7bfa47574558a7a13d7dad7 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Fri, 16 Sep 2016 17:23:44 +0900
 Subject: [PATCH 3/3] revert python-texttable patch
@@ -21,5 +21,5 @@ index 25e43c7..a7afd3a 100644
    <run_depend>rospy</run_depend>
    <run_depend>rqt_reconfigure</run_depend>
 -- 
-1.9.1
+1.9.0
 

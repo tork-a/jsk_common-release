@@ -1,4 +1,4 @@
-From 375184c50286c0ae9dba1be2b5d80b98b88c166f Mon Sep 17 00:00:00 2001
+From 0d552c1e53a242d7aa64f15cc294f27fd540f8d5 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Fri, 16 Sep 2016 17:17:05 +0900
 Subject: [PATCH 2/3] python-texttable is not available
@@ -19,5 +19,5 @@ index a65860d..8ee5ffe 100644
 +Depends: ${shlibs:Depends}, ${misc:Depends}, iproute2, python-colorama, ros-indigo-axis-camera, ros-indigo-jsk-network-tools, ros-indigo-jsk-topic-tools, ros-indigo-pr2-computer-monitor, ros-indigo-rosbag, ros-indigo-rosemacs, ros-indigo-rosgraph-msgs, ros-indigo-rospy, ros-indigo-rqt-reconfigure
  Description: Includes emacs scripts, ros tool alias generator, and launch doc generator.
 -- 
-1.9.1
+1.9.0
 
