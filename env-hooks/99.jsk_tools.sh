@@ -34,6 +34,9 @@ rosdefault() {
 }
 
 _update_prompt() {
+    if [ "${WITHOUT_ROS_PROMPT}" = "" ]; then
+        export WITHOUT_ROS_PROMPT="$PS1"
+    fi
     local master_host=$(echo $ROS_MASTER_URI | cut -d\/ -f3 | cut -d\: -f1)
     if [ "$master_host" = "localhost" ]; then
         if echo $PS1 | grep "\[http://.*\]" > /dev/null
@@ -53,9 +56,6 @@ _update_prompt() {
 }
 
 rossetmaster() {
-    if [ "${WITHOUT_ROS_PROMPT}" = "" ]; then
-        export WITHOUT_ROS_PROMPT="$PS1"
-    fi
     local hostname=${1-"pr1040"}
     local ros_port=${2-"11311"}
     export ROS_MASTER_URI=http://$hostname:$ros_port
@@ -96,7 +96,7 @@ rossetip_addr() {
         fi
         target_host=$target_host_ip
     fi
-    export ROS_IP=$(ip -o -4 route get $target_host | awk "/$target_host/ "'{print $5}')
+    export ROS_IP=$(ip -o -4 route get $target_host | sed -e 's/^.*src \([0-9.]\+\).*$/\1/g')
     export ROS_HOSTNAME=$ROS_IP
 }
 
