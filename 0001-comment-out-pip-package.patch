@@ -1,4 +1,4 @@
-From 97dfbf98827e647d9bda37983ba1fa7a70287d67 Mon Sep 17 00:00:00 2001
+From a649410987b29029f71b102d0095e5c114ad2a14 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 23:28:48 +0900
 Subject: [PATCH] comment out pip package
@@ -35,5 +35,5 @@ index cb8fc15..a7afd3a 100644
    <!-- <run_depend>mjpeg_server</run_depend> -->
    <!-- <test_depend>mjpeg_server</test_depend> -->
 -- 
-1.9.1
+1.9.0
 
