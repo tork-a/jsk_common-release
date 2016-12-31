@@ -1,4 +1,4 @@
-From 7aae5aacb00ed6e116f21991c61daf963724cde0 Mon Sep 17 00:00:00 2001
+From e7b521efc4e1584951655f8968293c5570faa157 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 25 Nov 2015 22:30:13 +0900
 Subject: [PATCH] Revert "Trimmed the branch to only the jsk_data sub
@@ -34,5 +34,5 @@ index 892756b..24f02dd 100644
    <test_depend>roslaunch</test_depend>
    <test_depend>roslint</test_depend>
 -- 
-1.9.1
+1.9.0
 
