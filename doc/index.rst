@@ -1,27 +1,37 @@
-==========
-jsk_common
-==========
+=========
+jsk_tools
+=========
 
-jsk_common is common stacks used in JSK lab.
+This package includes several useful tools and library for ROS software.
 
-The code is open source, and `available on github`_.
-
-.. _available on github: http://github.com/jsk-ros-pkg/jsk_common
-
-
-Contents:
 
 .. toctree::
-  :maxdepth: 1
-
-  tips
-
-
-ROS Packages:
-
-.. toctree::
+   :glob:
    :maxdepth: 1
+   :caption: Test Nodes
 
-   jsk_data/index
-   jsk_tools/index
-   jsk_topic_tools/index
+   ./test_nodes/*
+
+
+.. toctree::
+   :glob:
+   :maxdepth: 1
+   :caption: Command Line Tools
+
+   ./cltools/*
+
+
+.. toctree::
+   :glob:
+   :maxdepth: 1
+   :caption: Python Library
+
+   ./python/*
+
+
+.. toctree::
+   :glob:
+   :maxdepth: 1
+   :caption: Dot Files
+
+   ./dot-files/*
