@@ -4,6 +4,7 @@ import os.path as osp
 import re
 import shlex
 import subprocess
+import shutil
 import sys
 import tarfile
 import zipfile
@@ -26,15 +27,19 @@ def extract_file(path, to_directory='.'):
 
     cwd = os.getcwd()
     os.chdir(to_directory)
+    root_files = []
     try:
         file = opener(path, mode)
         try:
             file.extractall()
+            root_files = list(set(name.split('/')[0]
+                                  for name in file.getnames()))
         finally:
             file.close()
     finally:
         os.chdir(cwd)
     print('...done')
+    return root_files
 
 
 def decompress_rosbag(path, quiet=False):
@@ -57,6 +62,10 @@ def download(client, url, output, quiet=False):
 
 
 def check_md5sum(path, md5):
+    # validate md5 string length if it is specified
+    if md5 and len(md5) != 32:
+        raise ValueError('md5 must be 32 charactors\n'
+                         'actual: {} ({} charactors)'.format(md5, len(md5)))
     print("Checking md5sum of '{path}'...".format(path=path))
     is_same = hashlib.md5(open(path, 'rb').read()).hexdigest() == md5
     print('...done')
@@ -84,7 +93,8 @@ def download_data(pkg_name, path, url, md5, download_client=None,
         try:
             pkg_path = rp.get_path(pkg_name)
         except rospkg.ResourceNotFound:
-            print('\033[31m{name} is not found in {path}\033[0m'.format(name=pkg_name, path=rp.list()))
+            print('\033[31m{name} is not found in {path}\033[0m'
+                  .format(name=pkg_name, path=rp.list()))
             return
         pkg_path = rp.get_path(pkg_name)
         path = osp.join(pkg_path, path)
@@ -92,7 +102,8 @@ def download_data(pkg_name, path, url, md5, download_client=None,
             try:
                 os.makedirs(osp.dirname(path))
             except OSError as e:
-                print('\033[31mCould not make direcotry {dir} {err}\033[0m'.format(dir=osp.dirname(path), err=e))
+                print('\033[31mCould not make direcotry {dir} {err}\033[0m'
+                      .format(dir=osp.dirname(path), err=e))
                 return
     # prepare cache dir
     ros_home = os.getenv('ROS_HOME', osp.expanduser('~/.ros'))
@@ -116,7 +127,18 @@ def download_data(pkg_name, path, url, md5, download_client=None,
         sys.stderr.write("WARNING: '{0}' exists\n".format(path))
         return
     if extract:
-        extract_file(path, to_directory=osp.dirname(path))
+        # extract files in cache dir and create symlink for them
+        extracted_files = extract_file(cache_file, to_directory=cache_dir)
+        for file_ in extracted_files:
+            file_ = osp.join(cache_dir, file_)
+            dst_path = osp.join(osp.split(path)[0], osp.basename(file_))
+            if osp.islink(dst_path):
+                os.remove(dst_path)
+            elif osp.exists(dst_path) and not osp.isdir(dst_path):
+                os.remove(dst_path)
+            elif osp.exists(dst_path) and osp.isdir(dst_path):
+                shutil.rmtree(dst_path)
+            os.symlink(file_, dst_path)
     for compressed_bag in compressed_bags:
         if not osp.isabs(compressed_bag):
             rp = rospkg.RosPack()
