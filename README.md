@@ -1,3 +1,36 @@
+## jsk_common (jade) - 2.2.2-0
+
+The packages in the `jsk_common` repository were released into the `jade` distro by running `./send_to_bloom.py jsk-ros-pkg jsk_common` on `Fri, 06 Jan 2017 10:13:00 -0000`
+
+These packages were released:
+- `dynamic_tf_publisher`
+- `image_view2`
+- `jsk_common`
+- `jsk_data`
+- `jsk_network_tools`
+- `jsk_tilt_laser`
+- `jsk_tools`
+- `jsk_topic_tools`
+- `multi_map_server`
+- `virtual_force_publisher`
+
+Version of package(s) in repository `jsk_common`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common
+- release repository: https://github.com/tork-a/jsk_common-release.git
+- rosdistro version: `2.1.2-1`
+- old version: `2.1.2-1`
+- new version: `2.2.2-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.23`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.5`
+- rosdistro version: `0.5.0`
+- vcstools version: `0.1.39`
+
+
 ## jsk_common (indigo) - 2.2.2-1
 
 The packages in the `jsk_common` repository were released into the `indigo` distro by running `./send_to_bloom.py jsk-ros-pkg jsk_common` on `Fri, 06 Jan 2017 00:11:38 -0000`
