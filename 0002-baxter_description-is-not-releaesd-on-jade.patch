@@ -1,4 +1,4 @@
-From b7e7ebd0a4f8c67e8f9c325494fb0c0207ab205f Mon Sep 17 00:00:00 2001
+From f07c4d2c49224ae791a31eadfe9f52dd9eaf456c Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Tue, 6 Sep 2016 09:25:51 +0900
 Subject: [PATCH 2/2] baxter_description is not releaesd on jade
