@@ -1,0 +1,12 @@
+Source: ros-jade-jsk-tilt-laser
+Section: misc
+Priority: extra
+Maintainer: YoheiKakiuchi <youhei@jsk.imi.i.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-jade-catkin, ros-jade-cmake-modules, ros-jade-dynamic-reconfigure, ros-jade-laser-assembler, ros-jade-laser-filters, ros-jade-multisense-lib, ros-jade-sensor-msgs, ros-jade-tf, ros-jade-tf-conversions
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jade-jsk-tilt-laser
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jade-dynamic-reconfigure, ros-jade-laser-assembler, ros-jade-laser-filters, ros-jade-multisense-lib, ros-jade-robot-state-publisher, ros-jade-sensor-msgs, ros-jade-tf, ros-jade-tf-conversions, ros-jade-urg-node
+Description: The jsk_tilt_laser package
