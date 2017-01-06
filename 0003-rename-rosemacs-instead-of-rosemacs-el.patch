@@ -1,4 +1,4 @@
-From 62ef1dccbaa3f4ca4fcc1270e38c03f077477ea9 Mon Sep 17 00:00:00 2001
+From 2e0587a2787c91e682c041b5cb91b2cf1b840ebd Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Tue, 6 Sep 2016 09:27:45 +0900
 Subject: [PATCH 3/3] rename rosemacs instead of rosemacs-el
