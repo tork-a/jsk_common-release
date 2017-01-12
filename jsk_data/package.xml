@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>jsk_data</name>
-  <version>2.1.2</version>
+  <version>2.2.2</version>
   <description>The jsk_data package</description>
 
   <maintainer email="ueda@jsk.t.u-tokyo.ac.jp">Ryohei Ueda</maintainer>
@@ -21,6 +21,7 @@
   <run_depend>pr2_description</run_depend>
   <run_depend>pr2_machine</run_depend>
   <run_depend>python-click</run_depend>
+  <run_depend>python-gdown-pip</run_depend>
   <run_depend>python-yaml</run_depend>  <!-- apt -->
   <run_depend>rosbag</run_depend>
   <run_depend>rqt_bag</run_depend>
