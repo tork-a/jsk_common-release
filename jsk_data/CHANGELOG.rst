@@ -2,6 +2,37 @@
 Changelog for package jsk_data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.2.2 (2016-12-30)
+------------------
+* package.xml : Fix rosdep key: python-gdown -> python-gdown-pip
+  According to https://github.com/ros/rosdistro/pull/13397
+* jsk_data/download_data.py : Check if specified md5 has 32 charactors
+* Contributors: Kentaro Wada
+
+2.2.1 (2016-12-13)
+------------------
+* CMakeLists.txt : Strict rule of installing scripts
+  Fix the part of `#1488 <https://github.com/jsk-ros-pkg/jsk_common/issues/1488>`_
+* jsk_data/src/jsk_data/cli.py: Make stamping as optional in jsk_data (`#1486 <https://github.com/jsk-ros-pkg/jsk_common/issues/1486>`_)
+  I found forcely chaning filename is a bit too strict.. ;)
+* jsk_data/src/jsk_data/gdrive.py: Check if gdrive authorization has been successfully completed (`#1485 <https://github.com/jsk-ros-pkg/jsk_common/issues/1485>`_)
+* jsk_data/data_collection_server.py:  set slop as rosparam and add warning in data_collection_server (`#1483 <https://github.com/jsk-ros-pkg/jsk_common/issues/1483>`_)
+* jsk_data/data_collection_server.py:  Fix abs() for approx sync in data_collection_server.py (`#1477 <https://github.com/jsk-ros-pkg/jsk_common/issues/1477>`_)
+* package.xml : Resolve dependency on python-gdown with rosdep (`#1481 <https://github.com/jsk-ros-pkg/jsk_common/issues/1481>`_)
+* jsk_data/data_collection_server.py: fix typo in data_collection_server (`#1480 <https://github.com/jsk-ros-pkg/jsk_common/issues/1480>`_)
+  * Fix visual indent and line length to follow pep8
+  * fix indent in data_collection_server
+* jsk_data/data_collection_server.py: add YAML topic savetype (`#1476 <https://github.com/jsk-ros-pkg/jsk_common/issues/1476>`_)
+* jsk_data/data_collection_server.py: support non-header msg (`#1476 <https://github.com/jsk-ros-pkg/jsk_common/issues/1476>`_)
+* Contributors: Kentaro Wada, Shingo Kitagawa
+
+2.2.0 (2016-10-28)
+------------------
+* jsk_data/src/jsk_data/download_data.py: Create softlink for extracted files in download_data (`#1467 <https://github.com/jsk-ros-pkg/jsk_common/pull/1467>`_)
+  - For multiple workspaces like in jenkins.
+* Fix removing of symlink destination path (`#1469 <https://github.com/jsk-ros-pkg/jsk_common/pull/1469>`_)
+* Contributors: Kentaro Wada
+
 2.1.2 (2016-09-14)
 ------------------
 * src/jsk_data/download_data.py : create path direcotory before download data and return if permission denied, catch resourceNotFound
