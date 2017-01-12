@@ -1,4 +1,4 @@
-From 6f58f7aba848c059f9eb73f667a6502abdc62982 Mon Sep 17 00:00:00 2001
+From a0641f64627616fad284dcd6599037159c1c6dc7 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Tue, 6 Sep 2016 09:25:51 +0900
 Subject: [PATCH 2/2] baxter_description is not releaesd on jade
@@ -21,5 +21,5 @@ index 24f02dd..eb93953 100644
    <run_depend>dynamic_reconfigure</run_depend>
    <run_depend>image_transport</run_depend>
 -- 
-1.9.1
+1.9.0
 
