@@ -1,4 +1,4 @@
-From 25896cba142b07136feb8f21860798a84acde0e3 Mon Sep 17 00:00:00 2001
+From aa49e12e44b765b3b942277919cbc0c4ffda7674 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Tue, 6 Sep 2016 09:27:21 +0900
 Subject: [PATCH 2/3] remove package not released on jade
@@ -23,5 +23,5 @@ index 1568154..dbfa41c 100644
    <run_depend>jsk_network_tools</run_depend>
    <run_depend>jsk_topic_tools</run_depend>
 -- 
-1.9.1
+1.9.0
 

@@ -1,4 +1,4 @@
-From 62b60e77b1054a258cfba27515f9385dd202780e Mon Sep 17 00:00:00 2001
+From 8010d643f43ad35ed1f5f7812a9db5093364736b Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Tue, 6 Sep 2016 09:27:45 +0900
 Subject: [PATCH 3/3] rename rosemacs instead of rosemacs-el
@@ -21,5 +21,5 @@ index dbfa41c..baf727a 100644
    <!-- <run_depend>mjpeg_server</run_depend> -->
    <!-- <test_depend>mjpeg_server</test_depend> -->
 -- 
-1.9.1
+1.9.0
 
