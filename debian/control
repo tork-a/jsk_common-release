@@ -1,0 +1,12 @@
+Source: ros-jade-jsk-data
+Section: misc
+Priority: extra
+Maintainer: Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), python-nose, ros-jade-catkin, ros-jade-dynamic-reconfigure, ros-jade-message-generation, ros-jade-roslaunch, ros-jade-roslint
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jade-jsk-data
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python-paramiko, python-yaml, ros-jade-depth-image-proc, ros-jade-dynamic-reconfigure, ros-jade-image-transport, ros-jade-jsk-topic-tools, ros-jade-message-runtime, ros-jade-nodelet, ros-jade-openni-launch, ros-jade-pr2-description, ros-jade-pr2-machine, ros-jade-rosbag, ros-jade-rqt-bag, ros-jade-rviz, ros-jade-tf2-ros, ros-jade-xacro
+Description: The jsk_data package
