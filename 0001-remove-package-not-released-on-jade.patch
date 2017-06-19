@@ -1,4 +1,4 @@
-From 5754dc18120ea5bd612d9fe5ad79136256aef8b2 Mon Sep 17 00:00:00 2001
+From a7acb58362d1ea389287c2f8b5c4bf007243411b Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Tue, 6 Sep 2016 09:27:21 +0900
 Subject: [PATCH] remove package not released on jade
@@ -8,10 +8,10 @@ Subject: [PATCH] remove package not released on jade
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 6c12244..dacaa05 100644
+index d69de5e..05d96ea 100644
 --- a/package.xml
 +++ b/package.xml
-@@ -27,8 +27,8 @@
+@@ -28,8 +28,8 @@
    <run_depend>rosgraph_msgs</run_depend>
    <run_depend>rospy</run_depend>
    <run_depend>rqt_reconfigure</run_depend>
