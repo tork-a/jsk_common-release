@@ -2,6 +2,9 @@
 Changelog for package jsk_topic_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.2.5 (2017-06-19)
+------------------
+
 2.2.4 (2017-06-14)
 ------------------
 * [jsk_topic_tools][LightweightThrottle] dynamic change update_rate (`#1514 <https://github.com/jsk-ros-pkg/jsk_common/pull/1514>`_)
