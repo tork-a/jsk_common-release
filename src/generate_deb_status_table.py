@@ -2,8 +2,13 @@
 
 import argparse
 import collections
+import sys
 
-import tabulate
+try:
+    import tabulate
+except ImportError:
+    sys.stderr.write('Please install tabulate: pip install tabulate\n')
+    sys.exit(1)
 
 
 def generate_deb_status_table(package, rosdistro_from, rosdistro_to):
@@ -13,7 +18,8 @@ def generate_deb_status_table(package, rosdistro_from, rosdistro_to):
     DISTROS['kinetic'] = ['wily', 'xenial']
 
     table = []
-    for bit, arch in zip(['hf', '32', '64'], ['armhf', 'i386', 'amd64']):
+    for bit, arch in zip(['v8', 'hf', '32', '64'],
+                         ['arm64', 'armhf', 'i386', 'amd64']):
         if not table:  # first row
             headers = ['Package']
         row = ['{} ({})'.format(package, arch)]
@@ -25,7 +31,7 @@ def generate_deb_status_table(package, rosdistro_from, rosdistro_to):
             for os in os_list:
                 if arch.startswith('arm'):
                     if os == 'xenial':
-                        os_arch = 'uxhf_u'
+                        os_arch = 'ux{bit}_u'.format(bit=bit)
                     else:
                         os_arch = 'arm_u'
                 else:
