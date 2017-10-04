@@ -1,6 +1,30 @@
-1;3409;0c^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Changelog for package jsk_data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2.2.5 (2017-06-19)
+------------------
+* [jsk_data][download_data] support custom download dir / chmod  (`#1530 <https://github.com/jsk-ros-pkg/jsk_common/issues/1530>`_)
+* Contributors: Yuki Furuta
+
+2.2.4 (2017-06-14)
+------------------
+* [jsk_data][pr2_play.launch] replace doc to comment (`#1526 <https://github.com/jsk-ros-pkg/jsk_common/issues/1526>`_)
+  * [jsk_data][pr2_play.launch] remove relay to c2 ns
+  * [jsk_data][pr2_play.sh] support other rosbag arguments
+* Fix bug for initialization of service server of data_collection_server (`#1525 <https://github.com/jsk-ros-pkg/jsk_common/issues/1525>`_)
+  * Mode to save topics without request
+    Modified:
+    - jsk_data/node_scripts/data_collection_server.py
+* Contributors: Kentaro Wada, Yuki Furuta
+
+2.2.3 (2017-03-23)
+------------------
+* jsk_data/node_scripts/data_collection_server.py: Dump numpy.ndarray as npz file in data_collection_server.py (`#1508 <https://github.com/jsk-ros-pkg/jsk_common/issues/1508>`_)
+  * Fix for flake8
+  * Dump numpy.ndarray as npz file, For small size data using npz_compressed.
+* Add my name to package.xml as a maintainer
+* Contributors: Kentaro Wada
 
 2.2.2 (2016-12-30)
 ------------------
