@@ -1,3 +1,36 @@
+## jsk_common (kinetic) - 2.2.6-0
+
+The packages in the `jsk_common` repository were released into the `kinetic` distro by running `/home/user/bloom/venv/bin/bloom-release --skip-pip -y jsk_common --rosdistro kinetic --track kinetic` on `Fri, 05 Jan 2018 06:17:26 -0000`
+
+These packages were released:
+- `dynamic_tf_publisher`
+- `image_view2`
+- `jsk_common`
+- `jsk_data`
+- `jsk_network_tools`
+- `jsk_tilt_laser`
+- `jsk_tools`
+- `jsk_topic_tools`
+- `multi_map_server`
+- `virtual_force_publisher`
+
+Version of package(s) in repository `jsk_common`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common
+- release repository: https://github.com/tork-a/jsk_common-release.git
+- rosdistro version: `2.2.5-0`
+- old version: `2.2.5-0`
+- new version: `2.2.6-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.23`
+- catkin_pkg version: `0.3.9`
+- rosdep version: `0.11.8`
+- rosdistro version: `0.6.3`
+- vcstools version: `0.1.39`
+
+
 ## jsk_common (indigo) - 2.2.6-0
 
 The packages in the `jsk_common` repository were released into the `indigo` distro by running `/home/user/bloom/venv/bin/bloom-release --skip-pip -y jsk_common --rosdistro indigo --track indigo` on `Fri, 05 Jan 2018 04:39:40 -0000`
