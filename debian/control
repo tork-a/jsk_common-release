@@ -1,0 +1,12 @@
+Source: ros-melodic-jsk-topic-tools
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-catkin, ros-melodic-diagnostic-msgs, ros-melodic-diagnostic-updater, ros-melodic-dynamic-reconfigure, ros-melodic-dynamic-tf-publisher, ros-melodic-eigen-conversions, ros-melodic-geometry-msgs, ros-melodic-image-transport, ros-melodic-message-generation, ros-melodic-nodelet (>= 1.9.11), ros-melodic-roscpp, ros-melodic-roscpp-tutorials, ros-melodic-roslaunch, ros-melodic-roslint, ros-melodic-rosnode, ros-melodic-rostest, ros-melodic-rostime, ros-melodic-rostopic, ros-melodic-std-msgs, ros-melodic-std-srvs, ros-melodic-tf, ros-melodic-topic-tools
+Homepage: http://ros.org/wiki/jsk_topic_tools
+Standards-Version: 3.9.2
+
+Package: ros-melodic-jsk-topic-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python-numpy, python-opencv, python-scipy, ros-melodic-diagnostic-msgs, ros-melodic-diagnostic-updater, ros-melodic-dynamic-reconfigure, ros-melodic-dynamic-tf-publisher, ros-melodic-eigen-conversions, ros-melodic-geometry-msgs, ros-melodic-image-transport, ros-melodic-message-runtime, ros-melodic-nodelet (>= 1.9.11), ros-melodic-roscpp, ros-melodic-roslaunch, ros-melodic-rosnode, ros-melodic-rostime, ros-melodic-rostopic, ros-melodic-sensor-msgs, ros-melodic-sound-play, ros-melodic-std-msgs, ros-melodic-std-srvs, ros-melodic-tf, ros-melodic-topic-tools
+Description: jsk_topic_tools
