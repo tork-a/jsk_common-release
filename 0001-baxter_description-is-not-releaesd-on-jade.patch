@@ -1,4 +1,4 @@
-From 88f39501ac0ac6e503d07809986ce204dc26a3ef Mon Sep 17 00:00:00 2001
+From a55fc65068cf68b6911334a99299efc831a78005 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Tue, 6 Sep 2016 09:25:51 +0900
 Subject: [PATCH] baxter_description is not releaesd on jade
@@ -8,7 +8,7 @@ Subject: [PATCH] baxter_description is not releaesd on jade
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/package.xml b/package.xml
-index 11979d2..4686d04 100644
+index b86666a..52bbd93 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -10,7 +10,7 @@
@@ -21,5 +21,5 @@ index 11979d2..4686d04 100644
    <run_depend>dynamic_reconfigure</run_depend>
    <run_depend>image_transport</run_depend>
 -- 
-1.9.0
+2.7.4
 
