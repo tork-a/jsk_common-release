@@ -1,4 +1,4 @@
-From 59e78268198b12828ac257c4f0b882d8d83a23e8 Mon Sep 17 00:00:00 2001
+From 737c3bd59b03cff4b91a7932e850270f8996651d Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Tue, 6 Sep 2016 09:27:45 +0900
 Subject: [PATCH] rename rosemacs instead of rosemacs-el
@@ -8,10 +8,10 @@ Subject: [PATCH] rename rosemacs instead of rosemacs-el
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index d1d2bda..10ee8df 100644
+index 364b474..a561579 100644
 --- a/package.xml
 +++ b/package.xml
-@@ -29,8 +29,8 @@
+@@ -30,8 +30,8 @@
    <run_depend>rosgraph_msgs</run_depend>
    <run_depend>rospy</run_depend>
    <run_depend>rqt_reconfigure</run_depend>
