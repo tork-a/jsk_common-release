@@ -1,4 +1,4 @@
-From 737c3bd59b03cff4b91a7932e850270f8996651d Mon Sep 17 00:00:00 2001
+From 1a926ed92f9f6eacf03264842d92cd505cfd7b9a Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Tue, 6 Sep 2016 09:27:45 +0900
 Subject: [PATCH] rename rosemacs instead of rosemacs-el
@@ -8,7 +8,7 @@ Subject: [PATCH] rename rosemacs instead of rosemacs-el
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 364b474..a561579 100644
+index 79f68e6..17b2487 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -30,8 +30,8 @@
