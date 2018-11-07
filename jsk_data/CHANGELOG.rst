@@ -2,6 +2,17 @@
 Changelog for package jsk_data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.2.10 (2018-11-03)
+-------------------
+* check if wget/gdown command exists, gdown is pip distributed so that we can not use this within de build farm (`#1609 <https://github.com/jsk-ros-pkg/jsk_common/issues/1609>`_)
+* Contributors: Kei Okada
+
+2.2.9 (2018-11-02)
+------------------
+* check if the pkg exists and path is writable (`#1608 <https://github.com/jsk-ros-pkg/jsk_common/issues/1608>`_)
+  * fix http://build.ros.org/view/Kbin_uX64/job/Kbin_uX64__jsk_pcl_ros_utils__ubuntu_xenial_amd64__binary/132/console
+* Contributors: Kei Okada
+
 2.2.8 (2018-11-01)
 ------------------
 * Fix installation destination (install node_scripts to CATKIN_PACKAGE_BIN_DESTINATION) (`#1604 <https://github.com/jsk-ros-pkg/jsk_common/issues/1604>`_)
