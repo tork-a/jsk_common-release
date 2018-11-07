@@ -1,4 +1,4 @@
-From e29917238f1e46fba92aec04e483d447a6fc876f Mon Sep 17 00:00:00 2001
+From 14dbd037beee2dd7049bdf509b6aab470c451275 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Thu, 1 Nov 2018 14:12:43 +0000
 Subject: [PATCH] baxter_description is not released on melodic
