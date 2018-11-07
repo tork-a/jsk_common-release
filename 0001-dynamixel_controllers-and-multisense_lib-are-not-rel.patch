@@ -1,4 +1,4 @@
-From 2b02cb9218b5ace2a672c7fa9a58ad7670e2a7dd Mon Sep 17 00:00:00 2001
+From 6d0da28f68db494fc1ca28eff8fe1ebe6eb9cd2a Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Thu, 1 Nov 2018 14:13:31 +0000
 Subject: [PATCH] dynamixel_controllers and multisense_lib are not released on
