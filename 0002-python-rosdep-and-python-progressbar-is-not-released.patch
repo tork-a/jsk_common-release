@@ -1,0 +1,28 @@
+From 093ca9a7b94c71cea345b8e4fa80e3805827e64b Mon Sep 17 00:00:00 2001
+From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Date: Sat, 11 Jul 2020 21:01:09 +0900
+Subject: [PATCH 2/2] python-rosdep and python-progressbar is not released in
+ noetic
+
+---
+ package.xml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/package.xml b/package.xml
+index e61bd7ca09..977bcb865f 100644
+--- a/package.xml
++++ b/package.xml
+@@ -23,8 +23,8 @@
+   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-colorama</exec_depend>
+   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-github</exec_depend> <!-- python-pygithub3 (pip pygithub3) requres python3-github -->
+   <exec_depend>python-pygithub3</exec_depend>
+-  <exec_depend>python-progressbar</exec_depend>
+-  <exec_depend>python-rosdep</exec_depend>
++  <!-- <exec_depend>python-progressbar</exec_depend> -->
++  <!-- <exec_depend>python-rosdep</exec_depend> -->
+   <exec_depend>python-slacker-cli</exec_depend>
+   <exec_depend>python-tabulate-pip</exec_depend>
+   <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-texttable</exec_depend>
+-- 
+2.17.1
+
