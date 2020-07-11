@@ -1,0 +1,12 @@
+Source: ros-noetic-virtual-force-publisher
+Section: misc
+Priority: optional
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-geometry-msgs, ros-noetic-kdl-parser, ros-noetic-sensor-msgs, ros-noetic-tf-conversions, ros-noetic-urdf
+Homepage: http://ros.org/wiki/virtual_force_publisher
+Standards-Version: 3.9.2
+
+Package: ros-noetic-virtual-force-publisher
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-geometry-msgs, ros-noetic-kdl-parser, ros-noetic-sensor-msgs, ros-noetic-tf-conversions, ros-noetic-urdf
+Description: publish end effector's force, which is estmated from joint torque value
