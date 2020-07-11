@@ -34,8 +34,8 @@
   <exec_depend>rosgraph_msgs</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>rqt_reconfigure</exec_depend>
-  <exec_depend>axis_camera</exec_depend>
-  <exec_depend>pr2_computer_monitor</exec_depend>
+  <!-- <exec_depend>axis_camera</exec_depend> -->
+  <!-- <exec_depend>pr2_computer_monitor</exec_depend> -->
   <exec_depend>iproute2</exec_depend>
   <exec_depend>jsk_gui_msgs</exec_depend>
   <exec_depend>jsk_network_tools</exec_depend>
