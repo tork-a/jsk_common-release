@@ -1,0 +1,12 @@
+Source: ros-noetic-jsk-topic-tools
+Section: misc
+Priority: optional
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-diagnostic-msgs, ros-noetic-diagnostic-updater, ros-noetic-dynamic-reconfigure, ros-noetic-dynamic-tf-publisher, ros-noetic-eigen-conversions, ros-noetic-geometry-msgs, ros-noetic-image-transport, ros-noetic-message-generation, ros-noetic-nodelet (>= 1.9.11), ros-noetic-roscpp, ros-noetic-roscpp-tutorials, ros-noetic-roslaunch, ros-noetic-roslint, ros-noetic-rosnode, ros-noetic-rostest, ros-noetic-rostime, ros-noetic-rostopic, ros-noetic-std-msgs, ros-noetic-std-srvs, ros-noetic-tf, ros-noetic-topic-tools
+Homepage: http://ros.org/wiki/jsk_topic_tools
+Standards-Version: 3.9.2
+
+Package: ros-noetic-jsk-topic-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-numpy, python3-opencv, python3-scipy, ros-noetic-diagnostic-msgs, ros-noetic-diagnostic-updater, ros-noetic-dynamic-reconfigure, ros-noetic-dynamic-tf-publisher, ros-noetic-eigen-conversions, ros-noetic-geometry-msgs, ros-noetic-image-transport, ros-noetic-message-runtime, ros-noetic-nodelet (>= 1.9.11), ros-noetic-roscpp, ros-noetic-roslaunch, ros-noetic-rosnode, ros-noetic-rostime, ros-noetic-rostopic, ros-noetic-sensor-msgs, ros-noetic-sound-play, ros-noetic-std-msgs, ros-noetic-std-srvs, ros-noetic-tf, ros-noetic-topic-tools
+Description: jsk_topic_tools
