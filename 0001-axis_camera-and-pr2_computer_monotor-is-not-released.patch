@@ -1,4 +1,4 @@
-From 94b01606466a558782f48b2f66444f8ff7b06478 Mon Sep 17 00:00:00 2001
+From 60b907647377a49dcb4eef68fa28178cf35abfe0 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Thu, 1 Nov 2018 14:12:12 +0000
 Subject: [PATCH] axis_camera and pr2_computer_monotor is not released on
@@ -9,7 +9,7 @@ Subject: [PATCH] axis_camera and pr2_computer_monotor is not released on
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 364b474..a561579 100644
+index e491461b2c..b435c3d305 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -30,8 +30,8 @@
@@ -24,5 +24,5 @@ index 364b474..a561579 100644
    <run_depend>jsk_gui_msgs</run_depend>
    <run_depend>jsk_network_tools</run_depend>
 -- 
-2.7.4
+2.17.1
 
