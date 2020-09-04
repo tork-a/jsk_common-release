@@ -1,3 +1,36 @@
+## jsk_common (kinetic) - 2.2.11-1
+
+The packages in the `jsk_common` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release -y jsk_common --skip-pip --rosdistro kinetic --track kinetic` on `Fri, 04 Sep 2020 07:22:08 -0000`
+
+These packages were released:
+- `dynamic_tf_publisher`
+- `image_view2`
+- `jsk_common`
+- `jsk_data`
+- `jsk_network_tools`
+- `jsk_tilt_laser`
+- `jsk_tools`
+- `jsk_topic_tools`
+- `multi_map_server`
+- `virtual_force_publisher`
+
+Version of package(s) in repository `jsk_common`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common
+- release repository: https://github.com/tork-a/jsk_common-release.git
+- rosdistro version: `2.2.10-0`
+- old version: `2.2.10-0`
+- new version: `2.2.11-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.3`
+- catkin_pkg version: `0.4.16`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.0`
+- vcstools version: `0.1.42`
+
+
 ## jsk_common (melodic) - 2.2.11-1
 
 The packages in the `jsk_common` repository were released into the `melodic` distro by running `/usr/bin/bloom-release -y jsk_common --skip-pip --rosdistro melodic --track melodic` on `Fri, 04 Sep 2020 03:42:58 -0000`
