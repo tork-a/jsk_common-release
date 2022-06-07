@@ -1,6 +1,6 @@
-From 130b05ea91f1b7a0152bcc336131aa17394ec8da Mon Sep 17 00:00:00 2001
+From f51d3c49c7e50636f5d263a6269876027b0daece Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
-Date: Thu, 1 Nov 2018 14:13:31 +0000
+Date: Fri, 4 Sep 2020 03:34:26 +0000
 Subject: [PATCH] dynamixel_controllers and multisense_lib are not released on
  melodic
 
@@ -9,26 +9,26 @@ Subject: [PATCH] dynamixel_controllers and multisense_lib are not released on
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index c980e07983..87ea231249 100644
+index 044eb4acb8..fc70bc6d96 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -17,7 +17,7 @@
  
    <build_depend>laser_assembler</build_depend>
-   <run_depend>urg_node</run_depend>
--  <run_depend>dynamixel_controllers</run_depend>
-+  <!-- <run_depend>dynamixel_controllers</run_depend> -->
-   <run_depend>robot_state_publisher</run_depend>
-   <run_depend>laser_assembler</run_depend>
+   <exec_depend>urg_node</exec_depend>
+-  <exec_depend>dynamixel_controllers</exec_depend>
++  <!-- <exec_depend>dynamixel_controllers</exec_depend> -->
+   <exec_depend>robot_state_publisher</exec_depend>
+   <exec_depend>laser_assembler</exec_depend>
    <build_depend>tf_conversions</build_depend>
 @@ -30,8 +30,8 @@
-   <run_depend>sensor_msgs</run_depend>
+   <exec_depend>sensor_msgs</exec_depend>
    <build_depend>laser_filters</build_depend>
-   <run_depend>laser_filters</run_depend>
+   <exec_depend>laser_filters</exec_depend>
 -  <build_depend>multisense_lib</build_depend>
--  <run_depend>multisense_lib</run_depend>
+-  <exec_depend>multisense_lib</exec_depend>
 +  <!-- <build_depend>multisense_lib</build_depend> -->
-+  <!-- <run_depend>multisense_lib</run_depend> -->
++  <!-- <exec_depend>multisense_lib</exec_depend> -->
    <!-- The export tag contains other, unspecified, tags -->
    <export>
    </export>
