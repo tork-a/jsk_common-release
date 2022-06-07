@@ -72,6 +72,8 @@ namespace jsk_topic_tools
     ConnectionStatus connection_status_;
     ros::NodeHandle pnh_;
     ros::ServiceServer change_output_topic_srv_;
+    bool always_subscribe_;
+    bool latch_;
     /** @brief
      * Pointer to TimeredDiagnosticUpdater to call
      * updateDiagnostic(diagnostic_updater::DiagnosticStatusWrapper&)
@@ -79,6 +81,12 @@ namespace jsk_topic_tools
      */
     TimeredDiagnosticUpdater::Ptr diagnostic_updater_;
     VitalChecker::Ptr vital_checker_;
+
+    /** @brief
+     * Previous checked status of connection
+     */
+    ConnectionStatus previous_checked_connection_status_;
+
   };
 }
 

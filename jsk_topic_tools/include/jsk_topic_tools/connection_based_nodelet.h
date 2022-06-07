@@ -150,20 +150,35 @@ namespace jsk_topic_tools
      */
     virtual bool isSubscribed();
 
-#if nodelet_VERSION_MINOR > 9 || (nodelet_VERSION_MINOR == 9 && nodelet_VERSION_PATCH >= 11)
     /** @brief warn if there are expected remappings.
     *
     * @param[in] names Names which are expected to remapped.
     * @return false if there is at least a topic which is not remapped, else true;
     */
     virtual bool warnNoRemap(const std::vector<std::string> names);
-#endif
 
     /** @brief
      * Advertise a topic and watch the publisher. Publishers which are
      * created by this method.
-     * It automatically reads latch boolean parameter from nh and 
+     * It automatically reads latch boolean parameter from nh and
      * publish topic with appropriate latch parameter.
+     *
+     * @param nh NodeHandle.
+     * @param topic topic name to advertise.
+     * @param queue_size queue size for publisher.
+     * @return Publisher for the advertised topic.
+     */
+    template<class T> ros::Publisher
+    advertise(ros::NodeHandle& nh, std::string topic, int queue_size)
+    {
+      bool latch;
+      nh.param("latch", latch, false);
+      return advertise<T>(nh, topic, queue_size, latch);
+    }
+
+    /** @brief
+     * Advertise a topic and watch the publisher. Publishers which are
+     * created by this method.
      *
      * @param nh NodeHandle.
      * @param topic topic name to advertise.
@@ -173,22 +188,20 @@ namespace jsk_topic_tools
      */
     template<class T> ros::Publisher
     advertise(ros::NodeHandle& nh,
-              std::string topic, int queue_size)
+              std::string topic, int queue_size, bool latch)
     {
       boost::mutex::scoped_lock lock(connection_mutex_);
       ros::SubscriberStatusCallback connect_cb
         = boost::bind(&ConnectionBasedNodelet::connectionCallback, this, _1);
       ros::SubscriberStatusCallback disconnect_cb
         = boost::bind(&ConnectionBasedNodelet::connectionCallback, this, _1);
-      bool latch;
-      nh.param("latch", latch, false);
       ros::Publisher ret = nh.advertise<T>(topic, queue_size,
                                            connect_cb,
                                            disconnect_cb,
                                            ros::VoidConstPtr(),
                                            latch);
       publishers_.push_back(ret);
-      
+
       return ret;
     }
 
@@ -205,8 +218,27 @@ namespace jsk_topic_tools
     /** @brief
      * Advertise an image topic and watch the publisher. Publishers which are
      * created by this method.
-     * It automatically reads latch boolean parameter from nh and it and
-     * publish topic with appropriate latch parameter.
+     * It automatically reads latch boolean parameter from nh and the publisher
+     * publishes topic with appropriate latch parameter.
+     *
+     * @param nh NodeHandle.
+     * @param topic topic name to advertise.
+     * @param queue_size queue size for publisher.
+     * @return Publisher for the advertised topic.
+     */
+    image_transport::Publisher
+    advertiseImage(ros::NodeHandle& nh,
+                   const std::string& topic,
+                   int queue_size)
+    {
+      bool latch;
+      nh.param("latch", latch, false);
+      return advertiseImage(nh, topic, queue_size, latch);
+    }
+
+    /** @brief
+     * Advertise an image topic and watch the publisher. Publishers which are
+     * created by this method.
      *
      * @param nh NodeHandle.
      * @param topic topic name to advertise.
@@ -217,7 +249,8 @@ namespace jsk_topic_tools
     image_transport::Publisher
     advertiseImage(ros::NodeHandle& nh,
                    const std::string& topic,
-                   int queue_size)
+                   int queue_size,
+                   bool latch)
     {
       boost::mutex::scoped_lock lock(connection_mutex_);
       image_transport::SubscriberStatusCallback connect_cb
@@ -226,8 +259,6 @@ namespace jsk_topic_tools
       image_transport::SubscriberStatusCallback disconnect_cb
         = boost::bind(&ConnectionBasedNodelet::imageConnectionCallback,
                       this, _1);
-      bool latch;
-      nh.param("latch", latch, false);
       image_transport::Publisher pub = image_transport::ImageTransport(nh).advertise(
         topic, 1,
         connect_cb,
@@ -248,11 +279,42 @@ namespace jsk_topic_tools
       NODELET_WARN("advertiseCamera with ImageTransport is deprecated");
       return advertiseCamera(nh, topic, queue_size);
     }
-    
+
+
+    /** @brief
+     * Advertise an image and camerainfo topic and watch the publisher.
+     * It automatically reads latch boolean parameter from nh and the publisher
+     * publishes topic with appropriate latch parameter.
+     *
+     * @param nh NodeHandle.
+     * @param topic topic name to advertise.
+     * @param queue_size queue size for publisher.
+     * @return Publisher for the advertised topic.
+     */
     image_transport::CameraPublisher
     advertiseCamera(ros::NodeHandle& nh,
                     const std::string& topic,
                     int queue_size)
+    {
+      bool latch;
+      nh.param("latch", latch, false);
+      return advertiseCamera(nh, topic, queue_size, latch);
+    }
+
+    /** @brief
+     * Advertise an image and camerainfo topic and watch the publisher.
+     *
+     * @param nh NodeHandle.
+     * @param topic topic name to advertise.
+     * @param queue_size queue size for publisher.
+     * @param latch set true if latch topic publication.
+     * @return Publisher for the advertised topic.
+     */
+    image_transport::CameraPublisher
+    advertiseCamera(ros::NodeHandle& nh,
+                    const std::string& topic,
+                    int queue_size,
+                    bool latch)
     {
       boost::mutex::scoped_lock lock(connection_mutex_);
       image_transport::SubscriberStatusCallback connect_cb
@@ -267,8 +329,6 @@ namespace jsk_topic_tools
       ros::SubscriberStatusCallback info_disconnect_cb
         = boost::bind(&ConnectionBasedNodelet::cameraInfoConnectionCallback,
                       this, _1);
-      bool latch;
-      nh.param("latch", latch, false);
       image_transport::CameraPublisher
         pub = image_transport::ImageTransport(nh).advertiseCamera(
           topic, 1,
