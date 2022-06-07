@@ -1,0 +1,12 @@
+Source: ros-melodic-dynamic-tf-publisher
+Section: misc
+Priority: optional
+Maintainer: Ryohei Ueda <garaemon@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-catkin, ros-melodic-dynamic-reconfigure, ros-melodic-geometry-msgs, ros-melodic-message-generation, ros-melodic-rospy, ros-melodic-tf
+Homepage: http://ros.org/wiki/dynamic_tf_publisher
+Standards-Version: 3.9.2
+
+Package: ros-melodic-dynamic-tf-publisher
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-geometry-msgs, ros-melodic-message-runtime, ros-melodic-rospy, ros-melodic-tf
+Description: dynamically set the tf trensformation
