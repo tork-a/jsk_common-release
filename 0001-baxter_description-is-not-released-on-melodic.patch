@@ -1,6 +1,6 @@
-From 4ae42c2ab66823479ba33264ce3e4a6629cb4b67 Mon Sep 17 00:00:00 2001
+From c59204b4e3d7a9a29e037d218f8c2059feec22d6 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
-Date: Thu, 1 Nov 2018 14:12:43 +0000
+Date: Fri, 4 Sep 2020 03:35:30 +0000
 Subject: [PATCH] baxter_description is not released on melodic
 
 ---
@@ -8,18 +8,18 @@ Subject: [PATCH] baxter_description is not released on melodic
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/package.xml b/package.xml
-index e6bb490173..ac2dfe4400 100644
+index 1f740f49d9..9a97b3a723 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -10,7 +10,7 @@
    <buildtool_depend>catkin</buildtool_depend>
    <build_depend>dynamic_reconfigure</build_depend>
    <build_depend>message_generation</build_depend>
--  <run_depend>baxter_description</run_depend>
-+  <!-- <run_depend>baxter_description</run_depend> -->
-   <run_depend>depth_image_proc</run_depend>
-   <run_depend>dynamic_reconfigure</run_depend>
-   <run_depend>image_transport</run_depend>
+-  <exec_depend>baxter_description</exec_depend>
++  <!-- <exec_depend>baxter_description</exec_depend> -->
+   <exec_depend>depth_image_proc</exec_depend>
+   <exec_depend>dynamic_reconfigure</exec_depend>
+   <exec_depend>image_transport</exec_depend>
 -- 
 2.17.1
 
