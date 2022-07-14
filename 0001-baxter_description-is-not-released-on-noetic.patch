@@ -1,4 +1,4 @@
-From 9c4606ff5657e75fffd807dad3ae66d1d48cf3a9 Mon Sep 17 00:00:00 2001
+From 8ef775dfc28b96da0cdb6d81ef578438c3629558 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sat, 11 Jul 2020 14:25:35 +0900
 Subject: [PATCH 1/2] baxter_description is not released on noetic
