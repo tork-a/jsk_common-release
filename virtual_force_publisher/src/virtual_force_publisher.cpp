@@ -109,6 +109,14 @@ namespace virtual_force_publisher{
         }
         ~VirtualForcePublisher() { }
 
+        Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> calculateSRInverse(Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> J, double k = 1.0) {
+          if (J.cols() < J.rows()) {
+            return (J.transpose() * J + k * Eigen::MatrixXd::Identity(J.cols(), J.cols())).inverse() * J.transpose();
+          } else {
+            return J.transpose() * (J * J.transpose() + k * Eigen::MatrixXd::Identity(J.rows(), J.rows())).inverse();
+          }
+        }
+
         void callbackJointState(const JointStateConstPtr& state)
         {
             std::map<std::string, double> joint_name_position;
@@ -163,20 +171,16 @@ namespace virtual_force_publisher{
 		
 		jnt_to_jac_solver_->JntToJac(jnt_pos_, jacobian_);
 		jac_t = jacobian_.data.transpose();
-		if ( jacobian_.columns() >= jacobian_.rows() ) {
-		  jac_t_pseudo_inv =(jac_t.transpose() * jac_t).inverse() *  jac_t.transpose();
-		} else {
-		  jac_t_pseudo_inv =jac_t.transpose() * ( jac_t *  jac_t.transpose() ).inverse();
-		}
+		jac_t_pseudo_inv = calculateSRInverse(jac_t);
 #if 1
 		{
-		  ROS_INFO("jac_t# jac_t : ");
+		  ROS_DEBUG("jac_t# jac_t : ");
 		  Eigen::Matrix<double,6,6> mat_i =  mat_i = jac_t_pseudo_inv * jac_t;
 		  for (unsigned int i = 0; i < 6; i++) {
 		    std::stringstream ss;
 		    for (unsigned int j=0; j<6; j++)
 		      ss << std::fixed << std::setw(8) << std::setprecision(4) << mat_i(j,i) << " ";
-		    ROS_INFO_STREAM(ss.str());
+		    ROS_DEBUG_STREAM(ss.str());
                     }
 		}
 #endif
@@ -227,25 +231,25 @@ namespace virtual_force_publisher{
                 wrench_stamped_pub_.publish(msg);
 
                 {
-                    ROS_INFO("jacobian : ");
+                    ROS_DEBUG("jacobian : ");
                     for (unsigned int i = 0; i < jnt_pos_.rows(); i++) {
                         std::stringstream ss;
                         for (unsigned int j=0; j<6; j++)
                             ss << std::fixed << std::setw(8) << std::setprecision(4) << jacobian_(j,i) << " ";
-                        ROS_INFO_STREAM(ss.str());
+                        ROS_DEBUG_STREAM(ss.str());
                     }
-                    ROS_INFO("effort : ");
+                    ROS_DEBUG("effort : ");
                     std::stringstream sstau;
                     for (unsigned int i = 0; i < tau.rows(); i++) {
                         sstau << std::fixed << std::setw(8) << std::setprecision(4) << tau(i) << " ";
                     }
-                    ROS_INFO_STREAM(sstau.str());
-                    ROS_INFO("force : ");
+                    ROS_DEBUG_STREAM(sstau.str());
+                    ROS_DEBUG("force : ");
                     std::stringstream ssf;
                     for (unsigned int j = 0; j < 6; j++) {
 		      ssf << std::fixed << std::setw(8) << std::setprecision(4) << F(j) << " ";
                     }
-                    ROS_INFO_STREAM(ssf.str());
+                    ROS_DEBUG_STREAM(ssf.str());
                 }
 
                 // store publish time in joint map
