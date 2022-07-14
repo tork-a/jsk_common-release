@@ -1,6 +1,6 @@
 <package format="3">
   <name>jsk_topic_tools</name>
-  <version>2.2.11</version>
+  <version>2.2.12</version>
   <description>jsk_topic_tools</description>
   <maintainer email="k-okada@jsk.t.u-tokyo.ac.jp">Kei Okada</maintainer>
   <maintainer email="ueda@jsk.t.u-tokyo.ac.jp">Ryohei Ueda</maintainer>
@@ -24,7 +24,7 @@
   <build_depend>geometry_msgs</build_depend>
   <build_depend>image_transport</build_depend>
   <build_depend>message_generation</build_depend>
-  <build_depend version_gte="1.9.11">nodelet</build_depend>
+  <build_depend>nodelet</build_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>roslaunch</build_depend>
   <build_depend>rosnode</build_depend>
@@ -37,6 +37,7 @@
   <build_depend>topic_tools</build_depend>
 
   <!-- list exec_depend in alphabetical order -->
+  <exec_depend>diagnostic_aggregator</exec_depend>
   <exec_depend>diagnostic_msgs</exec_depend>
   <exec_depend>diagnostic_updater</exec_depend>
   <exec_depend>dynamic_reconfigure</exec_depend>
@@ -44,8 +45,9 @@
   <exec_depend>eigen_conversions</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>image_transport</exec_depend>
+  <exec_depend>iputils-ping</exec_depend>
   <exec_depend>message_runtime</exec_depend>
-  <exec_depend version_gte="1.9.11">nodelet</exec_depend>
+  <exec_depend>nodelet</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-opencv</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-opencv</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-numpy</exec_depend>
