@@ -1,4 +1,4 @@
-From 093ca9a7b94c71cea345b8e4fa80e3805827e64b Mon Sep 17 00:00:00 2001
+From 291d13c6b99db2fef0b1bd2a53573a0d02c668a5 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sat, 11 Jul 2020 21:01:09 +0900
 Subject: [PATCH 2/2] python-rosdep and python-progressbar is not released in
