@@ -1,0 +1,12 @@
+Source: ros-noetic-jsk-rosbag-tools
+Section: misc
+Priority: optional
+Maintainer: Iori Yanokura <yanokura@jsk.imi.i.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), python3-catkin-pkg-modules, ros-noetic-catkin, ros-noetic-catkin-virtualenv (>= 0.5.1), ros-noetic-roslint <!nocheck>, ros-noetic-rostest <!nocheck>
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-jsk-rosbag-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ffmpeg, libavcodec-dev, libavformat-dev, libavutil-dev, libswscale-dev, python3-numpy, python3-rospkg-modules, python3-scipy, python3-setuptools, python3-termcolor, python3-tqdm, python3-yaml, ros-noetic-audio-common-msgs, ros-noetic-cv-bridge, ros-noetic-sensor-msgs
+Description: The rosbag tools
