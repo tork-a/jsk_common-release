@@ -13,7 +13,7 @@
  *     notice, this list of conditions and the following disclaimer.
  *   * Redistributions in binary form must reproduce the above
  *     copyright notice, this list of conditions and the following
- *     disclaimer in the documentation and/o2r other materials provided
+ *     disclaimer in the documentation and/or other materials provided
  *     with the distribution.
  *   * Neither the name of the Willow Garage nor the names of its
  *     contributors may be used to endorse or promote products derived
@@ -103,8 +103,12 @@ public:
       private_ns_.param("spindle_frame", spindle_frame_, std::string("multisense/spindle"));
       private_ns_.param("motor_frame", motor_frame_, std::string("multisense/motor"));
       timer_ = private_ns_.createTimer(
-        ros::Duration(1.0 / rate_), boost::bind(
-          &SpinLaserSnapshotter::timerCallback, this, _1));
+        ros::Duration(1.0 / rate_),
+#if __cplusplus < 201400L
+	boost::bind(&SpinLaserSnapshotter::timerCallback, this, _1));
+#else
+        [this](auto& event){ timerCallback(event); });
+#endif
     }
   }
 
