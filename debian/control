@@ -1,0 +1,12 @@
+Source: ros-noetic-jsk-data
+Section: misc
+Priority: optional
+Maintainer: Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), python3-imageio <!nocheck>, python3-nose <!nocheck>, ros-noetic-catkin, ros-noetic-dynamic-reconfigure, ros-noetic-message-generation, ros-noetic-roslaunch <!nocheck>, ros-noetic-roslint <!nocheck>, ros-noetic-rostest <!nocheck>
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-jsk-data
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-click, python3-paramiko, python3-yaml, ros-noetic-depth-image-proc, ros-noetic-dynamic-reconfigure, ros-noetic-image-transport, ros-noetic-jsk-topic-tools, ros-noetic-message-runtime, ros-noetic-nodelet, ros-noetic-rosbag, ros-noetic-rqt-bag, ros-noetic-rviz, ros-noetic-tf2-ros, ros-noetic-xacro
+Description: The jsk_data package
