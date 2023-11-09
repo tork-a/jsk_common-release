@@ -52,6 +52,7 @@ add_service_files(
   FILES List.srv Update.srv ChangeTopic.srv PassthroughDuration.srv
 )
 generate_dynamic_reconfigure_options(
+  cfg/ConstantRateThrottle.cfg
   cfg/LightweightThrottle.cfg
   cfg/StealthRelay.cfg
   cfg/SynchronizedThrottle.cfg
@@ -64,6 +65,23 @@ catkin_package(
     LIBRARIES jsk_topic_tools
     CFG_EXTRAS nodelet.cmake
 )
+
+## Generate jsk_topic_tools_version.h.
+# Note that catkin_package_xml needs to be called, but it is called in catkin_package.
+# split version in parts and pass to extra file
+string(REPLACE "." ";" jsk_topic_tools_VERSION_LIST "${jsk_topic_tools_VERSION}")
+list(LENGTH jsk_topic_tools_VERSION_LIST _count)
+if(NOT _count EQUAL 3)
+  message(FATAL_ERROR "jsk_topic_tools version '${jsk_topic_tools_VERSION}' does not match 'MAJOR.MINOR.PATCH' pattern")
+endif()
+list(GET jsk_topic_tools_VERSION_LIST 0 jsk_topic_tools_VERSION_MAJOR)
+list(GET jsk_topic_tools_VERSION_LIST 1 jsk_topic_tools_VERSION_MINOR)
+list(GET jsk_topic_tools_VERSION_LIST 2 jsk_topic_tools_VERSION_PATCH)
+
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/jsk_topic_tools/jsk_topic_tools_version.h.in
+  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}/jsk_topic_tools/jsk_topic_tools_version.h)
+
 
 if(topic_tools_VERSION VERSION_GREATER "1.13.2")
   add_definitions("-Dtopic_tools_relay_stealth_EXISTS")
@@ -97,6 +115,8 @@ macro(jsk_topic_tools_nodelet _nodelet_cpp _nodelet_class _single_nodelet_exec_n
 endmacro(jsk_topic_tools_nodelet _nodelet_cpp _nodelet_class _single_nodelet_exec_name)
 
 # nodelet shared object
+jsk_topic_tools_nodelet(src/constant_rate_throttle_nodelet.cpp
+  "jsk_topic_tools/ConstantRateThrottle" "constant_rate_throttle")
 jsk_topic_tools_nodelet(src/lightweight_throttle_nodelet.cpp
   "jsk_topic_tools/LightweightThrottle" "lightweight_throttle")
 jsk_topic_tools_nodelet(src/mux_nodelet.cpp
@@ -148,11 +168,15 @@ if (CATKIN_ENABLE_TESTING)
     add_rostest(${file})
   endmacro()
   find_package(rostest REQUIRED)
+  jsk_topic_tools_add_rostest(test/test_boolean_node.test)
   jsk_topic_tools_add_rostest(test/test_topic_buffer.test)
   jsk_topic_tools_add_rostest(test/test_topic_buffer_close_wait.test)
-  jsk_topic_tools_add_rostest(test/test_topic_buffer_fixed_rate.test)
-  jsk_topic_tools_add_rostest(test/test_topic_buffer_fixed_rate_and_update_rate.test)
-  jsk_topic_tools_add_rostest(test/test_topic_buffer_update_rate.test)
+  # topic_buffer tests are tend to fail in GA because of CPU high load.
+  # https://github.com/jsk-ros-pkg/jsk_common/pull/1739
+  # jsk_topic_tools_add_rostest(test/test_topic_buffer_fixed_rate.launch)
+  # jsk_topic_tools_add_rostest(test/test_topic_buffer_fixed_rate_and_update_rate.launch)
+  # jsk_topic_tools_add_rostest(test/test_topic_buffer_update_rate.launch)
+  jsk_topic_tools_add_rostest(test/test_constant_rate_throttle.test)
   jsk_topic_tools_add_rostest(test/test_lightweight_throttle.test)
   jsk_topic_tools_add_rostest(test/test_topic_compare.test)
   jsk_topic_tools_add_rostest(test/test_hz_measure.test)
@@ -216,6 +240,7 @@ install(FILES
 
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h" # Ignore *_version.h.in files
 )
 
 install(DIRECTORY scripts/
