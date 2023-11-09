@@ -13,7 +13,7 @@
  *     notice, this list of conditions and the following disclaimer.
  *   * Redistributions in binary form must reproduce the above
  *     copyright notice, this list of conditions and the following
- *     disclaimer in the documentation and/o2r other materials provided
+ *     disclaimer in the documentation and/or other materials provided
  *     with the distribution.
  *   * Neither the name of the JSK Lab nor the names of its
  *     contributors may be used to endorse or promote products derived
@@ -37,6 +37,10 @@
 #include <sstream>
 namespace jsk_topic_tools
 {
+
+  DiagnosticNodelet::DiagnosticNodelet():
+    name_(getName()) {}
+
   DiagnosticNodelet::DiagnosticNodelet(const std::string& name):
     name_(name)
   {
@@ -51,11 +55,16 @@ namespace jsk_topic_tools
       new TimeredDiagnosticUpdater(*pnh_, ros::Duration(1.0)));
     diagnostic_updater_->setHardwareID(getName());
     diagnostic_updater_->add(
-      getName() + "::" + name_,
+      getName(),
+#if __cplusplus < 201400L
       boost::bind(
         &DiagnosticNodelet::updateDiagnostic,
         this,
-        _1));
+        _1)
+#else
+      [this](auto& stat){ updateDiagnostic(stat); }
+#endif
+     );
 
     bool use_warn;
     nh_->param("/diagnostic_nodelet/use_warn", use_warn, false);
@@ -90,7 +99,7 @@ namespace jsk_topic_tools
       }
       else {
         jsk_topic_tools::addDiagnosticErrorSummary(
-          name_, vital_checker_, stat, diagnostic_error_level_);
+          getName(), vital_checker_, stat, diagnostic_error_level_);
       }
     }
     else {
