@@ -13,7 +13,7 @@
  *     notice, this list of conditions and the following disclaimer.
  *   * Redistributions in binary form must reproduce the above
  *     copyright notice, this list of conditions and the following
- *     disclaimer in the documentation and/o2r other materials provided
+ *     disclaimer in the documentation and/or other materials provided
  *     with the distribution.
  *   * Neither the name of the JSK Lab nor the names of its
  *     contributors may be used to endorse or promote products derived
@@ -43,10 +43,13 @@ namespace jsk_topic_tools
     diagnostic_updater_(new diagnostic_updater::Updater)
   {
     timer_ = nh.createTimer(
-      timer_duration, boost::bind(
-        &TimeredDiagnosticUpdater::timerCallback,
-        this,
-        _1));
+      timer_duration,
+#if __cplusplus < 201400L
+      boost::bind(&TimeredDiagnosticUpdater::timerCallback,this,_1)
+#else
+      [this](auto& event){ timerCallback(event); }
+#endif
+      );
     timer_.stop();
   }
   
@@ -77,7 +80,9 @@ namespace jsk_topic_tools
 
   void TimeredDiagnosticUpdater::update()
   {
-    diagnostic_updater_->update();
+    // Since TimedDiagnosticUpdater is already managed as a timer,
+    // diagnostic_updater_->force_update is executed instead of diagnostic_updater_->update.
+    diagnostic_updater_->force_update();
   }
   
   void TimeredDiagnosticUpdater::timerCallback(const ros::TimerEvent& event)

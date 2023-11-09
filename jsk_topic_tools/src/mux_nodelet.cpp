@@ -12,7 +12,7 @@
  *     notice, this list of conditions and the following disclaimer.
  *   * Redistributions in binary form must reproduce the above
  *     copyright notice, this list of conditions and the following
- *     disclaimer in the documentation and/o2r other materials provided
+ *     disclaimer in the documentation and/or other materials provided
  *     with the distribution.
  *   * Neither the name of the JSK Lab nor the names of its
  *     contributors may be used to endorse or promote products derived
@@ -31,7 +31,7 @@
  *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
-#include <pluginlib/class_list_macros.h>
+#include <pluginlib/class_list_macros.hpp>
 #include "jsk_topic_tools/mux_nodelet.h"
 #include <std_msgs/String.h>
 #include "jsk_topic_tools/rosparam_utils.h"
@@ -194,7 +194,11 @@ namespace jsk_topic_tools
   {
     if (!advertised_) {         // first time
       ros::SubscriberStatusCallback connect_cb
+#if __cplusplus < 201400L
         = boost::bind(&MUX::connectCb, this, _1);
+#else
+        = [this](auto& pub){ connectCb(pub); };
+#endif
       ros::AdvertiseOptions opts("output", 1,
                                  msg->getMD5Sum(),
                                  msg->getDataType(),
