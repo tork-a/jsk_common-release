@@ -1,0 +1,12 @@
+Source: ros-noetic-jsk-tools
+Section: misc
+Priority: optional
+Maintainer: Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), git, ros-noetic-catkin, ros-noetic-rosgraph-msgs, ros-noetic-roslint <!nocheck>, ros-noetic-rostest <!nocheck>
+Homepage: http://ros.org/wiki/jsk_tools
+Standards-Version: 3.9.2
+
+Package: ros-noetic-jsk-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, iproute2, python3-colorama, python3-github, python3-progressbar, python3-requests, python3-rosdep, python3-tabulate, python3-texttable, ros-noetic-cv-bridge, ros-noetic-diagnostic-aggregator, ros-noetic-diagnostic-msgs, ros-noetic-diagnostic-updater, ros-noetic-jsk-gui-msgs, ros-noetic-jsk-network-tools, ros-noetic-jsk-topic-tools, ros-noetic-rosbag, ros-noetic-rosemacs, ros-noetic-rosgraph-msgs, ros-noetic-rospy, ros-noetic-rqt-reconfigure
+Description: Includes emacs scripts, ros tool alias generator, and launch doc generator.
