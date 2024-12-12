@@ -2,6 +2,9 @@
 Changelog for package image_view2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.2.14 (2024-12-12)
+-------------------
+
 2.2.13 (2023-11-09)
 -------------------
 * Fix for Noetic (`#1774 <https://github.com/jsk-ros-pkg/jsk_common/issues/1774>`_)
