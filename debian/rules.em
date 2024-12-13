@@ -56,8 +56,12 @@ override_dh_shlibdeps:
 	# In case we're installing to a non-standard location, look for a setup.sh
 	# in the install tree that was dropped by catkin, and source it.  It will
 	# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
-	if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
-	dh_shlibdeps -l$(CURDIR)/debian/@(Package)/@(InstallationPrefix)/lib/
+	###
+	### dpkg-shlibdeps: error: cannot find library libfreetype-804dfcff.so.6.18.0 needed by debian/ros-noetic-jsk-rosbag-tools/opt/ros/noetic/share/jsk_rosbag_tools/venv/lib/python3.8/site-packages/Pillow.libs/libharfbuzz-a69be65e.so.0.30000.0 (ELF format: 'elf64-x86-64' abi: '0201003e00000000'; RPATH: '')
+	###
+	#if [ -f "@(InstallationPrefix)/setup.sh" ]; then . "@(InstallationPrefix)/setup.sh"; fi && \
+	#dh_shlibdeps -l$(CURDIR)/debian/@(Package)/@(InstallationPrefix)/lib/
+
 
 override_dh_auto_install:
 	# In case we're installing to a non-standard location, look for a setup.sh
