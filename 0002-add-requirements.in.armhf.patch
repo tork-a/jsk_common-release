@@ -1,4 +1,4 @@
-From e818f4e7da3f4a5f650d76064468f192a5b12586 Mon Sep 17 00:00:00 2001
+From a6ca7285fba674ec23a0abf7ed8a9f65dd5eb67d Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 18 Dec 2024 01:56:51 +0900
 Subject: [PATCH 2/2] add requirements.in.armhf
