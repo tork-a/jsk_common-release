@@ -1,0 +1,17 @@
+certifi==2024.8.30        # via requests
+charset-normalizer==3.4.0  # via requests
+decorator==4.4.2          # via moviepy
+idna==3.10                # via requests
+imageio-ffmpeg==0.5.1     # via moviepy
+imageio==2.35.1           # via moviepy
+moviepy==1.0.3            # via -r requirements.in
+numpy==1.24.4             # via -r requirements.in, imageio, moviepy, scipy
+pillow==8.4.0             # via -r requirements.in, imageio
+proglog==0.1.10           # via moviepy
+requests==2.32.3          # via moviepy
+####
+#### scipy could not install on armhf
+####
+#### scipy==1.8.1              # via -r requirements.in
+tqdm==4.67.1              # via moviepy, proglog
+urllib3==2.2.3            # via requests
