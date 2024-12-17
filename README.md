@@ -1,3 +1,38 @@
+## jsk_common (noetic) - 2.2.15-2
+
+The packages in the `jsk_common` repository were released into the `noetic` distro by running `/usr/bin/bloom-release --skip-pip jsk_common --track noetic --rosdistro noetic` on `Tue, 17 Dec 2024 17:02:01 -0000`
+
+These packages were released:
+- `audio_video_recorder`
+- `dynamic_tf_publisher`
+- `image_view2`
+- `jsk_common`
+- `jsk_data`
+- `jsk_network_tools`
+- `jsk_rosbag_tools`
+- `jsk_tilt_laser`
+- `jsk_tools`
+- `jsk_topic_tools`
+- `multi_map_server`
+- `virtual_force_publisher`
+
+Version of package(s) in repository `jsk_common`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common
+- release repository: https://github.com/tork-a/jsk_common-release.git
+- rosdistro version: `2.2.15-1`
+- old version: `2.2.15-1`
+- new version: `2.2.15-2`
+
+Versions of tools used:
+
+- bloom version: `0.11.2`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.22.2`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## jsk_common (noetic) - 2.2.15-1
 
 The packages in the `jsk_common` repository were released into the `noetic` distro by running `/usr/bin/bloom-release --skip-pip --track noetic --rosdistro noetic jsk_common` on `Fri, 13 Dec 2024 05:40:43 -0000`
