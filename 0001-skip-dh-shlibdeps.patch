@@ -1,4 +1,4 @@
-From 352b2355015e21eb4781b5cb8770727f35d4152e Mon Sep 17 00:00:00 2001
+From 2f05f8258f76cb7a3d701481a21a4c551855cba3 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 13 Dec 2024 13:25:53 +0900
 Subject: [PATCH] skip dh shlibdeps
