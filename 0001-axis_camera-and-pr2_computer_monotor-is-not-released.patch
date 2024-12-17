@@ -1,4 +1,4 @@
-From bf3cef56944081889d8bf9151bbee20b44a10a1b Mon Sep 17 00:00:00 2001
+From fc8406dafe8232438a658661b123e4432fe5601b Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sat, 11 Jul 2020 14:27:45 +0900
 Subject: [PATCH] axis_camera and pr2_computer_monotor is not released on
@@ -9,7 +9,7 @@ Subject: [PATCH] axis_camera and pr2_computer_monotor is not released on
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index a287f901cd..e02a564ebb 100644
+index 6cd563927c..c04d8e9536 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -41,8 +41,8 @@
