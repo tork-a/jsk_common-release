@@ -1,4 +1,4 @@
-From 0c4daa8ecc02be248d4fd742e5a0f76065ce7a57 Mon Sep 17 00:00:00 2001
+From d6018e6eaee8121981ac817e3d32bdb2574c312c Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sat, 11 Jul 2020 14:29:28 +0900
 Subject: [PATCH] dynamixel_controllers and multisense_lib are not released on
