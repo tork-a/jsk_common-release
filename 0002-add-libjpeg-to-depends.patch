@@ -1,4 +1,4 @@
-From fb3dcb328f37f56109d416c126a0a3a430847f9a Mon Sep 17 00:00:00 2001
+From 45cef4bd6701b86cf85f9b8e924151855ce8586a Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 18 Dec 2024 07:29:05 +0900
 Subject: [PATCH 2/2] add libjpeg to depends
