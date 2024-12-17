@@ -24,6 +24,18 @@ if("$ENV{ROS_DISTRO}" STREQUAL "indigo" OR "$ENV{ROS_DISTRO}" STREQUAL "kinetic"
     PYTHON_INTERPRETER python2
   )
 else()
+  execute_process(
+    COMMAND dpkg-architecture -qDEB_TARGET_ARCH
+    OUTPUT_VARIABLE DEB_TARGET_ARCH
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+  message(STATUS "Debian target architecture: ${DEB_TARGET_ARCH}")
+  if("${DEB_TARGET_ARCH}" STREQUAL "armhf")
+  catkin_generate_virtualenv(
+    INPUT_REQUIREMENTS requirements.in.armhf
+    PYTHON_INTERPRETER python3
+  )
+  else()
 find_package(Python COMPONENTS Interpreter)
 if(Python_VERSION VERSION_GREATER_EQUAL 3.12.0)
   catkin_generate_virtualenv(
@@ -36,6 +48,7 @@ else()
     PYTHON_INTERPRETER python3
   )
 endif()
+  endif()
 endif()
 
 file(GLOB SCRIPTS_FILES scripts/*)
