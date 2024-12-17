@@ -1,4 +1,4 @@
-From f51301d4a8088f6dbf43742b965f0be119139f11 Mon Sep 17 00:00:00 2001
+From f7d99813260abd9e4e34fa5ae27ab068e7ef8108 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sat, 11 Jul 2020 21:04:49 +0900
 Subject: [PATCH 2/2] openni_launch, pr2_description, pr2_machine is not
@@ -9,7 +9,7 @@ Subject: [PATCH 2/2] openni_launch, pr2_description, pr2_machine is not
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/package.xml b/package.xml
-index 2d06d432e3..2962b30685 100644
+index cd378cfb61..757b71b477 100644
 --- a/package.xml
 +++ b/package.xml
 @@ -17,11 +17,11 @@
