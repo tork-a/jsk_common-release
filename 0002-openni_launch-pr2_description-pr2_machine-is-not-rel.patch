@@ -1,4 +1,4 @@
-From e5ea64ce3e65aab6c2c9992d05fbde4d558dc0b6 Mon Sep 17 00:00:00 2001
+From 9797e63004ccef8dd3a42a5ddbdb47aa91c635dd Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Sat, 11 Jul 2020 21:04:49 +0900
 Subject: [PATCH 2/2] openni_launch, pr2_description, pr2_machine is not
