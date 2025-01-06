@@ -1,0 +1,1032 @@
+ros-noetic-jsk-data (2.2.16-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 05 Jan 2025 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.15-1focal) focal; urgency=high
+
+  * [jsk_data] Automatically add the host key and Check stdout.read() type (#1810 <https://github.com/jsk-ros-pkg/jsk_common/issues/1810>)
+    - stdout.read() returns a bytes object in Python 3, whereas in Python 2, it returned a str
+    - The error indicates that the new version of Paramiko (2.6.0) is stricter about host key checking, requiring the server to be present in the known_hosts file by default. This is a security feature to prevent man-in-the-middle attacks.
+  * Contributors: Kei Okada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 12 Dec 2024 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.14-1focal) focal; urgency=high
+
+  * [colcon][jsk_data] Support download_data with colcon (#1803 <https://github.com/jsk-ros-pkg/jsk_common/issues/1803>)
+  * [jsk_data] add xz support for download_data (#1797 <https://github.com/jsk-ros-pkg/jsk_common/issues/1797>)
+  * [jsk_data] add 'wget' to package.xml, jsk_data/src/download_data.py requries wget (#1793 <https://github.com/jsk-ros-pkg/jsk_common/issues/1793>)
+  * Contributors: Koki Shinjo, Yoshiki Obinata
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 11 Dec 2024 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.13-1focal) focal; urgency=high
+
+  * [jsk_data/download_data.py] Add timeout argument to download() for wget (#1771 <https://github.com/jsk-ros-pkg/jsk_common/issues/1771>)
+    
+      * add  2 blank lines before function definition ros roslint
+        ```
+        src/jsk_data/download_data.py:120:1: E302 expected 2 blank lines, found 1
+        ```
+      * Add timeout argument to download() for wget
+    
+  * Contributors: Aoi Nakane, Kei Okada, Shingo Kitagawa
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 08 Nov 2023 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.12-1focal) focal; urgency=high
+
+  * [jsk_data/tess_data_collection_server] Check if text and yaml or text and image are saved in the subdirectory of save_dir. (#1734 <https://github.com/jsk-ros-pkg/jsk_common/issues/1734>)
+  * [test/data_collection_server] Wait until data saved for test. (#1728 <https://github.com/jsk-ros-pkg/jsk_common/issues/1728>)
+  * [jsk_data] Strip newline at test code. (#1726 <https://github.com/jsk-ros-pkg/jsk_common/issues/1726>)
+  * [data_collection_server] Add rosbag to data collection server (#1708 <https://github.com/jsk-ros-pkg/jsk_common/issues/1708>)
+    
+      * add rosbag_options param
+      * delete sample launch file
+      * remove rosbag param
+      * add rosbag_prefix param
+      * remove print and avoid error if end is called before start
+      * add minimal functions about rosbag record in data_collection_server
+    
+  * [jsk_data] add wait_timer for timer method (#1697 <https://github.com/jsk-ros-pkg/jsk_common/issues/1697>)
+    
+      * rename to wait_msgs_update
+      * add wait_timer rosparam for timer waiting
+      * remove wait in sync_sub_and_save_cb
+      * check all msg stamp in self.msgs for wait_msgs_update
+      * add wait_service_request for timer and all method
+    
+  * use raw_input for python2 c.f. (#1695 <https://github.com/jsk-ros-pkg/jsk_common/issues/1695>)
+  * [jsk_data] add wait_save_request in data_collection_server (#1669 <https://github.com/jsk-ros-pkg/jsk_common/issues/1669>)
+  * fix TOPICS arg (#1689 <https://github.com/jsk-ros-pkg/jsk_common/issues/1689>)
+  * Update jsk_data/src/jsk_data/download_data.py (#1685 <https://github.com/jsk-ros-pkg/jsk_common/issues/1685>)
+    
+      * [jsk_data] fix bugs in download_data.py
+      * [jsk_data] update download_data.py to remove front './' from extracted file names
+    
+  * check if openni_launch exits to run roslaunch-check pr2_play.launch (#1662 <https://github.com/jsk-ros-pkg/jsk_common/issues/1662>)
+    
+      * use xacro instead of xacro.py
+    
+  * Contributors: Iori Yanokura, Naoaki Kanazawa, Koki Shinjo, Shingo Kitagawa, Shumpei Wakabayashi, Shun Hasegawa, Iori Yanokura, Ren Kunita
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 06 Jun 2022 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.11-1focal) focal; urgency=high
+
+  * [jsk_data] Add common rosbag_record and play file for fetch (#1611 <https://github.com/jsk-ros-pkg/jsk_common/issues/1611>)
+    
+      * enable to give rosbag option to fetch_play.sh like pr2_play.sh
+      * add option to launch rqt_bag and rviz in fetch_play.launch
+      * [jsk_data/CMakeLists.txt] Add roslaunch_add_file_check for fetch's launch files
+      * [jsk_data] Add fetch_play.sh
+      * [jsk_data] Add fetch_play and fetch_record.launch
+    
+  * use xdg-open for ubuntu16.04 and above (#1638 <https://github.com/jsk-ros-pkg/jsk_common/issues/1638>)
+  * [jsk_data/common_record.launch] Add tf_static recordf( #1641 <https://github.com/jsk-ros-pkg/jsk_common/issues/1641>)
+  * Fix for noetic build (#1648 <https://github.com/jsk-ros-pkg/jsk_common/issues/1648>)
+    
+      * fix for python3, except, print ....
+      * pytho3 dislike d in regrex, src/test_topic_published.py:50:37: W605 invalid escape sequence 'd'
+      * jsk_data/tests/test_data_collection_server.py use python3 as interpreter
+        
+        python code under scripts/ installed with catkin_python_install as http://wiki.ros.org/UsingPython3/SourceCodeChanges, to dynamically change shebangs on install timeThis installs tests/test_data_collection_server.py under CATKIN_PACKAGE_SHARE/tests, which outputs
+        ```
+        $ rosrun jsk_data test_data_collection_server.py
+        [rosrun] You have chosen a non-unique executable, please pick one of the following:
+        1) /home/user/devel/share/jsk_data/tests/test_data_collection_server.py
+        2) /home/user/src/jsk_common/jsk_data/tests/test_data_collection_server.py
+        ```
+        we can ignore this message
+      * fix jsk_data/src/jsk_data/cli.py:57:44: E741 ambiguous variable name 'l'
+      * migrate to noetic with ROS_PYTHON_VERSION=2/3, use multiple ROS distro strategy http://wiki.ros.org/noetic/Migration
+      * upgrade package.xml to format=3
+      * use distutils.spawn
+    
+  * Fix download_data.py for Python3f( #1637 <https://github.com/jsk-ros-pkg/jsk_common/issues/1637>)
+  * [jsk_data] Skip extracting files which already existf( #1626 <https://github.com/jsk-ros-pkg/jsk_common/issues/1626>)
+    
+      * Print message when skip extracting
+      * Use isinstance() for checking file type
+      * Skip extracting files which already exist
+    
+  * pr2_play.launch: support indigo ( #1620 <https://github.com/jsk-ros-pkg/jsk_common/issues/1620>)
+  * [download_data.py] generate error log when downloaded fils's md5 is incorrect (#1610 <https://github.com/jsk-ros-pkg/jsk_common/issues/1610>)
+  * Contributors: Yuki Furuta, Kei Okada, Kentaro Wada, Naoya Yamaguchi, Shingo Kitagawa, Yuto Uchimi, Iori Yanokura
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 09 Jul 2020 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.10-1focal) focal; urgency=high
+
+  * check if wget/gdown command exists, gdown is pip distributed so that we can not use this within de build farm (#1609 <https://github.com/jsk-ros-pkg/jsk_common/issues/1609>)
+  * Contributors: Kei Okada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 02 Nov 2018 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.9-1focal) focal; urgency=high
+
+  * check if the pkg exists and path is writable (#1608 <https://github.com/jsk-ros-pkg/jsk_common/issues/1608>)
+    * fix http://build.ros.org/view/Kbin_uX64/job/Kbin_uX64__jsk_pcl_ros_utils__ubuntu_xenial_amd64__binary/132/console
+  * Contributors: Kei Okada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 01 Nov 2018 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.8-1focal) focal; urgency=high
+
+  * Fix installation destination (install node_scripts to CATKIN_PACKAGE_BIN_DESTINATION) (#1604 <https://github.com/jsk-ros-pkg/jsk_common/issues/1604>)
+  * Enable method: all in test_data_collection_server.py (#1600 <https://github.com/jsk-ros-pkg/jsk_common/issues/1600>)
+    * Enable method: all in test_data_collection_server.pyI missed this in https://github.com/jsk-ros-pkg/jsk_common/pull/1599#issuecomment-418374578.
+  * Add test for data_collection_server (#1599 <https://github.com/jsk-ros-pkg/jsk_common/issues/1599>)
+    * Re-enable test of data_collection_server with method=all
+    * Add name to <test>
+    * Disable test with static_image_publisher.py
+    * Add test for data_collection_server
+    * Rename to method: all from None since null is not supported in roslaunch<string>:139: (INFO/1) Unexpected possible title overline or transition.
+    Treating it as ordinary text because it's so short.
+    
+    ```
+    
+    <string>:139: (WARNING/2) Inline literal start-string without end-string.
+    
+    <string>:139: (WARNING/2) Inline interpreted text or phrase reference start-string without end-string.... logging to /home/wkentaro/.ros/log/rostest-hoop-18427.log
+    [ROSUNIT] Outputting test results to /home/wkentaro/.ros/test_results/jsk_data/rostest-tests_data_collection_server.xml
+    [Testcase: testtest_data_collection_server] ... ERROR!
+    ERROR: cannot marshal None unless allow_none is enabled
+    File "/usr/lib/python2.7/unittest/case.py", line 329, in run
+    testMethod()
+    File "/opt/ros/kinetic/lib/python2.7/dist-packages/rostest/runner.py", line 120, in fn
+    succeeded, failed = self.test_parent.launch()
+    File "/opt/ros/kinetic/lib/python2.7/dist-packages/rostest/rostest_parent.py", line 122, in launch
+    return self.runner.launch()
+    File "/opt/ros/kinetic/lib/python2.7/dist-packages/roslaunch/launch.py", line 657, in launch
+    self._setup()
+    File "/opt/ros/kinetic/lib/python2.7/dist-packages/roslaunch/launch.py", line 644, in _setup
+    self._load_parameters()
+    File "/opt/ros/kinetic/lib/python2.7/dist-packages/roslaunch/launch.py", line 338, in _load_parameters
+    r  = param_server_multi()
+    File "/usr/lib/python2.7/xmlrpclib.py", line 1006, in __call__
+    return MultiCallIterator(self.__server.system.multicall(marshalled_list))
+    File "/usr/lib/python2.7/xmlrpclib.py", line 1243, in __call__
+    return self.__send(self.__name, args)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 1596, in __request
+    allow_none=self.__allow_none)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 1094, in dumps
+    data = m.dumps(params)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 638, in dumps
+    dump(v, write)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 660, in __dump
+    f(self, value, write)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 719, in dump_array
+    dump(v, write)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 660, in __dump
+    f(self, value, write)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 741, in dump_struct
+    dump(v, write)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 660, in __dump
+    f(self, value, write)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 719, in dump_array
+    dump(v, write)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 660, in __dump
+    f(self, value, write)
+    File "/usr/lib/python2.7/xmlrpclib.py", line 664, in dump_nil
+    raise TypeError, "cannot marshal None unless allow_none is enabled"<string>:182: (INFO/1) Unexpected possible title overline or transition.
+    Treating it as ordinary text because it's so short.
+    
+    ```
+    
+    <string>:182: (WARNING/2) Inline literal start-string without end-string.
+    
+    <string>:182: (WARNING/2) Inline interpreted text or phrase reference start-string without end-string.
+    
+      * add test for data_collection_server.test
+    
+  * [jsk_data] Add re-download code. Fix #1574 <https://github.com/jsk-ros-pkg/jsk_common/issues/1574> (#1589 <https://github.com/jsk-ros-pkg/jsk_common/issues/1589>)
+    * [jsk_data] Add n_times option to try download
+    * [jsk_data] Add download_data.py's test
+    * [jsk_data] Add return value
+    * [jsk_data] Add re-download code. Fix #1574 <https://github.com/jsk-ros-pkg/jsk_common/issues/1574>
+  * update jsk_travis to 0.4.38 add lunar and melodic (#1594 <https://github.com/jsk-ros-pkg/jsk_common/issues/1594>)
+    * run pr2_play.launch test only when pr2_description_FOUND
+  * Fix mkdir in if isabs block in download_data (#1593 <https://github.com/jsk-ros-pkg/jsk_common/issues/1593>)
+  * Contributors: Kei Okada, Kentaro Wada, Yohei Kakiuchi, Yuto Uchimi, Iori Yanokura
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 31 Oct 2018 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.7-1focal) focal; urgency=high
+
+  * jsk_data: chmod extraced files (#1582 <https://github.com/jsk-ros-pkg/jsk_common/issues/1582>)
+  * [jsk_data] add option not to save in timestamp dir in data_collection_server.py (#1578 <https://github.com/jsk-ros-pkg/jsk_common/issues/1578>)
+  * add timer save request in data_collection_server (#1557 <https://github.com/jsk-ros-pkg/jsk_common/issues/1557>)
+    * update sample data collection launch
+    * add message_filers function in data_collection
+    * add timer save request in data_collection_server
+  * Contributors: Shingo Kitagawa, Yuki Furuta
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 26 Jun 2018 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.6-1focal) focal; urgency=high
+
+  * jsk_data: download_data.py: ensure chmod downloaded data if possible (#1571 <https://github.com/jsk-ros-pkg/jsk_common/issues/1571>)
+  * jsk_data: download_data.py: Skip mkdir failures that can be caused by multiprocessing (#1553 <https://github.com/jsk-ros-pkg/jsk_common/issues/1553>)
+  * Fix data_collection_server (#1549 <https://github.com/jsk-ros-pkg/jsk_common/issues/1549>)
+    * Sleep less time in data_collection_server.py
+    * Return false response in data_collection_server
+  * Improve print information while download_data (#1536 <https://github.com/jsk-ros-pkg/jsk_common/issues/1536>)
+  * [jsk_data][download_data.py] chmod decompressed data (#1532 <https://github.com/jsk-ros-pkg/jsk_common/issues/1532>)
+  * Contributors: Kei Okada, Kentaro Wada, Yuki Furuta
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 04 Jan 2018 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.5-1focal) focal; urgency=high
+
+  * [jsk_data][download_data] support custom download dir / chmod  (#1530 <https://github.com/jsk-ros-pkg/jsk_common/issues/1530>)
+  * Contributors: Yuki Furuta
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 18 Jun 2017 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.4-1focal) focal; urgency=high
+
+  * [jsk_data][pr2_play.launch] replace doc to comment (#1526 <https://github.com/jsk-ros-pkg/jsk_common/issues/1526>)
+    * [jsk_data][pr2_play.launch] remove relay to c2 ns
+    * [jsk_data][pr2_play.sh] support other rosbag arguments
+  * Fix bug for initialization of service server of data_collection_server (#1525 <https://github.com/jsk-ros-pkg/jsk_common/issues/1525>)
+    * Mode to save topics without requestModified:
+    - jsk_data/node_scripts/data_collection_server.py
+  * Contributors: Kentaro Wada, Yuki Furuta
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 13 Jun 2017 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.3-1focal) focal; urgency=high
+
+  * jsk_data/node_scripts/data_collection_server.py: Dump numpy.ndarray as npz file in data_collection_server.py (#1508 <https://github.com/jsk-ros-pkg/jsk_common/issues/1508>)
+    * Fix for flake8
+    * Dump numpy.ndarray as npz file, For small size data using npz_compressed.
+  * Add my name to package.xml as a maintainer
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 22 Mar 2017 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.2-1focal) focal; urgency=high
+
+  * package.xml : Fix rosdep key: python-gdown -> python-gdown-pip
+    According to https://github.com/ros/rosdistro/pull/13397
+  * jsk_data/download_data.py : Check if specified md5 has 32 charactors
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 29 Dec 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.1-1focal) focal; urgency=high
+
+  * CMakeLists.txt : Strict rule of installing scripts
+    Fix the part of #1488 <https://github.com/jsk-ros-pkg/jsk_common/issues/1488>
+  * jsk_data/src/jsk_data/cli.py: Make stamping as optional in jsk_data (#1486 <https://github.com/jsk-ros-pkg/jsk_common/issues/1486>)
+    I found forcely chaning filename is a bit too strict.. ;)
+  * jsk_data/src/jsk_data/gdrive.py: Check if gdrive authorization has been successfully completed (#1485 <https://github.com/jsk-ros-pkg/jsk_common/issues/1485>)
+  * jsk_data/data_collection_server.py:  set slop as rosparam and add warning in data_collection_server (#1483 <https://github.com/jsk-ros-pkg/jsk_common/issues/1483>)
+  * jsk_data/data_collection_server.py:  Fix abs() for approx sync in data_collection_server.py (#1477 <https://github.com/jsk-ros-pkg/jsk_common/issues/1477>)
+  * package.xml : Resolve dependency on python-gdown with rosdep (#1481 <https://github.com/jsk-ros-pkg/jsk_common/issues/1481>)
+  * jsk_data/data_collection_server.py: fix typo in data_collection_server (#1480 <https://github.com/jsk-ros-pkg/jsk_common/issues/1480>)
+    * Fix visual indent and line length to follow pep8
+    * fix indent in data_collection_server
+  * jsk_data/data_collection_server.py: add YAML topic savetype (#1476 <https://github.com/jsk-ros-pkg/jsk_common/issues/1476>)
+  * jsk_data/data_collection_server.py: support non-header msg (#1476 <https://github.com/jsk-ros-pkg/jsk_common/issues/1476>)
+  * Contributors: Kentaro Wada, Shingo Kitagawa
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 12 Dec 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.2.0-1focal) focal; urgency=high
+
+  * jsk_data/src/jsk_data/download_data.py: Create softlink for extracted files in download_data (#1467 <https://github.com/jsk-ros-pkg/jsk_common/pull/1467>)
+    - For multiple workspaces like in jenkins.
+  * Fix removing of symlink destination path (#1469 <https://github.com/jsk-ros-pkg/jsk_common/pull/1469>)
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 27 Oct 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.1.2-1focal) focal; urgency=high
+
+  * src/jsk_data/download_data.py : create path direcotory before download data and return if permission denied, catch resourceNotFound
+  * Contributors: Kei Okada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 13 Sep 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.1.1-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 06 Sep 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.1.0-1focal) focal; urgency=high
+
+  * record.launch : add bagfile_prefix arg, add machine argument (https://github.com/jsk-ros-pkg/jsk_common/pull/1437, https://github.com/jsk-ros-pkg/jsk_common/pull/1438)
+    
+      * jsk_data/CMakeLists.txt : pr2_record could not run on travis
+      * [jsk_data] add machine argument for record.launch
+      * [jsk_data] add bagfile_prefix arg for record.launch
+      * jsk_data/CMakeLists.txt : check if baxter_description is installed
+      * [jsk_data] add pr2_description to run_depend
+      * [jsk_data] add xacro to run_depend for testing
+      * [jsk_data] add baxter_description to run_depend for testing
+      * [jsk_data] add bagfile_prefix arg for record.launch
+    
+  * hrp2_play.launch use urdf model with hand for robot_description when  playing with hrp2. (#1434 <https://github.com/jsk-ros-pkg/jsk_common/pull/1434>)
+  * pr2_play.launch: Remap /kinect_head topics to /kinect_head_c2 to play rosbag for pr2. (#1431 <https://github.com/jsk-ros-pkg/jsk_common/pull/1431>)
+  * download_data.py: Add pkg_name for cache_dir to avoid data filename conflicts (#1442 <https://github.com/jsk-ros-pkg/jsk_common/issues/1442> )
+    
+      * Add pkg_name for cache_dir to avoid data filename conflicts
+      * Support setting abspath for downloading data
+    
+  * data_collection_server.py: Another saving type LabelImage of data_collection_server (#1427 <https://github.com/jsk-ros-pkg/jsk_common/issues/1427>)
+  * camera_coords_change_trigger : Add trigger node for data collection by camera coords change  (#1432 <https://github.com/jsk-ros-pkg/jsk_common/issues/1432>)
+    Originally developped in
+    https://github.com/furushchev/jsk_semantics_201607/blob/master/jsk_pr2_wandering/node_scripts/camera_coords_change_trigger.py.
+  * synchronize_republish.py : Synchronize properly with slop for slow topics  (#1428 <https://github.com/jsk-ros-pkg/jsk_common/issues/1428>)
+  * Move README to sphinx docs for jsk_data package   (#1433 <https://github.com/jsk-ros-pkg/jsk_common/issues/1433>)
+  * Contributors: Kei Okada, Kentaro Wada, Masaki Murooka, Yuki Furuta
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 05 Sep 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.17-1focal) focal; urgency=high
+
+  * Validate rosparams of data_collection_server.py
+  * Fix bug for new savetype YAML in data_collection_server.py
+  * Add YAML savetype to data_collection_server
+  * Add sample for data_collection_server in jsk_data
+  * Return saved message as TriggerResponse in data_collection_server
+  * Make params as optional for data_collection_server
+  * Change dynamically save_dir parameter in data_collection_server
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 20 Jul 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.16-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 18 Jun 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.15-1focal) focal; urgency=high
+
+  * Add data_collection_server.py
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 12 Jun 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.14-1focal) focal; urgency=high
+
+  * Add utility to download data (ex. test_data/trained_data)
+  * Fix url of google drive (view/download)
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 13 May 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.13-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 28 Apr 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.12-1focal) focal; urgency=high
+
+  * Omitted name of filename for gdrive go cli
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 17 Apr 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.11-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 19 Mar 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.10-1focal) focal; urgency=high
+
+  * [jsk_data] Fix deprecated arg in jsk_data command
+  * [jsk_data] exact_sync: true for publishing points
+    Modified:
+    - jsk_data/launch/kinect2_bridge_play.launch
+  * [jsk_data] Describe about pubopen and delete subcommands
+    Modified:
+    - jsk_data/README.md
+  * [jsk_data] Add pubopen subcommand to open GoogleDrive
+    Modified:
+    - jsk_data/src/jsk_data/cli.py
+    - jsk_data/src/jsk_data/gdrive.py
+  * [jsk_data] Fix style and cleanup not used public_level
+  * [jsk_data] Support deleting file only public
+  * [jsk_data] Show fullname by pubinfo
+  * [jsk_data] Use --noheader option for listing
+  * [jsk_data] Download file from gdrive
+  * [jsk_data] Upload to gdrive with gdrive module
+  * [jsk_data] Use gdrive module for ls
+  * [jsk_data] Use gdrive wrapper for pubinfo
+  * [jsk_data] Add wrapper for drive command
+  * [jsk_data] Add drive binary for linux x64 v1.9.0 from prasmussen/gdrive
+    see https://github.com/prasmussen/gdrive/releases/tag/1.9.0
+    Added:
+    - jsk_data/scripts/drive-linux-x64
+  * [jsk_data] Add playback launch for kinect2 using kinect2_bridge
+    The reason I'd like to put this at this package is
+    that installing kinect2_bridge package is not so easy.
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 12 Feb 2016 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.9-1focal) focal; urgency=high
+
+  * [jsk_data] Deepends on jsk_topic_tools
+    Taking over https://github.com/jsk-ros-pkg/jsk_common/pull/1196
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 13 Dec 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.8-1focal) focal; urgency=high
+
+  * [jsk_data] Add roslint
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 06 Dec 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.7-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 04 Dec 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.6-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 01 Dec 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.5-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 29 Nov 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.4-1focal) focal; urgency=high
+
+  * [jsk_data/hrp2_rosbag_always.sh] Record capture points
+  * [jsk_data] Add stamp to file basename
+  * [jsk_data] Add flake8 code style check
+  * [jsk_data] Change path of tests for python package
+  * [jsk_data/launch] add urata_record.launch
+  * [jsk_data] Correctly gets selected file by percol
+  * [jsk_data] Describe about downloading large file from Google Drive
+  * [jsk_data] Add odom topics to be recorded by rosbag
+  * [jsk_data] Record PC voltage
+  * [jsk_data] Add shm_servo_state to rosbag always
+  * [jsk_data] Add rosbag_always.py document
+  * add new subscribe topic
+  * [jsk_data] Select filename at getting with jsk_data  Closes #1141 <https://github.com/jsk-ros-pkg/jsk_common/issues/1141>
+  * [jsk_data] Documentation about $ jsk_data cli
+  * [jsk_data] Refactor: add cmd_pubinfo to __all__
+  * [jsk_data] Select filename with percol in pubinfo
+  * [jsk_data] add camera parm to pr2_play.launch
+  * [jsk_data] Estimate filename if longer than 40
+    Because gdrive does not return full title if it is longer than 40 Closes #1155 <https://github.com/jsk-ros-pkg/jsk_common/issues/1155>
+  * [jsk_data] returning files does not work for zsh comp
+  * [jsk_data] Add file completion in bash
+  * [jsk_data] Refactor: indentation and comment
+  * [jsk_data] Display view url by pubinfo
+  * [jsk_data] Check existence of .ssh/config
+  * [jsk_data] Config key check when getting config from .ssh/config Closes #1137 <https://github.com/jsk-ros-pkg/jsk_common/issues/1137>
+  * [jsk_data] Refactor cmd_put with google_drive_download_url
+  * [jsk_data] Add pubinfo subcommand
+  * [jsk_data] Remove old Makefile
+  * [jsk_data] Remove old jsk_data shell function
+  * [jsk_data] Add completion script for jsk_data
+  * [jsk_data] Add jsk_data command
+  * [jsk_data] Show size of files when listing remote bag files
+  * Add jsk_data function to handle data from anywhere
+  * [jsk_data] Record pgain and dgain in case something happens
+  * [jsk_tools] Use roslaunch internaly in rosbag_always.py in order to enable respawning
+  * [jsk_data/hrp2_rosbag_always.sh] Record more topics
+  * [jsk_tools] Record /urata_status topic in hrp2_rosbag_always.sh
+  * [jsk_data] Popup notification on desktop when removing a bag file
+  * [jsk_data] Handle bag files correctly with multiple ordered index
+  * [jsk_data/rosbag_always.py] Supress message about directory size and colorize message about removing bag files
+  * [jsk_data] Add more topics to record in hrp2_rosbag_always.sh
+  * Contributors: Kentaro Wada, Ryohei Ueda, Yusuke Oshiro, Yuto Inagaki, Eisoku Kuroiwa, Iori Yanokura
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 24 Nov 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.3-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 23 Jul 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.2-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 06 Jul 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.1-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 27 Jun 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (2.0.0-1focal) focal; urgency=high
+
+  * Fix default ROBOT name
+  * Contributors: Kohei Kimura
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 18 Jun 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.72-1focal) focal; urgency=high
+
+  * add  recording magnetometer
+  * Contributors: Ryo Terasawa
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 06 Jun 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.71-1focal) focal; urgency=high
+
+  * [jsk_data] common_record.launch: Mkdir for saving rosbag file
+  * [jsk_data] Add image to all_image regex to common_record.launch
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 16 May 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.70-1focal) focal; urgency=high
+
+  * [jsk_data] add option in hrp2_play with multisense
+  * Contributors: Yu Ohara
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 07 May 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.69-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 04 May 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.68-1focal) focal; urgency=high
+
+  * [jsk_data] env value ARIES_USER will be default username to login aries
+  * [jsk_data] Add usage of KEYWORD for make large-list / small-list
+  * [jsk_data] Add KEYWORD to large-list/small-list target in Makefile
+  * Contributors: Kentaro Wada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 04 May 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.67-1focal) focal; urgency=high
+
+  * [jsk_data/rosbag_always.py] Remove old active file too
+  * [jsk_data] enable to select use_depth_image_proc or use_stereo_image_proc
+  * [jsk_data] add save_multisense parameter in hrp2_record.launch
+  * [jsk_data] add save_multisense parameter in common_record.launch
+  * [jsk_data] Save bags under ~/.ros directory
+  * Contributors: Kamada Hitoshi, Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 02 May 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.66-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 02 Apr 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.65-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 01 Apr 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.64-1focal) focal; urgency=high
+
+  * [jsk_data] Utility script to save/load robot_description
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 28 Mar 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.63-1focal) focal; urgency=high
+
+  * [jsk_tilt_laser, jsk_data] Add multisense_play.launch to play multisene bag file
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 18 Feb 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.62-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 16 Feb 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.61-1focal) focal; urgency=high
+
+  * [jsk_data] catkinize
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 10 Feb 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.60-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 03 Feb 2015 01:12:00 -0000
+
+ros-noetic-jsk-data (1.0.59-1focal) focal; urgency=high
+
+  * Remove rosbuild files
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 02 Feb 2015 19:05:00 -0000
+
+ros-noetic-jsk-data (1.0.58-1focal) focal; urgency=high
+
+  * Reuse isMasterAlive function across scripts which
+    want to check master state
+  * modify output topic name again
+  * change output topic name into default
+  * add launch file for reconstruction of point cloud from multisense disparity image
+  * Contributors: Ryohei Ueda, Ryo Terasawa
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 06 Jan 2015 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.57-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 22 Dec 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.56-1focal) focal; urgency=high
+
+  * Use ping with 10 seconds timeout to check master aliveness
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 16 Dec 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.55-1focal) focal; urgency=high
+
+  * Check master is reachable before chcking master is alive
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 08 Dec 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.54-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 14 Nov 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.53-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 31 Oct 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.52-1focal) focal; urgency=high
+
+  * Fix rosbag to handle over 10 bags
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 22 Oct 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.51-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 20 Oct 2014 07:01:00 -0000
+
+ros-noetic-jsk-data (1.0.50-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 19 Oct 2014 16:50:00 -0000
+
+ros-noetic-jsk-data (1.0.49-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 12 Oct 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.48-1focal) focal; urgency=high
+
+  * Add script to record rosbag always even if rosmaster is dead
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 11 Oct 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.47-1focal) focal; urgency=high
+
+  * add pcds download option
+  * Contributors: Yuto Inagaki
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 07 Oct 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.46-1focal) focal; urgency=high
+
+  * add baxter rosbag play
+  * Contributors: baxter
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 02 Oct 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.45-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 28 Sep 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.44-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 26 Sep 2014 00:17:00 -0000
+
+ros-noetic-jsk-data (1.0.43-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 25 Sep 2014 16:08:00 -0000
+
+ros-noetic-jsk-data (1.0.42-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 24 Sep 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.41-1focal) focal; urgency=high
+
+  * set save_all_image false in default
+  * add argument save_all_image to hrp2_record.launch. default is true.
+  * enable to set other_topic as argument
+  * Contributors: Masaki Murooka
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 22 Sep 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.40-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 18 Sep 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.39-1focal) focal; urgency=high
+
+  * add large-list and small-list to listup bag files in jsk_data server
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 16 Sep 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.38-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 12 Sep 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.37-1focal) focal; urgency=high
+
+  * add use_xterm argument to pr2_play.launch
+  * add use_xterm argument to run rosbag with xterm
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 07 Sep 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.36-1focal) focal; urgency=high
+
+  * Add a script to copy GOPRO movies to the server
+  * add common_record.launch and include it from hrp2_record.launch
+    and pr2_record.launch
+  * add hrp2_record.launch hrp2_play.launch hrp2_play.sh
+  * Contributors: Ryohei Ueda, Satoshi Otsubo
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 31 Aug 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.35-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 15 Aug 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.34-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 13 Aug 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.33-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 27 Jul 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.32-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 25 Jul 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.31-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 22 Jul 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.30-1focal) focal; urgency=high
+
+  * added codes to remove c2/c3 topics
+  * Contributors: Yu Ohara
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 14 Jul 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.29-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 01 Jul 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.28-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 23 Jun 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.27-1focal) focal; urgency=high
+
+  * add pkls Makefile option for random forest sklearn
+  * Contributors: Yuto Inagaki
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 09 Jun 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.26-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 29 May 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.25-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 25 May 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.24-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 23 May 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.23-1focal) focal; urgency=high
+
+  * I modified the program to use stream mode
+  * added programs for prosilica
+  * Contributors: Yu Ohara
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 22 May 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.22-1focal) focal; urgency=high
+
+  * ignore large/ and small/ directories created by makefile
+  * Contributors: Ryohei Ueda
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 21 May 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.21-1focal) focal; urgency=high
+
+  * update Makefile to decompress bag file when bag fiels is compressed
+  * more message on make large
+  * add rosbag option for set loop
+  * jsk_data: add KEYWORD features
+  * Contributors: Kei Okada, Yuto Inagaki
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 19 May 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.20-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 08 May 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.19-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Mon, 05 May 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.18-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 03 May 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.17-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.16-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 14:29:00 -0000
+
+ros-noetic-jsk-data (1.0.15-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 11:19:00 -0000
+
+ros-noetic-jsk-data (1.0.14-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 03:52:00 -0000
+
+ros-noetic-jsk-data (1.0.13-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 02:06:00 -0000
+
+ros-noetic-jsk-data (1.0.12-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 07:58:00 -0000
+
+ros-noetic-jsk-data (1.0.11-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 17 Apr 2014 23:18:00 -0000
+
+ros-noetic-jsk-data (1.0.10-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 16 Apr 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.9-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 11 Apr 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.8-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 10 Apr 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.7-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Wed, 09 Apr 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.6-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 06 Apr 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.5-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Sun, 30 Mar 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.4-1focal) focal; urgency=high
+
+  * jsk_data: add ssh -o StrictHostKeyChecking=no
+  * Contributors: Kei Okada
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Fri, 28 Mar 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.3-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 18 Mar 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.2-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 11 Mar 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.1-1focal) focal; urgency=high
+
+
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Thu, 06 Mar 2014 15:00:00 -0000
+
+ros-noetic-jsk-data (1.0.0-1focal) focal; urgency=high
+
+  * add "use_gui" argument
+  * enable to record gripper_command
+  * enable to record pressure-sensor
+  * add /tf when save_openni is true
+  * add jsk_data into jsk-ros-pkg for mainly rosbag
+  * Contributors: inagaki, iwaishi
+
+ -- Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>  Tue, 04 Mar 2014 15:00:00 -0000
+
+
