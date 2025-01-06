@@ -1,4 +1,4 @@
-From 14e561370a2c4194d26e0b7b016925256890c082 Mon Sep 17 00:00:00 2001
+From f413ddeaac9c4ae867e487901d949f0a5dd15aef Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 18 Dec 2024 01:51:22 +0900
 Subject: [PATCH 1/2] fix for armhf
