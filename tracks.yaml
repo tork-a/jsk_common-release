@@ -110,6 +110,7 @@ tracks:
     - git-bloom-generate -y rosdynrpm --prefix release/:{ros_distro} :{ros_distro}
       -i :{release_inc} --require-os fedora rhel
     devel_branch: null
+    last_version: null
     name: jsk_common
     patches: null
     release_inc: '0'
