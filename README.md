@@ -1,3 +1,35 @@
+## jsk_common (kilted) - 3.0.1-1
+
+The packages in the `jsk_common` repository were released into the `kilted` distro by running `/usr/bin/bloom-release jsk_common --ros-distro kilted --non-interactive --override-release-repository-url https://github.com/tork-a/jsk_common-release.git --override-release-repository-push-url git@github.com:tork-a/jsk_common-release.git` on `Thu, 29 Oct 2026 16:33:13 -0000`
+
+These packages were released:
+- `audio_video_recorder`
+- `dynamic_tf_publisher`
+- `image_view2`
+- `jsk_common`
+- `jsk_data`
+- `jsk_ros1_ros2_compat`
+- `jsk_rosbag_tools`
+- `jsk_tools`
+- `jsk_topic_tools`
+
+Version of package(s) in repository `jsk_common`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `None-0`
+- new version: `3.0.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.14.4`
+- catkin_pkg version: `1.1.1`
+- rosdep version: `0.27.0`
+- rosdistro version: `1.1.0`
+- vcstools version: `0.1.42`
+
+
 ## jsk_common (jazzy) - 3.0.1-1
 
 The packages in the `jsk_common` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release jsk_common --ros-distro jazzy --non-interactive --override-release-repository-url https://github.com/tork-a/jsk_common-release.git --override-release-repository-push-url git@github.com:tork-a/jsk_common-release.git` on `Thu, 29 Oct 2026 15:49:09 -0000`
