@@ -42,14 +42,20 @@ jobs:
 
     container:
       image: ${{ matrix.CONTAINER }}
-      volumes:
-        - /tmp/node20:/__e/node20
 
     steps:
-      - name: Install latest git ( use sudo for ros-ubuntu )
+      - name: Install git
+        shell: bash
         run: |
-          (apt-get update && apt-get install -y sudo) || echo "OK"
-          sudo apt-get update && sudo apt-get install -y software-properties-common && sudo apt-get update && sudo add-apt-repository -y ppa:git-core/ppa && sudo apt-get update && sudo apt-get install -y git
+          set -eux
+          export DEBIAN_FRONTEND=noninteractive
+          if [ "${{ matrix.CONTAINER }}" != "jskrobotics/ros-ubuntu:14.04" ]; then
+            apt-get update
+            apt-get install -y -qq sudo
+          fi
+          sudo apt-get update
+          sudo apt-get update -o Acquire::Retries=3
+          sudo apt-get install -y --no-install-recommends git ca-certificates
 
       - name: work around permission issue  # https://github.com/actions/checkout/issues/760#issuecomment-1097501613
         run: |
@@ -67,23 +73,14 @@ jobs:
              git config --global --add safe.directory $GITHUB_WORKSPACE
           fi
 
-      - name: Try to replace `node` with an glibc 2.17
+      - name: Checkout repository without Node.js
         shell: bash
         run: |
-          if [ "${{ matrix.CONTAINER }}" = "jskrobotics/ros-ubuntu:14.04" ]; then
-             export USER=$(whoami)
-             sudo chmod 777 -R /__e/node20
-             sudo chown -R $USER /__e/node20
-          fi
-          ls -lar /__e/node20 &&
-          sudo apt-get install -y curl &&
-          curl -Lo /tmp/node.tar.gz https://unofficial-builds.nodejs.org/download/release/v20.17.0/node-v20.17.0-linux-x64-glibc-217.tar.gz &&
-          cd /__e/node20 &&
-          tar -x --strip-components=1 -f /tmp/node.tar.gz &&
-          ls -lar /__e/node20/bin/
-
-      - name: Chcekout
-        uses: actions/checkout@v3.0.2
+          set -eux
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --no-tags --prune --depth=1 origin "${GITHUB_REF}"
+          git checkout --detach FETCH_HEAD
 
       - name: Start X server
         run: |
@@ -98,8 +95,31 @@ jobs:
           xhost +local:root
         shell: bash
 
+      - name: Unhide AMENT_IGNORE'd packages for rosdep
+        run: |
+          set -x
+          # AMENT_IGNORE marks packages/stacks not yet ported to ROS2, so
+          # colcon/ament skip them -- but rosdep's own package discovery
+          # (catkin_pkg.find_packages(), used here by jsk_travis'
+          # rosdep-install.sh) treats AMENT_IGNORE the same as CATKIN_IGNORE
+          # by default and skips them too, while catkin/catkin_tools (the
+          # actual ROS1 build here) does not and builds them anyway. That
+          # mismatch silently drops rosdep-resolved dependencies for every
+          # such package (and everything nested under an ignored directory,
+          # e.g. image_view2/dynamic_tf_publisher under jsk_ros_patch/
+          # jsk_coordination_system) -- this job is ROS1-only, so nothing
+          # here needs AMENT_IGNORE honored.
+          find "$GITHUB_WORKSPACE" -name AMENT_IGNORE -exec rm -f {} \;
+        shell: bash
+
       - name: Run jsk_travis
         uses: jsk-ros-pkg/jsk_travis@master
+        env:
+          # indigo predates the ros_environment package, so $ROS_VERSION is
+          # never set there (unlike kinetic/melodic/noetic); package.xml
+          # tags conditioned on "$ROS_VERSION == 1" would otherwise
+          # silently evaluate false and rosdep would skip installing them.
+          ROS_VERSION: ${{ matrix.ROS_DISTRO == 'indigo' && '1' || '' }}
         with:
           ROS_PARALLEL_JOBS : ${{ matrix.ROS_PARALLEL_JOBS }}
           CATKIN_PARALLEL_JOBS : ${{ matrix.CATKIN_PARALLEL_JOBS }}
@@ -133,6 +153,20 @@ jobs:
       - name: Chcekout Source
         uses: actions/checkout@v3.0.2
 
+      - name: Unhide AMENT_IGNORE'd packages for rosdep
+        run: |
+          set -x
+          # Must run before "Setup Dependencies Workspace" below, which
+          # also does rosinstall_generator --from-path $GITHUB_WORKSPACE:
+          # that step decides which upstream ROS distro packages to fetch
+          # as source (e.g. cv_bridge for image_view2), so if it still
+          # can't see an AMENT_IGNORE'd (or AMENT_IGNORE-nested) package's
+          # dependencies at that point, they never get fetched/built at
+          # all -- unlike the rosdep-install-based jobs, where the missing
+          # dependency at least fails loudly right there. See the ros-o
+          # job's own copy of this step for the full rationale.
+          find $GITHUB_WORKSPACE -name AMENT_IGNORE -exec rm -f {} \;
+
       - name: Install Buildtools
         run: |
           set -x
@@ -148,7 +182,7 @@ jobs:
           test "${{ matrix.DISTRO }}" = "ubuntu:22.04" && apt install -y -q -qq libself-test-dev libpcl-ros-dev
           test "${{ matrix.DISTRO }}" = "ubuntu:22.04" && apt install -y -q -qq ros-core-dev ros-robot-dev
           test "${{ matrix.DISTRO }}" = "ubuntu:22.04" && pip install vcstool
-          test "${{ matrix.DISTRO }}" != "ubuntu:22.04" && apt install -y -q -qq pipx && pipx install vcstool
+          test "${{ matrix.DISTRO }}" != "ubuntu:22.04" && apt install -y -q -qq pipx && pipx install vcs2l
           rosdep update
 
       - name: Setup rosinstall_generator
@@ -169,7 +203,7 @@ jobs:
           git clone https://github.com/ros-o/rosconsole.git
           git clone https://github.com/ros-o/gencpp.git
           git clone https://github.com/ros-o/ros_comm.git
-          git clone https://github.com/ros-o/catkin_virtualenv.git
+          git clone https://github.com/locusrobotics/catkin_virtualenv.git
           git clone https://github.com/ros-o/perception_pcl.git
           export PATH=/github/home/.local/bin:$PATH  # for 24.04, vcs installed with pipx
           ROS_PACKAGE_PATH=/usr/share:$(pwd) rosinstall_generator --rosdistro noetic --deps --exclude RPP --repos message_runtime message_generation | vcs import --shallow
@@ -200,8 +234,11 @@ jobs:
           rosinstall_generator laser_filters laser_assembler map_server --rosdistro noetic --upstream-development | vcs import --force
           ROS_PACKAGE_PATH=/usr/share:$HOME/ws_depend/src/ros-o rosinstall_generator --from-path $HOME/ws_depend/src/3rdparty-src --rosdistro noetic --deps --deps-only --exclude RPP test_catkin_virtualenv test_catkin_virtualenv_inherited | vcs import --shallow
           cd ~/ws_depend
-          rosdep install -qq -r -y --from-path src --ignore-src || echo "OK"
-          catkin_make_isolated --cmake-args -DCATKIN_ENABLE_TESTING=OFF
+          # --rosdistro is required now: without it rosdep refuses to
+          # resolve ANY key at all ("ROS distro is not set"), since there's
+          # no /opt/ros/noetic install on jammy/noble to infer it from.
+          rosdep install -qq -r -y --rosdistro noetic --from-path src --ignore-src || echo "OK"
+          catkin_make_isolated --ignore-pkg test_catkin_virtualenv test_catkin_virtualenv_inherited --cmake-args -DCATKIN_ENABLE_TESTING=OFF
 
       - name: Setup Workspace
         run: |
@@ -212,7 +249,7 @@ jobs:
           mkdir -p ~/ws_current/src
           cd ~/ws_current/src
           ln -sf $GITHUB_WORKSPACE .
-          rosdep install -qq -r -y --from-path . --ignore-src || echo "OK"
+          rosdep install -qq -r -y --rosdistro noetic --from-path . --ignore-src || echo "OK"
 
       - name: Compile Packages
         run: |
@@ -222,7 +259,9 @@ jobs:
           catkin_make_isolated ${{ matrix.CATKIN_OPTIONS }} --cmake-args -DCATKIN_ENABLE_TESTING=OFF -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ${{ matrix.CMAKE_OPTIONS }}
         shell: bash
 
-  # ROS-O setup https://github.com/v4hn/ros-o-builder/blob/jammy-one/README.md#install-instructions
+  # ROS-O setup for v4hn https://github.com/v4hn/ros-o-builder/blob/jammy-one/README.md#install-instructions
+  # ROS-O setup for techfak https://ros.packages.techfak.net/
+  # note that v4hn uses ROS_DISTRO=one and techfak uses ROS_DISTRO
   ros-o:
     runs-on: ubuntu-latest
 
@@ -231,7 +270,13 @@ jobs:
       matrix:
         include:
           - DISTRO: ubuntu:22.04
-            ROS_REPOSITORY_URL: https://raw.githubusercontent.com/v4hn/ros-o-builder/jammy-one/repository
+            ROS_ONE_VARIANT: v4hn
+            ROS_REPOSITORY_URL: "deb [trusted=yes] https://raw.githubusercontent.com/v4hn/ros-o-builder/jammy-one/repository ./"
+            ROSDEP_PACKAGE_MAPPING: "yaml https://raw.githubusercontent.com/v4hn/ros-o-builder/jammy-one/repository/local.yaml debian"
+          - DISTRO: ubuntu:24.04
+            ROS_ONE_VARIANT: techfak
+            ROS_REPOSITORY_URL: "deb [trusted=yes] https://ros.packages.techfak.net noble main"
+            ROSDEP_PACKAGE_MAPPING: "yaml https://ros.packages.techfak.net/ros-one.yaml ubuntu"
 
     container: ${{ matrix.DISTRO }}
 
@@ -245,26 +290,41 @@ jobs:
       - name: Setup ROS-O deb repository
         run: |
           set -x
-          apt update && apt install -qq -y ca-certificates
-          echo "deb [trusted=yes] ${{ matrix.ROS_REPOSITORY_URL }}/ ./" | tee /etc/apt/sources.list.d/ros-o-builder.list
+          apt update && apt install -qq -y ca-certificates git
+          echo ${{ matrix.ROS_REPOSITORY_URL }} | tee /etc/apt/sources.list.d/ros-o-builder.list
           ##
           # https://github.com/v4hn/ros-deb-builder-action/blob/b7c0ed93fde3a86b5b1027bf8f7145cad6067c90/prepare.sh#L27-L28
           # Canonical dropped the Debian ROS packages from 24.04 for political reasons. Wow.
-          test "${{ matrix.DISTRO }}" = "ubuntu:24.04" && apt install -y software-properties-common retry && retry -d 50,10,30,300 -t 12 add-apt-repository -y ppa:v-launchpad-jochen-sprickerhof-de/ros
+          if [[ "${{ matrix.ROS_ONE_VARIANT }}" == "v4hn" && "${{ matrix.DISTRO }}" == "ubuntu:24.04" ]]; then apt install -y software-properties-common retry && retry -d 50,10,30,300 -t 12 add-apt-repository -y ppa:v-launchpad-jochen-sprickerhof-de/ros; fi
           ##
           apt update
-          apt install -qq -y python3-rosdep2
-          echo "yaml ${{ matrix.ROS_REPOSITORY_URL }}/local.yaml debian" | tee /etc/ros/rosdep/sources.list.d/1-ros-o-builder.list
+          if [[ "${{ matrix.ROS_ONE_VARIANT }}" == "v4hn" ]]; then
+              apt install -qq -y python3-rosdep2
+          fi
+          if [[ "${{ matrix.ROS_ONE_VARIANT }}" == "techfak"  ]]; then
+              # Do not install python3-rosdep2, which is an outdated version of rosdep shipped via the Ubuntu repositories (instead of ROS)!
+              apt install -qq -y python3-rosdep
+              rosdep init
+          fi
+          echo ${{ matrix.ROSDEP_PACKAGE_MAPPING }} | tee /etc/ros/rosdep/sources.list.d/1-ros-o-builder.list
           rosdep update
+        shell: bash
 
       - name: Setup catkin-tools
         run: |
           set -x
           # setup catkin tools
           apt install -qq -y python3-pip
-          pip3 install catkin-tools
+          if [[ "${{ matrix.ROS_ONE_VARIANT }}" == "v4hn" ]]; then
+              pip3 install catkin-tools==0.9.4
+              apt install -qq -y catkin
+          fi
+          if [[ "${{ matrix.ROS_ONE_VARIANT }}" == "techfak" ]]; then
+              apt install -qq -y ros-one-catkin python3-catkin-tools
+          fi
           # setup build tools
-          apt install -qq -y cmake build-essential catkin ros-one-rosbash
+          apt install -qq -y cmake build-essential ros-one-rosbash
+        shell: bash
 
       - name: Setup Workspace
         run: |
@@ -273,8 +333,30 @@ jobs:
           # setup workspace
           mkdir -p ~/ws/src
           cd ~/ws/src
+          if [[ "${{ matrix.ROS_ONE_VARIANT }}" == "techfak" ]]; then
+          # TODO: remove these lines and uncomment https://github.com/ubi-agni/ros-builder-action/blob/191fab06004ad5784c28cf2ba2b18f6d163a860d/ros-one.repos#L1089
+              git clone https://github.com/locusrobotics/catkin_virtualenv.git
+          fi
           ln -sf $GITHUB_WORKSPACE .
+          # AMENT_IGNORE marks packages not yet ported to ROS2, so colcon
+          # skips them -- but rosdep's own discovery treats AMENT_IGNORE the
+          # same as CATKIN_IGNORE by default and skips them too, while
+          # catkin (the actual ROS1 build here) does not and builds them
+          # anyway, silently dropping their rosdep-resolved dependencies
+          # (this is exactly how jsk_tilt_laser's laser_assembler dependency
+          # went unresolved). This job is ROS1-only, so unhide them for
+          # rosdep.
+          find $GITHUB_WORKSPACE -name AMENT_IGNORE -exec rm -f {} \;
           rosdep install -qq -r -y --from-path . --ignore-src || echo "OK"
+          # check all system packages are able to install, because ROS-O build deb files that needs all packages
+          PIP_BREAK_SYSTEM_PACKAGES=1 rosdep install -qq --simulate -y --from-path . --ignore-src -t exec -t buildtool_export -t buildtool -t build -t build_export | tee rosdep-install.sh
+          # Not `bash -xe`: one package that's momentarily unbuilt/unavailable
+          # on the community ros-one repo (build timing is outside our
+          # control) would otherwise abort this script and leave every
+          # later line's package uninstalled too. Let each install line run
+          # independently so only the genuinely-missing package's own build
+          # fails, instead of cascading into unrelated "not found" errors.
+          sed 's/apt-get install/apt-get -y install/;/install ros-one/s/^/#/;/pip3 install/s/^/#/' rosdep-install.sh | bash -x
         shell: bash
 
       - name: Compile Packages
