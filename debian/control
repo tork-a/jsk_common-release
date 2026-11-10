@@ -1,0 +1,12 @@
+Source: ros-lyrical-jsk-common
+Section: misc
+Priority: optional
+Maintainer: "Kei Okada" <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ros-environment, ros-lyrical-ros-workspace
+Homepage: http://ros.org/wiki/jsk_common
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-jsk-common
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-audio-video-recorder, ros-lyrical-dynamic-tf-publisher, ros-lyrical-image-view2, ros-lyrical-jsk-rosbag-tools, ros-lyrical-jsk-tools, ros-lyrical-jsk-topic-tools, ros-lyrical-ros-workspace
+Description: Metapackage that contains commonly used toolset for jsk-ros-pkg
