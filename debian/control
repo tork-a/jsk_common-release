@@ -1,0 +1,12 @@
+Source: ros-kilted-jsk-ros1-ros2-compat
+Section: misc
+Priority: optional
+Maintainer: "Kei Okada" <k-okada@jsk.imi.i.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), curl, libcurl4-openssl-dev, ros-kilted-ament-cmake, ros-kilted-ament-cmake-pytest <!nocheck>, ros-kilted-ament-cmake-python, ros-kilted-example-interfaces <!nocheck>, ros-kilted-rclcpp, ros-kilted-rclpy, ros-kilted-ros-environment, ros-kilted-std-msgs <!nocheck>, ros-kilted-std-srvs <!nocheck>, ros-kilted-tf2-ros, ros-kilted-tf2-ros-py, ros-kilted-ros-workspace
+Homepage: https://index.ros.org/p/jsk_ros1_ros2_compat/#kilted
+Standards-Version: 3.9.2
+
+Package: ros-kilted-jsk-ros1-ros2-compat
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-rclcpp, ros-kilted-rclpy, ros-kilted-rosbag2-py, ros-kilted-rosidl-runtime-py, ros-kilted-tf2-ros, ros-kilted-tf2-ros-py, ros-kilted-ros-workspace
+Description: Shared ROS1(roscpp/rospy)/ROS2(rclcpp/rclpy) compatibility helpers used across jsk_common's ROS2-ported packages, so that individual packages don't each maintain their own copy.
