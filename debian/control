@@ -1,0 +1,12 @@
+Source: ros-kilted-image-view2
+Section: misc
+Priority: optional
+Maintainer: "Kei Okada" <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), libboost-thread-dev, python3-numpy <!nocheck>, python3-scipy <!nocheck>, ros-kilted-ament-cmake, ros-kilted-cv-bridge, ros-kilted-geometry-msgs, ros-kilted-image-geometry, ros-kilted-image-transport, ros-kilted-jsk-ros1-ros2-compat, ros-kilted-launch-ros <!nocheck>, ros-kilted-launch-testing <!nocheck>, ros-kilted-launch-testing-ament-cmake <!nocheck>, ros-kilted-message-filters, ros-kilted-pcl-conversions, ros-kilted-rclcpp, ros-kilted-ros-environment, ros-kilted-rosidl-default-generators, ros-kilted-sensor-msgs, ros-kilted-std-msgs, ros-kilted-std-srvs, ros-kilted-tf2-geometry-msgs, ros-kilted-tf2-ros, ros-kilted-ros-workspace, ros-kilted-rosidl-typesupport-fastrtps-c, ros-kilted-rosidl-typesupport-fastrtps-cpp
+Homepage: http://ros.org/wiki/image_view2
+Standards-Version: 3.9.2
+
+Package: ros-kilted-image-view2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-thread-dev, libpcl-dev, ros-kilted-cv-bridge, ros-kilted-geometry-msgs, ros-kilted-image-geometry, ros-kilted-image-transport, ros-kilted-jsk-ros1-ros2-compat, ros-kilted-message-filters, ros-kilted-pcl-conversions, ros-kilted-rclcpp, ros-kilted-rosidl-default-runtime, ros-kilted-sensor-msgs, ros-kilted-std-msgs, ros-kilted-std-srvs, ros-kilted-tf2-geometry-msgs, ros-kilted-tf2-ros, ros-kilted-ros-workspace
+Description: A simple viewer for ROS image topics with draw-on features
