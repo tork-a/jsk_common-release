@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>jsk_data</name>
-  <version>3.0.4</version>
+  <version>3.0.5</version>
   <description>The jsk_data package</description>
 
   <maintainer email="ueda@jsk.t.u-tokyo.ac.jp">Ryohei Ueda</maintainer>
   <maintainer email="www.kentaro.wada@gmail.com">Kentaro Wada</maintainer>
-  <license>BSD</license>
+  <license>BSD-3-Clause</license>
   <buildtool_depend condition="$ROS_VERSION == 1">catkin</buildtool_depend>
   <buildtool_depend condition="$ROS_VERSION == 2">ament_cmake</buildtool_depend>
   <buildtool_depend condition="$ROS_VERSION == 2">ros_environment</buildtool_depend>
