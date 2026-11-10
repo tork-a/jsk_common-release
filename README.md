@@ -1,3 +1,35 @@
+## jsk_common (jazzy) - 3.0.5-1
+
+The packages in the `jsk_common` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release --rosdistro jazzy --track jazzy jsk_common` on `Tue, 10 Nov 2026 14:49:23 -0000`
+
+These packages were released:
+- `audio_video_recorder`
+- `dynamic_tf_publisher`
+- `image_view2`
+- `jsk_common`
+- `jsk_data`
+- `jsk_ros1_ros2_compat`
+- `jsk_rosbag_tools`
+- `jsk_tools`
+- `jsk_topic_tools`
+
+Version of package(s) in repository `jsk_common`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common
+- release repository: https://github.com/tork-a/jsk_common-release.git
+- rosdistro version: `3.0.4-1`
+- old version: `3.0.4-1`
+- new version: `3.0.5-1`
+
+Versions of tools used:
+
+- bloom version: `0.14.4`
+- catkin_pkg version: `1.1.1`
+- rosdep version: `0.27.0`
+- rosdistro version: `1.1.0`
+- vcstools version: `0.1.42`
+
+
 ## jsk_common (lyrical) - 3.0.4-1
 
 The packages in the `jsk_common` repository were released into the `lyrical` distro by running `/usr/bin/bloom-release --rosdistro lyrical --track lyrical jsk_common` on `Wed, 04 Nov 2026 03:31:48 -0000`
