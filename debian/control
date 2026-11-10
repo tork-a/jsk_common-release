@@ -1,0 +1,12 @@
+Source: ros-lyrical-jsk-ros1-ros2-compat
+Section: misc
+Priority: optional
+Maintainer: "Kei Okada" <k-okada@jsk.imi.i.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), curl, libcurl4-openssl-dev, ros-lyrical-ament-cmake, ros-lyrical-ament-cmake-pytest <!nocheck>, ros-lyrical-ament-cmake-python, ros-lyrical-example-interfaces <!nocheck>, ros-lyrical-rclcpp, ros-lyrical-rclpy, ros-lyrical-ros-environment, ros-lyrical-std-msgs <!nocheck>, ros-lyrical-std-srvs <!nocheck>, ros-lyrical-tf2-ros, ros-lyrical-tf2-ros-py, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/jsk_ros1_ros2_compat/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-jsk-ros1-ros2-compat
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-rclcpp, ros-lyrical-rclpy, ros-lyrical-rosbag2-py, ros-lyrical-rosidl-runtime-py, ros-lyrical-tf2-ros, ros-lyrical-tf2-ros-py, ros-lyrical-ros-workspace
+Description: Shared ROS1(roscpp/rospy)/ROS2(rclcpp/rclpy) compatibility helpers used across jsk_common's ROS2-ported packages, so that individual packages don't each maintain their own copy.
